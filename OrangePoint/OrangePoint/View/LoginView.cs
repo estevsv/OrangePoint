@@ -10,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OrangePoint
+namespace OrangePoint.View
 {
-    public partial class Form1 : Form
+    public partial class LoginView : Form
     {
-        public Form1()
+        public LoginView()
         {
             InitializeComponent();
         }
@@ -24,9 +24,12 @@ namespace OrangePoint
         {
             Usuario usuario = loginRule.PesquisaUsuario(Tbusuario.Text, Tbsenha.Text);
             if (usuario != null)
-                MessageBox.Show("usuario existe");
+            {
+                this.Visible = false;
+                new Dashboard().Show();
+            }
             else
-                MessageBox.Show("usuario não existe");
+                MessageBox.Show("Usuario e/ou Senha Incorreta");
 
         }
     }

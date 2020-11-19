@@ -55,6 +55,7 @@
             this.Entrar.TabIndex = 8;
             this.Entrar.Text = "ENTRAR";
             this.Entrar.UseVisualStyleBackColor = true;
+            this.Entrar.Click += new System.EventHandler(this.Entrar_Click);
             // 
             // Tbsenha
             // 

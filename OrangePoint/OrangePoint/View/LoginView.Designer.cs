@@ -40,11 +40,12 @@
             // 
             this.Entrar.BackColor = System.Drawing.Color.Transparent;
             this.Entrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Entrar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Entrar.ForeColor = System.Drawing.SystemColors.Control;
             this.Entrar.Location = new System.Drawing.Point(212, 188);
             this.Entrar.Margin = new System.Windows.Forms.Padding(2);
             this.Entrar.Name = "Entrar";
-            this.Entrar.Size = new System.Drawing.Size(68, 32);
+            this.Entrar.Size = new System.Drawing.Size(86, 32);
             this.Entrar.TabIndex = 14;
             this.Entrar.Text = "ENTRAR";
             this.Entrar.UseVisualStyleBackColor = false;
@@ -58,6 +59,7 @@
             this.Tbsenha.PasswordChar = '*';
             this.Tbsenha.Size = new System.Drawing.Size(254, 20);
             this.Tbsenha.TabIndex = 12;
+            this.Tbsenha.Text = "123";
             // 
             // Tbusuario
             // 
@@ -66,16 +68,18 @@
             this.Tbusuario.Name = "Tbusuario";
             this.Tbusuario.Size = new System.Drawing.Size(254, 20);
             this.Tbusuario.TabIndex = 10;
+            this.Tbusuario.Text = "admin";
             // 
             // Senha
             // 
             this.Senha.AutoSize = true;
             this.Senha.BackColor = System.Drawing.Color.Transparent;
+            this.Senha.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Senha.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Senha.Location = new System.Drawing.Point(77, 137);
             this.Senha.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Senha.Name = "Senha";
-            this.Senha.Size = new System.Drawing.Size(44, 13);
+            this.Senha.Size = new System.Drawing.Size(54, 20);
             this.Senha.TabIndex = 13;
             this.Senha.Text = "SENHA";
             // 
@@ -83,11 +87,12 @@
             // 
             this.Usuario.AutoSize = true;
             this.Usuario.BackColor = System.Drawing.Color.Transparent;
+            this.Usuario.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Usuario.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.Usuario.Location = new System.Drawing.Point(77, 61);
             this.Usuario.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Usuario.Name = "Usuario";
-            this.Usuario.Size = new System.Drawing.Size(56, 13);
+            this.Usuario.Size = new System.Drawing.Size(67, 20);
             this.Usuario.TabIndex = 11;
             this.Usuario.Text = "USUÁRIO";
             // 

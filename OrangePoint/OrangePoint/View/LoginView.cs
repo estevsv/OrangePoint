@@ -1,13 +1,6 @@
 ﻿using OrangePoint.BusinessRule;
 using OrangePoint.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace OrangePoint.View
@@ -26,11 +19,10 @@ namespace OrangePoint.View
             if (usuario != null)
             {
                 this.Visible = false;
-                new Dashboard().Show();
+                new Dashboard(usuario).Show();
             }
             else
                 MessageBox.Show("Usuario e/ou Senha Incorreta");
-
         }
     }
 }

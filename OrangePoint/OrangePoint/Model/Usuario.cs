@@ -22,5 +22,8 @@ namespace OrangePoint.Model
 
         private decimal hrsDiaria;
         public decimal HrsDiaria { get => hrsDiaria; set => hrsDiaria = value; }
+
+        private string fotoUsuario;
+        public string FotoUsuario { get => fotoUsuario; set => fotoUsuario = value; }
     }
 }

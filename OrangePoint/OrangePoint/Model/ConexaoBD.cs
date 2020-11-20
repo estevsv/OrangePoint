@@ -15,8 +15,8 @@ namespace OrangePoint.Model
         public ConexaoBD()
         {
             this._conexao = new MySqlConnection();
-            this.StringConexao = "SERVER=localhost;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=none";
-            this._conexao.ConnectionString = "SERVER=localhost;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=none";
+            this.StringConexao = "SERVER=localhost;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=Required";
+            this._conexao.ConnectionString = "SERVER=localhost;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=Required";
         }
 
         public String StringConexao

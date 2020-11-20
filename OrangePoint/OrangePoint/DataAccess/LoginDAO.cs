@@ -29,13 +29,15 @@ namespace OrangePoint.DataAccess
                     usuarioExistente.CodUsuario = Convert.ToInt32(registro["COD_USUARIO"]);
                     usuarioExistente.Login = registro["LOGIN"].ToString();
                     usuarioExistente.Senha = registro["SENHA"].ToString();
-                    usuarioExistente.NmeFuncionario = registro["NME_FUNCIONARIO"].ToString();
-                    usuarioExistente.HrsDiaria = Convert.ToDecimal(registro["HRS_DIARIA"]);
-                } else
+                    usuarioExistente.NmeFuncionario = registro["NME_FUNCIONARIO"].ToString() != "" ? registro["NME_FUNCIONARIO"].ToString() : "";
+                    usuarioExistente.HrsDiaria = registro["HRS_DIARIA"].ToString() != "" ? Convert.ToDecimal(registro["HRS_DIARIA"]) : 0;
+                    usuarioExistente.FotoUsuario = registro["FOTO_USUARIO"].ToString() != "" ? registro["FOTO_USUARIO"].ToString() : ""; 
+                }
+                else
                     usuarioExistente = null;
                 conexao.Desconectar();
             }
-            catch(Exception ex) { MessageBox.Show("Erro LoginDAO/PesquisaUsuario. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro LoginDAO/PesquisaUsuario. Contate o Suporte"); }
             return usuarioExistente;
         }
     }

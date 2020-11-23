@@ -44,11 +44,6 @@
             this.btnRegistrarPonto = new System.Windows.Forms.Button();
             this.tmDataHora = new System.Windows.Forms.Timer(this.components);
             this.lblDataHora = new System.Windows.Forms.Label();
-            this.Data_Ponto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Entrada_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Saida_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Entrada_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Saida_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -195,14 +190,9 @@
             // 
             this.dgPontoUsuario.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgPontoUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPontoUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Data_Ponto,
-            this.Entrada_1,
-            this.Saida_1,
-            this.Entrada_2,
-            this.Saida_2});
             this.dgPontoUsuario.Location = new System.Drawing.Point(217, 319);
             this.dgPontoUsuario.Name = "dgPontoUsuario";
+            this.dgPontoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPontoUsuario.Size = new System.Drawing.Size(856, 242);
             this.dgPontoUsuario.TabIndex = 6;
             // 
@@ -234,36 +224,6 @@
             this.lblDataHora.Size = new System.Drawing.Size(45, 20);
             this.lblDataHora.TabIndex = 8;
             this.lblDataHora.Text = "label1";
-            // 
-            // Data_Ponto
-            // 
-            this.Data_Ponto.HeaderText = "Data";
-            this.Data_Ponto.Name = "Data_Ponto";
-            this.Data_Ponto.Width = 130;
-            // 
-            // Entrada_1
-            // 
-            this.Entrada_1.HeaderText = "Primeira Entrada";
-            this.Entrada_1.Name = "Entrada_1";
-            this.Entrada_1.Width = 170;
-            // 
-            // Saida_1
-            // 
-            this.Saida_1.HeaderText = "Primeira Saída";
-            this.Saida_1.Name = "Saida_1";
-            this.Saida_1.Width = 170;
-            // 
-            // Entrada_2
-            // 
-            this.Entrada_2.HeaderText = "Segunda Entrada";
-            this.Entrada_2.Name = "Entrada_2";
-            this.Entrada_2.Width = 170;
-            // 
-            // Saida_2
-            // 
-            this.Saida_2.HeaderText = "Segunda Saída";
-            this.Saida_2.Name = "Saida_2";
-            this.Saida_2.Width = 170;
             // 
             // FolhadePonto
             // 
@@ -309,10 +269,5 @@
         private System.Windows.Forms.Button btnRegistrarPonto;
         private System.Windows.Forms.Timer tmDataHora;
         private System.Windows.Forms.Label lblDataHora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Data_Ponto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Entrada_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Saida_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Entrada_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Saida_2;
     }
 }

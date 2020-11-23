@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OrangePoint.BusinessRule
 {
@@ -39,17 +40,19 @@ namespace OrangePoint.BusinessRule
             }
             else
             {
-                
                 if (folhaPonto.Entrada1 == "")
                     folhaPonto.Entrada1 = data.ToLongTimeString();
+                else if (folhaPonto.Saida1 == "")
+                    folhaPonto.Saida1 = data.ToLongTimeString();
+                else if (folhaPonto.Entrada2 == "")
+                    folhaPonto.Entrada2 = data.ToLongTimeString();
+                else if (folhaPonto.Saida2 == "")
+                    folhaPonto.Saida2 = data.ToLongTimeString();
                 else
-                    if (folhaPonto.Saida1 == "")
-                        folhaPonto.Saida1 = data.ToLongTimeString();
-                    else
-                        if (folhaPonto.Entrada2 == "")
-                            folhaPonto.Entrada2 = data.ToLongTimeString();
-                        else
-                            folhaPonto.Saida2 = data.ToLongTimeString();
+                {
+                    MessageBox.Show("Dia de trabalho já finalizado");
+                    return;
+                }
                 folhaPontoDAO.AtualizaPonto(folhaPonto);
             }
         }

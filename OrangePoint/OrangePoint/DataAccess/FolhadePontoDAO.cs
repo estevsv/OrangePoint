@@ -68,9 +68,9 @@ namespace OrangePoint.DataAccess
                     ponto.DataPonto = dataPonto;
                     ponto.CodPonto = Convert.ToInt32(registro["COD_PONTO"]);
                     ponto.Entrada1 = registro["ENTRADA_1"].ToString();
-                    ponto.Entrada1 = registro["SAIDA_1"].ToString();
-                    ponto.Entrada1 = registro["ENTRADA_2"].ToString();
-                    ponto.Entrada1 = registro["SAIDA_2"].ToString();
+                    ponto.Saida1 = registro["SAIDA_1"].ToString();
+                    ponto.Entrada2 = registro["ENTRADA_2"].ToString();
+                    ponto.Saida2 = registro["SAIDA_2"].ToString();
                 }
                 conexao.Desconectar();
             }
@@ -82,21 +82,23 @@ namespace OrangePoint.DataAccess
         {
             try
             {
+                string dataPesquisa = folhaPonto.DataPonto.Year + "-" + folhaPonto.DataPonto.Month + "-" + folhaPonto.DataPonto.Day;
+
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "update `bdmirela`.`cadastro_clientes` set ENTRADA_1 = @ENTRADA_1,SAIDA_1 = @SAIDA_1,ENTRADA_2=@ENTRADA_2,SAIDA_2 = @SAIDA_2" +
-                    "where COD_USUARIO = @COD_USUARIO and DATA_PONTO = @DATA_PONTO;";
+                cmd.CommandText = "update bdorangepoint.folha_ponto_usuario set ENTRADA_1 = @ENTRADA_1,SAIDA_1 = @SAIDA_1,ENTRADA_2=@ENTRADA_2,SAIDA_2 = @SAIDA_2" +
+                    " where COD_USUARIO = @COD_USUARIO and DATA_PONTO = @DATA_PONTO;";
                 cmd.Parameters.AddWithValue("@ENTRADA_1", folhaPonto.Entrada1);
                 cmd.Parameters.AddWithValue("@SAIDA_1", folhaPonto.Saida1);
                 cmd.Parameters.AddWithValue("@ENTRADA_2", folhaPonto.Entrada2);
                 cmd.Parameters.AddWithValue("@SAIDA_2", folhaPonto.Saida2);
                 cmd.Parameters.AddWithValue("@COD_USUARIO", folhaPonto.Usuario.CodUsuario);
-                cmd.Parameters.AddWithValue("@DATA_PONTO", folhaPonto.DataPonto);
+                cmd.Parameters.AddWithValue("@DATA_PONTO", dataPesquisa);
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro FolhaPontoDAO/AtualizaPonto. Contate o Suporte");
             }

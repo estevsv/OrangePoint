@@ -160,6 +160,7 @@
     <None Include="Resources\background neutro panel1.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Background Padrão.jpg" />
     <Content Include="Resources\imagem perfil padrao.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

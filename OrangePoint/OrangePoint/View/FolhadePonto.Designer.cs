@@ -130,6 +130,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Configurações";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblWelcomeUser
             // 
@@ -152,7 +153,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(211, 68);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Empresas";
+            this.button2.Text = "Cadastros";
             this.button2.UseVisualStyleBackColor = false;
             // 
             // btnDashboard

@@ -88,5 +88,12 @@ namespace OrangePoint.View
             folhaPontoRule.RegistrarPonto(dataPonto, usuarioPagina);
             CarregaGridFolhaPonto();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            this.Close();
+            new Configuracoes(usuarioPagina).Show();
+        }
     }
 }

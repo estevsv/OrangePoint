@@ -20,7 +20,7 @@ namespace OrangePoint.View
         private void Dashboard_Load(object sender, EventArgs e)
         {
             lblWelcomeUser.Text = "Bem Vindo " + usuarioPagina.NmeFuncionario;
-            Image fotoUsuario = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
+            userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -37,5 +37,11 @@ namespace OrangePoint.View
             new FolhadePonto(usuarioPagina).Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            this.Close();
+            new Configuracoes(usuarioPagina).Show();
+        }
     }
 }

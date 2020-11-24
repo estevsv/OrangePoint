@@ -15,5 +15,10 @@ namespace OrangePoint.BusinessRule
         {
             return loginDAO.PesquisaUsuario(login, senha);
         }
+
+        public void AtualizaUsuario(Usuario usuario)
+        {
+            loginDAO.AtualizaLogin(usuario);
+        }
     }
 }

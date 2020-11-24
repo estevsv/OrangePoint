@@ -40,5 +40,29 @@ namespace OrangePoint.DataAccess
             catch { MessageBox.Show("Erro LoginDAO/PesquisaUsuario. Contate o Suporte"); }
             return usuarioExistente;
         }
+
+        public void AtualizaLogin(Usuario usuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "update bdorangepoint.usuario set LOGIN = @LOGIN,SENHA = @SENHA,NME_FUNCIONARIO=@NME_FUNCIONARIO,HRS_DIARIA = @HRS_DIARIA, FOTO_USUARIO = @FOTO_USUARIO " +
+                    "where COD_USUARIO = @COD_USUARIO;";
+                cmd.Parameters.AddWithValue("@COD_USUARIO", usuario.CodUsuario);
+                cmd.Parameters.AddWithValue("@LOGIN", usuario.Login);
+                cmd.Parameters.AddWithValue("@SENHA", usuario.Senha);
+                cmd.Parameters.AddWithValue("@NME_FUNCIONARIO", usuario.NmeFuncionario);
+                cmd.Parameters.AddWithValue("@HRS_DIARIA", usuario.HrsDiaria);
+                cmd.Parameters.AddWithValue("@FOTO_USUARIO", usuario.FotoUsuario);
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro LoginDAO/AtualizaLogin. Contate o Suporte");
+            }
+        }
     }
 }

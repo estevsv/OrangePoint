@@ -43,7 +43,7 @@
             this.Entrar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Entrar.ForeColor = System.Drawing.SystemColors.Control;
             this.Entrar.Location = new System.Drawing.Point(212, 188);
-            this.Entrar.Margin = new System.Windows.Forms.Padding(2);
+            this.Entrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Entrar.Name = "Entrar";
             this.Entrar.Size = new System.Drawing.Size(86, 32);
             this.Entrar.TabIndex = 14;
@@ -54,7 +54,7 @@
             // Tbsenha
             // 
             this.Tbsenha.Location = new System.Drawing.Point(161, 137);
-            this.Tbsenha.Margin = new System.Windows.Forms.Padding(2);
+            this.Tbsenha.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Tbsenha.Name = "Tbsenha";
             this.Tbsenha.PasswordChar = '*';
             this.Tbsenha.Size = new System.Drawing.Size(254, 20);
@@ -64,7 +64,7 @@
             // Tbusuario
             // 
             this.Tbusuario.Location = new System.Drawing.Point(161, 61);
-            this.Tbusuario.Margin = new System.Windows.Forms.Padding(2);
+            this.Tbusuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Tbusuario.Name = "Tbusuario";
             this.Tbusuario.Size = new System.Drawing.Size(254, 20);
             this.Tbusuario.TabIndex = 10;

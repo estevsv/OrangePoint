@@ -9,12 +9,18 @@ namespace OrangePoint.View
 {
     public partial class LoginView : Form
     {
+        LoginRule loginRule = new LoginRule();
+
         public LoginView()
         {
             InitializeComponent();
         }
 
-        LoginRule loginRule = new LoginRule();
+        private void LoginView_Load(object sender, EventArgs e)
+        {
+            LimpaFotosInutilizadas();
+        }
+
         private void Entrar_Click(object sender, EventArgs e)
         {
             Usuario usuario = loginRule.PesquisaUsuario(Tbusuario.Text, Tbsenha.Text);
@@ -43,10 +49,5 @@ namespace OrangePoint.View
             }
         }
 
-        private void LoginView_Load(object sender, EventArgs e)
-        {
-            LimpaFotosInutilizadas();
-
-        }
     }
 }

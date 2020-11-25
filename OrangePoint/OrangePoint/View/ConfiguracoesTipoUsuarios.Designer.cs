@@ -1,6 +1,6 @@
 ﻿namespace OrangePoint.View
 {
-    partial class Configuracoes
+    partial class ConfiguracoesTipoUsuarios
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracoes));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfiguracoesTipoUsuarios));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -40,34 +41,51 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.Tbusuario = new System.Windows.Forms.TextBox();
-            this.tbSenha = new System.Windows.Forms.TextBox();
-            this.btAlterar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tbNomeUsuario = new System.Windows.Forms.TextBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(211, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
-            this.panel2.TabIndex = 5;
+            this.panel2.TabIndex = 24;
+            // 
+            // button6
+            // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button6.AutoSize = true;
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(207, -2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(201, 71);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Permissões de Usuários";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button1
             // 
@@ -80,7 +98,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 71);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Permissões de Usuários";
+            this.button1.Text = "Perfil";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -110,7 +128,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 23;
             // 
             // button5
             // 
@@ -153,7 +171,6 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Configurações";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblWelcomeUser
             // 
@@ -193,7 +210,6 @@
             this.btnPontoEletronico.TabIndex = 0;
             this.btnPontoEletronico.Text = "Ponto Eletrônico";
             this.btnPontoEletronico.UseVisualStyleBackColor = false;
-            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
             // 
             // btnSair
             // 
@@ -206,10 +222,17 @@
             this.btnSair.Location = new System.Drawing.Point(939, 567);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(134, 42);
-            this.btnSair.TabIndex = 3;
+            this.btnSair.TabIndex = 22;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // Tbusuario
+            // 
+            this.Tbusuario.Location = new System.Drawing.Point(348, 147);
+            this.Tbusuario.Margin = new System.Windows.Forms.Padding(2);
+            this.Tbusuario.Name = "Tbusuario";
+            this.Tbusuario.Size = new System.Drawing.Size(239, 20);
+            this.Tbusuario.TabIndex = 17;
             // 
             // label1
             // 
@@ -217,153 +240,151 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(332, 254);
+            this.label1.Location = new System.Drawing.Point(234, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Usuário";
+            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Tipo de Usuário";
+            // 
+            // button7
+            // 
+            this.button7.AutoSize = true;
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(592, 142);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(27, 30);
+            this.button7.TabIndex = 25;
+            this.button7.Text = "+";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(238, 196);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(381, 327);
+            this.dataGridView1.TabIndex = 26;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Cadastros",
+            "Consultoria Contábil",
+            "Apuração de Lucro Real",
+            "Controle de Usuários"});
+            this.comboBox1.Location = new System.Drawing.Point(772, 196);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(236, 21);
+            this.comboBox1.TabIndex = 27;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(332, 292);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(344, 99);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 20);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Senha";
+            this.label2.Size = new System.Drawing.Size(166, 20);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Inserir Novo Tipo de Usuário";
             // 
-            // Tbusuario
+            // comboBox2
             // 
-            this.Tbusuario.Location = new System.Drawing.Point(389, 256);
-            this.Tbusuario.Margin = new System.Windows.Forms.Padding(2);
-            this.Tbusuario.Name = "Tbusuario";
-            this.Tbusuario.Size = new System.Drawing.Size(254, 20);
-            this.Tbusuario.TabIndex = 11;
-            // 
-            // tbSenha
-            // 
-            this.tbSenha.Location = new System.Drawing.Point(389, 294);
-            this.tbSenha.Margin = new System.Windows.Forms.Padding(2);
-            this.tbSenha.Name = "tbSenha";
-            this.tbSenha.PasswordChar = '*';
-            this.tbSenha.Size = new System.Drawing.Size(254, 20);
-            this.tbSenha.TabIndex = 12;
-            // 
-            // btAlterar
-            // 
-            this.btAlterar.BackColor = System.Drawing.Color.Transparent;
-            this.btAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btAlterar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAlterar.ForeColor = System.Drawing.Color.White;
-            this.btAlterar.Location = new System.Drawing.Point(443, 387);
-            this.btAlterar.Name = "btAlterar";
-            this.btAlterar.Size = new System.Drawing.Size(134, 42);
-            this.btAlterar.TabIndex = 13;
-            this.btAlterar.Text = "Alterar";
-            this.btAlterar.UseVisualStyleBackColor = false;
-            this.btAlterar.Click += new System.EventHandler(this.btAlterar_Click);
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Cadastros",
+            "Consultoria Contábil",
+            "Apuração de Lucro Real",
+            "Controle de Usuários"});
+            this.comboBox2.Location = new System.Drawing.Point(772, 142);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(236, 21);
+            this.comboBox2.TabIndex = 29;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(439, 192);
+            this.label3.Location = new System.Drawing.Point(802, 99);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(142, 22);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Alteração de Usuário";
+            this.label3.Size = new System.Drawing.Size(187, 20);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "Permissões por Tipo de Usuário";
             // 
-            // button6
+            // dataGridView2
             // 
-            this.button6.BackColor = System.Drawing.Color.Transparent;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(826, 387);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(134, 42);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Anexar Foto";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.DefaultExt = "png";
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif;" +
-    " *.png";
-            this.openFileDialog1.InitialDirectory = "C:\\";
-            this.openFileDialog1.Title = "Localizar Foto";
-            // 
-            // tbNomeUsuario
-            // 
-            this.tbNomeUsuario.Location = new System.Drawing.Point(389, 337);
-            this.tbNomeUsuario.Margin = new System.Windows.Forms.Padding(2);
-            this.tbNomeUsuario.Name = "tbNomeUsuario";
-            this.tbNomeUsuario.Size = new System.Drawing.Size(254, 20);
-            this.tbNomeUsuario.TabIndex = 18;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(692, 234);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(381, 289);
+            this.dataGridView2.TabIndex = 32;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Transparent;
-            this.label4.Location = new System.Drawing.Point(278, 335);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(668, 142);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 20);
-            this.label4.TabIndex = 17;
-            this.label4.Text = "Nome do Usuário";
+            this.label4.Size = new System.Drawing.Size(98, 20);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Tipo de Usuário";
             // 
-            // pictureBox1
+            // label5
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(826, 254);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(134, 113);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(705, 194);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 20);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Tela";
             // 
-            // Configuracoes
+            // ConfiguracoesTipoUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.tbNomeUsuario);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btAlterar);
-            this.Controls.Add(this.tbSenha);
-            this.Controls.Add(this.Tbusuario);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.Tbusuario);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSair);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Configuracoes";
+            this.Name = "ConfiguracoesTipoUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Configuracoes";
-            this.Load += new System.EventHandler(this.Configuracoes_Load);
+            this.Text = "Tipo de Usuários";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,6 +393,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox userImage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
@@ -381,17 +404,16 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnPontoEletronico;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox Tbusuario;
-        private System.Windows.Forms.TextBox tbSenha;
-        private System.Windows.Forms.Button btAlterar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox tbNomeUsuario;
+        private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
     }
 }

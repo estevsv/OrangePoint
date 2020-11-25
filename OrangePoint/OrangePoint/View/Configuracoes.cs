@@ -121,5 +121,12 @@ namespace OrangePoint.View
             this.Close();
             userImage = new PictureBox();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            pictureBox1 = new PictureBox();
+            new ConfiguracoesPermissoes(usuarioPagina).Show();
+        }
     }
 }

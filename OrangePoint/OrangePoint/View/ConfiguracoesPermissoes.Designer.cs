@@ -1,6 +1,6 @@
 ﻿namespace OrangePoint.View
 {
-    partial class FolhadePonto
+    partial class ConfiguracoesPermissoes
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FolhadePonto));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfiguracoesPermissoes));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -38,36 +39,63 @@
             this.button3 = new System.Windows.Forms.Button();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnDashboard = new System.Windows.Forms.Button();
+            this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
-            this.dgPontoUsuario = new System.Windows.Forms.DataGridView();
-            this.btnRegistrarPonto = new System.Windows.Forms.Button();
-            this.tmDataHora = new System.Windows.Forms.Timer(this.components);
-            this.lblDataHora = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPontoUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(211, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
-            this.panel2.TabIndex = 5;
+            this.panel2.TabIndex = 21;
+            // 
+            // button6
+            // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button6.AutoSize = true;
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(207, -2);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(201, 71);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "Tipos de Usuários";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, -2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(201, 71);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Perfil";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // userImage
             // 
             this.userImage.BackColor = System.Drawing.Color.Transparent;
             this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
-            this.userImage.Location = new System.Drawing.Point(808, 12);
+            this.userImage.Location = new System.Drawing.Point(811, 12);
             this.userImage.Name = "userImage";
-            this.userImage.Size = new System.Drawing.Size(54, 50);
+            this.userImage.Size = new System.Drawing.Size(51, 50);
             this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.userImage.TabIndex = 0;
             this.userImage.TabStop = false;
@@ -82,12 +110,12 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.lblWelcomeUser);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.btnDashboard);
+            this.panel1.Controls.Add(this.btnPontoEletronico);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 20;
             // 
             // button5
             // 
@@ -130,17 +158,17 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Configurações";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblWelcomeUser
             // 
             this.lblWelcomeUser.AutoSize = true;
             this.lblWelcomeUser.BackColor = System.Drawing.Color.Transparent;
             this.lblWelcomeUser.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 23);
+            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 26);
             this.lblWelcomeUser.Name = "lblWelcomeUser";
-            this.lblWelcomeUser.Size = new System.Drawing.Size(0, 23);
+            this.lblWelcomeUser.Size = new System.Drawing.Size(86, 23);
             this.lblWelcomeUser.TabIndex = 2;
+            this.lblWelcomeUser.Text = "Bem Vindo";
             // 
             // button2
             // 
@@ -156,20 +184,19 @@
             this.button2.Text = "Cadastros";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // btnDashboard
+            // btnPontoEletronico
             // 
-            this.btnDashboard.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnDashboard.AutoSize = true;
-            this.btnDashboard.BackColor = System.Drawing.Color.Transparent;
-            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDashboard.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDashboard.Location = new System.Drawing.Point(0, 75);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Size = new System.Drawing.Size(211, 68);
-            this.btnDashboard.TabIndex = 0;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.UseVisualStyleBackColor = false;
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnPontoEletronico.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPontoEletronico.AutoSize = true;
+            this.btnPontoEletronico.BackColor = System.Drawing.Color.Transparent;
+            this.btnPontoEletronico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPontoEletronico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 75);
+            this.btnPontoEletronico.Name = "btnPontoEletronico";
+            this.btnPontoEletronico.Size = new System.Drawing.Size(211, 68);
+            this.btnPontoEletronico.TabIndex = 0;
+            this.btnPontoEletronico.Text = "Ponto Eletrônico";
+            this.btnPontoEletronico.UseVisualStyleBackColor = false;
             // 
             // btnSair
             // 
@@ -182,74 +209,30 @@
             this.btnSair.Location = new System.Drawing.Point(939, 567);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(134, 42);
-            this.btnSair.TabIndex = 3;
+            this.btnSair.TabIndex = 19;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // dgPontoUsuario
-            // 
-            this.dgPontoUsuario.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgPontoUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPontoUsuario.Location = new System.Drawing.Point(217, 319);
-            this.dgPontoUsuario.Name = "dgPontoUsuario";
-            this.dgPontoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgPontoUsuario.Size = new System.Drawing.Size(856, 242);
-            this.dgPontoUsuario.TabIndex = 6;
-            // 
-            // btnRegistrarPonto
-            // 
-            this.btnRegistrarPonto.BackColor = System.Drawing.Color.Transparent;
-            this.btnRegistrarPonto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegistrarPonto.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarPonto.Location = new System.Drawing.Point(563, 276);
-            this.btnRegistrarPonto.Name = "btnRegistrarPonto";
-            this.btnRegistrarPonto.Size = new System.Drawing.Size(125, 35);
-            this.btnRegistrarPonto.TabIndex = 7;
-            this.btnRegistrarPonto.Text = "Registrar Ponto";
-            this.btnRegistrarPonto.UseVisualStyleBackColor = false;
-            this.btnRegistrarPonto.Click += new System.EventHandler(this.btnRegistrarPonto_Click);
-            // 
-            // tmDataHora
-            // 
-            this.tmDataHora.Tick += new System.EventHandler(this.tmDataHora_Tick);
-            // 
-            // lblDataHora
-            // 
-            this.lblDataHora.AutoSize = true;
-            this.lblDataHora.BackColor = System.Drawing.Color.Transparent;
-            this.lblDataHora.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataHora.ForeColor = System.Drawing.Color.White;
-            this.lblDataHora.Location = new System.Drawing.Point(467, 234);
-            this.lblDataHora.Name = "lblDataHora";
-            this.lblDataHora.Size = new System.Drawing.Size(45, 20);
-            this.lblDataHora.TabIndex = 8;
-            this.lblDataHora.Text = "label1";
-            // 
-            // FolhadePonto
+            // ConfiguracoesPermissoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
-            this.Controls.Add(this.lblDataHora);
-            this.Controls.Add(this.btnRegistrarPonto);
-            this.Controls.Add(this.dgPontoUsuario);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSair);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "FolhadePonto";
+            this.Name = "ConfiguracoesPermissoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ponto Eletrônico";
-            this.Load += new System.EventHandler(this.FolhadePonto_Load);
+            this.Text = "Permissões de Usuários";
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPontoUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,18 +241,16 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox userImage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label lblWelcomeUser;
-        private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.DataGridView dgPontoUsuario;
-        private System.Windows.Forms.Button btnRegistrarPonto;
-        private System.Windows.Forms.Timer tmDataHora;
-        private System.Windows.Forms.Label lblDataHora;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPontoEletronico;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button button6;
     }
 }

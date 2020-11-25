@@ -106,6 +106,18 @@
     <Compile Include="View\Configuracoes.Designer.cs">
       <DependentUpon>Configuracoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ConfiguracoesPermissoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConfiguracoesPermissoes.Designer.cs">
+      <DependentUpon>ConfiguracoesPermissoes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ConfiguracoesTipoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ConfiguracoesTipoUsuarios.Designer.cs">
+      <DependentUpon>ConfiguracoesTipoUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +140,12 @@
     </Compile>
     <EmbeddedResource Include="View\Configuracoes.resx">
       <DependentUpon>Configuracoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConfiguracoesPermissoes.resx">
+      <DependentUpon>ConfiguracoesPermissoes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ConfiguracoesTipoUsuarios.resx">
+      <DependentUpon>ConfiguracoesTipoUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

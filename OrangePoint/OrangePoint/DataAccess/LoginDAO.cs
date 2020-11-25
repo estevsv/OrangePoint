@@ -41,6 +41,36 @@ namespace OrangePoint.DataAccess
             return usuarioExistente;
         }
 
+        public List<Usuario> PesquisaTodosUsuario()
+        {
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "select * from `bdorangepoint`.`usuario`;";
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                if (registro.HasRows)
+                {
+                    while (registro.Read())
+                    {
+                        Usuario usuarioExistente = new Usuario();
+                        usuarioExistente.CodUsuario = Convert.ToInt32(registro["COD_USUARIO"]);
+                        usuarioExistente.Login = registro["LOGIN"].ToString();
+                        usuarioExistente.Senha = registro["SENHA"].ToString();
+                        usuarioExistente.NmeFuncionario = registro["NME_FUNCIONARIO"].ToString() != "" ? registro["NME_FUNCIONARIO"].ToString() : "";
+                        usuarioExistente.HrsDiaria = registro["HRS_DIARIA"].ToString() != "" ? Convert.ToDecimal(registro["HRS_DIARIA"]) : 0;
+                        usuarioExistente.FotoUsuario = registro["FOTO_USUARIO"].ToString() != "" ? registro["FOTO_USUARIO"].ToString() : "";
+                        listaUsuarios.Add(usuarioExistente);
+                    }
+                    conexao.Desconectar();
+                }
+            }
+            catch { MessageBox.Show("Erro LoginDAO/PesquisaUsuario. Contate o Suporte"); }
+            return listaUsuarios;
+        }
+
         public void AtualizaLogin(Usuario usuario)
         {
             try

@@ -1,7 +1,7 @@
-﻿using OrangePoint.Model;
+﻿using OrangePoint.BusinessRule;
+using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace OrangePoint.View
@@ -10,6 +10,7 @@ namespace OrangePoint.View
     {
         private Usuario usuarioPagina;
         Utilities utilities = new Utilities();
+        LoginRule loginRule = new LoginRule();
 
         public Dashboard(Usuario usuario)
         {
@@ -25,23 +26,29 @@ namespace OrangePoint.View
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
             new LoginView().Show();
         }
 
         private void btnPontoEletronico_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
             new FolhadePonto(usuarioPagina).Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
             new Configuracoes(usuarioPagina).Show();
         }
+
+        private void FechaPagina()
+        {
+            this.Visible = false;
+            this.Close();
+            userImage = new PictureBox();
+        }
+
+        
     }
 }

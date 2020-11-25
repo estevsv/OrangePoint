@@ -56,30 +56,29 @@ namespace OrangePoint.View
 
             if (dr == DialogResult.OK)
             {
-                userImage = new PictureBox();
-                pictureBox1 = new PictureBox();
-
-                pictureBox1.Image = Image.FromFile(openFileDialog1.FileName);
-
-                string pathFotos = Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios");
-                if (!Directory.Exists(pathFotos))
-                    Directory.CreateDirectory(pathFotos);
-
-                if (File.Exists(Path.Combine(pathFotos, openFileDialog1.SafeFileName)))
+                if (DialogResult.Yes == MessageBox.Show("Será necessário reabrir a aplicação, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
                 {
-                    MessageBox.Show("O arquivo já existe");
-                    return;
-                }
-                if(usuarioPagina.FotoUsuario != null && usuarioPagina.FotoUsuario != "")
-                {
-                    //File.Delete(usuarioPagina.FotoUsuario);
-                }
+                    string pathFotos = Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios");
+                    if (!Directory.Exists(pathFotos))
+                        Directory.CreateDirectory(pathFotos);
 
-                File.Copy(openFileDialog1.FileName, Path.Combine(pathFotos, openFileDialog1.SafeFileName));
-                usuarioPagina.FotoUsuario = Path.Combine(pathFotos, openFileDialog1.SafeFileName);
+                    if (File.Exists(Path.Combine(pathFotos, openFileDialog1.SafeFileName)))
+                    {
+                        MessageBox.Show("O arquivo já existe");
+                        return;
+                    }
 
-                login.AtualizaUsuario(usuarioPagina);
-                userImage.Image = Image.FromFile(usuarioPagina.FotoUsuario);
+                    string fotoUsuarioDelecao = "";
+                    if (usuarioPagina.FotoUsuario != null && usuarioPagina.FotoUsuario != "")
+                        fotoUsuarioDelecao = usuarioPagina.FotoUsuario;
+
+                    File.Copy(openFileDialog1.FileName, Path.Combine(pathFotos, openFileDialog1.SafeFileName));
+                    usuarioPagina.FotoUsuario = Path.Combine(pathFotos, openFileDialog1.SafeFileName);
+
+                    login.AtualizaUsuario(usuarioPagina);
+
+                    Application.Exit();
+                }
             }
         }
 
@@ -97,23 +96,30 @@ namespace OrangePoint.View
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
+            pictureBox1 = new PictureBox();
             new LoginView().Show();
         }
 
         private void btnPontoEletronico_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
+            pictureBox1 = new PictureBox();
             new FolhadePonto(usuarioPagina).Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            FechaPagina();
+            pictureBox1 = new PictureBox();
+            new Configuracoes(usuarioPagina).Show();
+        }
+
+        private void FechaPagina()
+        {
             this.Visible = false;
             this.Close();
-            new Configuracoes(usuarioPagina).Show();
+            userImage = new PictureBox();
         }
     }
 }

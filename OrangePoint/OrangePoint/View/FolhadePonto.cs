@@ -70,15 +70,13 @@ namespace OrangePoint.View
 
         private void btnDashboard_Click(object sender, System.EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
             new Dashboard(usuarioPagina).Show();
         }
 
         private void btnSair_Click(object sender, System.EventArgs e)
         {
-            this.Visible = false;
-            this.Close();
+            FechaPagina();
             new LoginView().Show();
         }
 
@@ -91,9 +89,15 @@ namespace OrangePoint.View
 
         private void button3_Click(object sender, EventArgs e)
         {
+            FechaPagina();
+            new Configuracoes(usuarioPagina).Show();
+        }
+
+        private void FechaPagina()
+        {
             this.Visible = false;
             this.Close();
-            new Configuracoes(usuarioPagina).Show();
+            userImage = new PictureBox();
         }
     }
 }

@@ -99,6 +99,7 @@
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />
     <Compile Include="DataAccess\LoginDAO.cs" />
     <Compile Include="DataAccess\PermissaoTelaDAO.cs" />
+    <Compile Include="DataAccess\PermissoesDAO.cs" />
     <Compile Include="DataAccess\TipoPermissaoDAO.cs" />
     <Compile Include="Model\ConexaoBD.cs" />
     <Compile Include="Model\FolhaPonto.cs" />

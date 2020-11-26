@@ -71,5 +71,21 @@ namespace OrangePoint.DataAccess
             }
             catch (Exception ex) { MessageBox.Show("Erro TipoPermissaoDAO/Incluir. Contate o Suporte"); }
         }
+
+        public void Deletar(int idTipopermissao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete FROM bdorangepoint.tipo_permissao where COD_TIPO_PERMISSAO=@id;";
+                cmd.Parameters.AddWithValue("@id", idTipopermissao);
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex) { MessageBox.Show("Erro TipoPermissaoDAO/Deletar. Contate o Suporte"); }
+        }
     }
 }

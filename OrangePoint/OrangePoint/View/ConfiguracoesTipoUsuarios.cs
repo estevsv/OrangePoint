@@ -66,17 +66,17 @@ namespace OrangePoint.View
 
         private void CarregaGridPermissoesUsuario()
         {
-            dgPemissoesUsuario.DataSource = permissaoTelaRule.FiltraPesquisaPermissaoTelaTabela();
-            if (dgPemissoesUsuario.Columns.Count != 0)
+            dgPermissoesUsuario.DataSource = permissaoTelaRule.FiltraPesquisaPermissaoTelaTabela();
+            if (dgPermissoesUsuario.Columns.Count != 0)
             {
-                dgPemissoesUsuario.Columns["id"].Visible = false;
+                dgPermissoesUsuario.Columns["id"].Visible = false;
 
-                dgPemissoesUsuario.Columns["TipoPermissao"].HeaderText = "Tipo de Usuário";
-                dgPemissoesUsuario.Columns["Tela"].HeaderText = "Tela disponível";
-                dgPemissoesUsuario.Columns["TipoPermissao"].ReadOnly = true;
-                dgPemissoesUsuario.Columns["Tela"].ReadOnly = true;
-                dgPemissoesUsuario.Columns["TipoPermissao"].Width = 150;
-                dgPemissoesUsuario.Columns["Tela"].Width = 187;
+                dgPermissoesUsuario.Columns["TipoPermissao"].HeaderText = "Tipo de Usuário";
+                dgPermissoesUsuario.Columns["Tela"].HeaderText = "Tela disponível";
+                dgPermissoesUsuario.Columns["TipoPermissao"].ReadOnly = true;
+                dgPermissoesUsuario.Columns["Tela"].ReadOnly = true;
+                dgPermissoesUsuario.Columns["TipoPermissao"].Width = 150;
+                dgPermissoesUsuario.Columns["Tela"].Width = 187;
             }
         }
 
@@ -102,8 +102,38 @@ namespace OrangePoint.View
         {
             if(cbTipoUsuario.Text != "" && cbTela.Text != "")
             {
-
+                permissaoTelaRule.Incluir(int.Parse(cbTipoUsuario.SelectedValue.ToString()), cbTela.Text);
             }
+            CarregaGridPermissoesUsuario();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new Configuracoes(usuarioPagina).Show();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new LoginView().Show();
+        }
+
+        private void btnPontoEletronico_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new FolhadePonto(usuarioPagina).Show();
+        }
+
+        private void dgTipoUsuario_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            tipoPermissaoRule.Deletar(int.Parse(dgTipoUsuario.CurrentRow.Cells[0].Value.ToString()));
+
+            CarregaGridTipoUsuarios();
+            CarregaComboBoxes();
+            CarregaGridPermissoesUsuario();
+
+            e = new DataGridViewRowCancelEventArgs(new DataGridViewRow());
         }
     }
 }

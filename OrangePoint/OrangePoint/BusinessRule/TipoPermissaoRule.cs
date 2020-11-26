@@ -13,6 +13,8 @@ namespace OrangePoint.BusinessRule
     public class TipoPermissaoRule
     {
         TipoPermissaoDAO tipoPermissaoDAO = new TipoPermissaoDAO();
+        PermissoesDAO permissoesDAO = new PermissoesDAO();
+        PermissaoTelaRule permissaoTelaRule = new PermissaoTelaRule();
 
         public DataTable PesquisaTodosTipoPermissaoTabela()
         {
@@ -32,6 +34,16 @@ namespace OrangePoint.BusinessRule
             }
             else
                 MessageBox.Show("Tipo de Usuário já existente");
+        }
+
+        public void Deletar(int idTipoPermissao)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Ao deletar um tipo de usuário, todos os usuários com essa permissão automaticamente receberão a configuração padrão, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                permissoesDAO.DeletarPorTipoPermissao(idTipoPermissao);
+                permissaoTelaRule.DeletarPorIdTipoPermissao(idTipoPermissao);
+                tipoPermissaoDAO.Deletar(idTipoPermissao);
+            }
         }
     }
 }

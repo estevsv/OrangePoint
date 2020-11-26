@@ -49,7 +49,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dgPemissoesUsuario = new System.Windows.Forms.DataGridView();
+            this.dgPermissoesUsuario = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoUsuario)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPemissoesUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPermissoesUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -172,6 +172,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Configurações";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblWelcomeUser
             // 
@@ -211,6 +212,7 @@
             this.btnPontoEletronico.TabIndex = 0;
             this.btnPontoEletronico.Text = "Ponto Eletrônico";
             this.btnPontoEletronico.UseVisualStyleBackColor = false;
+            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
             // 
             // btnSair
             // 
@@ -226,6 +228,7 @@
             this.btnSair.TabIndex = 22;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // Tbusuario
             // 
@@ -270,6 +273,7 @@
             this.dgTipoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoUsuario.Size = new System.Drawing.Size(381, 327);
             this.dgTipoUsuario.TabIndex = 26;
+            this.dgTipoUsuario.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoUsuario_UserDeletingRow);
             // 
             // cbTela
             // 
@@ -320,12 +324,12 @@
             // 
             // dgPemissoesUsuario
             // 
-            this.dgPemissoesUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPemissoesUsuario.Location = new System.Drawing.Point(692, 234);
-            this.dgPemissoesUsuario.Name = "dgPemissoesUsuario";
-            this.dgPemissoesUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgPemissoesUsuario.Size = new System.Drawing.Size(381, 289);
-            this.dgPemissoesUsuario.TabIndex = 32;
+            this.dgPermissoesUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPermissoesUsuario.Location = new System.Drawing.Point(692, 234);
+            this.dgPermissoesUsuario.Name = "dgPemissoesUsuario";
+            this.dgPermissoesUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgPermissoesUsuario.Size = new System.Drawing.Size(381, 289);
+            this.dgPermissoesUsuario.TabIndex = 32;
             // 
             // label4
             // 
@@ -376,7 +380,7 @@
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dgPemissoesUsuario);
+            this.Controls.Add(this.dgPermissoesUsuario);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbTipoUsuario);
             this.Controls.Add(this.label2);
@@ -400,7 +404,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoUsuario)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPemissoesUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPermissoesUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,7 +432,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbTipoUsuario;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dgPemissoesUsuario;
+        private System.Windows.Forms.DataGridView dgPermissoesUsuario;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button8;

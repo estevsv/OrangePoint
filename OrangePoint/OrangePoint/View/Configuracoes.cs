@@ -58,25 +58,7 @@ namespace OrangePoint.View
             {
                 if (DialogResult.Yes == MessageBox.Show("Será necessário reabrir a aplicação, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
                 {
-                    string pathFotos = Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios");
-                    if (!Directory.Exists(pathFotos))
-                        Directory.CreateDirectory(pathFotos);
-
-                    if (File.Exists(Path.Combine(pathFotos, openFileDialog1.SafeFileName)))
-                    {
-                        MessageBox.Show("O arquivo já existe");
-                        return;
-                    }
-
-                    string fotoUsuarioDelecao = "";
-                    if (usuarioPagina.FotoUsuario != null && usuarioPagina.FotoUsuario != "")
-                        fotoUsuarioDelecao = usuarioPagina.FotoUsuario;
-
-                    File.Copy(openFileDialog1.FileName, Path.Combine(pathFotos, openFileDialog1.SafeFileName));
-                    usuarioPagina.FotoUsuario = Path.Combine(pathFotos, openFileDialog1.SafeFileName);
-
-                    login.AtualizaUsuario(usuarioPagina);
-
+                    login.AtualizaFotoLogin(openFileDialog1.FileName, openFileDialog1.SafeFileName, usuarioPagina);
                     Application.Exit();
                 }
             }

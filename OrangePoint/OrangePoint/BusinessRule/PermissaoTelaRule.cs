@@ -12,6 +12,7 @@ namespace OrangePoint.BusinessRule
     public class PermissaoTelaRule
     {
         PermissaoTelaDAO permissaoTelaDAO = new PermissaoTelaDAO();
+        TipoPermissaoDAO tipoPermissaoDAO = new TipoPermissaoDAO();
 
         public List<PermissaoTela> PesquisaPermissaoTela()
         {
@@ -38,7 +39,6 @@ namespace OrangePoint.BusinessRule
                 DataType = Type.GetType("System.String"),
                 ColumnName = "TipoPermissao",
                 ReadOnly = true,
-                Unique = true
             };
             table.Columns.Add(column);
             column = new DataColumn
@@ -46,7 +46,6 @@ namespace OrangePoint.BusinessRule
                 DataType = Type.GetType("System.String"),
                 ColumnName = "Tela",
                 ReadOnly = true,
-                Unique = true
             };
             table.Columns.Add(column);
 
@@ -68,7 +67,14 @@ namespace OrangePoint.BusinessRule
 
         public void Incluir(int idTipoUsuario, string tela)
         {
+            List<PermissaoTela> listaPermissoesTela = PesquisaPermissaoTela();
+            if (!listaPermissoesTela.Exists(o => o.TipoPermissao.CodTipoPermissao == idTipoUsuario && o.DescTela == tela))
+                permissaoTelaDAO.Incluir(idTipoUsuario, tela);
+        }
 
+        public void DeletarPorIdTipoPermissao(int idTipoPermissao)
+        {
+            permissaoTelaDAO.DeletarPorIdTipoPermissao(idTipoPermissao);
         }
 
     }

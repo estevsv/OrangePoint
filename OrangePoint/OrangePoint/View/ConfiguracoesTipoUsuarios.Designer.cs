@@ -44,19 +44,20 @@
             this.Tbusuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dgTipoUsuario = new System.Windows.Forms.DataGridView();
+            this.cbTela = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgPemissoesUsuario = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPemissoesUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -259,28 +260,30 @@
             this.button7.TabIndex = 25;
             this.button7.Text = "+";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // dataGridView1
+            // dgTipoUsuario
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(238, 196);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(381, 327);
-            this.dataGridView1.TabIndex = 26;
+            this.dgTipoUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTipoUsuario.Location = new System.Drawing.Point(238, 196);
+            this.dgTipoUsuario.Name = "dgTipoUsuario";
+            this.dgTipoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgTipoUsuario.Size = new System.Drawing.Size(381, 327);
+            this.dgTipoUsuario.TabIndex = 26;
             // 
-            // comboBox1
+            // cbTela
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cbTela.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTela.FormattingEnabled = true;
+            this.cbTela.Items.AddRange(new object[] {
             "Cadastros",
             "Consultoria Contábil",
             "Apuração de Lucro Real",
             "Controle de Usuários"});
-            this.comboBox1.Location = new System.Drawing.Point(772, 196);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 21);
-            this.comboBox1.TabIndex = 27;
+            this.cbTela.Location = new System.Drawing.Point(772, 196);
+            this.cbTela.Name = "cbTela";
+            this.cbTela.Size = new System.Drawing.Size(236, 21);
+            this.cbTela.TabIndex = 27;
             // 
             // label2
             // 
@@ -294,19 +297,14 @@
             this.label2.TabIndex = 28;
             this.label2.Text = "Inserir Novo Tipo de Usuário";
             // 
-            // comboBox2
+            // cbTipoUsuario
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Cadastros",
-            "Consultoria Contábil",
-            "Apuração de Lucro Real",
-            "Controle de Usuários"});
-            this.comboBox2.Location = new System.Drawing.Point(772, 142);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(236, 21);
-            this.comboBox2.TabIndex = 29;
+            this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoUsuario.FormattingEnabled = true;
+            this.cbTipoUsuario.Location = new System.Drawing.Point(772, 142);
+            this.cbTipoUsuario.Name = "cbTipoUsuario";
+            this.cbTipoUsuario.Size = new System.Drawing.Size(236, 21);
+            this.cbTipoUsuario.TabIndex = 29;
             // 
             // label3
             // 
@@ -314,19 +312,20 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(802, 99);
+            this.label3.Location = new System.Drawing.Point(782, 99);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 20);
             this.label3.TabIndex = 30;
             this.label3.Text = "Permissões por Tipo de Usuário";
             // 
-            // dataGridView2
+            // dgPemissoesUsuario
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(692, 234);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(381, 289);
-            this.dataGridView2.TabIndex = 32;
+            this.dgPemissoesUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPemissoesUsuario.Location = new System.Drawing.Point(692, 234);
+            this.dgPemissoesUsuario.Name = "dgPemissoesUsuario";
+            this.dgPemissoesUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgPemissoesUsuario.Size = new System.Drawing.Size(381, 289);
+            this.dgPemissoesUsuario.TabIndex = 32;
             // 
             // label4
             // 
@@ -352,6 +351,21 @@
             this.label5.TabIndex = 34;
             this.label5.Text = "Tela";
             // 
+            // button8
+            // 
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(1022, 189);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(27, 30);
+            this.button8.TabIndex = 35;
+            this.button8.Text = "+";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // ConfiguracoesTipoUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,14 +373,15 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dgPemissoesUsuario);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cbTipoUsuario);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.cbTela);
+            this.Controls.Add(this.dgTipoUsuario);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.Tbusuario);
             this.Controls.Add(this.panel2);
@@ -378,13 +393,14 @@
             this.Name = "ConfiguracoesTipoUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Usuários";
+            this.Load += new System.EventHandler(this.ConfiguracoesTipoUsuarios_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPemissoesUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,13 +423,14 @@
         private System.Windows.Forms.TextBox Tbusuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridView dgTipoUsuario;
+        private System.Windows.Forms.ComboBox cbTela;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbTipoUsuario;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgPemissoesUsuario;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button8;
     }
 }

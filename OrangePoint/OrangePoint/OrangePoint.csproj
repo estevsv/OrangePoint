@@ -94,10 +94,17 @@
   <ItemGroup>
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
     <Compile Include="BusinessRule\LoginRule.cs" />
+    <Compile Include="BusinessRule\PermissaoTelaRule.cs" />
+    <Compile Include="BusinessRule\TipoPermissaoRule.cs" />
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />
     <Compile Include="DataAccess\LoginDAO.cs" />
+    <Compile Include="DataAccess\PermissaoTelaDAO.cs" />
+    <Compile Include="DataAccess\TipoPermissaoDAO.cs" />
     <Compile Include="Model\ConexaoBD.cs" />
     <Compile Include="Model\FolhaPonto.cs" />
+    <Compile Include="Model\PermissaoTela.cs" />
+    <Compile Include="Model\Permissoes.cs" />
+    <Compile Include="Model\TipoPermissao.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Resources\Utilities.cs" />
     <Compile Include="View\Configuracoes.cs">

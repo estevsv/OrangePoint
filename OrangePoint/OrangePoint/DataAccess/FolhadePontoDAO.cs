@@ -28,6 +28,7 @@ namespace OrangePoint.DataAccess
                 cmd.Parameters.AddWithValue("@SAIDA_1", folhaPonto.Saida1);
                 cmd.Parameters.AddWithValue("@ENTRADA_2", folhaPonto.Entrada2);
                 cmd.Parameters.AddWithValue("@SAIDA_2", folhaPonto.Saida2);
+                conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
@@ -59,6 +60,7 @@ namespace OrangePoint.DataAccess
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 cmd.CommandText = "select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = '" + usuario.CodUsuario + "' and DATA_PONTO = '" + dataPesquisa + "';";
+                conexao.Desconectar();
                 conexao.Conectar();
                 MySqlDataReader registro = cmd.ExecuteReader();
                 registro.Read();
@@ -94,6 +96,7 @@ namespace OrangePoint.DataAccess
                 cmd.Parameters.AddWithValue("@SAIDA_2", folhaPonto.Saida2);
                 cmd.Parameters.AddWithValue("@COD_USUARIO", folhaPonto.Usuario.CodUsuario);
                 cmd.Parameters.AddWithValue("@DATA_PONTO", dataPesquisa);
+                conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();

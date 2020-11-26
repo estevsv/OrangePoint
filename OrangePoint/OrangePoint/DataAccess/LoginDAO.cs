@@ -21,6 +21,7 @@ namespace OrangePoint.DataAccess
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 cmd.CommandText = "select * from `bdorangepoint`.`usuario` where LOGIN = '" + login + "' and SENHA = '" + senha + "';";
+                conexao.Desconectar();
                 conexao.Conectar();
                 MySqlDataReader registro = cmd.ExecuteReader();
                 registro.Read();
@@ -49,6 +50,7 @@ namespace OrangePoint.DataAccess
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
                 cmd.CommandText = "select * from `bdorangepoint`.`usuario`;";
+                conexao.Desconectar();
                 conexao.Conectar();
                 MySqlDataReader registro = cmd.ExecuteReader();
                 if (registro.HasRows)
@@ -85,6 +87,7 @@ namespace OrangePoint.DataAccess
                 cmd.Parameters.AddWithValue("@NME_FUNCIONARIO", usuario.NmeFuncionario);
                 cmd.Parameters.AddWithValue("@HRS_DIARIA", usuario.HrsDiaria);
                 cmd.Parameters.AddWithValue("@FOTO_USUARIO", usuario.FotoUsuario);
+                conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();

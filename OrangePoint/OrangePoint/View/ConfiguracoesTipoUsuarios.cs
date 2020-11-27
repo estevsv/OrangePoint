@@ -136,5 +136,15 @@ namespace OrangePoint.View
             }
             e.Cancel = true;
         }
+
+        private void dgPermissoesUsuario_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            permissaoTelaRule.DeletarPorId(int.Parse(dgPermissoesUsuario.CurrentRow.Cells[0].Value.ToString()));
+            dgPermissoesUsuario.Rows.RemoveAt(dgPermissoesUsuario.CurrentRow.Index);
+
+            CarregaGridPermissoesUsuario();
+
+            e.Cancel = true;
+        }
     }
 }

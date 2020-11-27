@@ -322,14 +322,15 @@
             this.label3.TabIndex = 30;
             this.label3.Text = "Permissões por Tipo de Usuário";
             // 
-            // dgPemissoesUsuario
+            // dgPermissoesUsuario
             // 
             this.dgPermissoesUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPermissoesUsuario.Location = new System.Drawing.Point(692, 234);
-            this.dgPermissoesUsuario.Name = "dgPemissoesUsuario";
+            this.dgPermissoesUsuario.Name = "dgPermissoesUsuario";
             this.dgPermissoesUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPermissoesUsuario.Size = new System.Drawing.Size(381, 289);
             this.dgPermissoesUsuario.TabIndex = 32;
+            this.dgPermissoesUsuario.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgPermissoesUsuario_UserDeletingRow);
             // 
             // label4
             // 

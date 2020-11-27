@@ -77,5 +77,10 @@ namespace OrangePoint.BusinessRule
             permissaoTelaDAO.DeletarPorIdTipoPermissao(idTipoPermissao);
         }
 
+        public void DeletarPorId(int id)
+        {
+            permissaoTelaDAO.DeletarPorId(id);
+        }
+
     }
 }

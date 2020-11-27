@@ -95,6 +95,7 @@
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
     <Compile Include="BusinessRule\LoginRule.cs" />
     <Compile Include="BusinessRule\PermissaoTelaRule.cs" />
+    <Compile Include="BusinessRule\PermissoesRule.cs" />
     <Compile Include="BusinessRule\TipoPermissaoRule.cs" />
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />
     <Compile Include="DataAccess\LoginDAO.cs" />

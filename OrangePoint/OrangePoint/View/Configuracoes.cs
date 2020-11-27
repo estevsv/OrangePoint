@@ -30,6 +30,7 @@ namespace OrangePoint.View
         private void Configuracoes_Load(object sender, EventArgs e)
         {
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
+            lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
 
             Tbusuario.Text = usuarioPagina.Login;
             tbSenha.Text = usuarioPagina.Senha;

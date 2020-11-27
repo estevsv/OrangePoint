@@ -2,6 +2,7 @@
 using OrangePoint.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,19 @@ namespace OrangePoint.BusinessRule
     public class LoginRule
     {
         LoginDAO loginDAO = new LoginDAO();
+        PermissoesRule permissoesRule = new PermissoesRule();
+        TipoPermissaoRule tipoPermissaoRule = new TipoPermissaoRule();
+
         public Usuario PesquisaUsuario(string login, string senha)
         {
-            return loginDAO.PesquisaUsuario(login, senha);
+            List<TipoPermissao> listaTipoPermissao = tipoPermissaoRule.PesquisaTodosTipoPermissaoLista();
+            List<Permissoes> listaPermissoes = permissoesRule.PesquisaTodasPermissoes();
+
+            Usuario usuario = loginDAO.PesquisaUsuario(login, senha);
+
+            usuario = DefineTipoPermissaoUsuario(listaPermissoes, usuario, listaTipoPermissao);
+
+            return usuario;
         }
 
         public void AtualizaFotoLogin(string fileName,string safeFileName, Usuario usuarioPagina)
@@ -47,7 +58,34 @@ namespace OrangePoint.BusinessRule
 
         public List<Usuario> PesquisaTodosUsuarios()
         {
-            return loginDAO.PesquisaTodosUsuario();
+            List<Usuario> listaUsuarios = new List<Usuario>();
+            List<TipoPermissao> listaTipoPermissao = tipoPermissaoRule.PesquisaTodosTipoPermissaoLista();
+            List<Permissoes> listaPermissoes = permissoesRule.PesquisaTodasPermissoes();
+
+            foreach (Usuario usuario in loginDAO.PesquisaTodosUsuario())
+            {
+                Usuario usuarioTipoPermissao = new Usuario();
+                usuarioTipoPermissao = usuario;
+                usuarioTipoPermissao = DefineTipoPermissaoUsuario(listaPermissoes, usuario, listaTipoPermissao);
+                listaUsuarios.Add(usuarioTipoPermissao);
+            }
+
+            return listaUsuarios;
+        }
+
+        public DataTable PesquisaTodosUsuariosTabela()
+        {
+            return loginDAO.PesquisaTodosUsuariosTabela();
+        }
+
+        private Usuario DefineTipoPermissaoUsuario(List<Permissoes> listaPermissoes, Usuario usuario, List<TipoPermissao> listaTipoPermissao)
+        {
+            if (listaPermissoes.Exists(o => o.Usuario.CodUsuario == usuario.CodUsuario))
+                usuario.TipoPermissao = listaPermissoes.Find(o => o.Usuario.CodUsuario == usuario.CodUsuario).TipoPermissao;
+            else
+                usuario.TipoPermissao = new TipoPermissao { DescPermissao = "Padrão" };
+
+            return usuario;
         }
     }
 }

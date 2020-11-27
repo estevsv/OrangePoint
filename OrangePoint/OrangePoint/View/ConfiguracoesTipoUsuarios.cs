@@ -26,6 +26,9 @@ namespace OrangePoint.View
 
         private void ConfiguracoesTipoUsuarios_Load(object sender, EventArgs e)
         {
+            lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
+            lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
+
             CarregaGridTipoUsuarios();
             CarregaGridPermissoesUsuario();
             CarregaComboBoxes();

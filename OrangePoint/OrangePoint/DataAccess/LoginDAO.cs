@@ -2,6 +2,7 @@
 using OrangePoint.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace OrangePoint.DataAccess
                     usuarioExistente.Senha = registro["SENHA"].ToString();
                     usuarioExistente.NmeFuncionario = registro["NME_FUNCIONARIO"].ToString() != "" ? registro["NME_FUNCIONARIO"].ToString() : "";
                     usuarioExistente.HrsDiaria = registro["HRS_DIARIA"].ToString() != "" ? Convert.ToDecimal(registro["HRS_DIARIA"]) : 0;
-                    usuarioExistente.FotoUsuario = registro["FOTO_USUARIO"].ToString() != "" ? registro["FOTO_USUARIO"].ToString() : ""; 
+                    usuarioExistente.FotoUsuario = registro["FOTO_USUARIO"].ToString() != "" ? registro["FOTO_USUARIO"].ToString() : "";
                 }
                 else
                     usuarioExistente = null;
@@ -64,6 +65,7 @@ namespace OrangePoint.DataAccess
                         usuarioExistente.NmeFuncionario = registro["NME_FUNCIONARIO"].ToString() != "" ? registro["NME_FUNCIONARIO"].ToString() : "";
                         usuarioExistente.HrsDiaria = registro["HRS_DIARIA"].ToString() != "" ? Convert.ToDecimal(registro["HRS_DIARIA"]) : 0;
                         usuarioExistente.FotoUsuario = registro["FOTO_USUARIO"].ToString() != "" ? registro["FOTO_USUARIO"].ToString() : "";
+
                         listaUsuarios.Add(usuarioExistente);
                     }
                     conexao.Desconectar();
@@ -71,6 +73,21 @@ namespace OrangePoint.DataAccess
             }
             catch { MessageBox.Show("Erro LoginDAO/PesquisaUsuario. Contate o Suporte"); }
             return listaUsuarios;
+        }
+
+        public DataTable PesquisaTodosUsuariosTabela()
+        {
+            DataTable tabela = new DataTable();
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter("select * from `bdorangepoint`.`usuario`;", conexao.StringConexao);
+                da.Fill(tabela);
+            }
+            catch
+            {
+                MessageBox.Show("Erro LoginDAO/PesquisaTodosUsuariosTabela. Contate o Suporte.");
+            }
+            return tabela;
         }
 
         public void AtualizaLogin(Usuario usuario)

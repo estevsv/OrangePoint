@@ -21,6 +21,7 @@ namespace OrangePoint.View
         private void Dashboard_Load(object sender, EventArgs e)
         {
             lblWelcomeUser.Text = "Bem Vindo " + usuarioPagina.NmeFuncionario;
+            lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
         }
 

@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -41,9 +42,16 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.dgPermissoes = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbUsuario = new System.Windows.Forms.ComboBox();
+            this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPermissoes)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -105,6 +113,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
@@ -116,6 +125,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
             this.panel1.TabIndex = 20;
+            // 
+            // lblTipoUsuario
+            // 
+            this.lblTipoUsuario.AutoSize = true;
+            this.lblTipoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoUsuario.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoUsuario.Location = new System.Drawing.Point(12, 39);
+            this.lblTipoUsuario.Name = "lblTipoUsuario";
+            this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
+            this.lblTipoUsuario.TabIndex = 8;
+            this.lblTipoUsuario.Text = "Tipo Usuário";
             // 
             // button5
             // 
@@ -158,13 +178,14 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Configurações";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblWelcomeUser
             // 
             this.lblWelcomeUser.AutoSize = true;
             this.lblWelcomeUser.BackColor = System.Drawing.Color.Transparent;
             this.lblWelcomeUser.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 26);
+            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 12);
             this.lblWelcomeUser.Name = "lblWelcomeUser";
             this.lblWelcomeUser.Size = new System.Drawing.Size(86, 23);
             this.lblWelcomeUser.TabIndex = 2;
@@ -197,6 +218,7 @@
             this.btnPontoEletronico.TabIndex = 0;
             this.btnPontoEletronico.Text = "Ponto Eletrônico";
             this.btnPontoEletronico.UseVisualStyleBackColor = false;
+            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
             // 
             // btnSair
             // 
@@ -213,6 +235,72 @@
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
             // 
+            // dgPermissoes
+            // 
+            this.dgPermissoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPermissoes.Location = new System.Drawing.Point(228, 216);
+            this.dgPermissoes.Name = "dgPermissoes";
+            this.dgPermissoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgPermissoes.Size = new System.Drawing.Size(845, 327);
+            this.dgPermissoes.TabIndex = 27;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(224, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 20);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Usuário";
+            // 
+            // cbUsuario
+            // 
+            this.cbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(282, 132);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(236, 21);
+            this.cbUsuario.TabIndex = 34;
+            // 
+            // cbTipoUsuario
+            // 
+            this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoUsuario.FormattingEnabled = true;
+            this.cbTipoUsuario.Location = new System.Drawing.Point(787, 132);
+            this.cbTipoUsuario.Name = "cbTipoUsuario";
+            this.cbTipoUsuario.Size = new System.Drawing.Size(236, 21);
+            this.cbTipoUsuario.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(683, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 20);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Tipo de Usuário";
+            // 
+            // button8
+            // 
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(1046, 125);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(27, 30);
+            this.button8.TabIndex = 38;
+            this.button8.Text = "+";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // ConfiguracoesPermissoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -220,6 +308,12 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbTipoUsuario);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbUsuario);
+            this.Controls.Add(this.dgPermissoes);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSair);
@@ -228,11 +322,13 @@
             this.Name = "ConfiguracoesPermissoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Permissões de Usuários";
+            this.Load += new System.EventHandler(this.ConfiguracoesPermissoes_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgPermissoes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +348,12 @@
         private System.Windows.Forms.Button btnPontoEletronico;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DataGridView dgPermissoes;
+        private System.Windows.Forms.Label lblTipoUsuario;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbUsuario;
+        private System.Windows.Forms.ComboBox cbTipoUsuario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button8;
     }
 }

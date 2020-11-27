@@ -51,6 +51,7 @@
             this.tbNomeUsuario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -100,6 +101,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
@@ -160,7 +162,7 @@
             this.lblWelcomeUser.AutoSize = true;
             this.lblWelcomeUser.BackColor = System.Drawing.Color.Transparent;
             this.lblWelcomeUser.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 26);
+            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 12);
             this.lblWelcomeUser.Name = "lblWelcomeUser";
             this.lblWelcomeUser.Size = new System.Drawing.Size(86, 23);
             this.lblWelcomeUser.TabIndex = 2;
@@ -332,6 +334,17 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // lblTipoUsuario
+            // 
+            this.lblTipoUsuario.AutoSize = true;
+            this.lblTipoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoUsuario.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoUsuario.Location = new System.Drawing.Point(12, 39);
+            this.lblTipoUsuario.Name = "lblTipoUsuario";
+            this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
+            this.lblTipoUsuario.TabIndex = 8;
+            this.lblTipoUsuario.Text = "Tipo Usuário";
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,5 +406,6 @@
         private System.Windows.Forms.TextBox tbNomeUsuario;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblTipoUsuario;
     }
 }

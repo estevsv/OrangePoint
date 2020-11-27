@@ -23,6 +23,7 @@ namespace OrangePoint.View
             tmDataHora.Start();
 
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
+            lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
             CarregaGridFolhaPonto();
         }

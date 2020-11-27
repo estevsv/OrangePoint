@@ -25,5 +25,8 @@ namespace OrangePoint.Model
 
         private string fotoUsuario;
         public string FotoUsuario { get => fotoUsuario; set => fotoUsuario = value; }
+
+        private TipoPermissao tipoPermissao;
+        public TipoPermissao TipoPermissao { get => tipoPermissao; set => tipoPermissao = value; }
     }
 }

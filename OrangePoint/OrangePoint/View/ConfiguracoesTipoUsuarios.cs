@@ -127,13 +127,14 @@ namespace OrangePoint.View
 
         private void dgTipoUsuario_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            tipoPermissaoRule.Deletar(int.Parse(dgTipoUsuario.CurrentRow.Cells[0].Value.ToString()));
+            if (DialogResult.Yes == MessageBox.Show("Ao deletar um tipo de usuário, todos os usuários com essa permissão automaticamente receberão a configuração padrão, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                tipoPermissaoRule.Deletar(int.Parse(dgTipoUsuario.CurrentRow.Cells[0].Value.ToString()));
+                dgTipoUsuario.Rows.RemoveAt(dgTipoUsuario.CurrentRow.Index);
 
-            CarregaGridTipoUsuarios();
-            CarregaComboBoxes();
-            CarregaGridPermissoesUsuario();
-
-            e = new DataGridViewRowCancelEventArgs(new DataGridViewRow());
+                CarregaGridPermissoesUsuario();
+            }
+            e.Cancel = true;
         }
     }
 }

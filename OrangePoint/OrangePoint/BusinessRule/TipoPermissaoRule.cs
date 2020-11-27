@@ -38,12 +38,9 @@ namespace OrangePoint.BusinessRule
 
         public void Deletar(int idTipoPermissao)
         {
-            if (DialogResult.Yes == MessageBox.Show("Ao deletar um tipo de usuário, todos os usuários com essa permissão automaticamente receberão a configuração padrão, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
-            {
-                permissoesDAO.DeletarPorTipoPermissao(idTipoPermissao);
-                permissaoTelaRule.DeletarPorIdTipoPermissao(idTipoPermissao);
-                tipoPermissaoDAO.Deletar(idTipoPermissao);
-            }
+            permissoesDAO.DeletarPorTipoPermissao(idTipoPermissao);
+            permissaoTelaRule.DeletarPorIdTipoPermissao(idTipoPermissao);
+            tipoPermissaoDAO.Deletar(idTipoPermissao);
         }
     }
 }

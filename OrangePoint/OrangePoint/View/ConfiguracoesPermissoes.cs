@@ -157,5 +157,10 @@ namespace OrangePoint.View
             button6.Visible = listaPermissoes[3];
             btnPontoEletronico.Visible = listaPermissoes[4];
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

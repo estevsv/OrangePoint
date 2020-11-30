@@ -21,10 +21,10 @@ namespace OrangePoint.Resources
             return imagemPadrao;
         }
 
-        //[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto]
         public List<bool> GeraListaPermissoes(Usuario usuario)
         {
-            List<bool> listaPermissoes = new List<bool> {false, false, false, false, false };
+            //Referências das Posições[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto, Controle de Folha de Ponto]
+            List<bool> listaPermissoes = new List<bool> {false, false, false, false, false, false };
 
             List<PermissaoTela> listaPermissaoTela = permissaoTelaRule.PesquisaPermissaoTela();
 
@@ -46,6 +46,9 @@ namespace OrangePoint.Resources
                         break;
                     case "Folha de Ponto":
                         listaPermissoes[4] = true;
+                        break;
+                    case "Controle de Folha de Ponto":
+                        listaPermissoes[5] = true;
                         break;
                 }
             }

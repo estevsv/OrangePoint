@@ -28,5 +28,8 @@ namespace OrangePoint.Model
 
         private string saida2;
         public string Saida2 { get => saida2; set => saida2 = value; }
+
+        private string observacao;
+        public string Observacao { get => observacao; set => observacao = value; }
     }
 }

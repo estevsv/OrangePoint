@@ -19,8 +19,6 @@ namespace OrangePoint.View
             usuarioPagina = usuario;
         }
 
-        
-
         private void FolhadePonto_Load(object sender, EventArgs e)
         {
             tmDataHora.Start();
@@ -43,18 +41,21 @@ namespace OrangePoint.View
             dgPontoUsuario.Columns["SAIDA_1"].HeaderText = "Primeira Saída";
             dgPontoUsuario.Columns["ENTRADA_2"].HeaderText = "Segunda Entrada";
             dgPontoUsuario.Columns["SAIDA_2"].HeaderText = "Segunda Saída";
+            dgPontoUsuario.Columns["OBSERVACAO"].HeaderText = "Observação";
 
-            dgPontoUsuario.Columns["DATA_PONTO"].Width = 172;
-            dgPontoUsuario.Columns["ENTRADA_1"].Width = 160;
-            dgPontoUsuario.Columns["SAIDA_1"].Width = 160;
-            dgPontoUsuario.Columns["ENTRADA_2"].Width = 160;
-            dgPontoUsuario.Columns["SAIDA_2"].Width = 160;
+            dgPontoUsuario.Columns["DATA_PONTO"].Width = 135;
+            dgPontoUsuario.Columns["ENTRADA_1"].Width = 135;
+            dgPontoUsuario.Columns["SAIDA_1"].Width = 135;
+            dgPontoUsuario.Columns["ENTRADA_2"].Width = 135;
+            dgPontoUsuario.Columns["SAIDA_2"].Width = 135;
+            dgPontoUsuario.Columns["OBSERVACAO"].Width = 135;
 
             dgPontoUsuario.Columns["DATA_PONTO"].ReadOnly = true;
             dgPontoUsuario.Columns["ENTRADA_1"].ReadOnly = true;
             dgPontoUsuario.Columns["SAIDA_1"].ReadOnly = true;
             dgPontoUsuario.Columns["ENTRADA_2"].ReadOnly = true;
             dgPontoUsuario.Columns["SAIDA_2"].ReadOnly = true;
+            dgPontoUsuario.Columns["OBSERVACAO"].ReadOnly = true;
         }
 
         #region Controle de Hora de Ponto
@@ -127,6 +128,12 @@ namespace OrangePoint.View
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void registrarObservacao_Click(object sender, EventArgs e)
+        {
+            folhaPontoRule.RegistraObservacao(dateTimePickerObs.Value,usuarioPagina,rtObservacao.Text);
+            CarregaGridFolhaPonto();
         }
     }
 }

@@ -300,7 +300,8 @@
             "Consultoria Contábil",
             "Apuração de Lucro Real",
             "Controle de Usuários",
-            "Folha de Ponto"});
+            "Folha de Ponto",
+            "Controle de Folha de Ponto"});
             this.cbTela.Location = new System.Drawing.Point(772, 196);
             this.cbTela.Name = "cbTela";
             this.cbTela.Size = new System.Drawing.Size(236, 21);

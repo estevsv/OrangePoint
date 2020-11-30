@@ -45,6 +45,10 @@
             this.btnRegistrarPonto = new System.Windows.Forms.Button();
             this.tmDataHora = new System.Windows.Forms.Timer(this.components);
             this.lblDataHora = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rtObservacao = new System.Windows.Forms.RichTextBox();
+            this.registrarObservacao = new System.Windows.Forms.Button();
+            this.dateTimePickerObs = new System.Windows.Forms.DateTimePicker();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -208,7 +212,7 @@
             // 
             this.dgPontoUsuario.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgPontoUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPontoUsuario.Location = new System.Drawing.Point(217, 319);
+            this.dgPontoUsuario.Location = new System.Drawing.Point(217, 202);
             this.dgPontoUsuario.Name = "dgPontoUsuario";
             this.dgPontoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPontoUsuario.Size = new System.Drawing.Size(856, 242);
@@ -219,7 +223,7 @@
             this.btnRegistrarPonto.BackColor = System.Drawing.Color.Transparent;
             this.btnRegistrarPonto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegistrarPonto.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarPonto.Location = new System.Drawing.Point(563, 276);
+            this.btnRegistrarPonto.Location = new System.Drawing.Point(563, 159);
             this.btnRegistrarPonto.Name = "btnRegistrarPonto";
             this.btnRegistrarPonto.Size = new System.Drawing.Size(125, 35);
             this.btnRegistrarPonto.TabIndex = 7;
@@ -237,11 +241,51 @@
             this.lblDataHora.BackColor = System.Drawing.Color.Transparent;
             this.lblDataHora.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDataHora.ForeColor = System.Drawing.Color.White;
-            this.lblDataHora.Location = new System.Drawing.Point(467, 234);
+            this.lblDataHora.Location = new System.Drawing.Point(467, 123);
             this.lblDataHora.Name = "lblDataHora";
             this.lblDataHora.Size = new System.Drawing.Size(45, 20);
             this.lblDataHora.TabIndex = 8;
             this.lblDataHora.Text = "label1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(217, 489);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 20);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Observação";
+            // 
+            // rtObservacao
+            // 
+            this.rtObservacao.Location = new System.Drawing.Point(318, 475);
+            this.rtObservacao.Name = "rtObservacao";
+            this.rtObservacao.Size = new System.Drawing.Size(418, 59);
+            this.rtObservacao.TabIndex = 10;
+            this.rtObservacao.Text = "";
+            // 
+            // registrarObservacao
+            // 
+            this.registrarObservacao.BackColor = System.Drawing.Color.Transparent;
+            this.registrarObservacao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.registrarObservacao.ForeColor = System.Drawing.Color.White;
+            this.registrarObservacao.Location = new System.Drawing.Point(861, 508);
+            this.registrarObservacao.Name = "registrarObservacao";
+            this.registrarObservacao.Size = new System.Drawing.Size(125, 26);
+            this.registrarObservacao.TabIndex = 11;
+            this.registrarObservacao.Text = "Registrar Observação ";
+            this.registrarObservacao.UseVisualStyleBackColor = false;
+            this.registrarObservacao.Click += new System.EventHandler(this.registrarObservacao_Click);
+            // 
+            // dateTimePickerObs
+            // 
+            this.dateTimePickerObs.Location = new System.Drawing.Point(774, 472);
+            this.dateTimePickerObs.Name = "dateTimePickerObs";
+            this.dateTimePickerObs.Size = new System.Drawing.Size(299, 20);
+            this.dateTimePickerObs.TabIndex = 12;
             // 
             // FolhadePonto
             // 
@@ -250,6 +294,10 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.dateTimePickerObs);
+            this.Controls.Add(this.registrarObservacao);
+            this.Controls.Add(this.rtObservacao);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDataHora);
             this.Controls.Add(this.btnRegistrarPonto);
             this.Controls.Add(this.dgPontoUsuario);
@@ -289,5 +337,9 @@
         private System.Windows.Forms.Timer tmDataHora;
         private System.Windows.Forms.Label lblDataHora;
         private System.Windows.Forms.Label lblTipoUsuario;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox rtObservacao;
+        private System.Windows.Forms.Button registrarObservacao;
+        private System.Windows.Forms.DateTimePicker dateTimePickerObs;
     }
 }

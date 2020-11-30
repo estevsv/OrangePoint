@@ -29,6 +29,17 @@ namespace OrangePoint.BusinessRule
             return usuario;
         }
 
+        public Usuario PesquisaUsuarioPorId(int codId)
+        {
+            List<TipoPermissao> listaTipoPermissao = tipoPermissaoRule.PesquisaTodosTipoPermissaoLista();
+            List<Permissoes> listaPermissoes = permissoesRule.PesquisaTodasPermissoes();
+
+            Usuario usuario = loginDAO.PesquisaUsuarioPorId(codId);
+            if (usuario != null)
+                usuario = DefineTipoPermissaoUsuario(listaPermissoes, usuario, listaTipoPermissao);
+            return usuario;
+        }
+
         public void AtualizaFotoLogin(string fileName,string safeFileName, Usuario usuarioPagina)
         {
             string pathFotos = Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios");

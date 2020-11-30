@@ -36,6 +36,50 @@ namespace OrangePoint.DataAccess
             catch { MessageBox.Show("Erro FolhaPontoDAO/Incluir. Contate o Suporte"); }
         }
 
+        public void AtualizaObservacao(DateTime data, string observacao, Usuario usuario)
+        {
+            try
+            {
+                string dataPesquisa = data.Year + "-" + data.Month + "-" + data.Day;
+
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "update bdorangepoint.folha_ponto_usuario set OBSERVACAO = @OBSERVACAO where COD_USUARIO = @COD_USUARIO and DATA_PONTO = @DATA_PONTO;";
+                cmd.Parameters.AddWithValue("@OBSERVACAO", observacao);
+                cmd.Parameters.AddWithValue("@COD_USUARIO", usuario.CodUsuario);
+                cmd.Parameters.AddWithValue("@DATA_PONTO", dataPesquisa);
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro FolhaPontoDAO/IncluirObservacao. Contate o Suporte");
+            }
+        }
+
+        public bool VerificaFolha(DateTime data, Usuario usuario)
+        {
+            FolhaPonto ponto = new FolhaPonto();
+            bool retorno = false;
+            string dataPesquisa = data.Year + "-" + data.Month + "-" + data.Day;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = '" + usuario.CodUsuario + "' and DATA_PONTO = '" + dataPesquisa + "';";
+                conexao.Desconectar();
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                registro.Read();
+                retorno = registro.HasRows;
+                conexao.Desconectar();
+            }
+            catch (Exception ex) { MessageBox.Show("Erro FolhaPontoDAO/VerificaFolha. Contate o Suporte"); }
+            return retorno;
+        }
+
         public DataTable PesquisaPontoPorIdUsuario(Usuario usuario)
         {
             DataTable tabela = new DataTable();
@@ -47,6 +91,22 @@ namespace OrangePoint.DataAccess
             catch
             {
                 MessageBox.Show("Erro FolhaPontoDAO/PesquisarIdUsuario. Contate o Suporte.");
+            }
+            return tabela;
+        }
+
+        public DataTable PesquisaPontoPorIdUsuarioeData(Usuario usuario,DateTime dataProcura)
+        {
+            DataTable tabela = new DataTable();
+            string dataPesquisa = dataProcura.Year + "-" + dataProcura.Month + "-" + dataProcura.Day;
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter("select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = " + usuario.CodUsuario + " AND DATA_PONTO = '" + dataPesquisa + "';", conexao.StringConexao);
+                da.Fill(tabela);
+            }
+            catch
+            {
+                MessageBox.Show("Erro FolhaPontoDAO/PesquisaPontoPorIdUsuarioeData. Contate o Suporte.");
             }
             return tabela;
         }
@@ -73,6 +133,7 @@ namespace OrangePoint.DataAccess
                     ponto.Saida1 = registro["SAIDA_1"].ToString();
                     ponto.Entrada2 = registro["ENTRADA_2"].ToString();
                     ponto.Saida2 = registro["SAIDA_2"].ToString();
+                    ponto.Observacao = registro["OBSERVACAO"].ToString();
                 }
                 conexao.Desconectar();
             }

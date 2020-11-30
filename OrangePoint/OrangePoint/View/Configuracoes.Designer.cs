@@ -52,6 +52,7 @@
             this.tbNomeUsuario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCtrFlhPonto = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -62,6 +63,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.btnCtrFlhPonto);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -348,6 +350,21 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
+            // btnCtrFlhPonto
+            // 
+            this.btnCtrFlhPonto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnCtrFlhPonto.AutoSize = true;
+            this.btnCtrFlhPonto.BackColor = System.Drawing.Color.Transparent;
+            this.btnCtrFlhPonto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCtrFlhPonto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCtrFlhPonto.Location = new System.Drawing.Point(207, -2);
+            this.btnCtrFlhPonto.Name = "btnCtrFlhPonto";
+            this.btnCtrFlhPonto.Size = new System.Drawing.Size(209, 71);
+            this.btnCtrFlhPonto.TabIndex = 7;
+            this.btnCtrFlhPonto.Text = "Controle de Folha de Ponto";
+            this.btnCtrFlhPonto.UseVisualStyleBackColor = false;
+            this.btnCtrFlhPonto.Click += new System.EventHandler(this.btnCtrFlhPonto_Click);
+            // 
             // Configuracoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,5 +427,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTipoUsuario;
+        private System.Windows.Forms.Button btnCtrFlhPonto;
     }
 }

@@ -24,9 +24,19 @@ namespace OrangePoint.BusinessRule
             return folhaPontoDAO.PesquisaPontoPorIdUsuario(usuario);
         }
 
+        public DataTable PesquisaPontoPorIdUsuarioeData(Usuario usuario, DateTime dataProcura)
+        {
+            return folhaPontoDAO.PesquisaPontoPorIdUsuarioeData(usuario, dataProcura);
+        }
+
+        public FolhaPonto PesquisaFolhaPontoIndividual(DateTime data, Usuario usuario)
+        {
+            return folhaPontoDAO.PesquisaFolhadePontoPorUsuarioData(data,usuario);
+        }
+
         public void RegistrarPonto(DateTime data, Usuario usuario)
         {
-            FolhaPonto folhaPonto =  folhaPontoDAO.PesquisaFolhadePontoPorUsuarioData(data,usuario);
+            FolhaPonto folhaPonto = PesquisaFolhaPontoIndividual(data,usuario);
             if (folhaPonto.CodPonto.Equals(0))
             {
                 folhaPonto.Usuario = usuario;
@@ -54,6 +64,20 @@ namespace OrangePoint.BusinessRule
                     return;
                 }
                 folhaPontoDAO.AtualizaPonto(folhaPonto);
+            }
+        }
+
+        public void RegistraObservacao(DateTime data, Usuario usuario, string observacao)
+        {
+            if (folhaPontoDAO.VerificaFolha(data, usuario))
+                folhaPontoDAO.AtualizaObservacao(data, observacao, usuario);
+            else
+            {
+                FolhaPonto folhaPonto = new FolhaPonto();
+                folhaPonto.Usuario = usuario;
+                folhaPonto.DataPonto = data.Date;
+                folhaPonto.Observacao = observacao;
+                folhaPontoDAO.Incluir(folhaPonto);
             }
         }
     }

@@ -121,6 +121,7 @@ namespace OrangePoint.View
             button5.Visible = listaPermissoes[2];
             button1.Visible = listaPermissoes[3];
             btnPontoEletronico.Visible = listaPermissoes[4];
+            btnCtrFlhPonto.Visible = listaPermissoes[5];
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -136,6 +137,13 @@ namespace OrangePoint.View
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnCtrFlhPonto_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            pictureBox1 = new PictureBox();
+            new ControleFolhaPonto(usuarioPagina).Show();
         }
     }
 }

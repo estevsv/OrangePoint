@@ -234,6 +234,7 @@
             this.btnSair.TabIndex = 19;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // dgPermissoes
             // 
@@ -243,6 +244,7 @@
             this.dgPermissoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPermissoes.Size = new System.Drawing.Size(845, 327);
             this.dgPermissoes.TabIndex = 27;
+            this.dgPermissoes.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgPermissoes_UserDeletingRow);
             // 
             // label4
             // 

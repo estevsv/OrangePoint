@@ -67,7 +67,7 @@ namespace OrangePoint.DataAccess
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO bdorangepoint.permissoes_tela(COD_USUARIO,COD_TIPO_PERMISSAO) VALUES(@COD_USUARIO,@COD_TIPO_PERMISSAO);";
+                cmd.CommandText = "INSERT INTO bdorangepoint.permissoes(COD_USUARIO,COD_TIPO_PERMISSAO) VALUES(@COD_USUARIO,@COD_TIPO_PERMISSAO);";
                 cmd.Parameters.AddWithValue("@COD_USUARIO", permissao.Usuario.CodUsuario);
                 cmd.Parameters.AddWithValue("@COD_TIPO_PERMISSAO", permissao.TipoPermissao.CodTipoPermissao);
                 conexao.Desconectar();
@@ -108,6 +108,22 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro PermissoesDAO/PesquisaTodasPermissaoTabela. Contate o Suporte.");
             }
             return tabela;
+        }
+
+        public void Excluir(int codPermissao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete FROM bdorangepoint.permissoes where COD_PERMISSAO = @COD_PERMISSAO;";
+                cmd.Parameters.AddWithValue("@COD_PERMISSAO", codPermissao);
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/Excluir. Contate o Suporte"); }
         }
     }
 }

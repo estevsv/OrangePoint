@@ -1,5 +1,6 @@
 ﻿using OrangePoint.BusinessRule;
 using OrangePoint.Model;
+using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace OrangePoint.View
         LoginRule loginRule = new LoginRule();
         TipoPermissaoRule tipoPermissaoRule = new TipoPermissaoRule();
         PermissoesRule permissoesRule = new PermissoesRule();
+        Utilities utilities = new Utilities();
 
         public ConfiguracoesPermissoes(Usuario usuario)
         {
@@ -29,6 +31,9 @@ namespace OrangePoint.View
         {
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
+            userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
+
+            HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
 
             CarregaComboBoxUsuario();
             CarregaComboBoxTipoUsuario();
@@ -72,7 +77,8 @@ namespace OrangePoint.View
             cbUsuario.DataSource = loginRule.PesquisaTodosUsuariosTabela();
             cbUsuario.DisplayMember = "LOGIN";
             cbUsuario.ValueMember = "COD_USUARIO";
-            cbUsuario.SelectedIndex = 0;
+            if(cbUsuario.Items.Count != 0)
+                cbUsuario.SelectedIndex = 0;
         }
 
         private void CarregaComboBoxTipoUsuario()
@@ -80,37 +86,76 @@ namespace OrangePoint.View
             cbTipoUsuario.DataSource = tipoPermissaoRule.PesquisaTodosTipoPermissaoTabela();
             cbTipoUsuario.DisplayMember = "DESC_PERMISSAO";
             cbTipoUsuario.ValueMember = "COD_TIPO_PERMISSAO";
-            cbTipoUsuario.SelectedIndex = 0;
+            if (cbTipoUsuario.Items.Count != 0)
+                cbTipoUsuario.SelectedIndex = 0;
         }
 
         private void CarregaGrid()
         {
-            /*dgPermissoes.DataSource = permissoesRule.PesquisaTodasPermissoesTabela();
+            dgPermissoes.DataSource = permissoesRule.FiltraPesquisaPermissaoTelaTabela();
             if (dgPermissoes.Columns.Count != 0)
             {
-                dgPermissoes.Columns["COD_PERMISSAO"].Visible = false;
+                dgPermissoes.Columns["id"].Visible = false;
 
-                dgPermissoes.Columns["COD_USUARIO"].HeaderText = "Tipo de Usuário";
-                dgPermissoes.Columns["COD_TIPO_PERMISSAO"].HeaderText = "Tela disponível";
-                dgPermissoes.Columns["COD_USUARIO"].ReadOnly = true;
-                dgPermissoes.Columns["COD_TIPO_PERMISSAO"].ReadOnly = true;
-                dgPermissoes.Columns["COD_USUARIO"].Width = 150;
-                dgPermissoes.Columns["COD_TIPO_PERMISSAO"].Width = 187;
-            }*/
+                dgPermissoes.Columns["Usuario"].HeaderText = "Usuário";
+                dgPermissoes.Columns["Permissao"].HeaderText = "Permissão";
+                dgPermissoes.Columns["Usuario"].ReadOnly = true;
+                dgPermissoes.Columns["Permissao"].ReadOnly = true;
+                dgPermissoes.Columns["Usuario"].Width = 500;
+                dgPermissoes.Columns["Permissao"].Width = 305;
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             Permissoes permissao = new Permissoes();
-
-
-            permissao.TipoPermissao = tipoPermissaoRule.PesquisaTodosTipoPermissaoLista().Find(o => o.CodTipoPermissao == int.Parse(cbTipoUsuario.ValueMember)) ;
-            permissao.Usuario = loginRule.PesquisaTodosUsuarios().Find(o => o.CodUsuario == int.Parse(cbUsuario.ValueMember));
+            permissao.TipoPermissao = tipoPermissaoRule.PesquisaTodosTipoPermissaoLista().Find(o => o.CodTipoPermissao == int.Parse(cbTipoUsuario.SelectedValue.ToString())) ;
+            permissao.Usuario = loginRule.PesquisaTodosUsuarios().Find(o => o.CodUsuario == int.Parse(cbUsuario.SelectedValue.ToString()));
             permissoesRule.Incluir(permissao);
 
+            AtualizaDadosPagina();
+        }
+
+        private void dgPermissoes_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            permissoesRule.Excluir(int.Parse(dgPermissoes.CurrentRow.Cells[0].Value.ToString()));
+
+            dgPermissoes.Rows.RemoveAt(dgPermissoes.CurrentRow.Index);
+            AtualizaDadosPagina();
+
+            e.Cancel = true;
+        }
+
+        private void AtualizaTipoUsuario()
+        {
+            List<TipoPermissao> listaTipoPermissao = tipoPermissaoRule.PesquisaTodosTipoPermissaoLista();
+            List<Permissoes> listaPermissoes = permissoesRule.PesquisaTodasPermissoes();
+
+            usuarioPagina = loginRule.DefineTipoPermissaoUsuario(listaPermissoes, usuarioPagina, listaTipoPermissao);
+            lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
+        }
+
+        private void AtualizaDadosPagina()
+        {
             CarregaComboBoxUsuario();
             CarregaComboBoxTipoUsuario();
             CarregaGrid();
+            AtualizaTipoUsuario();
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new LoginView().Show();
+        }
+
+        private void HabilitaPermissoes(List<bool> listaPermissoes)
+        {
+            button2.Visible = listaPermissoes[0];
+            button4.Visible = listaPermissoes[1];
+            button5.Visible = listaPermissoes[2];
+            button6.Visible = listaPermissoes[3];
+            btnPontoEletronico.Visible = listaPermissoes[4];
         }
     }
 }

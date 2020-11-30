@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.btnSair = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,7 +40,6 @@
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.userImage = new System.Windows.Forms.PictureBox();
-            this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -79,6 +79,17 @@
             this.panel1.Size = new System.Drawing.Size(211, 621);
             this.panel1.TabIndex = 1;
             // 
+            // lblTipoUsuario
+            // 
+            this.lblTipoUsuario.AutoSize = true;
+            this.lblTipoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoUsuario.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoUsuario.Location = new System.Drawing.Point(12, 39);
+            this.lblTipoUsuario.Name = "lblTipoUsuario";
+            this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
+            this.lblTipoUsuario.TabIndex = 6;
+            this.lblTipoUsuario.Text = "Tipo Usuário";
+            // 
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -92,6 +103,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Apuração de Lucro Real";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -106,6 +118,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Consultoria Contábil";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -146,6 +159,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Cadastros";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnPontoEletronico
             // 
@@ -183,17 +197,6 @@
             this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.userImage.TabIndex = 0;
             this.userImage.TabStop = false;
-            // 
-            // lblTipoUsuario
-            // 
-            this.lblTipoUsuario.AutoSize = true;
-            this.lblTipoUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoUsuario.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoUsuario.Location = new System.Drawing.Point(12, 39);
-            this.lblTipoUsuario.Name = "lblTipoUsuario";
-            this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
-            this.lblTipoUsuario.TabIndex = 6;
-            this.lblTipoUsuario.Text = "Tipo Usuário";
             // 
             // Dashboard
             // 

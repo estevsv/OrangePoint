@@ -39,7 +39,58 @@ namespace OrangePoint.BusinessRule
             {
                 Update(permissao);
             }
-
         }
+
+        public DataTable FiltraPesquisaPermissaoTelaTabela()
+        {
+            List<Permissoes> listaPermissoesLista = PesquisaTodasPermissoes();
+
+            DataTable table = new DataTable("TabelaGridClasse");
+            DataColumn column;
+            DataRow row;
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.Int32"),
+                ColumnName = "id",
+                ReadOnly = true,
+                Unique = true
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Usuario",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Permissao",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+
+            DataColumn[] PrimaryKeyColumns = new DataColumn[1];
+            PrimaryKeyColumns[0] = table.Columns["id"];
+            table.PrimaryKey = PrimaryKeyColumns;
+
+            foreach (Permissoes permissao in listaPermissoesLista)
+            {
+                row = table.NewRow();
+                row["id"] = permissao.CodPermissao;
+                row["Usuario"] = permissao.Usuario.Login;
+                row["Permissao"] = permissao.TipoPermissao.DescPermissao;
+                table.Rows.Add(row);
+            }
+
+            return table;
+        }
+
+        public void Excluir(int codPermissao)
+        {
+            permissoesDAO.Excluir(codPermissao);
+        }
+
     }
 }

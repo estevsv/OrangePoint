@@ -23,8 +23,8 @@ namespace OrangePoint.BusinessRule
             List<Permissoes> listaPermissoes = permissoesRule.PesquisaTodasPermissoes();
 
             Usuario usuario = loginDAO.PesquisaUsuario(login, senha);
-
-            usuario = DefineTipoPermissaoUsuario(listaPermissoes, usuario, listaTipoPermissao);
+            if(usuario != null)
+                usuario = DefineTipoPermissaoUsuario(listaPermissoes, usuario, listaTipoPermissao);
 
             return usuario;
         }
@@ -78,7 +78,7 @@ namespace OrangePoint.BusinessRule
             return loginDAO.PesquisaTodosUsuariosTabela();
         }
 
-        private Usuario DefineTipoPermissaoUsuario(List<Permissoes> listaPermissoes, Usuario usuario, List<TipoPermissao> listaTipoPermissao)
+        public Usuario DefineTipoPermissaoUsuario(List<Permissoes> listaPermissoes, Usuario usuario, List<TipoPermissao> listaTipoPermissao)
         {
             if (listaPermissoes.Exists(o => o.Usuario.CodUsuario == usuario.CodUsuario))
                 usuario.TipoPermissao = listaPermissoes.Find(o => o.Usuario.CodUsuario == usuario.CodUsuario).TipoPermissao;

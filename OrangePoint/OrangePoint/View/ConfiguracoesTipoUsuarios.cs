@@ -1,5 +1,6 @@
 ﻿using OrangePoint.BusinessRule;
 using OrangePoint.Model;
+using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         TipoPermissaoRule tipoPermissaoRule = new TipoPermissaoRule();
         PermissaoTelaRule permissaoTelaRule = new PermissaoTelaRule();
+        Utilities utilities = new Utilities();
 
         public ConfiguracoesTipoUsuarios(Usuario usuario)
         {
@@ -28,6 +30,9 @@ namespace OrangePoint.View
         {
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
+            userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
+
+            HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
 
             CarregaGridTipoUsuarios();
             CarregaGridPermissoesUsuario();
@@ -148,6 +153,30 @@ namespace OrangePoint.View
             CarregaGridPermissoesUsuario();
 
             e.Cancel = true;
+        }
+
+        private void HabilitaPermissoes(List<bool> listaPermissoes)
+        {
+            button2.Visible = listaPermissoes[0];
+            button4.Visible = listaPermissoes[1];
+            button5.Visible = listaPermissoes[2];
+            button6.Visible = listaPermissoes[3];
+            btnPontoEletronico.Visible = listaPermissoes[4];
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

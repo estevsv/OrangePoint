@@ -2,6 +2,7 @@
 using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace OrangePoint.View
@@ -23,6 +24,8 @@ namespace OrangePoint.View
             lblWelcomeUser.Text = "Bem Vindo " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
+
+            HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -50,6 +53,27 @@ namespace OrangePoint.View
             userImage = new PictureBox();
         }
 
-        
+        private void HabilitaPermissoes(List<bool> listaPermissoes)
+        {
+            button2.Visible = listaPermissoes[0];
+            button4.Visible = listaPermissoes[1];
+            button5.Visible = listaPermissoes[2];
+            btnPontoEletronico.Visible = listaPermissoes[4];
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

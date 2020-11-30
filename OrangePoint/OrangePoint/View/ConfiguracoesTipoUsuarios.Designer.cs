@@ -157,6 +157,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Apuração de Lucro Real";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -171,6 +172,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Consultoria Contábil";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -211,6 +213,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Cadastros";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnPontoEletronico
             // 
@@ -296,7 +299,8 @@
             "Cadastros",
             "Consultoria Contábil",
             "Apuração de Lucro Real",
-            "Controle de Usuários"});
+            "Controle de Usuários",
+            "Folha de Ponto"});
             this.cbTela.Location = new System.Drawing.Point(772, 196);
             this.cbTela.Name = "cbTela";
             this.cbTela.Size = new System.Drawing.Size(236, 21);

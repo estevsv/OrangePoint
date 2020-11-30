@@ -36,6 +36,8 @@ namespace OrangePoint.View
             tbSenha.Text = usuarioPagina.Senha;
             tbNomeUsuario.Text = usuarioPagina.NmeFuncionario;
 
+            HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
+
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
             pictureBox1.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
         }
@@ -110,6 +112,30 @@ namespace OrangePoint.View
             FechaPagina();
             pictureBox1 = new PictureBox();
             new ConfiguracoesPermissoes(usuarioPagina).Show();
+        }
+
+        private void HabilitaPermissoes(List<bool> listaPermissoes)
+        {
+            button2.Visible = listaPermissoes[0];
+            button4.Visible = listaPermissoes[1];
+            button5.Visible = listaPermissoes[2];
+            button1.Visible = listaPermissoes[3];
+            btnPontoEletronico.Visible = listaPermissoes[4];
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

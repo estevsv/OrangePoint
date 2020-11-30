@@ -2,6 +2,7 @@
 using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace OrangePoint.View
@@ -18,6 +19,8 @@ namespace OrangePoint.View
             usuarioPagina = usuario;
         }
 
+        
+
         private void FolhadePonto_Load(object sender, EventArgs e)
         {
             tmDataHora.Start();
@@ -26,6 +29,8 @@ namespace OrangePoint.View
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
             CarregaGridFolhaPonto();
+
+            HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
         }
 
         private void CarregaGridFolhaPonto()
@@ -99,6 +104,29 @@ namespace OrangePoint.View
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
+        }
+
+        private void HabilitaPermissoes(List<bool> listaPermissoes)
+        {
+            button2.Visible = listaPermissoes[0];
+            button4.Visible = listaPermissoes[1];
+            button5.Visible = listaPermissoes[2];
+            btnRegistrarPonto.Visible = listaPermissoes[4];
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

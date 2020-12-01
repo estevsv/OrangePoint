@@ -262,6 +262,7 @@
             // rtObservacao
             // 
             this.rtObservacao.Location = new System.Drawing.Point(318, 475);
+            this.rtObservacao.MaxLength = 45;
             this.rtObservacao.Name = "rtObservacao";
             this.rtObservacao.Size = new System.Drawing.Size(418, 59);
             this.rtObservacao.TabIndex = 10;

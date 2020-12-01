@@ -16,6 +16,8 @@ namespace OrangePoint.View
     public partial class ControleFolhaPonto : Form
     {
         private Usuario usuarioPagina;
+        private FolhaPonto folhaAlteracao;
+
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
         FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
@@ -139,6 +141,78 @@ namespace OrangePoint.View
         private void button7_Click(object sender, EventArgs e)
         {
             CarregaGridFolhaPonto(loginRule.PesquisaUsuarioPorId(int.Parse(cbUsuario.SelectedValue.ToString())), true);
+        }
+
+        private void dgFolhaPonto_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            folhaAlteracao = new FolhaPonto();
+            string valorCelula = dgFolhaPonto.CurrentRow.Cells[0].Value.ToString();
+            if (valorCelula != "")
+            {
+                folhaAlteracao = folhaPontoRule.PesquisaFolhaPontoIndividual(new DateTime(), usuarioPagina, int.Parse(valorCelula));
+                dateTimePicker1.Value = folhaAlteracao.DataPonto;
+                PreencherCampos();// Nesse caso a data e o usuario não interfere na busca
+                pnAlteracao.Visible = true;
+            }
+            e.Cancel = true;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            pnAlteracao.Visible = false;
+            LimpaCamposAlteracao();
+        }
+
+        private void LimpaCamposAlteracao()
+        {
+            txtPrimeiraEntrada.Text = "";
+            txtPrimeiraSaida.Text = "";
+            txtSegundaEntrada.Text = "";
+            txtSegundaSaida.Text = "";
+            rtObservacao.Text = "";
+
+            cbUsuario.Enabled = true;
+            dateTimePicker1.Enabled = true;
+            dateTimePicker1.Value = DateTime.Today;
+
+        }
+
+        private void PreencherCampos()
+        {
+            if(folhaAlteracao.Entrada1 != "")
+                txtPrimeiraEntrada.Text = folhaAlteracao.Entrada1.Substring(0, 8);
+            if (folhaAlteracao.Saida1 != "")
+                txtPrimeiraSaida.Text = folhaAlteracao.Saida1.Substring(0, 8);
+            if (folhaAlteracao.Entrada2 != "")
+                txtSegundaEntrada.Text = folhaAlteracao.Entrada2.Substring(0, 8);
+            if (folhaAlteracao.Saida2 != "")
+                txtSegundaSaida.Text = folhaAlteracao.Saida2.Substring(0, 8);
+            rtObservacao.Text = folhaAlteracao.Observacao;
+            cbUsuario.Enabled = false;
+            dateTimePicker1.Enabled = false;
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            if (txtPrimeiraEntrada.Text.Length != 8 || txtPrimeiraSaida.Text.Length != 8 || txtSegundaEntrada.Text.Length != 8 ||
+                txtSegundaSaida.Text.Length != 8)
+            {
+                MessageBox.Show("Hora inválida");
+                return;
+            }
+
+            folhaAlteracao.Entrada1 = txtPrimeiraEntrada.Text;
+            folhaAlteracao.Saida1 = txtPrimeiraSaida.Text;
+            folhaAlteracao.Entrada2 = txtSegundaEntrada.Text;
+            folhaAlteracao.Saida2 = txtSegundaSaida.Text;
+
+            folhaPontoRule.AtualizaPonto(folhaAlteracao);
+            folhaPontoRule.RegistraObservacao(folhaAlteracao.DataPonto,usuarioPagina,rtObservacao.Text);
+
+            CarregaGridFolhaPonto(usuarioPagina, false);
+
+            pnAlteracao.Visible = false;
+            LimpaCamposAlteracao();
         }
     }
 }

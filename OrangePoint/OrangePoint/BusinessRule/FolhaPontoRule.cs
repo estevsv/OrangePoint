@@ -29,9 +29,11 @@ namespace OrangePoint.BusinessRule
             return folhaPontoDAO.PesquisaPontoPorIdUsuarioeData(usuario, dataProcura);
         }
 
-        public FolhaPonto PesquisaFolhaPontoIndividual(DateTime data, Usuario usuario)
+        public FolhaPonto PesquisaFolhaPontoIndividual(DateTime data, Usuario usuario, int codigoID = 0)
         {
-            return folhaPontoDAO.PesquisaFolhadePontoPorUsuarioData(data,usuario);
+            FolhaPonto folha = folhaPontoDAO.PesquisaFolhadePontoPorUsuarioData(data,usuario, codigoID);
+            folha.Usuario = usuario;
+            return folha;
         }
 
         public void RegistrarPonto(DateTime data, Usuario usuario)
@@ -63,7 +65,7 @@ namespace OrangePoint.BusinessRule
                     MessageBox.Show("Dia de trabalho já finalizado");
                     return;
                 }
-                folhaPontoDAO.AtualizaPonto(folhaPonto);
+                AtualizaPonto(folhaPonto);
             }
         }
 
@@ -79,6 +81,11 @@ namespace OrangePoint.BusinessRule
                 folhaPonto.Observacao = observacao;
                 folhaPontoDAO.Incluir(folhaPonto);
             }
+        }
+
+        public void AtualizaPonto(FolhaPonto folhaPonto)
+        {
+            folhaPontoDAO.AtualizaPonto(folhaPonto);
         }
     }
 }

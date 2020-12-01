@@ -111,7 +111,7 @@ namespace OrangePoint.DataAccess
             return tabela;
         }
 
-        public FolhaPonto PesquisaFolhadePontoPorUsuarioData(DateTime dataPonto, Usuario usuario)
+        public FolhaPonto PesquisaFolhadePontoPorUsuarioData(DateTime dataPonto, Usuario usuario, int codigoID)
         {
             FolhaPonto ponto = new FolhaPonto();
             string dataPesquisa = dataPonto.Year + "-" + dataPonto.Month + "-" + dataPonto.Day;
@@ -119,7 +119,9 @@ namespace OrangePoint.DataAccess
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = '" + usuario.CodUsuario + "' and DATA_PONTO = '" + dataPesquisa + "';";
+                
+                cmd.CommandText = codigoID == 0 ? "select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = '" + usuario.CodUsuario + "' and DATA_PONTO = '" + dataPesquisa + "';"
+                    : "select * from bdorangepoint.folha_ponto_usuario where COD_PONTO = " + codigoID + ";";
                 conexao.Desconectar();
                 conexao.Conectar();
                 MySqlDataReader registro = cmd.ExecuteReader();
@@ -129,6 +131,7 @@ namespace OrangePoint.DataAccess
                     ponto.Usuario = usuario;
                     ponto.DataPonto = dataPonto;
                     ponto.CodPonto = Convert.ToInt32(registro["COD_PONTO"]);
+                    ponto.DataPonto = Convert.ToDateTime(registro["DATA_PONTO"]);
                     ponto.Entrada1 = registro["ENTRADA_1"].ToString();
                     ponto.Saida1 = registro["SAIDA_1"].ToString();
                     ponto.Entrada2 = registro["ENTRADA_2"].ToString();

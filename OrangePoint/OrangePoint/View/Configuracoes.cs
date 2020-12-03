@@ -145,5 +145,12 @@ namespace OrangePoint.View
             pictureBox1 = new PictureBox();
             new ControleFolhaPonto(usuarioPagina).Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            pictureBox1 = new PictureBox();
+            new Dashboard(usuarioPagina).Show();
+        }
     }
 }

@@ -197,3 +197,13 @@ CREATE TABLE `bdOrangePoint`.`FOLHA_PONTO_USUARIO` (
   
 ALTER TABLE bdorangepoint.folha_ponto_usuario
 ADD OBSERVACAO VARCHAR(45);
+
+INSERT INTO `bdorangepoint`.`usuario` (`LOGIN`, `SENHA`, `NME_FUNCIONARIO`) VALUES ('admin', 'administrador789654123', 'Administrador Geral');
+INSERT INTO `bdorangepoint`.`tipo_permissao` (`DESC_PERMISSAO`) VALUES ('Administrador');
+INSERT INTO `bdorangepoint`.`permissoes` (`COD_USUARIO`, `COD_TIPO_PERMISSAO`) VALUES ('1', '1');
+INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Cadastros');
+INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Consultoria Contábil');
+INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Apuração de Lucro Real');
+INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Controle de Usuários');
+INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Folha de Ponto');
+INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Controle de Folha de Ponto');

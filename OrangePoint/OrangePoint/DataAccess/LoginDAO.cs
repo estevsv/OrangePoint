@@ -143,5 +143,25 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro LoginDAO/AtualizaLogin. Contate o Suporte");
             }
         }
+
+        public bool VerificaBanco()
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "select * from bdorangepoint.usuario";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Banco de dados inexistente");
+                return false;
+            }
+        }
     }
 }

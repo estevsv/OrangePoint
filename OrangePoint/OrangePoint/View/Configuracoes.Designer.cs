@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuracoes));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCtrFlhPonto = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -52,7 +53,7 @@
             this.tbNomeUsuario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCtrFlhPonto = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,6 +72,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 5;
+            // 
+            // btnCtrFlhPonto
+            // 
+            this.btnCtrFlhPonto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnCtrFlhPonto.AutoSize = true;
+            this.btnCtrFlhPonto.BackColor = System.Drawing.Color.Transparent;
+            this.btnCtrFlhPonto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCtrFlhPonto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCtrFlhPonto.Location = new System.Drawing.Point(207, -2);
+            this.btnCtrFlhPonto.Name = "btnCtrFlhPonto";
+            this.btnCtrFlhPonto.Size = new System.Drawing.Size(209, 71);
+            this.btnCtrFlhPonto.TabIndex = 7;
+            this.btnCtrFlhPonto.Text = "Controle de Folha de Ponto";
+            this.btnCtrFlhPonto.UseVisualStyleBackColor = false;
+            this.btnCtrFlhPonto.Click += new System.EventHandler(this.btnCtrFlhPonto_Click);
             // 
             // button1
             // 
@@ -103,6 +119,7 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
@@ -134,7 +151,7 @@
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(0, 350);
+            this.button5.Location = new System.Drawing.Point(0, 421);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(211, 68);
             this.button5.TabIndex = 5;
@@ -149,7 +166,7 @@
             this.button4.BackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(0, 276);
+            this.button4.Location = new System.Drawing.Point(0, 347);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(211, 68);
             this.button4.TabIndex = 4;
@@ -190,7 +207,7 @@
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 149);
+            this.button2.Location = new System.Drawing.Point(0, 220);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(211, 68);
             this.button2.TabIndex = 1;
@@ -205,7 +222,7 @@
             this.btnPontoEletronico.BackColor = System.Drawing.Color.Transparent;
             this.btnPontoEletronico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPontoEletronico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 75);
+            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 146);
             this.btnPontoEletronico.Name = "btnPontoEletronico";
             this.btnPontoEletronico.Size = new System.Drawing.Size(211, 68);
             this.btnPontoEletronico.TabIndex = 0;
@@ -350,20 +367,20 @@
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
-            // btnCtrFlhPonto
+            // button7
             // 
-            this.btnCtrFlhPonto.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnCtrFlhPonto.AutoSize = true;
-            this.btnCtrFlhPonto.BackColor = System.Drawing.Color.Transparent;
-            this.btnCtrFlhPonto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCtrFlhPonto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCtrFlhPonto.Location = new System.Drawing.Point(207, -2);
-            this.btnCtrFlhPonto.Name = "btnCtrFlhPonto";
-            this.btnCtrFlhPonto.Size = new System.Drawing.Size(209, 71);
-            this.btnCtrFlhPonto.TabIndex = 7;
-            this.btnCtrFlhPonto.Text = "Controle de Folha de Ponto";
-            this.btnCtrFlhPonto.UseVisualStyleBackColor = false;
-            this.btnCtrFlhPonto.Click += new System.EventHandler(this.btnCtrFlhPonto_Click);
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button7.AutoSize = true;
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(0, 72);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(211, 68);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Dashboard";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Configuracoes
             // 
@@ -428,5 +445,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTipoUsuario;
         private System.Windows.Forms.Button btnCtrFlhPonto;
+        private System.Windows.Forms.Button button7;
     }
 }

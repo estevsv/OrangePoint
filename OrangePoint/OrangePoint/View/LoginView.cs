@@ -18,6 +18,9 @@ namespace OrangePoint.View
 
         private void LoginView_Load(object sender, EventArgs e)
         {
+            if (!loginRule.VerificaBanco())
+                Application.Exit();
+
             LimpaFotosInutilizadas();
         }
 

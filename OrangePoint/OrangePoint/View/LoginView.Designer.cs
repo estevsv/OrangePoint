@@ -59,7 +59,7 @@
             this.Tbsenha.PasswordChar = '*';
             this.Tbsenha.Size = new System.Drawing.Size(254, 20);
             this.Tbsenha.TabIndex = 12;
-            this.Tbsenha.Text = "123";
+            this.Tbsenha.Text = "administrador789654123";
             // 
             // Tbusuario
             // 

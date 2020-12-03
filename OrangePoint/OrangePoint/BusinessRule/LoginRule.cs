@@ -98,5 +98,10 @@ namespace OrangePoint.BusinessRule
 
             return usuario;
         }
+
+        public bool VerificaBanco()
+        {
+            return loginDAO.VerificaBanco();
+        }
     }
 }

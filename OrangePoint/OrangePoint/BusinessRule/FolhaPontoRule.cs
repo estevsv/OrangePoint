@@ -19,6 +19,11 @@ namespace OrangePoint.BusinessRule
             folhaPontoDAO.Incluir(folhaPonto);
         }
 
+        public void ExcluirPorUsuario(int idUsuario)
+        {
+            folhaPontoDAO.ExcluiFolhaPorUsuario(idUsuario);
+        }
+
         public DataTable PesquisaPontoPorIdUsuario(Usuario usuario)
         {
             return folhaPontoDAO.PesquisaPontoPorIdUsuario(usuario);

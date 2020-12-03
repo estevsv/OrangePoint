@@ -48,10 +48,18 @@
             this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
+            this.btnNovoUsuario = new System.Windows.Forms.Button();
+            this.txtNovoUsuario = new System.Windows.Forms.TextBox();
+            this.txtNovaSenha = new System.Windows.Forms.TextBox();
+            this.lblNovoUsuario = new System.Windows.Forms.Label();
+            this.lblNovaSenha = new System.Windows.Forms.Label();
+            this.dgUsuarios = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPermissoes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -240,10 +248,10 @@
             // dgPermissoes
             // 
             this.dgPermissoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPermissoes.Location = new System.Drawing.Point(228, 216);
+            this.dgPermissoes.Location = new System.Drawing.Point(682, 203);
             this.dgPermissoes.Name = "dgPermissoes";
             this.dgPermissoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgPermissoes.Size = new System.Drawing.Size(845, 327);
+            this.dgPermissoes.Size = new System.Drawing.Size(391, 302);
             this.dgPermissoes.TabIndex = 27;
             this.dgPermissoes.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgPermissoes_UserDeletingRow);
             // 
@@ -253,7 +261,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(224, 130);
+            this.label4.Location = new System.Drawing.Point(724, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 20);
             this.label4.TabIndex = 35;
@@ -263,7 +271,7 @@
             // 
             this.cbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUsuario.FormattingEnabled = true;
-            this.cbUsuario.Location = new System.Drawing.Point(282, 132);
+            this.cbUsuario.Location = new System.Drawing.Point(782, 119);
             this.cbUsuario.Name = "cbUsuario";
             this.cbUsuario.Size = new System.Drawing.Size(236, 21);
             this.cbUsuario.TabIndex = 34;
@@ -272,7 +280,7 @@
             // 
             this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoUsuario.FormattingEnabled = true;
-            this.cbTipoUsuario.Location = new System.Drawing.Point(787, 132);
+            this.cbTipoUsuario.Location = new System.Drawing.Point(782, 162);
             this.cbTipoUsuario.Name = "cbTipoUsuario";
             this.cbTipoUsuario.Size = new System.Drawing.Size(236, 21);
             this.cbTipoUsuario.TabIndex = 36;
@@ -283,7 +291,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(683, 130);
+            this.label1.Location = new System.Drawing.Point(678, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 37;
@@ -296,13 +304,89 @@
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(1046, 125);
+            this.button8.Location = new System.Drawing.Point(1041, 155);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(27, 30);
             this.button8.TabIndex = 38;
             this.button8.Text = "+";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // btnNovoUsuario
+            // 
+            this.btnNovoUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNovoUsuario.AutoSize = true;
+            this.btnNovoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.btnNovoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNovoUsuario.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovoUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnNovoUsuario.Location = new System.Drawing.Point(364, 511);
+            this.btnNovoUsuario.Name = "btnNovoUsuario";
+            this.btnNovoUsuario.Size = new System.Drawing.Size(134, 42);
+            this.btnNovoUsuario.TabIndex = 39;
+            this.btnNovoUsuario.Text = "Adicionar Usuário";
+            this.btnNovoUsuario.UseVisualStyleBackColor = false;
+            this.btnNovoUsuario.Click += new System.EventHandler(this.btnNovoUsuario_Click);
+            // 
+            // txtNovoUsuario
+            // 
+            this.txtNovoUsuario.Location = new System.Drawing.Point(287, 580);
+            this.txtNovoUsuario.Name = "txtNovoUsuario";
+            this.txtNovoUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtNovoUsuario.TabIndex = 40;
+            // 
+            // txtNovaSenha
+            // 
+            this.txtNovaSenha.Location = new System.Drawing.Point(519, 580);
+            this.txtNovaSenha.Name = "txtNovaSenha";
+            this.txtNovaSenha.Size = new System.Drawing.Size(100, 20);
+            this.txtNovaSenha.TabIndex = 41;
+            // 
+            // lblNovoUsuario
+            // 
+            this.lblNovoUsuario.AutoSize = true;
+            this.lblNovoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblNovoUsuario.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNovoUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblNovoUsuario.Location = new System.Drawing.Point(224, 578);
+            this.lblNovoUsuario.Name = "lblNovoUsuario";
+            this.lblNovoUsuario.Size = new System.Drawing.Size(52, 20);
+            this.lblNovoUsuario.TabIndex = 42;
+            this.lblNovoUsuario.Text = "Usuário";
+            // 
+            // lblNovaSenha
+            // 
+            this.lblNovaSenha.AutoSize = true;
+            this.lblNovaSenha.BackColor = System.Drawing.Color.Transparent;
+            this.lblNovaSenha.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNovaSenha.ForeColor = System.Drawing.Color.White;
+            this.lblNovaSenha.Location = new System.Drawing.Point(468, 578);
+            this.lblNovaSenha.Name = "lblNovaSenha";
+            this.lblNovaSenha.Size = new System.Drawing.Size(45, 20);
+            this.lblNovaSenha.TabIndex = 43;
+            this.lblNovaSenha.Text = "Senha";
+            // 
+            // dgUsuarios
+            // 
+            this.dgUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgUsuarios.Location = new System.Drawing.Point(228, 119);
+            this.dgUsuarios.Name = "dgUsuarios";
+            this.dgUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgUsuarios.Size = new System.Drawing.Size(391, 386);
+            this.dgUsuarios.TabIndex = 44;
+            this.dgUsuarios.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgUsuarios_UserDeletingRow);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(393, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 20);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Usuários";
             // 
             // ConfiguracoesPermissoes
             // 
@@ -311,6 +395,13 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.dgUsuarios);
+            this.Controls.Add(this.lblNovaSenha);
+            this.Controls.Add(this.lblNovoUsuario);
+            this.Controls.Add(this.txtNovaSenha);
+            this.Controls.Add(this.txtNovoUsuario);
+            this.Controls.Add(this.btnNovoUsuario);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbTipoUsuario);
@@ -324,7 +415,7 @@
             this.MaximizeBox = false;
             this.Name = "ConfiguracoesPermissoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Permissões de Usuários";
+            this.Text = "Controle de Usuários";
             this.Load += new System.EventHandler(this.ConfiguracoesPermissoes_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -332,6 +423,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPermissoes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,5 +450,12 @@
         private System.Windows.Forms.ComboBox cbTipoUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnNovoUsuario;
+        private System.Windows.Forms.TextBox txtNovoUsuario;
+        private System.Windows.Forms.TextBox txtNovaSenha;
+        private System.Windows.Forms.Label lblNovoUsuario;
+        private System.Windows.Forms.Label lblNovaSenha;
+        private System.Windows.Forms.DataGridView dgUsuarios;
+        private System.Windows.Forms.Label label2;
     }
 }

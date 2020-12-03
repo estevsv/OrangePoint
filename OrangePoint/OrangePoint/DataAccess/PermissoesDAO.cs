@@ -125,5 +125,21 @@ namespace OrangePoint.DataAccess
             }
             catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/Excluir. Contate o Suporte"); }
         }
+
+        public void ExcluirPorUsuario(int codUsuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete FROM bdorangepoint.permissoes where COD_USUARIO = @COD_USUARIO;";
+                cmd.Parameters.AddWithValue("@COD_USUARIO", codUsuario);
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/ExcluirPorUsuario. Contate o Suporte"); }
+        }
     }
 }

@@ -103,5 +103,15 @@ namespace OrangePoint.BusinessRule
         {
             return loginDAO.VerificaBanco();
         }
+
+        public void IncluirLogin(string login, string senha)
+        {
+            loginDAO.IncluirLogin(login, senha);
+        }
+
+        public void ExcluirLogin(int codUsuario)
+        {
+            loginDAO.ExcluiLogin(codUsuario);
+        }
     }
 }

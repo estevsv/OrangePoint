@@ -16,10 +16,14 @@ namespace OrangePoint.View
     public partial class ConfiguracoesPermissoes : Form
     {
         private Usuario usuarioPagina;
+        private bool visibilidadeNovoUsuario;
+
         LoginRule loginRule = new LoginRule();
         TipoPermissaoRule tipoPermissaoRule = new TipoPermissaoRule();
         PermissoesRule permissoesRule = new PermissoesRule();
+        FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
         Utilities utilities = new Utilities();
+
 
         public ConfiguracoesPermissoes(Usuario usuario)
         {
@@ -35,9 +39,10 @@ namespace OrangePoint.View
 
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
 
-            CarregaComboBoxUsuario();
-            CarregaComboBoxTipoUsuario();
-            CarregaGrid();
+            AtualizaDadosPagina();
+
+            visibilidadeNovoUsuario = false;
+            VisibilidadeCamposNovoUsuario();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -101,8 +106,27 @@ namespace OrangePoint.View
                 dgPermissoes.Columns["Permissao"].HeaderText = "Permissão";
                 dgPermissoes.Columns["Usuario"].ReadOnly = true;
                 dgPermissoes.Columns["Permissao"].ReadOnly = true;
-                dgPermissoes.Columns["Usuario"].Width = 500;
-                dgPermissoes.Columns["Permissao"].Width = 305;
+                dgPermissoes.Columns["Usuario"].Width = 174;
+                dgPermissoes.Columns["Permissao"].Width = 174;
+            }
+        }
+
+        private void CarregaGridUsuarios()
+        {
+            dgUsuarios.DataSource = loginRule.PesquisaTodosUsuariosTabela();
+            if (dgUsuarios.Columns.Count != 0)
+            {
+                dgUsuarios.Columns["COD_USUARIO"].Visible = false;
+                dgUsuarios.Columns["SENHA"].Visible = false;
+                dgUsuarios.Columns["HRS_DIARIA"].Visible = false;
+                dgUsuarios.Columns["FOTO_USUARIO"].Visible = false;
+
+                dgUsuarios.Columns["LOGIN"].HeaderText = "Usuário";
+                dgUsuarios.Columns["NME_FUNCIONARIO"].HeaderText = "Nome do Usuário";
+                dgUsuarios.Columns["LOGIN"].ReadOnly = true;
+                dgUsuarios.Columns["NME_FUNCIONARIO"].ReadOnly = true;
+                dgUsuarios.Columns["LOGIN"].Width = 174;
+                dgUsuarios.Columns["NME_FUNCIONARIO"].Width = 174;
             }
         }
 
@@ -118,11 +142,13 @@ namespace OrangePoint.View
 
         private void dgPermissoes_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            permissoesRule.Excluir(int.Parse(dgPermissoes.CurrentRow.Cells[0].Value.ToString()));
+            if (DialogResult.Yes == MessageBox.Show("Após esta operação o usuário " + usuarioPagina.Login +" se tornará Padrão do Sistema, deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                permissoesRule.Excluir(int.Parse(dgPermissoes.CurrentRow.Cells[0].Value.ToString()));
 
-            dgPermissoes.Rows.RemoveAt(dgPermissoes.CurrentRow.Index);
-            AtualizaDadosPagina();
-
+                dgPermissoes.Rows.RemoveAt(dgPermissoes.CurrentRow.Index);
+                AtualizaDadosPagina();
+            }
             e.Cancel = true;
         }
 
@@ -141,6 +167,7 @@ namespace OrangePoint.View
             CarregaComboBoxTipoUsuario();
             CarregaGrid();
             AtualizaTipoUsuario();
+            CarregaGridUsuarios();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -161,6 +188,60 @@ namespace OrangePoint.View
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnNovoUsuario_Click(object sender, EventArgs e)
+        {
+            if (visibilidadeNovoUsuario)
+            {
+                if (txtNovoUsuario.Text != "")
+                {
+                    loginRule.IncluirLogin(txtNovoUsuario.Text, txtNovaSenha.Text);
+                    AtualizaDadosPagina();
+                }
+                else
+                    MessageBox.Show("É necessário um Login. Novo Usuário não adicionado!");
+                visibilidadeNovoUsuario = false;
+                VisibilidadeCamposNovoUsuario();
+                btnNovoUsuario.Text = "Adicionar Usuário";
+            }
+            else
+            {
+                visibilidadeNovoUsuario = true;
+                VisibilidadeCamposNovoUsuario();
+                btnNovoUsuario.Text = "Finalizar";
+            }
+            LimparCamposNovoUsuario();
+        }
+
+        private void VisibilidadeCamposNovoUsuario()
+        {
+            lblNovaSenha.Visible = visibilidadeNovoUsuario;
+            lblNovoUsuario.Visible = visibilidadeNovoUsuario;
+            txtNovaSenha.Visible = visibilidadeNovoUsuario;
+            txtNovoUsuario.Visible = visibilidadeNovoUsuario;
+        }
+
+        private void LimparCamposNovoUsuario()
+        {
+            txtNovaSenha.Text = "";
+            txtNovoUsuario.Text = "";
+        }
+
+        private void dgUsuarios_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (DialogResult.Yes == MessageBox.Show("Após esta operação o USUÁRIO selecionado, bem como suas PERMISSÕES e FOLHA DE PONTO serão EXCLUÍDOS, , deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                int codUsuario = int.Parse(dgUsuarios.CurrentRow.Cells[0].Value.ToString());
+
+                folhaPontoRule.ExcluirPorUsuario(codUsuario);
+                permissoesRule.ExcluirPorUsuario(codUsuario);
+                loginRule.ExcluirLogin(codUsuario);
+
+                dgUsuarios.Rows.RemoveAt(dgUsuarios.CurrentRow.Index);
+                AtualizaDadosPagina();
+            }
+            e.Cancel = true;
         }
     }
 }

@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.tbNomeUsuario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button7 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -99,7 +99,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 71);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Permissões de Usuários";
+            this.button1.Text = "Controle de Usuários";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -132,6 +132,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
             this.panel1.TabIndex = 4;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button7.AutoSize = true;
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(0, 72);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(211, 68);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Dashboard";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // lblTipoUsuario
             // 
@@ -366,21 +381,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            // 
-            // button7
-            // 
-            this.button7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button7.AutoSize = true;
-            this.button7.BackColor = System.Drawing.Color.Transparent;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(0, 72);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(211, 68);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "Dashboard";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Configuracoes
             // 

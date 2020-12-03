@@ -92,5 +92,9 @@ namespace OrangePoint.BusinessRule
             permissoesDAO.Excluir(codPermissao);
         }
 
+        public void ExcluirPorUsuario(int codUsuario)
+        {
+            permissoesDAO.ExcluirPorUsuario(codUsuario);
+        }
     }
 }

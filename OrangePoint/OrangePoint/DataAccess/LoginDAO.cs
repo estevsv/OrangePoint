@@ -163,5 +163,41 @@ namespace OrangePoint.DataAccess
                 return false;
             }
         }
+
+        public void ExcluiLogin(int codUsuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete from bdorangepoint.usuario where COD_USUARIO = " + codUsuario;
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro LoginDAO/ExcluiUsuario. Contate o Suporte");
+            }
+        }
+
+        public void IncluirLogin(string login, string senha)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`usuario` (`LOGIN`, `SENHA`) VALUES ('" + login + "', '" + senha + "');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro LoginDAO/IncluirUsuario. Contate o Suporte");
+            }
+        }
     }
 }

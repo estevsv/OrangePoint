@@ -21,13 +21,14 @@ namespace OrangePoint.DataAccess
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO bdorangepoint.folha_ponto_usuario(COD_USUARIO, DATA_PONTO, ENTRADA_1, SAIDA_1, ENTRADA_2, SAIDA_2) VALUES(@COD_USUARIO, @DATA_PONTO, @ENTRADA_1, @SAIDA_1, @ENTRADA_2, @SAIDA_2);";
+                cmd.CommandText = "INSERT INTO bdorangepoint.folha_ponto_usuario(COD_USUARIO, DATA_PONTO, ENTRADA_1, SAIDA_1, ENTRADA_2, SAIDA_2,OBSERVACAO) VALUES(@COD_USUARIO, @DATA_PONTO, @ENTRADA_1, @SAIDA_1, @ENTRADA_2, @SAIDA_2, @OBSERVACAO);";
                 cmd.Parameters.AddWithValue("@COD_USUARIO", folhaPonto.Usuario.CodUsuario);
                 cmd.Parameters.AddWithValue("@DATA_PONTO", dataPesquisa);
                 cmd.Parameters.AddWithValue("@ENTRADA_1", folhaPonto.Entrada1);
                 cmd.Parameters.AddWithValue("@SAIDA_1", folhaPonto.Saida1);
                 cmd.Parameters.AddWithValue("@ENTRADA_2", folhaPonto.Entrada2);
                 cmd.Parameters.AddWithValue("@SAIDA_2", folhaPonto.Saida2);
+                cmd.Parameters.AddWithValue("@OBSERVACAO", folhaPonto.Observacao);
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
@@ -168,6 +169,24 @@ namespace OrangePoint.DataAccess
             catch (Exception ex)
             {
                 MessageBox.Show("Erro FolhaPontoDAO/AtualizaPonto. Contate o Suporte");
+            }
+        }
+
+        public void ExcluiFolhaPorUsuario(int codUsuario)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete from bdorangepoint.folha_ponto_usuario where COD_USUARIO = " + codUsuario;
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro FolhaPontoDAO/ExcluiFolhaPorUsuario. Contate o Suporte");
             }
         }
     }

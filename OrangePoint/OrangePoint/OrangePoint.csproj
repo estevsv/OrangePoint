@@ -102,12 +102,33 @@
     <Compile Include="DataAccess\PermissaoTelaDAO.cs" />
     <Compile Include="DataAccess\PermissoesDAO.cs" />
     <Compile Include="DataAccess\TipoPermissaoDAO.cs" />
+    <Compile Include="Model\AlvaraEmpresa.cs" />
+    <Compile Include="Model\Atividade.cs" />
+    <Compile Include="Model\AtividadeEmpresa.cs" />
+    <Compile Include="Model\Balanço Patrimonial\SubtipoBalancoPatrimonial.cs" />
+    <Compile Include="Model\Balanço Patrimonial\TipoBalancoPatrimonial.cs" />
+    <Compile Include="Model\Balanço Patrimonial\ValorBalancoPatrimonial.cs" />
+    <Compile Include="Model\BeneficioFuncionario.cs" />
     <Compile Include="Model\ConexaoBD.cs" />
+    <Compile Include="Model\ContatoEmpresa.cs" />
+    <Compile Include="Model\DadosWebEmpresa.cs" />
+    <Compile Include="Model\DataEmpresa.cs" />
+    <Compile Include="Model\Empresa.cs" />
     <Compile Include="Model\FolhaPonto.cs" />
+    <Compile Include="Model\Funcionario.cs" />
+    <Compile Include="Model\Lucro Real\SubtipoLucroReal.cs" />
+    <Compile Include="Model\Lucro Real\TipoLucroReal.cs" />
+    <Compile Include="Model\Lucro Real\ValorLucroReal.cs" />
     <Compile Include="Model\PermissaoTela.cs" />
     <Compile Include="Model\Permissoes.cs" />
+    <Compile Include="Model\RegimeEmpresa.cs" />
+    <Compile Include="Model\SubtipoAtividade.cs" />
+    <Compile Include="Model\SubtipoValor.cs" />
+    <Compile Include="Model\TipoData.cs" />
     <Compile Include="Model\TipoPermissao.cs" />
+    <Compile Include="Model\TipoValor.cs" />
     <Compile Include="Model\Usuario.cs" />
+    <Compile Include="Model\Valor.cs" />
     <Compile Include="Resources\Utilities.cs" />
     <Compile Include="View\Configuracoes.cs">
       <SubType>Form</SubType>
@@ -209,5 +230,6 @@
     <None Include="Resources\Background Padrão.jpg" />
     <Content Include="Resources\imagem perfil padrao.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

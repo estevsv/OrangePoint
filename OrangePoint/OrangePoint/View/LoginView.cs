@@ -21,7 +21,7 @@ namespace OrangePoint.View
             if (!loginRule.VerificaBanco())
                 Application.Exit();
 
-            LimpaFotosInutilizadas();
+            //LimpaFotosInutilizadas();
         }
 
         private void Entrar_Click(object sender, EventArgs e)

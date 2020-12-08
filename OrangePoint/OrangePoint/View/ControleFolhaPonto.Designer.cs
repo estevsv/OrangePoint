@@ -62,6 +62,7 @@
             this.txtSegundaSaida = new System.Windows.Forms.MaskedTextBox();
             this.pnAlteracao = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -487,6 +488,22 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportar.AutoSize = true;
+            this.btnExportar.BackColor = System.Drawing.Color.Transparent;
+            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExportar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.Color.White;
+            this.btnExportar.Location = new System.Drawing.Point(228, 567);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(134, 42);
+            this.btnExportar.TabIndex = 61;
+            this.btnExportar.Text = "Exportar Excel";
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // ControleFolhaPonto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -494,6 +511,7 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.pnAlteracao);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.btnFiltrar);
@@ -558,5 +576,6 @@
         private System.Windows.Forms.MaskedTextBox txtSegundaSaida;
         private System.Windows.Forms.Panel pnAlteracao;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

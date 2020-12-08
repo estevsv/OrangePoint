@@ -18,6 +18,7 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         private FolhaPonto folhaAlteracao;
 
+        Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
         FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
@@ -205,14 +206,53 @@ namespace OrangePoint.View
             folhaAlteracao.Saida1 = txtPrimeiraSaida.Text;
             folhaAlteracao.Entrada2 = txtSegundaEntrada.Text;
             folhaAlteracao.Saida2 = txtSegundaSaida.Text;
+            folhaAlteracao.Usuario = loginRule.PesquisaUsuarioPorId(int.Parse(cbUsuario.SelectedValue.ToString()));
 
             folhaPontoRule.AtualizaPonto(folhaAlteracao);
-            folhaPontoRule.RegistraObservacao(folhaAlteracao.DataPonto,usuarioPagina,rtObservacao.Text);
 
-            CarregaGridFolhaPonto(usuarioPagina, false);
+            folhaPontoRule.RegistraObservacao(folhaAlteracao.DataPonto,folhaAlteracao.Usuario, rtObservacao.Text);
+
+            CarregaGridFolhaPonto(folhaAlteracao.Usuario, false);
 
             pnAlteracao.Visible = false;
             LimpaCamposAlteracao();
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (dgFolhaPonto.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+                    int cont = 1;
+                    for (int i =3; i < dgFolhaPonto.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, cont] = dgFolhaPonto.Columns[i - 1].HeaderText;
+                        cont++;
+                    }
+                    //
+                    for (int i = 0; i < dgFolhaPonto.Rows.Count - 1; i++)
+                    {
+                        cont = 2;
+                        for (int j = 0; j < 6; j++)
+                        {
+                            XcelApp.Cells[i + 2, j + 1] = dgFolhaPonto.Rows[i].Cells[cont].Value.ToString();
+                            cont++;
+                        }
+                    }
+                    //
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao exportar. Contate o Suporte.");
+                    return;
+                }
+            } else
+                MessageBox.Show("Nenhum dado existente!");
         }
     }
 }

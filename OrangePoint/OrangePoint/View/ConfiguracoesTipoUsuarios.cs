@@ -166,7 +166,8 @@ namespace OrangePoint.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            FechaPagina();
+            new EmpresaView(usuarioPagina).Show();
         }
 
         private void button4_Click(object sender, EventArgs e)

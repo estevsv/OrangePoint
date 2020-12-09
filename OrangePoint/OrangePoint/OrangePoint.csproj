@@ -72,15 +72,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessRule\EmpresaRule.cs" />
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
     <Compile Include="BusinessRule\LoginRule.cs" />
     <Compile Include="BusinessRule\PermissaoTelaRule.cs" />
     <Compile Include="BusinessRule\PermissoesRule.cs" />
+    <Compile Include="BusinessRule\RegimeEmpresaRule.cs" />
     <Compile Include="BusinessRule\TipoPermissaoRule.cs" />
+    <Compile Include="DataAccess\EmpresaDAO.cs" />
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />
     <Compile Include="DataAccess\LoginDAO.cs" />
     <Compile Include="DataAccess\PermissaoTelaDAO.cs" />
     <Compile Include="DataAccess\PermissoesDAO.cs" />
+    <Compile Include="DataAccess\RegimeEmpresaDAO.cs" />
     <Compile Include="DataAccess\TipoPermissaoDAO.cs" />
     <Compile Include="Model\AlvaraEmpresa.cs" />
     <Compile Include="Model\Atividade.cs" />
@@ -142,6 +146,12 @@
     </Compile>
     <Compile Include="Model\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\EmpresaView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EmpresaView.Designer.cs">
+      <DependentUpon>EmpresaView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FolhadePonto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +189,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\EmpresaView.resx">
+      <DependentUpon>EmpresaView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FolhadePonto.resx">
       <DependentUpon>FolhadePonto.cs</DependentUpon>
     </EmbeddedResource>

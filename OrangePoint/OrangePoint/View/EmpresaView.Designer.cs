@@ -1,6 +1,6 @@
 ﻿namespace OrangePoint.View
 {
-    partial class FolhadePonto
+    partial class EmpresaView
     {
         /// <summary>
         /// Required designer variable.
@@ -28,72 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FolhadePonto));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.userImage = new System.Windows.Forms.PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmpresaView));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.userImage = new System.Windows.Forms.PictureBox();
             this.btnSair = new System.Windows.Forms.Button();
-            this.dgPontoUsuario = new System.Windows.Forms.DataGridView();
-            this.btnRegistrarPonto = new System.Windows.Forms.Button();
-            this.tmDataHora = new System.Windows.Forms.Timer(this.components);
-            this.lblDataHora = new System.Windows.Forms.Label();
+            this.dgEmpresa = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.rtObservacao = new System.Windows.Forms.RichTextBox();
-            this.registrarObservacao = new System.Windows.Forms.Button();
-            this.dateTimePickerObs = new System.Windows.Forms.DateTimePicker();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPontoUsuario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEmpresa)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.userImage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(211, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(874, 69);
-            this.panel2.TabIndex = 5;
-            // 
-            // userImage
-            // 
-            this.userImage.BackColor = System.Drawing.Color.Transparent;
-            this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
-            this.userImage.Location = new System.Drawing.Point(808, 12);
-            this.userImage.Name = "userImage";
-            this.userImage.Size = new System.Drawing.Size(54, 50);
-            this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.userImage.TabIndex = 0;
-            this.userImage.TabStop = false;
             // 
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.btnPontoEletronico);
             this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.lblWelcomeUser);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnDashboard);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 5;
+            // 
+            // btnPontoEletronico
+            // 
+            this.btnPontoEletronico.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPontoEletronico.AutoSize = true;
+            this.btnPontoEletronico.BackColor = System.Drawing.Color.Transparent;
+            this.btnPontoEletronico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPontoEletronico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 149);
+            this.btnPontoEletronico.Name = "btnPontoEletronico";
+            this.btnPontoEletronico.Size = new System.Drawing.Size(211, 68);
+            this.btnPontoEletronico.TabIndex = 8;
+            this.btnPontoEletronico.Text = "Ponto Eletrônico";
+            this.btnPontoEletronico.UseVisualStyleBackColor = false;
+            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
             // 
             // lblTipoUsuario
             // 
@@ -162,21 +149,6 @@
             this.lblWelcomeUser.TabIndex = 2;
             this.lblWelcomeUser.Text = "Text";
             // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 202);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 68);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Empresas";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // btnDashboard
             // 
             this.btnDashboard.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -192,6 +164,28 @@
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.userImage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(211, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(874, 69);
+            this.panel2.TabIndex = 6;
+            // 
+            // userImage
+            // 
+            this.userImage.BackColor = System.Drawing.Color.Transparent;
+            this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
+            this.userImage.Location = new System.Drawing.Point(808, 12);
+            this.userImage.Name = "userImage";
+            this.userImage.Size = new System.Drawing.Size(54, 50);
+            this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.userImage.TabIndex = 0;
+            this.userImage.TabStop = false;
+            // 
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -200,122 +194,75 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Location = new System.Drawing.Point(939, 567);
+            this.btnSair.Location = new System.Drawing.Point(939, 564);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(134, 42);
-            this.btnSair.TabIndex = 3;
+            this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // dgPontoUsuario
+            // dgEmpresa
             // 
-            this.dgPontoUsuario.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgPontoUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPontoUsuario.Location = new System.Drawing.Point(217, 202);
-            this.dgPontoUsuario.Name = "dgPontoUsuario";
-            this.dgPontoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgPontoUsuario.Size = new System.Drawing.Size(856, 242);
-            this.dgPontoUsuario.TabIndex = 6;
+            this.dgEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgEmpresa.Location = new System.Drawing.Point(217, 141);
+            this.dgEmpresa.Name = "dgEmpresa";
+            this.dgEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgEmpresa.Size = new System.Drawing.Size(402, 417);
+            this.dgEmpresa.TabIndex = 9;
             // 
-            // btnRegistrarPonto
+            // button1
             // 
-            this.btnRegistrarPonto.BackColor = System.Drawing.Color.Transparent;
-            this.btnRegistrarPonto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRegistrarPonto.ForeColor = System.Drawing.Color.White;
-            this.btnRegistrarPonto.Location = new System.Drawing.Point(563, 159);
-            this.btnRegistrarPonto.Name = "btnRegistrarPonto";
-            this.btnRegistrarPonto.Size = new System.Drawing.Size(125, 35);
-            this.btnRegistrarPonto.TabIndex = 7;
-            this.btnRegistrarPonto.Text = "Registrar Ponto";
-            this.btnRegistrarPonto.UseVisualStyleBackColor = false;
-            this.btnRegistrarPonto.Click += new System.EventHandler(this.btnRegistrarPonto_Click);
-            // 
-            // tmDataHora
-            // 
-            this.tmDataHora.Tick += new System.EventHandler(this.tmDataHora_Tick);
-            // 
-            // lblDataHora
-            // 
-            this.lblDataHora.AutoSize = true;
-            this.lblDataHora.BackColor = System.Drawing.Color.Transparent;
-            this.lblDataHora.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataHora.ForeColor = System.Drawing.Color.White;
-            this.lblDataHora.Location = new System.Drawing.Point(467, 123);
-            this.lblDataHora.Name = "lblDataHora";
-            this.lblDataHora.Size = new System.Drawing.Size(45, 20);
-            this.lblDataHora.TabIndex = 8;
-            this.lblDataHora.Text = "label1";
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(366, 564);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(134, 42);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Atualizar Tabela";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(217, 489);
+            this.label1.Location = new System.Drawing.Point(339, 96);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 20);
+            this.label1.Size = new System.Drawing.Size(175, 23);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Observação";
+            this.label1.Text = "Empresas Cadastradas";
             // 
-            // rtObservacao
-            // 
-            this.rtObservacao.Location = new System.Drawing.Point(318, 475);
-            this.rtObservacao.MaxLength = 45;
-            this.rtObservacao.Name = "rtObservacao";
-            this.rtObservacao.Size = new System.Drawing.Size(418, 59);
-            this.rtObservacao.TabIndex = 10;
-            this.rtObservacao.Text = "";
-            // 
-            // registrarObservacao
-            // 
-            this.registrarObservacao.BackColor = System.Drawing.Color.Transparent;
-            this.registrarObservacao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.registrarObservacao.ForeColor = System.Drawing.Color.White;
-            this.registrarObservacao.Location = new System.Drawing.Point(861, 508);
-            this.registrarObservacao.Name = "registrarObservacao";
-            this.registrarObservacao.Size = new System.Drawing.Size(125, 26);
-            this.registrarObservacao.TabIndex = 11;
-            this.registrarObservacao.Text = "Registrar Observação ";
-            this.registrarObservacao.UseVisualStyleBackColor = false;
-            this.registrarObservacao.Click += new System.EventHandler(this.registrarObservacao_Click);
-            // 
-            // dateTimePickerObs
-            // 
-            this.dateTimePickerObs.Location = new System.Drawing.Point(774, 472);
-            this.dateTimePickerObs.Name = "dateTimePickerObs";
-            this.dateTimePickerObs.Size = new System.Drawing.Size(299, 20);
-            this.dateTimePickerObs.TabIndex = 12;
-            // 
-            // FolhadePonto
+            // EmpresaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
-            this.Controls.Add(this.dateTimePickerObs);
-            this.Controls.Add(this.registrarObservacao);
-            this.Controls.Add(this.rtObservacao);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblDataHora);
-            this.Controls.Add(this.btnRegistrarPonto);
-            this.Controls.Add(this.dgPontoUsuario);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dgEmpresa);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.btnSair);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "FolhadePonto";
+            this.Name = "EmpresaView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ponto Eletrônico";
-            this.Load += new System.EventHandler(this.FolhadePonto_Load);
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
+            this.Text = "Empresas";
+            this.Load += new System.EventHandler(this.EmpresaView_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgPontoUsuario)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEmpresa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,24 +270,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox userImage;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblTipoUsuario;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label lblWelcomeUser;
         private System.Windows.Forms.Button btnDashboard;
-        private System.Windows.Forms.DataGridView dgPontoUsuario;
-        private System.Windows.Forms.Button btnRegistrarPonto;
-        private System.Windows.Forms.Timer tmDataHora;
-        private System.Windows.Forms.Label lblDataHora;
-        private System.Windows.Forms.Label lblTipoUsuario;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.PictureBox userImage;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnPontoEletronico;
+        private System.Windows.Forms.DataGridView dgEmpresa;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RichTextBox rtObservacao;
-        private System.Windows.Forms.Button registrarObservacao;
-        private System.Windows.Forms.DateTimePicker dateTimePickerObs;
     }
 }

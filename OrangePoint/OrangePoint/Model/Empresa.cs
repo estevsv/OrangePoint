@@ -14,6 +14,9 @@ namespace OrangePoint.Model
         private RegimeEmpresa regime;
         public RegimeEmpresa Regime { get => regime; set => regime = value; }
 
+        private string razaoSocial;
+        public string RazaoSocial { get => razaoSocial; set => razaoSocial = value; }
+
         private string grupo;
         public string Grupo { get => grupo; set => grupo = value; }
 

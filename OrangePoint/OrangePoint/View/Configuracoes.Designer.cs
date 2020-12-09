@@ -222,11 +222,11 @@
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 220);
+            this.button2.Location = new System.Drawing.Point(0, 273);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(211, 68);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Cadastros";
+            this.button2.Text = "Empresas";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

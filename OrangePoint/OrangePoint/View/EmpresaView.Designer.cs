@@ -43,6 +43,11 @@
             this.dgEmpresa = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtFiltroRazaoSocial = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -205,10 +210,10 @@
             // dgEmpresa
             // 
             this.dgEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgEmpresa.Location = new System.Drawing.Point(217, 141);
+            this.dgEmpresa.Location = new System.Drawing.Point(217, 179);
             this.dgEmpresa.Name = "dgEmpresa";
             this.dgEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgEmpresa.Size = new System.Drawing.Size(402, 417);
+            this.dgEmpresa.Size = new System.Drawing.Size(856, 379);
             this.dgEmpresa.TabIndex = 9;
             // 
             // button1
@@ -219,7 +224,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(366, 564);
+            this.button1.Location = new System.Drawing.Point(217, 564);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 42);
             this.button1.TabIndex = 13;
@@ -233,11 +238,59 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(339, 96);
+            this.label1.Location = new System.Drawing.Point(225, 96);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(175, 23);
+            this.label1.Size = new System.Drawing.Size(174, 23);
             this.label1.TabIndex = 9;
-            this.label1.Text = "Empresas Cadastradas";
+            this.label1.Text = "Filtrar por Razão Social";
+            // 
+            // txtFiltroRazaoSocial
+            // 
+            this.txtFiltroRazaoSocial.Location = new System.Drawing.Point(429, 98);
+            this.txtFiltroRazaoSocial.Name = "txtFiltroRazaoSocial";
+            this.txtFiltroRazaoSocial.Size = new System.Drawing.Size(175, 20);
+            this.txtFiltroRazaoSocial.TabIndex = 14;
+            this.txtFiltroRazaoSocial.TextChanged += new System.EventHandler(this.txtFiltroRazaoSocial_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(811, 101);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(175, 20);
+            this.textBox1.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(659, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 23);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Filtrar por Grupo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(225, 136);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(135, 23);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Filtrar por Regime";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(429, 137);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(175, 21);
+            this.comboBox1.TabIndex = 18;
             // 
             // EmpresaView
             // 
@@ -246,6 +299,11 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtFiltroRazaoSocial);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgEmpresa);
@@ -284,5 +342,10 @@
         private System.Windows.Forms.DataGridView dgEmpresa;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtFiltroRazaoSocial;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

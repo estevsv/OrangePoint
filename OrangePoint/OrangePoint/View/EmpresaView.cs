@@ -16,7 +16,7 @@ namespace OrangePoint.View
     public partial class EmpresaView : Form
     {
         private Usuario usuarioPagina;
-        private DataTable tabelaEmpresas;
+        private List<Empresa> listaEmpresas;
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
 
@@ -33,8 +33,8 @@ namespace OrangePoint.View
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
 
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
-            tabelaEmpresas = empresaRule.PesquisaEmpresasTabela();
-            CarregaGrid();
+            listaEmpresas = empresaRule.listaEmpresas();
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas));
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -86,22 +86,12 @@ namespace OrangePoint.View
             btnPontoEletronico.Visible = listaPermissoes[4];
         }
 
-        private void CarregaGrid()
+        private void CarregaGrid(DataTable tabela)
         {
-            dgEmpresa.DataSource = tabelaEmpresas;
+            dgEmpresa.DataSource = tabela;
 
-            dgEmpresa.Columns["COD_EMPRESA"].Visible = false;
-            dgEmpresa.Columns["COD_REGIME"].Visible = false;
-            dgEmpresa.Columns["CNPJ"].Visible = false;
-            dgEmpresa.Columns["CLASSIFICACAO"].Visible = false;
-            dgEmpresa.Columns["NUM_SOCIOS"].Visible = false;
-            dgEmpresa.Columns["NUM_VINCULOS"].Visible = false;
-            dgEmpresa.Columns["OBSERVACAO"].Visible = false;
-            dgEmpresa.Columns["SENHA_SIAT"].Visible = false;
-            dgEmpresa.Columns["ESOCIAL"].Visible = false;
-            dgEmpresa.Columns["RAZAO_SOCIAL"].HeaderText = "Razão Social";
-            dgEmpresa.Columns["GRUPO"].HeaderText = "Grupo";
-
+            dgEmpresa.Columns["id"].Visible = false;
+            
             dgEmpresa.Columns["RAZAO_SOCIAL"].Width = 200;
             dgEmpresa.Columns["GRUPO"].Width = 160;
 
@@ -111,8 +101,18 @@ namespace OrangePoint.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            tabelaEmpresas = empresaRule.PesquisaEmpresasTabela();
-            CarregaGrid();
+            //tabelaEmpresas = empresaRule.PesquisaEmpresasTabela();
+            //CarregaGrid();
+        }
+
+        private void txtFiltroRazaoSocial_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FiltraLista()
+        {
+
         }
     }
 }

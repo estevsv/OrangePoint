@@ -46,6 +46,13 @@ namespace OrangePoint.BusinessRule
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
+                ColumnName = "CNPJ",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
                 ColumnName = "Grupo",
                 ReadOnly = true,
             };
@@ -67,6 +74,7 @@ namespace OrangePoint.BusinessRule
                 row = table.NewRow();
                 row["id"] = empresa.CodEmpresa;
                 row["Razão Social"] = empresa.RazaoSocial;
+                row["CNPJ"] = empresa.CNPJ;
                 row["Grupo"] = empresa.Grupo;
                 row["Regime"] = empresa.Regime;
                 table.Rows.Add(row);

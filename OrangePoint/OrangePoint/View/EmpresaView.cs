@@ -92,17 +92,21 @@ namespace OrangePoint.View
 
             dgEmpresa.Columns["id"].Visible = false;
             
-            dgEmpresa.Columns["RAZAO_SOCIAL"].Width = 200;
-            dgEmpresa.Columns["GRUPO"].Width = 160;
+            dgEmpresa.Columns["Razão Social"].Width = 250;
+            dgEmpresa.Columns["CNPJ"].Width = 165;
+            dgEmpresa.Columns["Grupo"].Width = 200;
+            dgEmpresa.Columns["Regime"].Width = 200;
 
-            dgEmpresa.Columns["RAZAO_SOCIAL"].ReadOnly = true;
-            dgEmpresa.Columns["GRUPO"].ReadOnly = true;
+            dgEmpresa.Columns["Razão Social"].ReadOnly = true; 
+            dgEmpresa.Columns["CNPJ"].ReadOnly = true;
+            dgEmpresa.Columns["Grupo"].ReadOnly = true;
+            dgEmpresa.Columns["Regime"].ReadOnly = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //tabelaEmpresas = empresaRule.PesquisaEmpresasTabela();
-            //CarregaGrid();
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas));
+            LimparCampos();
         }
 
         private void txtFiltroRazaoSocial_TextChanged(object sender, EventArgs e)
@@ -113,6 +117,13 @@ namespace OrangePoint.View
         private void FiltraLista()
         {
 
+        }
+
+        private void LimparCampos()
+        {
+            txtFiltroRazaoSocial.Text = "";
+            txtFiltraGrupo.Text = "";
+            cbRegime.SelectedIndex = -1;
         }
     }
 }

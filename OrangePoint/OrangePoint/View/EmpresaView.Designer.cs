@@ -44,10 +44,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFiltroRazaoSocial = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFiltraGrupo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbRegime = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -173,6 +174,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(211, 0);
@@ -252,12 +254,12 @@
             this.txtFiltroRazaoSocial.TabIndex = 14;
             this.txtFiltroRazaoSocial.TextChanged += new System.EventHandler(this.txtFiltroRazaoSocial_TextChanged);
             // 
-            // textBox1
+            // txtFiltraGrupo
             // 
-            this.textBox1.Location = new System.Drawing.Point(811, 101);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(175, 20);
-            this.textBox1.TabIndex = 16;
+            this.txtFiltraGrupo.Location = new System.Drawing.Point(811, 101);
+            this.txtFiltraGrupo.Name = "txtFiltraGrupo";
+            this.txtFiltraGrupo.Size = new System.Drawing.Size(175, 20);
+            this.txtFiltraGrupo.TabIndex = 16;
             // 
             // label2
             // 
@@ -283,14 +285,28 @@
             this.label4.TabIndex = 17;
             this.label4.Text = "Filtrar por Regime";
             // 
-            // comboBox1
+            // cbRegime
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(429, 137);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(175, 21);
-            this.comboBox1.TabIndex = 18;
+            this.cbRegime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRegime.FormattingEnabled = true;
+            this.cbRegime.Location = new System.Drawing.Point(429, 137);
+            this.cbRegime.Name = "cbRegime";
+            this.cbRegime.Size = new System.Drawing.Size(175, 21);
+            this.cbRegime.TabIndex = 18;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(211, 68);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Regime";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // EmpresaView
             // 
@@ -299,9 +315,9 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbRegime);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFiltraGrupo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFiltroRazaoSocial);
             this.Controls.Add(this.label1);
@@ -319,6 +335,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgEmpresa)).EndInit();
             this.ResumeLayout(false);
@@ -343,9 +360,10 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltroRazaoSocial;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFiltraGrupo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbRegime;
+        private System.Windows.Forms.Button button2;
     }
 }

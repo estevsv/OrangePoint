@@ -16,8 +16,12 @@ namespace OrangePoint.Resources
 
         public Image CarregaImagemUsuario(Usuario usuario, Image imagemPadrao)
         {
-            if (usuario.FotoUsuario != null && usuario.FotoUsuario != "")
-                return Image.FromFile(usuario.FotoUsuario);
+            try
+            {
+                if (usuario.FotoUsuario != null && usuario.FotoUsuario != "")
+                    return Image.FromFile(usuario.FotoUsuario);
+            }
+            catch { return imagemPadrao; }
             return imagemPadrao;
         }
 

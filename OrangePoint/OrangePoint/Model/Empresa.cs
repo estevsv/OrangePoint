@@ -14,11 +14,11 @@ namespace OrangePoint.Model
         private RegimeEmpresa regime;
         public RegimeEmpresa Regime { get => regime; set => regime = value; }
 
+        private Grupo grupo;
+        public Grupo Grupo { get => grupo; set => grupo = value; }
+
         private string razaoSocial;
         public string RazaoSocial { get => razaoSocial; set => razaoSocial = value; }
-
-        private string grupo;
-        public string Grupo { get => grupo; set => grupo = value; }
 
         private string cnpj;
         public string CNPJ { get => cnpj; set => cnpj = value; }

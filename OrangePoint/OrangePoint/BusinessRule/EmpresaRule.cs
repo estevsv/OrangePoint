@@ -76,7 +76,7 @@ namespace OrangePoint.BusinessRule
                 row["Razão Social"] = empresa.RazaoSocial;
                 row["CNPJ"] = empresa.CNPJ;
                 row["Grupo"] = empresa.Grupo;
-                row["Regime"] = empresa.Regime;
+                row["Regime"] = empresa.Regime.Descricao;
                 table.Rows.Add(row);
             }
 

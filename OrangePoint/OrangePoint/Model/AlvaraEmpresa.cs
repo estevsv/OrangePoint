@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrangePoint.Model
 {
-    class AlvaraEmpresa
+    public class AlvaraEmpresa
     {
         private int codAlvara;
         public int CodAlvara { get => codAlvara; set => codAlvara = value; }

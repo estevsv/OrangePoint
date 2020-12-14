@@ -14,6 +14,7 @@ namespace OrangePoint.DataAccess
     {
         private ConexaoBD conexao = new ConexaoBD();
         RegimeEmpresaDAO regimeEmpresaDAO = new RegimeEmpresaDAO();
+        GrupoDAO grupoDAO = new GrupoDAO();
 
         public DataTable PesquisaEmpresasTabela()
         {
@@ -34,6 +35,7 @@ namespace OrangePoint.DataAccess
         {
             List<Empresa> listEmpresa = new List<Empresa>();
             List<RegimeEmpresa> listaRegimeEmpresa = regimeEmpresaDAO.PesquisaRegimeEmpresasLista();
+            List<Grupo> listaGrupoEmpresa = grupoDAO.PesquisaGrupoEmpresasLista();
 
             try
             {
@@ -50,7 +52,7 @@ namespace OrangePoint.DataAccess
                     empresa.Classificacao = registro["CLASSIFICACAO"].ToString();
                     empresa.CNPJ = registro["CNPJ"].ToString();
                     empresa.ESocial = registro["ESOCIAL"].ToString();
-                    empresa.Grupo = registro["GRUPO"].ToString();
+                    empresa.Grupo = listaGrupoEmpresa.Find(o => o.CodGrupo == int.Parse(registro["COD_GRUPO"].ToString()));
                     empresa.NumSocios = int.Parse(registro["NUM_SOCIOS"].ToString());
                     empresa.NumVinculos = int.Parse(registro["NUM_VINCULOS"].ToString());
                     empresa.Observacao = registro["OBSERVACAO"].ToString();

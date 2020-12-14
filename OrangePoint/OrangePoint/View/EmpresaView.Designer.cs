@@ -38,6 +38,7 @@
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.dgEmpresa = new System.Windows.Forms.DataGridView();
@@ -48,7 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbRegime = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -182,6 +182,20 @@
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 6;
             // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 1);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(211, 68);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Cadastros";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // userImage
             // 
             this.userImage.BackColor = System.Drawing.Color.Transparent;
@@ -260,6 +274,7 @@
             this.txtFiltraGrupo.Name = "txtFiltraGrupo";
             this.txtFiltraGrupo.Size = new System.Drawing.Size(175, 20);
             this.txtFiltraGrupo.TabIndex = 16;
+            this.txtFiltraGrupo.TextChanged += new System.EventHandler(this.txtFiltraGrupo_TextChanged);
             // 
             // label2
             // 
@@ -293,20 +308,7 @@
             this.cbRegime.Name = "cbRegime";
             this.cbRegime.Size = new System.Drawing.Size(175, 21);
             this.cbRegime.TabIndex = 18;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 68);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Regime";
-            this.button2.UseVisualStyleBackColor = false;
+            this.cbRegime.SelectedIndexChanged += new System.EventHandler(this.cbRegime_SelectedIndexChanged);
             // 
             // EmpresaView
             // 

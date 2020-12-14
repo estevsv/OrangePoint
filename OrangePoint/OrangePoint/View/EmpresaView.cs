@@ -109,21 +109,26 @@ namespace OrangePoint.View
             LimparCampos();
         }
 
-        private void txtFiltroRazaoSocial_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FiltraLista()
-        {
-
-        }
 
         private void LimparCampos()
         {
             txtFiltroRazaoSocial.Text = "";
             txtFiltraGrupo.Text = "";
             cbRegime.SelectedIndex = -1;
+        }
+        private void txtFiltroRazaoSocial_TextChanged(object sender, EventArgs e)
+        {
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas.Where(o => o.RazaoSocial == txtFiltroRazaoSocial.Text).ToList()));
+        }
+
+        private void txtFiltraGrupo_TextChanged(object sender, EventArgs e)
+        {
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas.Where(o => o.Grupo == txtFiltraGrupo.Text).ToList()));
+        }
+
+        private void cbRegime_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas.Where(o => o.Regime.CodRegime == int.Parse(cbRegime.SelectedValue.ToString())).ToList()));
         }
     }
 }

@@ -72,6 +72,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessRule\AtividadeEmpresa.cs" />
+    <Compile Include="BusinessRule\AtividadeRule.cs" />
     <Compile Include="BusinessRule\EmpresaRule.cs" />
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
     <Compile Include="BusinessRule\GrupoRule.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="BusinessRule\PermissoesRule.cs" />
     <Compile Include="BusinessRule\RegimeEmpresaRule.cs" />
     <Compile Include="BusinessRule\TipoPermissaoRule.cs" />
+    <Compile Include="DataAccess\AtividadeDAO.cs" />
+    <Compile Include="DataAccess\AtividadeEmpresaDAO.cs" />
     <Compile Include="DataAccess\EmpresaDAO.cs" />
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />
     <Compile Include="DataAccess\GrupoDAO.cs" />

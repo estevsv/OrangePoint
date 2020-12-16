@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace OrangePoint.BusinessRule
 {
-    public class GrupoRule
+    public class AtividadeRule
     {
-        GrupoDAO grupoDAO = new GrupoDAO();
+        AtividadeDAO AtividadeDAO = new AtividadeDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
 
-        public DataTable PesquisaGrupoEmpresasTabela()
+        public DataTable PesquisaAtividadeTabela()
         {
-            return grupoDAO.PesquisaGrupoEmpresasTabela();
+            return AtividadeDAO.PesquisaAtividadeTabela();
         }
 
-        public List<Grupo> listaGrupoEmpresas()
+        public List<Atividade> listaAtividadeEmpresas()
         {
-            return grupoDAO.PesquisaGrupoEmpresasLista();
+            return AtividadeDAO.PesquisaAtividadeLista();
         }
 
         public void IncluirGrupoEmpresa(string descricao)

@@ -247,7 +247,7 @@ namespace OrangePoint.View
                     //
                     XcelApp.Visible = true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     MessageBox.Show("Erro ao exportar. Contate o Suporte.");
                     return;

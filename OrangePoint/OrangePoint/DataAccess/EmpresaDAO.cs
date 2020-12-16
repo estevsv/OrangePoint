@@ -53,8 +53,8 @@ namespace OrangePoint.DataAccess
                     empresa.CNPJ = registro["CNPJ"].ToString();
                     empresa.ESocial = registro["ESOCIAL"].ToString();
                     empresa.Grupo = listaGrupoEmpresa.Find(o => o.CodGrupo == int.Parse(registro["COD_GRUPO"].ToString()));
-                    empresa.NumSocios = int.Parse(registro["NUM_SOCIOS"].ToString());
-                    empresa.NumVinculos = int.Parse(registro["NUM_VINCULOS"].ToString());
+                    empresa.NumSocios = int.Parse(registro["NUM_SOCIOS"].ToString() == "" ? "0" : registro["NUM_SOCIOS"].ToString());
+                    empresa.NumVinculos = int.Parse(registro["NUM_VINCULOS"].ToString() == "" ? "0" : registro["NUM_VINCULOS"].ToString());
                     empresa.Observacao = registro["OBSERVACAO"].ToString();
                     empresa.RazaoSocial = registro["RAZAO_SOCIAL"].ToString();
                     empresa.SenhaSIAT = registro["NUM_VINCULOS"].ToString();
@@ -62,7 +62,7 @@ namespace OrangePoint.DataAccess
                 }
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro EmpresaDAO/PesquisaEmpresasLista. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro EmpresaDAO/PesquisaEmpresasLista. Contate o Suporte"); }
             return listEmpresa;
         }
     }

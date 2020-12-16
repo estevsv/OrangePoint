@@ -58,7 +58,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro TipoPermissaoDAO/DeletarPorTipoPermissao. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro TipoPermissaoDAO/DeletarPorTipoPermissao. Contate o Suporte"); }
         }
 
         public void Incluir(Permissoes permissao)
@@ -75,7 +75,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/Incluir. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissoesDAO/Incluir. Contate o Suporte"); }
         }
 
         public void Update(Permissoes permissao)
@@ -92,7 +92,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/Update. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissoesDAO/Update. Contate o Suporte"); }
         }
 
         public DataTable PesquisaTodasPermissaoTabela()
@@ -123,7 +123,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/Excluir. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissoesDAO/Excluir. Contate o Suporte"); }
         }
 
         public void ExcluirPorUsuario(int codUsuario)
@@ -139,7 +139,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissoesDAO/ExcluirPorUsuario. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissoesDAO/ExcluirPorUsuario. Contate o Suporte"); }
         }
     }
 }

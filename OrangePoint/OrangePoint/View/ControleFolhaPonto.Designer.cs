@@ -276,6 +276,7 @@
             // 
             this.dgFolhaPonto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgFolhaPonto.Location = new System.Drawing.Point(228, 216);
+            this.dgFolhaPonto.MultiSelect = false;
             this.dgFolhaPonto.Name = "dgFolhaPonto";
             this.dgFolhaPonto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgFolhaPonto.Size = new System.Drawing.Size(816, 327);

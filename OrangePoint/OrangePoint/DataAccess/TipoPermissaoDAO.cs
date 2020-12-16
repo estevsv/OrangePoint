@@ -69,7 +69,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro TipoPermissaoDAO/Incluir. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro TipoPermissaoDAO/Incluir. Contate o Suporte"); }
         }
 
         public void Deletar(int idTipopermissao)
@@ -85,7 +85,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro TipoPermissaoDAO/Deletar. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro TipoPermissaoDAO/Deletar. Contate o Suporte"); }
         }
     }
 }

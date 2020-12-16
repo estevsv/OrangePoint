@@ -249,6 +249,7 @@
             // 
             this.dgPermissoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPermissoes.Location = new System.Drawing.Point(682, 203);
+            this.dgPermissoes.MultiSelect = false;
             this.dgPermissoes.Name = "dgPermissoes";
             this.dgPermissoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPermissoes.Size = new System.Drawing.Size(391, 302);
@@ -370,6 +371,7 @@
             // 
             this.dgUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUsuarios.Location = new System.Drawing.Point(228, 119);
+            this.dgUsuarios.MultiSelect = false;
             this.dgUsuarios.Name = "dgUsuarios";
             this.dgUsuarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgUsuarios.Size = new System.Drawing.Size(391, 386);

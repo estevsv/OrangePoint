@@ -39,6 +39,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.txtNovoRegime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,12 +53,24 @@
             this.dgAtividadeEmpresa = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAtividadeEmpresa = new System.Windows.Forms.TextBox();
+            this.btnAdicionaTipoDatas = new System.Windows.Forms.Button();
+            this.dgTipoDatas = new System.Windows.Forms.DataGridView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDatas = new System.Windows.Forms.TextBox();
+            this.btnAdicionarTipoValor = new System.Windows.Forms.Button();
+            this.dgTipoValor = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTipoValor = new System.Windows.Forms.TextBox();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnCadastrarSubtipos = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoDatas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoValor)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,6 +105,7 @@
             this.button7.TabIndex = 9;
             this.button7.Text = "Dashboard";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // lblTipoUsuario
             // 
@@ -117,6 +131,7 @@
             this.button5.TabIndex = 5;
             this.button5.Text = "Apuração de Lucro Real";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -131,6 +146,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "Consultoria Contábil";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -145,6 +161,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Configurações";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // lblWelcomeUser
             // 
@@ -170,6 +187,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Empresas";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnPontoEletronico
             // 
@@ -184,17 +202,34 @@
             this.btnPontoEletronico.TabIndex = 0;
             this.btnPontoEletronico.Text = "Ponto Eletrônico";
             this.btnPontoEletronico.UseVisualStyleBackColor = false;
+            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
             // 
             // panel2
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(211, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(211, 68);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Cadastro de Empresa";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // userImage
             // 
@@ -220,7 +255,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(301, 94);
+            this.label1.Location = new System.Drawing.Point(298, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 22);
             this.label1.TabIndex = 20;
@@ -230,10 +265,12 @@
             // 
             this.dgRegime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRegime.Location = new System.Drawing.Point(237, 184);
+            this.dgRegime.MultiSelect = false;
             this.dgRegime.Name = "dgRegime";
             this.dgRegime.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgRegime.Size = new System.Drawing.Size(196, 157);
             this.dgRegime.TabIndex = 21;
+            this.dgRegime.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgRegime_UserDeletingRow);
             // 
             // AdicionarRegime
             // 
@@ -249,6 +286,7 @@
             this.AdicionarRegime.TabIndex = 22;
             this.AdicionarRegime.Text = "Adicionar";
             this.AdicionarRegime.UseVisualStyleBackColor = false;
+            this.AdicionarRegime.Click += new System.EventHandler(this.AdicionarRegime_Click);
             // 
             // AdicionarGrupo
             // 
@@ -264,15 +302,18 @@
             this.AdicionarGrupo.TabIndex = 26;
             this.AdicionarGrupo.Text = "Adicionar";
             this.AdicionarGrupo.UseVisualStyleBackColor = false;
+            this.AdicionarGrupo.Click += new System.EventHandler(this.AdicionarGrupo_Click);
             // 
             // dgGrupo
             // 
             this.dgGrupo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgGrupo.Location = new System.Drawing.Point(551, 184);
+            this.dgGrupo.MultiSelect = false;
             this.dgGrupo.Name = "dgGrupo";
             this.dgGrupo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgGrupo.Size = new System.Drawing.Size(196, 157);
             this.dgGrupo.TabIndex = 25;
+            this.dgGrupo.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgGrupo_UserDeletingRow);
             // 
             // label2
             // 
@@ -280,7 +321,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(623, 94);
+            this.label2.Location = new System.Drawing.Point(614, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 22);
             this.label2.TabIndex = 24;
@@ -336,6 +377,123 @@
             this.txtAtividadeEmpresa.Size = new System.Drawing.Size(196, 20);
             this.txtAtividadeEmpresa.TabIndex = 27;
             // 
+            // btnAdicionaTipoDatas
+            // 
+            this.btnAdicionaTipoDatas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionaTipoDatas.AutoSize = true;
+            this.btnAdicionaTipoDatas.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionaTipoDatas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdicionaTipoDatas.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionaTipoDatas.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionaTipoDatas.Location = new System.Drawing.Point(277, 416);
+            this.btnAdicionaTipoDatas.Name = "btnAdicionaTipoDatas";
+            this.btnAdicionaTipoDatas.Size = new System.Drawing.Size(113, 30);
+            this.btnAdicionaTipoDatas.TabIndex = 34;
+            this.btnAdicionaTipoDatas.Text = "Adicionar";
+            this.btnAdicionaTipoDatas.UseVisualStyleBackColor = false;
+            // 
+            // dgTipoDatas
+            // 
+            this.dgTipoDatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTipoDatas.Location = new System.Drawing.Point(237, 452);
+            this.dgTipoDatas.Name = "dgTipoDatas";
+            this.dgTipoDatas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgTipoDatas.Size = new System.Drawing.Size(196, 157);
+            this.dgTipoDatas.TabIndex = 33;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(283, 365);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 22);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Tipo de Datas";
+            // 
+            // txtDatas
+            // 
+            this.txtDatas.Location = new System.Drawing.Point(237, 390);
+            this.txtDatas.Name = "txtDatas";
+            this.txtDatas.Size = new System.Drawing.Size(196, 20);
+            this.txtDatas.TabIndex = 31;
+            // 
+            // btnAdicionarTipoValor
+            // 
+            this.btnAdicionarTipoValor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionarTipoValor.AutoSize = true;
+            this.btnAdicionarTipoValor.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarTipoValor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdicionarTipoValor.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarTipoValor.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionarTipoValor.Location = new System.Drawing.Point(591, 416);
+            this.btnAdicionarTipoValor.Name = "btnAdicionarTipoValor";
+            this.btnAdicionarTipoValor.Size = new System.Drawing.Size(113, 30);
+            this.btnAdicionarTipoValor.TabIndex = 38;
+            this.btnAdicionarTipoValor.Text = "Adicionar";
+            this.btnAdicionarTipoValor.UseVisualStyleBackColor = false;
+            // 
+            // dgTipoValor
+            // 
+            this.dgTipoValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTipoValor.Location = new System.Drawing.Point(551, 452);
+            this.dgTipoValor.Name = "dgTipoValor";
+            this.dgTipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgTipoValor.Size = new System.Drawing.Size(196, 157);
+            this.dgTipoValor.TabIndex = 37;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(597, 365);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 22);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Tipo de Valor";
+            // 
+            // txtTipoValor
+            // 
+            this.txtTipoValor.Location = new System.Drawing.Point(551, 390);
+            this.txtTipoValor.Name = "txtTipoValor";
+            this.txtTipoValor.Size = new System.Drawing.Size(196, 20);
+            this.txtTipoValor.TabIndex = 35;
+            // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.AutoSize = true;
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.Color.White;
+            this.btnSair.Location = new System.Drawing.Point(893, 564);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(134, 42);
+            this.btnSair.TabIndex = 41;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnCadastrarSubtipos
+            // 
+            this.btnCadastrarSubtipos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCadastrarSubtipos.AutoSize = true;
+            this.btnCadastrarSubtipos.BackColor = System.Drawing.Color.Transparent;
+            this.btnCadastrarSubtipos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCadastrarSubtipos.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastrarSubtipos.ForeColor = System.Drawing.Color.White;
+            this.btnCadastrarSubtipos.Location = new System.Drawing.Point(863, 452);
+            this.btnCadastrarSubtipos.Name = "btnCadastrarSubtipos";
+            this.btnCadastrarSubtipos.Size = new System.Drawing.Size(196, 72);
+            this.btnCadastrarSubtipos.TabIndex = 42;
+            this.btnCadastrarSubtipos.Text = "Cadastrar Subtipos";
+            this.btnCadastrarSubtipos.UseVisualStyleBackColor = false;
+            // 
             // CadastroAuxiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -343,6 +501,16 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.btnCadastrarSubtipos);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.btnAdicionarTipoValor);
+            this.Controls.Add(this.dgTipoValor);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtTipoValor);
+            this.Controls.Add(this.btnAdicionaTipoDatas);
+            this.Controls.Add(this.dgTipoDatas);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtDatas);
             this.Controls.Add(this.AdicionarAtividadeEmpresa);
             this.Controls.Add(this.dgAtividadeEmpresa);
             this.Controls.Add(this.label3);
@@ -361,13 +529,17 @@
             this.Name = "CadastroAuxiliar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Auxiliar";
+            this.Load += new System.EventHandler(this.CadastroAuxiliar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGrupo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoDatas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoValor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,5 +570,16 @@
         private System.Windows.Forms.DataGridView dgAtividadeEmpresa;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAtividadeEmpresa;
+        private System.Windows.Forms.Button btnAdicionaTipoDatas;
+        private System.Windows.Forms.DataGridView dgTipoDatas;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDatas;
+        private System.Windows.Forms.Button btnAdicionarTipoValor;
+        private System.Windows.Forms.DataGridView dgTipoValor;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTipoValor;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnCadastrarSubtipos;
+        private System.Windows.Forms.Button button1;
     }
 }

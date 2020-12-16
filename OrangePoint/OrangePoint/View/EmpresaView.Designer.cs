@@ -38,6 +38,7 @@
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.btnSair = new System.Windows.Forms.Button();
@@ -45,10 +46,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFiltroRazaoSocial = new System.Windows.Forms.TextBox();
-            this.txtFiltraGrupo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbRegime = new System.Windows.Forms.ComboBox();
+            this.cbGrupo = new System.Windows.Forms.ComboBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -174,6 +176,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -181,6 +184,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 6;
+            // 
+            // button6
+            // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button6.AutoSize = true;
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(179, 1);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(137, 68);
+            this.button6.TabIndex = 11;
+            this.button6.Text = "Cadastro Auxiliar";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button2
             // 
@@ -191,10 +209,11 @@
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(0, 1);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 68);
+            this.button2.Size = new System.Drawing.Size(173, 68);
             this.button2.TabIndex = 9;
-            this.button2.Text = "Cadastros";
+            this.button2.Text = "Cadastro de Empresa";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // userImage
             // 
@@ -227,6 +246,7 @@
             // 
             this.dgEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEmpresa.Location = new System.Drawing.Point(217, 179);
+            this.dgEmpresa.MultiSelect = false;
             this.dgEmpresa.Name = "dgEmpresa";
             this.dgEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgEmpresa.Size = new System.Drawing.Size(856, 379);
@@ -254,7 +274,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(225, 96);
+            this.label1.Location = new System.Drawing.Point(275, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 23);
             this.label1.TabIndex = 9;
@@ -262,19 +282,10 @@
             // 
             // txtFiltroRazaoSocial
             // 
-            this.txtFiltroRazaoSocial.Location = new System.Drawing.Point(429, 98);
+            this.txtFiltroRazaoSocial.Location = new System.Drawing.Point(274, 129);
             this.txtFiltroRazaoSocial.Name = "txtFiltroRazaoSocial";
             this.txtFiltroRazaoSocial.Size = new System.Drawing.Size(175, 20);
             this.txtFiltroRazaoSocial.TabIndex = 14;
-            this.txtFiltroRazaoSocial.TextChanged += new System.EventHandler(this.txtFiltroRazaoSocial_TextChanged);
-            // 
-            // txtFiltraGrupo
-            // 
-            this.txtFiltraGrupo.Location = new System.Drawing.Point(811, 101);
-            this.txtFiltraGrupo.Name = "txtFiltraGrupo";
-            this.txtFiltraGrupo.Size = new System.Drawing.Size(175, 20);
-            this.txtFiltraGrupo.TabIndex = 16;
-            this.txtFiltraGrupo.TextChanged += new System.EventHandler(this.txtFiltraGrupo_TextChanged);
             // 
             // label2
             // 
@@ -282,7 +293,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(659, 93);
+            this.label2.Location = new System.Drawing.Point(727, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 23);
             this.label2.TabIndex = 15;
@@ -294,7 +305,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(225, 136);
+            this.label4.Location = new System.Drawing.Point(502, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 23);
             this.label4.TabIndex = 17;
@@ -304,11 +315,35 @@
             // 
             this.cbRegime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRegime.FormattingEnabled = true;
-            this.cbRegime.Location = new System.Drawing.Point(429, 137);
+            this.cbRegime.Location = new System.Drawing.Point(479, 130);
             this.cbRegime.Name = "cbRegime";
             this.cbRegime.Size = new System.Drawing.Size(175, 21);
             this.cbRegime.TabIndex = 18;
-            this.cbRegime.SelectedIndexChanged += new System.EventHandler(this.cbRegime_SelectedIndexChanged);
+            // 
+            // cbGrupo
+            // 
+            this.cbGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGrupo.FormattingEnabled = true;
+            this.cbGrupo.Location = new System.Drawing.Point(697, 129);
+            this.cbGrupo.Name = "cbGrupo";
+            this.cbGrupo.Size = new System.Drawing.Size(175, 21);
+            this.cbGrupo.TabIndex = 19;
+            // 
+            // button7
+            // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button7.AutoSize = true;
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(927, 117);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(134, 42);
+            this.button7.TabIndex = 20;
+            this.button7.Text = "Filtrar";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // EmpresaView
             // 
@@ -317,9 +352,10 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.cbGrupo);
             this.Controls.Add(this.cbRegime);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtFiltraGrupo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtFiltroRazaoSocial);
             this.Controls.Add(this.label1);
@@ -362,10 +398,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltroRazaoSocial;
-        private System.Windows.Forms.TextBox txtFiltraGrupo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbRegime;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbGrupo;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

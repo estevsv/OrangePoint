@@ -51,8 +51,44 @@ namespace OrangePoint.DataAccess
                 }
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro GrupoDAO/PesquisaGrupoEmpresasLista. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro GrupoDAO/PesquisaGrupoEmpresasLista. Contate o Suporte"); }
             return listGrupoEmpresa;
+        }
+
+        public void ExcluiGrupoEmpresa(int codGrupo)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete from bdorangepoint.grupo_empresa where COD_GRUPO = " + codGrupo;
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro GrupoDAO/ExcluiGrupoEmpresa. Contate o Suporte");
+            }
+        }
+
+        public void IncluirGrupoEmpresa(string descricao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`grupo_empresa` (`DESCRICAO`) VALUES ('" + descricao + "');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro GrupoDAO/IncluirGrupoEmpresa. Contate o Suporte");
+            }
         }
     }
 }

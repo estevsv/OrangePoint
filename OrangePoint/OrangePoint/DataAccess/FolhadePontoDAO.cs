@@ -54,7 +54,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Erro FolhaPontoDAO/IncluirObservacao. Contate o Suporte");
             }
@@ -77,7 +77,7 @@ namespace OrangePoint.DataAccess
                 retorno = registro.HasRows;
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro FolhaPontoDAO/VerificaFolha. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro FolhaPontoDAO/VerificaFolha. Contate o Suporte"); }
             return retorno;
         }
 
@@ -141,7 +141,7 @@ namespace OrangePoint.DataAccess
                 }
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro FolhaPontoDAO/PesquisaFolhadePontoPorUsuarioData. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro FolhaPontoDAO/PesquisaFolhadePontoPorUsuarioData. Contate o Suporte"); }
             return ponto;
         }
 
@@ -166,7 +166,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Erro FolhaPontoDAO/AtualizaPonto. Contate o Suporte");
             }
@@ -184,7 +184,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Erro FolhaPontoDAO/ExcluiFolhaPorUsuario. Contate o Suporte");
             }

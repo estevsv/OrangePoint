@@ -213,6 +213,7 @@
             this.dgPontoUsuario.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgPontoUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPontoUsuario.Location = new System.Drawing.Point(217, 202);
+            this.dgPontoUsuario.MultiSelect = false;
             this.dgPontoUsuario.Name = "dgPontoUsuario";
             this.dgPontoUsuario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgPontoUsuario.Size = new System.Drawing.Size(856, 242);

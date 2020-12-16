@@ -40,7 +40,7 @@ namespace OrangePoint.DataAccess
                 }
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissaoTelaDAO/PesquisaPermissoesTela. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissaoTelaDAO/PesquisaPermissoesTela. Contate o Suporte"); }
             return listPermissaoTela;
         }
 
@@ -58,7 +58,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissaoTelaDAO/Incluir. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissaoTelaDAO/Incluir. Contate o Suporte"); }
         }
 
         public void DeletarPorId(int idPermissaoTela)
@@ -74,7 +74,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissaoTelaDAO/DeletarPorId. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissaoTelaDAO/DeletarPorId. Contate o Suporte"); }
         }
 
         public void DeletarPorIdTipoPermissao(int idTipoPermissao)
@@ -90,7 +90,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro PermissaoTelaDAO/DeletarPorIdTipoPermissao. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro PermissaoTelaDAO/DeletarPorIdTipoPermissao. Contate o Suporte"); }
         }
     }
 }

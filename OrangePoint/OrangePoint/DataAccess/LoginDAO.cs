@@ -138,7 +138,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Erro LoginDAO/AtualizaLogin. Contate o Suporte");
             }
@@ -157,7 +157,7 @@ namespace OrangePoint.DataAccess
                 conexao.Desconectar();
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Banco de dados inexistente");
                 return false;
@@ -176,7 +176,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Erro LoginDAO/ExcluiUsuario. Contate o Suporte");
             }
@@ -194,7 +194,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Erro LoginDAO/IncluirUsuario. Contate o Suporte");
             }

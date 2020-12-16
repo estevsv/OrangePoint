@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="BusinessRule\EmpresaRule.cs" />
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
+    <Compile Include="BusinessRule\GrupoRule.cs" />
     <Compile Include="BusinessRule\LoginRule.cs" />
     <Compile Include="BusinessRule\PermissaoTelaRule.cs" />
     <Compile Include="BusinessRule\PermissoesRule.cs" />

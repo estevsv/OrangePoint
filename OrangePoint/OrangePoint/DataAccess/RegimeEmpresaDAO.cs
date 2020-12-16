@@ -51,8 +51,44 @@ namespace OrangePoint.DataAccess
                 }
                 conexao.Desconectar();
             }
-            catch (Exception ex) { MessageBox.Show("Erro RegimeEmpresaDAO/PesquisaRegimeEmpresasLista. Contate o Suporte"); }
+            catch { MessageBox.Show("Erro RegimeEmpresaDAO/PesquisaRegimeEmpresasLista. Contate o Suporte"); }
             return listRegimeEmpresa;
+        }
+
+        public void ExcluiRegimeEmpresa(int codRegime)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete from bdorangepoint.regime_empresa where COD_REGIME = " + codRegime;
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro RegimeEmpresaDAO/ExcluiRegime. Contate o Suporte");
+            }
+        }
+
+        public void IncluirRegimeEmpresa(string descricao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`regime_empresa` (`DESCRICAO`) VALUES ('" + descricao + "');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro RegimeEmpresaDAO/IncluirLogin. Contate o Suporte");
+            }
         }
     }
 }

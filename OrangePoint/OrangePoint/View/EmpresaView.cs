@@ -19,6 +19,8 @@ namespace OrangePoint.View
         private List<Empresa> listaEmpresas;
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
+        RegimeEmpresaRule regimeEmpresaRule = new RegimeEmpresaRule();
+        GrupoRule grupoRule = new GrupoRule();
 
         public EmpresaView(Usuario usuario)
         {
@@ -35,6 +37,7 @@ namespace OrangePoint.View
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
             listaEmpresas = empresaRule.listaEmpresas();
             CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas));
+            CarregaComboBoxes();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -61,6 +64,11 @@ namespace OrangePoint.View
             FechaPagina();
             new FolhadePonto(usuarioPagina).Show();
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new CadastroEmpresa(usuarioPagina).Show();
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -76,6 +84,12 @@ namespace OrangePoint.View
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new CadastroAuxiliar(usuarioPagina).Show();
         }
 
         //Referências das Posições[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto, Controle de Folha de Ponto]
@@ -103,9 +117,21 @@ namespace OrangePoint.View
             dgEmpresa.Columns["Regime"].ReadOnly = true;
         }
 
+        private void CarregaComboBoxes()
+        {
+            cbGrupo.DataSource = grupoRule.PesquisaGrupoEmpresasTabela();
+            cbGrupo.DisplayMember = "DESCRICAO";
+            cbGrupo.ValueMember = "COD_GRUPO";
+
+            cbRegime.DataSource = regimeEmpresaRule.PesquisaRegimeEmpresasTabela();
+            cbRegime.DisplayMember = "DESCRICAO";
+            cbRegime.ValueMember = "COD_REGIME";
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas));
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
+            CarregaComboBoxes();
             LimparCampos();
         }
 
@@ -113,22 +139,21 @@ namespace OrangePoint.View
         private void LimparCampos()
         {
             txtFiltroRazaoSocial.Text = "";
-            txtFiltraGrupo.Text = "";
+            cbGrupo.SelectedIndex = -1;
             cbRegime.SelectedIndex = -1;
         }
-        private void txtFiltroRazaoSocial_TextChanged(object sender, EventArgs e)
-        {
-            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas.Where(o => o.RazaoSocial == txtFiltroRazaoSocial.Text).ToList()));
-        }
 
-        private void txtFiltraGrupo_TextChanged(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
-            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas.Where(o => o.Grupo == txtFiltraGrupo.Text).ToList()));
-        }
+            List<Empresa> listaFiltrada = listaEmpresas;
+            if (txtFiltroRazaoSocial.Text != "")
+                listaFiltrada = listaFiltrada.Where(o => o.RazaoSocial == txtFiltroRazaoSocial.Text).ToList();
+            if (int.Parse(cbRegime.SelectedValue.ToString()) != -1)
+                listaFiltrada.Where(o => o.Regime.CodRegime == int.Parse(cbRegime.SelectedValue.ToString()));
+            if (int.Parse(cbGrupo.SelectedValue.ToString()) != -1)
+                listaFiltrada.Where(o => o.Grupo.CodGrupo == int.Parse(cbGrupo.SelectedValue.ToString()));
 
-        private void cbRegime_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaEmpresas.Where(o => o.Regime.CodRegime == int.Parse(cbRegime.SelectedValue.ToString())).ToList()));
+            CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaFiltrada));
         }
     }
 }

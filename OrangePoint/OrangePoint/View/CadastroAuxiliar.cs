@@ -275,6 +275,30 @@ namespace OrangePoint.View
         }
         #endregion
 
+        #region Dados Subtipo Valor
+        //private void CarregaGridSubtipoValor()
+        //{
+        //    dgSubtipoValor.DataSource = tipoValorRule.PesquisaTipoValorTabela();
+        //    if (dgSubtipoValor.Columns.Count != 0)
+        //    {
+        //        dgSubtipoValor.Columns["COD_SUBTIPO_VALOR"].Visible = false;
+        //        dgSubtipoValor.Columns["DESC_TIPO"].HeaderText = "Descrição";
+        //        dgSubtipoValor.Columns["DESC_TIPO"].ReadOnly = true;
+        //        dgSubtipoValor.Columns["DESC_TIPO"].Width = 187;
+        //    }
+        //}
         #endregion
+
+        #endregion
+
+        private void btnCadastrarSubtipos_Click(object sender, EventArgs e)
+        {
+            pnCadastraSubtipos.Visible = true;
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            pnCadastraSubtipos.Visible = false;
+        }
     }
 }

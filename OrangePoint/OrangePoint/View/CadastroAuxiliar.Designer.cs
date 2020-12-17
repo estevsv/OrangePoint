@@ -50,13 +50,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNovoGrupo = new System.Windows.Forms.TextBox();
             this.AdicionarAtividadeEmpresa = new System.Windows.Forms.Button();
-            this.dgAtividadeEmpresa = new System.Windows.Forms.DataGridView();
+            this.dgAtividade = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtAtividadeEmpresa = new System.Windows.Forms.TextBox();
+            this.txtAtividade = new System.Windows.Forms.TextBox();
             this.btnAdicionaTipoDatas = new System.Windows.Forms.Button();
             this.dgTipoDatas = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtDatas = new System.Windows.Forms.TextBox();
+            this.txtTipoDatas = new System.Windows.Forms.TextBox();
             this.btnAdicionarTipoValor = new System.Windows.Forms.Button();
             this.dgTipoValor = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGrupo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAtividade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoDatas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoValor)).BeginInit();
             this.SuspendLayout();
@@ -348,15 +348,17 @@
             this.AdicionarAtividadeEmpresa.TabIndex = 30;
             this.AdicionarAtividadeEmpresa.Text = "Adicionar";
             this.AdicionarAtividadeEmpresa.UseVisualStyleBackColor = false;
+            this.AdicionarAtividadeEmpresa.Click += new System.EventHandler(this.AdicionarAtividadeEmpresa_Click);
             // 
-            // dgAtividadeEmpresa
+            // dgAtividade
             // 
-            this.dgAtividadeEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAtividadeEmpresa.Location = new System.Drawing.Point(863, 184);
-            this.dgAtividadeEmpresa.Name = "dgAtividadeEmpresa";
-            this.dgAtividadeEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgAtividadeEmpresa.Size = new System.Drawing.Size(196, 157);
-            this.dgAtividadeEmpresa.TabIndex = 29;
+            this.dgAtividade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAtividade.Location = new System.Drawing.Point(863, 184);
+            this.dgAtividade.Name = "dgAtividade";
+            this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgAtividade.Size = new System.Drawing.Size(196, 157);
+            this.dgAtividade.TabIndex = 29;
+            this.dgAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividade_UserDeletingRow);
             // 
             // label3
             // 
@@ -370,12 +372,12 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Atividade";
             // 
-            // txtAtividadeEmpresa
+            // txtAtividade
             // 
-            this.txtAtividadeEmpresa.Location = new System.Drawing.Point(863, 122);
-            this.txtAtividadeEmpresa.Name = "txtAtividadeEmpresa";
-            this.txtAtividadeEmpresa.Size = new System.Drawing.Size(196, 20);
-            this.txtAtividadeEmpresa.TabIndex = 27;
+            this.txtAtividade.Location = new System.Drawing.Point(863, 122);
+            this.txtAtividade.Name = "txtAtividade";
+            this.txtAtividade.Size = new System.Drawing.Size(196, 20);
+            this.txtAtividade.TabIndex = 27;
             // 
             // btnAdicionaTipoDatas
             // 
@@ -391,6 +393,7 @@
             this.btnAdicionaTipoDatas.TabIndex = 34;
             this.btnAdicionaTipoDatas.Text = "Adicionar";
             this.btnAdicionaTipoDatas.UseVisualStyleBackColor = false;
+            this.btnAdicionaTipoDatas.Click += new System.EventHandler(this.btnAdicionaTipoDatas_Click);
             // 
             // dgTipoDatas
             // 
@@ -400,6 +403,7 @@
             this.dgTipoDatas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoDatas.Size = new System.Drawing.Size(196, 157);
             this.dgTipoDatas.TabIndex = 33;
+            this.dgTipoDatas.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoDatas_UserDeletingRow);
             // 
             // label4
             // 
@@ -413,12 +417,12 @@
             this.label4.TabIndex = 32;
             this.label4.Text = "Tipo de Datas";
             // 
-            // txtDatas
+            // txtTipoDatas
             // 
-            this.txtDatas.Location = new System.Drawing.Point(237, 390);
-            this.txtDatas.Name = "txtDatas";
-            this.txtDatas.Size = new System.Drawing.Size(196, 20);
-            this.txtDatas.TabIndex = 31;
+            this.txtTipoDatas.Location = new System.Drawing.Point(237, 390);
+            this.txtTipoDatas.Name = "txtTipoDatas";
+            this.txtTipoDatas.Size = new System.Drawing.Size(196, 20);
+            this.txtTipoDatas.TabIndex = 31;
             // 
             // btnAdicionarTipoValor
             // 
@@ -434,6 +438,7 @@
             this.btnAdicionarTipoValor.TabIndex = 38;
             this.btnAdicionarTipoValor.Text = "Adicionar";
             this.btnAdicionarTipoValor.UseVisualStyleBackColor = false;
+            this.btnAdicionarTipoValor.Click += new System.EventHandler(this.btnAdicionarTipoValor_Click);
             // 
             // dgTipoValor
             // 
@@ -443,6 +448,7 @@
             this.dgTipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoValor.Size = new System.Drawing.Size(196, 157);
             this.dgTipoValor.TabIndex = 37;
+            this.dgTipoValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoValor_UserDeletingRow);
             // 
             // label5
             // 
@@ -510,11 +516,11 @@
             this.Controls.Add(this.btnAdicionaTipoDatas);
             this.Controls.Add(this.dgTipoDatas);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtDatas);
+            this.Controls.Add(this.txtTipoDatas);
             this.Controls.Add(this.AdicionarAtividadeEmpresa);
-            this.Controls.Add(this.dgAtividadeEmpresa);
+            this.Controls.Add(this.dgAtividade);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtAtividadeEmpresa);
+            this.Controls.Add(this.txtAtividade);
             this.Controls.Add(this.AdicionarGrupo);
             this.Controls.Add(this.dgGrupo);
             this.Controls.Add(this.label2);
@@ -537,7 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGrupo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAtividade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoDatas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgTipoValor)).EndInit();
             this.ResumeLayout(false);
@@ -567,13 +573,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNovoGrupo;
         private System.Windows.Forms.Button AdicionarAtividadeEmpresa;
-        private System.Windows.Forms.DataGridView dgAtividadeEmpresa;
+        private System.Windows.Forms.DataGridView dgAtividade;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtAtividadeEmpresa;
+        private System.Windows.Forms.TextBox txtAtividade;
         private System.Windows.Forms.Button btnAdicionaTipoDatas;
         private System.Windows.Forms.DataGridView dgTipoDatas;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDatas;
+        private System.Windows.Forms.TextBox txtTipoDatas;
         private System.Windows.Forms.Button btnAdicionarTipoValor;
         private System.Windows.Forms.DataGridView dgTipoValor;
         private System.Windows.Forms.Label label5;

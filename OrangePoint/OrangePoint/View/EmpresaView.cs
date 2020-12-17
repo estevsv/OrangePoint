@@ -148,6 +148,8 @@ namespace OrangePoint.View
             List<Empresa> listaFiltrada = listaEmpresas;
             if (txtFiltroRazaoSocial.Text != "")
                 listaFiltrada = listaFiltrada.Where(o => o.RazaoSocial == txtFiltroRazaoSocial.Text).ToList();
+            if(txtCnpj.Text != "")
+                listaFiltrada = listaFiltrada.Where(o => o.CNPJ == txtCnpj.Text).ToList();
             if (int.Parse(cbRegime.SelectedValue.ToString()) != -1)
                 listaFiltrada.Where(o => o.Regime.CodRegime == int.Parse(cbRegime.SelectedValue.ToString()));
             if (int.Parse(cbGrupo.SelectedValue.ToString()) != -1)

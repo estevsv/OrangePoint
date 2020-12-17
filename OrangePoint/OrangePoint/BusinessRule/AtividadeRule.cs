@@ -13,39 +13,39 @@ namespace OrangePoint.BusinessRule
     public class AtividadeRule
     {
         AtividadeDAO AtividadeDAO = new AtividadeDAO();
-        EmpresaDAO empresaDAO = new EmpresaDAO();
+        AtividadeEmpresaDAO atividadeEmpresaDAO = new AtividadeEmpresaDAO();
 
         public DataTable PesquisaAtividadeTabela()
         {
             return AtividadeDAO.PesquisaAtividadeTabela();
         }
 
-        public List<Atividade> listaAtividadeEmpresas()
+        public List<Atividade> listaAtividade()
         {
             return AtividadeDAO.PesquisaAtividadeLista();
         }
 
-        public void IncluirGrupoEmpresa(string descricao)
+        public void IncluirAtividade(string descricao)
         {
-            if (listaGrupoEmpresas().Exists(o => o.Descricao == descricao))
-                MessageBox.Show("Grupo já existente!");
+            if (listaAtividade().Exists(o => o.Descricao == descricao))
+                MessageBox.Show("Atividade já existente!");
             else
             {
-                grupoDAO.IncluirGrupoEmpresa(descricao);
-                MessageBox.Show("Grupo cadastrado");
+                AtividadeDAO.IncluirAtividade(descricao);
+                MessageBox.Show("Atividade cadastrado");
             }
         }
 
-        public void ExcluiGrupoEmpresa(int codGrupo)
+        public void ExcluiAtividade(int codAtividade)
         {
-            List<Empresa> listaEmpresa = empresaDAO.PesquisaEmpresasLista();
-            if (!listaEmpresa.Exists(o => o.Grupo.CodGrupo == codGrupo))
+            List<AtividadeEmpresa> listaAtividadeEmpresa = atividadeEmpresaDAO.PesquisaAtividadeEmpresasLista();
+            if (!listaAtividadeEmpresa.Exists(o => o.Atividade.CodAtividade == codAtividade))
             {
-                grupoDAO.ExcluiGrupoEmpresa(codGrupo);
-                MessageBox.Show("Grupo Excluído");
+                AtividadeDAO.ExcluiAtividade(codAtividade);
+                MessageBox.Show("Atividade Excluído");
             }
             else
-                MessageBox.Show("Grupo alocado em uma Empresa. Exclusão não realizada!");
+                MessageBox.Show("Atividade alocada em uma Empresa. Exclusão não realizada!");
         }
     }
 }

@@ -51,6 +51,8 @@
             this.cbRegime = new System.Windows.Forms.ComboBox();
             this.cbGrupo = new System.Windows.Forms.ComboBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCnpj = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -274,7 +276,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(275, 86);
+            this.label1.Location = new System.Drawing.Point(221, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(174, 23);
             this.label1.TabIndex = 9;
@@ -282,7 +284,7 @@
             // 
             // txtFiltroRazaoSocial
             // 
-            this.txtFiltroRazaoSocial.Location = new System.Drawing.Point(274, 129);
+            this.txtFiltroRazaoSocial.Location = new System.Drawing.Point(220, 138);
             this.txtFiltroRazaoSocial.Name = "txtFiltroRazaoSocial";
             this.txtFiltroRazaoSocial.Size = new System.Drawing.Size(175, 20);
             this.txtFiltroRazaoSocial.TabIndex = 14;
@@ -293,7 +295,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(727, 86);
+            this.label2.Location = new System.Drawing.Point(816, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 23);
             this.label2.TabIndex = 15;
@@ -305,7 +307,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(502, 86);
+            this.label4.Location = new System.Drawing.Point(618, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 23);
             this.label4.TabIndex = 17;
@@ -315,7 +317,7 @@
             // 
             this.cbRegime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRegime.FormattingEnabled = true;
-            this.cbRegime.Location = new System.Drawing.Point(479, 130);
+            this.cbRegime.Location = new System.Drawing.Point(595, 138);
             this.cbRegime.Name = "cbRegime";
             this.cbRegime.Size = new System.Drawing.Size(175, 21);
             this.cbRegime.TabIndex = 18;
@@ -324,7 +326,7 @@
             // 
             this.cbGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGrupo.FormattingEnabled = true;
-            this.cbGrupo.Location = new System.Drawing.Point(697, 129);
+            this.cbGrupo.Location = new System.Drawing.Point(786, 138);
             this.cbGrupo.Name = "cbGrupo";
             this.cbGrupo.Size = new System.Drawing.Size(175, 21);
             this.cbGrupo.TabIndex = 19;
@@ -337,13 +339,33 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(927, 117);
+            this.button7.Location = new System.Drawing.Point(978, 125);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(134, 42);
+            this.button7.Size = new System.Drawing.Size(95, 42);
             this.button7.TabIndex = 20;
             this.button7.Text = "Filtrar";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(431, 94);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 23);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Filtrar por CNPJ";
+            // 
+            // txtCnpj
+            // 
+            this.txtCnpj.Location = new System.Drawing.Point(411, 138);
+            this.txtCnpj.MaxLength = 14;
+            this.txtCnpj.Name = "txtCnpj";
+            this.txtCnpj.Size = new System.Drawing.Size(165, 20);
+            this.txtCnpj.TabIndex = 22;
             // 
             // EmpresaView
             // 
@@ -352,6 +374,8 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.txtCnpj);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.cbGrupo);
             this.Controls.Add(this.cbRegime);
@@ -405,5 +429,7 @@
         private System.Windows.Forms.ComboBox cbGrupo;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtCnpj;
     }
 }

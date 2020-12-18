@@ -774,6 +774,7 @@
             this.Name = "CadastroAuxiliar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Auxiliar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CadastroAuxiliar_FormClosing);
             this.Load += new System.EventHandler(this.CadastroAuxiliar_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

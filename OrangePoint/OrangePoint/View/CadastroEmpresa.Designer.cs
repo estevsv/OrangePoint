@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CadastroEmpresa));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -70,6 +70,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
             this.panel1.TabIndex = 5;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 256);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(211, 68);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Empresas";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button7
             // 
@@ -266,21 +281,6 @@
             this.maskedTextBox1.Size = new System.Drawing.Size(107, 20);
             this.maskedTextBox1.TabIndex = 22;
             // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 256);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 68);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Empresas";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // CadastroEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,6 +301,7 @@
             this.Name = "CadastroEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Empresas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CadastroEmpresa_FormClosing);
             this.Load += new System.EventHandler(this.CadastroEmpresa_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

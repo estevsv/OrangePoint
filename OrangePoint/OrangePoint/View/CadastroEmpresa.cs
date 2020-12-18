@@ -16,6 +16,7 @@ namespace OrangePoint.View
     {
         private Usuario usuarioPagina;
         Utilities utilities = new Utilities();
+        bool fechamentoSistema;
 
         public CadastroEmpresa(Usuario usuario)
         {
@@ -25,6 +26,8 @@ namespace OrangePoint.View
 
         private void CadastroEmpresa_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
@@ -43,6 +46,8 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
+            fechamentoSistema = false;
+
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -87,5 +92,10 @@ namespace OrangePoint.View
 
         }
 
+        private void CadastroEmpresa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
+        }
     }
 }

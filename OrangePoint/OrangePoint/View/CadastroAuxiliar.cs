@@ -22,6 +22,7 @@ namespace OrangePoint.View
         AtividadeRule atividadeRule = new AtividadeRule();
         TipoDataRule tipoDataRule = new TipoDataRule();
         TipoValorRule tipoValorRule = new TipoValorRule();
+        bool fechamentoSistema;
 
         public CadastroAuxiliar(Usuario usuario)
         {
@@ -31,6 +32,8 @@ namespace OrangePoint.View
 
         private void CadastroAuxiliar_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
 
@@ -52,6 +55,8 @@ namespace OrangePoint.View
         #region Controle de Acessos
         private void FechaPagina()
         {
+            fechamentoSistema = false;
+
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -299,6 +304,12 @@ namespace OrangePoint.View
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             pnCadastraSubtipos.Visible = false;
+        }
+
+        private void CadastroAuxiliar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

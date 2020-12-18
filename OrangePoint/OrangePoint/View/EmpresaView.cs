@@ -21,6 +21,7 @@ namespace OrangePoint.View
         EmpresaRule empresaRule = new EmpresaRule();
         RegimeEmpresaRule regimeEmpresaRule = new RegimeEmpresaRule();
         GrupoRule grupoRule = new GrupoRule();
+        bool fechamentoSistema;
 
         public EmpresaView(Usuario usuario)
         {
@@ -30,6 +31,8 @@ namespace OrangePoint.View
 
         private void EmpresaView_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
@@ -48,6 +51,7 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
+            fechamentoSistema = false;
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -156,6 +160,12 @@ namespace OrangePoint.View
                 listaFiltrada.Where(o => o.Grupo.CodGrupo == int.Parse(cbGrupo.SelectedValue.ToString()));
 
             CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaFiltrada));
+        }
+
+        private void EmpresaView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

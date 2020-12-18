@@ -112,6 +112,7 @@
             this.Name = "LoginView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Orange Point";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginView_FormClosing);
             this.Load += new System.EventHandler(this.LoginView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

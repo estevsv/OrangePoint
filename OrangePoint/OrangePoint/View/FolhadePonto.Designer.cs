@@ -311,6 +311,7 @@
             this.Name = "FolhadePonto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ponto Eletrônico";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FolhadePonto_FormClosing);
             this.Load += new System.EventHandler(this.FolhadePonto_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();

@@ -10,6 +10,7 @@ namespace OrangePoint.View
     public partial class LoginView : Form
     {
         LoginRule loginRule = new LoginRule();
+        bool fechamentoSistema;
 
         public LoginView()
         {
@@ -18,14 +19,18 @@ namespace OrangePoint.View
 
         private void LoginView_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             if (!loginRule.VerificaBanco())
                 Application.Exit();
 
-            //LimpaFotosInutilizadas();
+            LimpaFotosInutilizadas();
         }
 
         private void Entrar_Click(object sender, EventArgs e)
         {
+            fechamentoSistema = false;
+
             Usuario usuario = loginRule.PesquisaUsuario(Tbusuario.Text, Tbsenha.Text);
             if (usuario != null)
             {
@@ -40,17 +45,25 @@ namespace OrangePoint.View
         {
             List<Usuario> listaUsuarios = loginRule.PesquisaTodosUsuarios();
 
-            DirectoryInfo diretorio = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios"));
-            //Executa função GetFile(Lista os arquivos desejados de acordo com o parametro)
-            FileInfo[] Arquivos = diretorio.GetFiles("*.*");
-
-            //Começamos a listar os arquivos
-            foreach (FileInfo fileinfo in Arquivos)
+            if (Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios")))
             {
-                if (!listaUsuarios.Exists(o => o.FotoUsuario == fileinfo.FullName))
-                    File.Delete(fileinfo.FullName);
+                DirectoryInfo diretorio = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), "fotosUsuarios"));
+                //Executa função GetFile(Lista os arquivos desejados de acordo com o parametro)
+                FileInfo[] Arquivos = diretorio.GetFiles("*.*");
+
+                //Começamos a listar os arquivos
+                foreach (FileInfo fileinfo in Arquivos)
+                {
+                    if (!listaUsuarios.Exists(o => o.FotoUsuario == fileinfo.FullName))
+                        File.Delete(fileinfo.FullName);
+                }
             }
         }
 
+        private void LoginView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
+        }
     }
 }

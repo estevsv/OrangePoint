@@ -23,7 +23,7 @@ namespace OrangePoint.View
         PermissoesRule permissoesRule = new PermissoesRule();
         FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
         Utilities utilities = new Utilities();
-
+        bool fechamentoSistema;
 
         public ConfiguracoesPermissoes(Usuario usuario)
         {
@@ -33,6 +33,8 @@ namespace OrangePoint.View
 
         private void ConfiguracoesPermissoes_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
@@ -51,9 +53,10 @@ namespace OrangePoint.View
             new ConfiguracoesTipoUsuarios(usuarioPagina).Show();
         }
 
-
         private void FechaPagina()
         {
+            fechamentoSistema = false;
+
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -243,6 +246,12 @@ namespace OrangePoint.View
                 AtualizaDadosPagina();
             }
             e.Cancel = true;
+        }
+
+        private void ConfiguracoesPermissoes_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

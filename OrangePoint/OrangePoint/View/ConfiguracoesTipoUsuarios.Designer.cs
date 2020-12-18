@@ -418,6 +418,7 @@
             this.Name = "ConfiguracoesTipoUsuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tipo de Usuários";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConfiguracoesTipoUsuarios_FormClosing);
             this.Load += new System.EventHandler(this.ConfiguracoesTipoUsuarios_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

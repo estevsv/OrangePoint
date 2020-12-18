@@ -12,6 +12,7 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         Utilities utilities = new Utilities();
         FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
+        bool fechamentoSistema;
 
         public FolhadePonto(Usuario usuario)
         {
@@ -21,6 +22,8 @@ namespace OrangePoint.View
 
         private void FolhadePonto_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             tmDataHora.Start();
 
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
@@ -102,6 +105,7 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
+            fechamentoSistema = false;
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -135,6 +139,12 @@ namespace OrangePoint.View
         {
             folhaPontoRule.RegistraObservacao(dateTimePickerObs.Value,usuarioPagina,rtObservacao.Text);
             CarregaGridFolhaPonto();
+        }
+
+        private void FolhadePonto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

@@ -407,6 +407,7 @@
             this.Name = "Configuracoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuracoes";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Configuracoes_FormClosing);
             this.Load += new System.EventHandler(this.Configuracoes_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

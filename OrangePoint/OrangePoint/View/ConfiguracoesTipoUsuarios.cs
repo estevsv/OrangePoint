@@ -19,6 +19,7 @@ namespace OrangePoint.View
         TipoPermissaoRule tipoPermissaoRule = new TipoPermissaoRule();
         PermissaoTelaRule permissaoTelaRule = new PermissaoTelaRule();
         Utilities utilities = new Utilities();
+        bool fechamentoSistema;
 
         public ConfiguracoesTipoUsuarios(Usuario usuario)
         {
@@ -28,6 +29,8 @@ namespace OrangePoint.View
 
         private void ConfiguracoesTipoUsuarios_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
@@ -47,6 +50,8 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
+            fechamentoSistema = false;
+
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -178,6 +183,12 @@ namespace OrangePoint.View
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ConfiguracoesTipoUsuarios_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

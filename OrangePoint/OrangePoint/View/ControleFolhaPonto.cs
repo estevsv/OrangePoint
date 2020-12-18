@@ -22,6 +22,7 @@ namespace OrangePoint.View
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
         FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
+        bool fechamentoSistema;
 
         public ControleFolhaPonto(Usuario usuario)
         {
@@ -31,6 +32,8 @@ namespace OrangePoint.View
         
         private void ControleFolhaPonto_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
@@ -84,6 +87,8 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
+            fechamentoSistema = false;
+
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -254,6 +259,12 @@ namespace OrangePoint.View
                 }
             } else
                 MessageBox.Show("Nenhum dado existente!");
+        }
+
+        private void ControleFolhaPonto_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

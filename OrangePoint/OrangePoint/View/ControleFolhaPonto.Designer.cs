@@ -529,6 +529,7 @@
             this.Name = "ControleFolhaPonto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Folha de Ponto";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ControleFolhaPonto_FormClosing);
             this.Load += new System.EventHandler(this.ControleFolhaPonto_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

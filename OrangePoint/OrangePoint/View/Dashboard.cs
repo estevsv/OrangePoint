@@ -12,6 +12,7 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
+        bool fechamentoSistema;
 
         public Dashboard(Usuario usuario)
         {
@@ -21,6 +22,8 @@ namespace OrangePoint.View
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            fechamentoSistema = true;
+
             lblWelcomeUser.Text = "Bem Vindo " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
@@ -48,6 +51,8 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
+            fechamentoSistema = false;
+
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();
@@ -75,6 +80,12 @@ namespace OrangePoint.View
         private void button5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         }
     }
 }

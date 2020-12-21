@@ -10,38 +10,38 @@ using System.Windows.Forms;
 
 namespace OrangePoint.BusinessRule
 {
-    public class SubtipoValorRule
+    public class SubtipoAtividadeRule
     {
-        SubtipoValorDAO subtipoValorDAO = new SubtipoValorDAO();
+        SubtipoAtividadeDAO subtipoAtividadeDAO = new SubtipoAtividadeDAO();
 
-        public DataTable PesquisaSubtipoValorTabela()
+        public DataTable PesquisaSubtipoAtividadeTabela()
         {
-            return subtipoValorDAO.PesquisaSubtipoValorTabela();
+            return subtipoAtividadeDAO.PesquisaSubtipoAtividadeTabela();
         }
 
-        public List<SubtipoValor> listaSubtipoValor()
+        public List<SubtipoAtividade> listaSubtipoAtividade()
         {
-            return subtipoValorDAO.PesquisaSubtipoValorLista();
+            return subtipoAtividadeDAO.PesquisaSubtipoAtividadeLista();
         }
 
-        public void IncluirSubtipoValor(int codTipoValor, string descricao)
+        public void IncluirSubtipoAtividade(int codAtividade, int codSubtipoValor)
         {
-            if (listaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))
-                MessageBox.Show("Subtipo já existente!");
+            if (listaSubtipoAtividade().Exists(o => o.Atividade.CodAtividade == codAtividade && o.SubtipoValor.CodSubtipoValor == codSubtipoValor))
+                MessageBox.Show("Subtipo Atividade já existente!");
             else
             {
-                subtipoValorDAO.IncluirSubtipoValor(codTipoValor, descricao);
+                subtipoAtividadeDAO.IncluirSubtipoAtividade(codAtividade, codSubtipoValor);
                 MessageBox.Show("Subtipo Cadastrado!");
             }
         }
 
-        public void ExcluiSubtipoValor(int codSubtipoValor)
+        public void ExcluiSubtipoAtividade(int codSubtipoAtividade)
         {
-            subtipoValorDAO.ExcluiSubtipoValor(codSubtipoValor);
+            subtipoAtividadeDAO.ExcluiSubtipoAtividade(codSubtipoAtividade);
             MessageBox.Show("Subtipo Removido!");
         }
 
-        public DataTable FiltraPesquisaSubtipoValorTabela()
+        public DataTable FiltraPesquisaSubtipoAtividadeTabela()
         {
             DataTable table = new DataTable("TabelaGridClasse");
             DataColumn column;
@@ -57,7 +57,7 @@ namespace OrangePoint.BusinessRule
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "TipoValor",
+                ColumnName = "Atividade",
                 ReadOnly = true,
             };
             table.Columns.Add(column);
@@ -73,12 +73,12 @@ namespace OrangePoint.BusinessRule
             PrimaryKeyColumns[0] = table.Columns["id"];
             table.PrimaryKey = PrimaryKeyColumns;
 
-            foreach (SubtipoValor subtipo in listaSubtipoValor())
+            foreach (SubtipoAtividade subtipo in listaSubtipoAtividade())
             {
                 row = table.NewRow();
-                row["id"] = subtipo.CodSubtipoValor;
-                row["TipoValor"] = subtipo.TipoValor.DescTipo;
-                row["SubtipoValor"] = subtipo.DescSubtipo;
+                row["id"] = subtipo.CodSubtipoAtividade;
+                row["Atividade"] = subtipo.Atividade.Descricao;
+                row["SubtipoValor"] = subtipo.SubtipoValor.DescSubtipo;
                 table.Rows.Add(row);
             }
 

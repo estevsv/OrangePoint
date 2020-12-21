@@ -22,6 +22,8 @@ namespace OrangePoint.View
         AtividadeRule atividadeRule = new AtividadeRule();
         TipoDataRule tipoDataRule = new TipoDataRule();
         TipoValorRule tipoValorRule = new TipoValorRule();
+        SubtipoValorRule subtipoValorRule = new SubtipoValorRule(); 
+        SubtipoAtividadeRule subtipoAtividadeRule = new SubtipoAtividadeRule(); 
         bool fechamentoSistema;
 
         public CadastroAuxiliar(Usuario usuario)
@@ -50,6 +52,9 @@ namespace OrangePoint.View
             CarregaGridAtividade();
             CarregaGridTipoData();
             CarregaGridTipoValor();
+            CarregaGridSubtipoValor();
+            CarregaCbTipoValor();
+            CarregaGridSubtipoAtividade();
         }
 
         #region Controle de Acessos
@@ -115,10 +120,30 @@ namespace OrangePoint.View
             button4.Visible = listaPermissoes[1];
             button5.Visible = listaPermissoes[2];
             btnPontoEletronico.Visible = listaPermissoes[4];
+        }
+        #endregion
+
+        #region Controle de transição de tela e Fechamento
+        private void btnCadastrarSubtipos_Click(object sender, EventArgs e)
+        {
+            pnCadastraSubtipos.Visible = true;
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            pnCadastraSubtipos.Visible = false;
+        }
+
+        private void CadastroAuxiliar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (fechamentoSistema)
+                Application.Exit();
         } 
         #endregion
 
         #region Gerenciamento de dados
+
+        #region Área Principal
 
         #region Dados Regime
         private void CarregaGridRegime()
@@ -195,6 +220,8 @@ namespace OrangePoint.View
                 dgAtividade.Columns["DESCRICAO"].ReadOnly = true;
                 dgAtividade.Columns["DESCRICAO"].Width = 187;
             }
+
+            CarregaCbAtividade();
         }
 
         private void AdicionarAtividadeEmpresa_Click(object sender, EventArgs e)
@@ -259,6 +286,8 @@ namespace OrangePoint.View
                 dgTipoValor.Columns["DESC_TIPO"].ReadOnly = true;
                 dgTipoValor.Columns["DESC_TIPO"].Width = 187;
             }
+
+            CarregaCbTipoValor();
         }
 
         private void btnAdicionarTipoValor_Click(object sender, EventArgs e)
@@ -278,38 +307,115 @@ namespace OrangePoint.View
 
             e.Cancel = true;
         }
+        #endregion 
+
+        #endregion
+
+        #region Área Subtipos
+
+        #region Carregamentos de Comboboxes
+        private void CarregaCbTipoValor()
+        {
+            cbTipoValor.DataSource = dgTipoValor.DataSource;
+            cbTipoValor.DisplayMember = "DESC_TIPO";
+            cbTipoValor.ValueMember = "COD_TIPO_VALOR";
+        }
+
+        private void CarregaCbAtividade()
+        {
+            cbAtividade.DataSource = dgAtividade.DataSource;
+            cbAtividade.DisplayMember = "DESCRICAO";
+            cbAtividade.ValueMember = "COD_ATIVIDADE";
+        }
+
+        private void CarregaCbSubtipoValor()
+        {
+            cbSubtipoValor.DataSource = dgSubtipoValor.DataSource;
+            cbSubtipoValor.DisplayMember = "SubtipoValor";
+            cbSubtipoValor.ValueMember = "id";
+        }
+
         #endregion
 
         #region Dados Subtipo Valor
-        //private void CarregaGridSubtipoValor()
-        //{
-        //    dgSubtipoValor.DataSource = tipoValorRule.PesquisaTipoValorTabela();
-        //    if (dgSubtipoValor.Columns.Count != 0)
-        //    {
-        //        dgSubtipoValor.Columns["COD_SUBTIPO_VALOR"].Visible = false;
-        //        dgSubtipoValor.Columns["DESC_TIPO"].HeaderText = "Descrição";
-        //        dgSubtipoValor.Columns["DESC_TIPO"].ReadOnly = true;
-        //        dgSubtipoValor.Columns["DESC_TIPO"].Width = 187;
-        //    }
-        //}
+
+        private void CarregaGridSubtipoValor()
+        {
+            dgSubtipoValor.DataSource = subtipoValorRule.FiltraPesquisaSubtipoValorTabela();
+            if (dgSubtipoValor.Columns.Count != 0)
+            {
+                dgSubtipoValor.Columns["id"].Visible = false;
+                dgSubtipoValor.Columns["TipoValor"].HeaderText = "Tipo de Valor";
+                dgSubtipoValor.Columns["SubtipoValor"].HeaderText = "Subtipo de Valor";
+                dgSubtipoValor.Columns["TipoValor"].ReadOnly = true;
+                dgSubtipoValor.Columns["SubtipoValor"].ReadOnly = true;
+                dgSubtipoValor.Columns["TipoValor"].Width = 145;
+                dgSubtipoValor.Columns["SubtipoValor"].Width = 145;
+            }
+
+            CarregaCbSubtipoValor();
+        }
+
+        private void btnAdicionarSubitipoValor_Click(object sender, EventArgs e)
+        {
+            if (txtSubtipoValor.Text != "" && cbTipoValor.Text != "")
+                subtipoValorRule.IncluirSubtipoValor(int.Parse(cbTipoValor.SelectedValue.ToString()), txtSubtipoValor.Text);
+
+            CarregaGridSubtipoValor();
+        }
+
+        private void dgSubtipoValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            subtipoValorRule.ExcluiSubtipoValor(int.Parse(dgSubtipoValor.CurrentRow.Cells[0].Value.ToString()));
+            dgSubtipoValor.Rows.RemoveAt(dgSubtipoValor.CurrentRow.Index);
+
+            CarregaGridSubtipoValor();
+
+            e.Cancel = true;
+        }
+
+        #endregion
+
+        #region Dados Subtipo Atividade
+
+        private void CarregaGridSubtipoAtividade()
+        {
+            dgSubtipoAtividade.DataSource = subtipoAtividadeRule.FiltraPesquisaSubtipoAtividadeTabela();
+            if (dgSubtipoAtividade.Columns.Count != 0)
+            {
+                dgSubtipoAtividade.Columns["id"].Visible = false;
+                dgSubtipoAtividade.Columns["Atividade"].HeaderText = "Atividade";
+                dgSubtipoAtividade.Columns["SubtipoValor"].HeaderText = "Subtipo de Valor";
+                dgSubtipoAtividade.Columns["Atividade"].ReadOnly = true;
+                dgSubtipoAtividade.Columns["SubtipoValor"].ReadOnly = true;
+                dgSubtipoAtividade.Columns["Atividade"].Width = 145;
+                dgSubtipoAtividade.Columns["SubtipoValor"].Width = 145;
+            }
+        }
+
+        private void btnAdicionaSubtipoAtividade_Click(object sender, EventArgs e)
+        {
+            if (cbAtividade.Text != "" && cbSubtipoValor.Text != "")
+                subtipoAtividadeRule.IncluirSubtipoAtividade(int.Parse(cbAtividade.SelectedValue.ToString()), int.Parse(cbSubtipoValor.SelectedValue.ToString()));
+
+            CarregaGridSubtipoAtividade();
+        }
+
+        private void dgSubtipoAtividade_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            subtipoAtividadeRule.ExcluiSubtipoAtividade(int.Parse(dgSubtipoAtividade.CurrentRow.Cells[0].Value.ToString()));
+            dgSubtipoAtividade.Rows.RemoveAt(dgSubtipoAtividade.CurrentRow.Index);
+
+            CarregaGridSubtipoAtividade();
+
+            e.Cancel = true;
+        }
+
         #endregion
 
         #endregion
 
-        private void btnCadastrarSubtipos_Click(object sender, EventArgs e)
-        {
-            pnCadastraSubtipos.Visible = true;
-        }
+        #endregion
 
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            pnCadastraSubtipos.Visible = false;
-        }
-
-        private void CadastroAuxiliar_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (fechamentoSistema)
-                Application.Exit();
-        }
     }
 }

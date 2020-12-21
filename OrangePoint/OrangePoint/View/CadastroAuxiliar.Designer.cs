@@ -373,6 +373,7 @@
             // 
             this.dgAtividade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAtividade.Location = new System.Drawing.Point(863, 184);
+            this.dgAtividade.MultiSelect = false;
             this.dgAtividade.Name = "dgAtividade";
             this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgAtividade.Size = new System.Drawing.Size(196, 157);
@@ -418,6 +419,7 @@
             // 
             this.dgTipoDatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTipoDatas.Location = new System.Drawing.Point(237, 452);
+            this.dgTipoDatas.MultiSelect = false;
             this.dgTipoDatas.Name = "dgTipoDatas";
             this.dgTipoDatas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoDatas.Size = new System.Drawing.Size(196, 157);
@@ -463,6 +465,7 @@
             // 
             this.dgTipoValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTipoValor.Location = new System.Drawing.Point(551, 452);
+            this.dgTipoValor.MultiSelect = false;
             this.dgTipoValor.Name = "dgTipoValor";
             this.dgTipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoValor.Size = new System.Drawing.Size(196, 157);
@@ -643,6 +646,7 @@
             this.btnAdicionaSubtipoAtividade.TabIndex = 57;
             this.btnAdicionaSubtipoAtividade.Text = "Adicionar";
             this.btnAdicionaSubtipoAtividade.UseVisualStyleBackColor = false;
+            this.btnAdicionaSubtipoAtividade.Click += new System.EventHandler(this.btnAdicionaSubtipoAtividade_Click);
             // 
             // dgSubtipoAtividade
             // 
@@ -653,6 +657,7 @@
             this.dgSubtipoAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgSubtipoAtividade.Size = new System.Drawing.Size(332, 183);
             this.dgSubtipoAtividade.TabIndex = 56;
+            this.dgSubtipoAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgSubtipoAtividade_UserDeletingRow);
             // 
             // label9
             // 
@@ -708,6 +713,7 @@
             this.btnAdicionarSubitipoValor.TabIndex = 47;
             this.btnAdicionarSubitipoValor.Text = "Adicionar";
             this.btnAdicionarSubitipoValor.UseVisualStyleBackColor = false;
+            this.btnAdicionarSubitipoValor.Click += new System.EventHandler(this.btnAdicionarSubitipoValor_Click);
             // 
             // dgSubtipoValor
             // 
@@ -718,6 +724,7 @@
             this.dgSubtipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgSubtipoValor.Size = new System.Drawing.Size(332, 183);
             this.dgSubtipoValor.TabIndex = 46;
+            this.dgSubtipoValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgSubtipoValor_UserDeletingRow);
             // 
             // txtSubtipoValor
             // 

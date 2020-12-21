@@ -82,7 +82,7 @@ namespace OrangePoint.DataAccess
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('"+ codTipoValor + "," + descricao + "');";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ("+ codTipoValor + ",'" + descricao + "');";
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

@@ -6,12 +6,15 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace OrangePoint.BusinessRule
 {
     public class EmpresaRule
     {
         EmpresaDAO empresaDAO = new EmpresaDAO();
+        RegimeEmpresaRule regimeEmpresaRule = new RegimeEmpresaRule();
+        GrupoRule grupoRule = new GrupoRule();
 
         public DataTable PesquisaEmpresasTabela()
         {
@@ -81,6 +84,32 @@ namespace OrangePoint.BusinessRule
             }
 
             return table;
+        }
+
+        public void IncluirEmpresa(int codRegime, int codGrupo, string razaoSocial, string CNPJ, int numSocios, int numVinculos, string observacao, string senhaSiat, string Esocial)
+        {
+            if (!EmpresaExistente(CNPJ, razaoSocial, codRegime, codGrupo))
+            {
+                Empresa empresa = new Empresa();
+                empresa.Regime = regimeEmpresaRule.listaRegimeEmpresas().Find(o => o.CodRegime == codRegime);
+                empresa.Grupo = grupoRule.listaGrupoEmpresas().Find(o => o.CodGrupo == codGrupo);
+                empresa.RazaoSocial = razaoSocial;
+                empresa.CNPJ = CNPJ;
+                empresa.NumSocios = numSocios;
+                empresa.NumVinculos = numVinculos;
+                empresa.Observacao = observacao;
+                empresa.SenhaSIAT = senhaSiat;
+                empresa.ESocial = Esocial;
+
+                empresaDAO.IncluirEmpresa(empresa);
+            }
+            else 
+                MessageBox.Show("Empresa Existente!");
+        }
+
+        private bool EmpresaExistente(string CNPJ, string razaoSocial, int codRegime, int codGrupo)
+        {
+            return empresaDAO.PesquisaEmpresasLista().Exists(o => o.CNPJ == CNPJ && o.RazaoSocial == razaoSocial && o.Regime.CodRegime == codRegime && o.Grupo.CodGrupo == codGrupo);
         }
     }
 }

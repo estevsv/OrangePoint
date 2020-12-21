@@ -1,4 +1,5 @@
-﻿using OrangePoint.Model;
+﻿using OrangePoint.BusinessRule;
+using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,9 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         Utilities utilities = new Utilities();
         bool fechamentoSistema;
+        RegimeEmpresaRule regimeEmpresaRule = new RegimeEmpresaRule();
+        GrupoRule grupoRule = new GrupoRule();
+        EmpresaRule empresaRule = new EmpresaRule();
 
         public CadastroEmpresa(Usuario usuario)
         {
@@ -33,8 +37,11 @@ namespace OrangePoint.View
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
 
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
+
+            CarregaGridseComboBoxes();
         }
 
+        #region Controle de Página
         //Referências das Posições[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto, Controle de Folha de Ponto]
         private void HabilitaPermissoes(List<bool> listaPermissoes)
         {
@@ -42,6 +49,12 @@ namespace OrangePoint.View
             button4.Visible = listaPermissoes[1];
             button5.Visible = listaPermissoes[2];
             btnPontoEletronico.Visible = listaPermissoes[4];
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new LoginView().Show();
         }
 
         private void FechaPagina()
@@ -96,6 +109,54 @@ namespace OrangePoint.View
         {
             if (fechamentoSistema)
                 Application.Exit();
+        } 
+        #endregion
+
+        private void CarregaGridseComboBoxes()
+        {
+            CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
+            CarregaCbRegime();
+            CarregaCbGrupo();
+        }
+
+        private void CarregaCbRegime()
+        {
+            cbRegime.DataSource = regimeEmpresaRule.PesquisaRegimeEmpresasTabela();
+            cbRegime.DisplayMember = "DESCRICAO";
+            cbRegime.ValueMember = "COD_REGIME";
+        }
+
+        private void CarregaCbGrupo()
+        {
+            cbGrupo.DataSource = grupoRule.PesquisaGrupoEmpresasTabela();
+            cbGrupo.DisplayMember = "DESCRICAO";
+            cbGrupo.ValueMember = "COD_GRUPO";
+        }
+
+        private void CarregaGridEmpresa(DataTable tabela)
+        {
+            dgEmpresa.DataSource = tabela;
+
+            dgEmpresa.Columns["id"].Visible = false;
+
+            dgEmpresa.Columns["Razão Social"].Width = 250;
+            dgEmpresa.Columns["CNPJ"].Width = 165;
+            dgEmpresa.Columns["Grupo"].Width = 200;
+            dgEmpresa.Columns["Regime"].Width = 200;
+
+            dgEmpresa.Columns["Razão Social"].ReadOnly = true;
+            dgEmpresa.Columns["CNPJ"].ReadOnly = true;
+            dgEmpresa.Columns["Grupo"].ReadOnly = true;
+            dgEmpresa.Columns["Regime"].ReadOnly = true;
+        }
+
+        private void btnCadastrarEmpresa_Click(object sender, EventArgs e)
+        {
+            if (txtRazaoSocial.Text != "" && cbRegime.Text != "" && cbRegime.Text != "")
+                empresaRule.IncluirEmpresa(int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
+                    int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
+
+            CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
         }
     }
 }

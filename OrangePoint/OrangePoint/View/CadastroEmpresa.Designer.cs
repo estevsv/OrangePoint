@@ -46,10 +46,26 @@
             this.cbRegime = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.txtCNPJ = new System.Windows.Forms.MaskedTextBox();
+            this.cbGrupo = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtNumSocios = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtNumVinculos = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtEsocial = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtObservacoes = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtSenhaSIAT = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnCadastrarEmpresa = new System.Windows.Forms.Button();
+            this.dgEmpresa = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -227,7 +243,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(238, 113);
+            this.label3.Location = new System.Drawing.Point(221, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 22);
             this.label3.TabIndex = 16;
@@ -235,18 +251,19 @@
             // 
             // txtRazaoSocial
             // 
-            this.txtRazaoSocial.Location = new System.Drawing.Point(337, 116);
+            this.txtRazaoSocial.Location = new System.Drawing.Point(320, 116);
+            this.txtRazaoSocial.MaxLength = 45;
             this.txtRazaoSocial.Name = "txtRazaoSocial";
-            this.txtRazaoSocial.Size = new System.Drawing.Size(301, 20);
+            this.txtRazaoSocial.Size = new System.Drawing.Size(261, 20);
             this.txtRazaoSocial.TabIndex = 17;
             // 
             // cbRegime
             // 
             this.cbRegime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRegime.FormattingEnabled = true;
-            this.cbRegime.Location = new System.Drawing.Point(479, 167);
+            this.cbRegime.Location = new System.Drawing.Point(681, 303);
             this.cbRegime.Name = "cbRegime";
-            this.cbRegime.Size = new System.Drawing.Size(159, 21);
+            this.cbRegime.Size = new System.Drawing.Size(145, 21);
             this.cbRegime.TabIndex = 20;
             // 
             // label4
@@ -255,7 +272,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(409, 165);
+            this.label4.Location = new System.Drawing.Point(611, 301);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 23);
             this.label4.TabIndex = 19;
@@ -267,19 +284,183 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(238, 167);
+            this.label1.Location = new System.Drawing.Point(221, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 22);
             this.label1.TabIndex = 21;
             this.label1.Text = "CNPJ";
             // 
-            // maskedTextBox1
+            // txtCNPJ
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(296, 167);
-            this.maskedTextBox1.Mask = "99,999,999/9999-99";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(107, 20);
-            this.maskedTextBox1.TabIndex = 22;
+            this.txtCNPJ.Location = new System.Drawing.Point(306, 174);
+            this.txtCNPJ.Mask = "99,999,999/9999-99";
+            this.txtCNPJ.Name = "txtCNPJ";
+            this.txtCNPJ.Size = new System.Drawing.Size(117, 20);
+            this.txtCNPJ.TabIndex = 22;
+            // 
+            // cbGrupo
+            // 
+            this.cbGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGrupo.FormattingEnabled = true;
+            this.cbGrupo.Location = new System.Drawing.Point(681, 228);
+            this.cbGrupo.Name = "cbGrupo";
+            this.cbGrupo.Size = new System.Drawing.Size(145, 21);
+            this.cbGrupo.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(611, 226);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 23);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Grupo";
+            // 
+            // txtNumSocios
+            // 
+            this.txtNumSocios.Location = new System.Drawing.Point(758, 116);
+            this.txtNumSocios.MaxLength = 45;
+            this.txtNumSocios.Name = "txtNumSocios";
+            this.txtNumSocios.Size = new System.Drawing.Size(68, 20);
+            this.txtNumSocios.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(624, 114);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(128, 22);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Número de Sócios";
+            // 
+            // txtNumVinculos
+            // 
+            this.txtNumVinculos.Location = new System.Drawing.Point(1016, 113);
+            this.txtNumVinculos.MaxLength = 45;
+            this.txtNumVinculos.Name = "txtNumVinculos";
+            this.txtNumVinculos.Size = new System.Drawing.Size(57, 20);
+            this.txtNumVinculos.TabIndex = 28;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(871, 113);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(139, 22);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "Número de Vínculos";
+            // 
+            // txtEsocial
+            // 
+            this.txtEsocial.Location = new System.Drawing.Point(914, 171);
+            this.txtEsocial.MaxLength = 45;
+            this.txtEsocial.Name = "txtEsocial";
+            this.txtEsocial.Size = new System.Drawing.Size(159, 20);
+            this.txtEsocial.TabIndex = 30;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(844, 171);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 22);
+            this.label7.TabIndex = 29;
+            this.label7.Text = "ESOCIAL";
+            // 
+            // txtObservacoes
+            // 
+            this.txtObservacoes.Location = new System.Drawing.Point(314, 228);
+            this.txtObservacoes.MaxLength = 45;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(267, 96);
+            this.txtObservacoes.TabIndex = 31;
+            this.txtObservacoes.Text = "";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(221, 265);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 22);
+            this.label8.TabIndex = 32;
+            this.label8.Text = "Observação";
+            // 
+            // txtSenhaSIAT
+            // 
+            this.txtSenhaSIAT.Location = new System.Drawing.Point(550, 173);
+            this.txtSenhaSIAT.MaxLength = 45;
+            this.txtSenhaSIAT.Name = "txtSenhaSIAT";
+            this.txtSenhaSIAT.Size = new System.Drawing.Size(276, 20);
+            this.txtSenhaSIAT.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(459, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(85, 22);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "Senha SIAT";
+            // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair.AutoSize = true;
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.Color.White;
+            this.btnSair.Location = new System.Drawing.Point(939, 569);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(134, 42);
+            this.btnSair.TabIndex = 42;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnCadastrarEmpresa
+            // 
+            this.btnCadastrarEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCadastrarEmpresa.AutoSize = true;
+            this.btnCadastrarEmpresa.BackColor = System.Drawing.Color.Transparent;
+            this.btnCadastrarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCadastrarEmpresa.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCadastrarEmpresa.ForeColor = System.Drawing.Color.White;
+            this.btnCadastrarEmpresa.Location = new System.Drawing.Point(885, 253);
+            this.btnCadastrarEmpresa.Name = "btnCadastrarEmpresa";
+            this.btnCadastrarEmpresa.Size = new System.Drawing.Size(155, 42);
+            this.btnCadastrarEmpresa.TabIndex = 43;
+            this.btnCadastrarEmpresa.Text = "Cadastrar Empresa";
+            this.btnCadastrarEmpresa.UseVisualStyleBackColor = false;
+            this.btnCadastrarEmpresa.Click += new System.EventHandler(this.btnCadastrarEmpresa_Click);
+            // 
+            // dgEmpresa
+            // 
+            this.dgEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgEmpresa.Location = new System.Drawing.Point(225, 348);
+            this.dgEmpresa.MultiSelect = false;
+            this.dgEmpresa.Name = "dgEmpresa";
+            this.dgEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgEmpresa.Size = new System.Drawing.Size(848, 215);
+            this.dgEmpresa.TabIndex = 44;
             // 
             // CadastroEmpresa
             // 
@@ -288,7 +469,22 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.dgEmpresa);
+            this.Controls.Add(this.btnCadastrarEmpresa);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.txtSenhaSIAT);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtObservacoes);
+            this.Controls.Add(this.txtEsocial);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtNumVinculos);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtNumSocios);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cbGrupo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbRegime);
             this.Controls.Add(this.label4);
@@ -308,6 +504,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEmpresa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,8 +527,23 @@
         private System.Windows.Forms.ComboBox cbRegime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtCNPJ;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cbGrupo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtNumSocios;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtNumVinculos;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtEsocial;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RichTextBox txtObservacoes;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtSenhaSIAT;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnCadastrarEmpresa;
+        private System.Windows.Forms.DataGridView dgEmpresa;
     }
 }

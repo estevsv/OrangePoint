@@ -23,9 +23,6 @@ namespace OrangePoint.Model
         private string cnpj;
         public string CNPJ { get => cnpj; set => cnpj = value; }
 
-        private string classificacao;
-        public string Classificacao { get => classificacao; set => classificacao = value; }
-
         private int numSocios;
         public int NumSocios { get => numSocios; set => numSocios = value; }
 

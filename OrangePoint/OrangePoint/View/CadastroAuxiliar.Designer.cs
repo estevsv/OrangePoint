@@ -79,6 +79,10 @@
             this.dgSubtipoValor = new System.Windows.Forms.DataGridView();
             this.txtSubtipoValor = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnAdicionarClassificacao = new System.Windows.Forms.Button();
+            this.dgTipoClassificacao = new System.Windows.Forms.DataGridView();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtClassificacao = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -90,6 +94,7 @@
             this.pnCadastraSubtipos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoAtividade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoValor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoClassificacao)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -108,7 +113,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(211, 621);
+            this.panel1.Size = new System.Drawing.Size(211, 740);
             this.panel1.TabIndex = 6;
             // 
             // button7
@@ -118,7 +123,7 @@
             this.button7.BackColor = System.Drawing.Color.Transparent;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(0, 72);
+            this.button7.Location = new System.Drawing.Point(0, 132);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(211, 68);
             this.button7.TabIndex = 9;
@@ -144,7 +149,7 @@
             this.button5.BackColor = System.Drawing.Color.Transparent;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(0, 421);
+            this.button5.Location = new System.Drawing.Point(0, 481);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(211, 68);
             this.button5.TabIndex = 5;
@@ -159,7 +164,7 @@
             this.button4.BackColor = System.Drawing.Color.Transparent;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(0, 347);
+            this.button4.Location = new System.Drawing.Point(0, 407);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(211, 68);
             this.button4.TabIndex = 4;
@@ -174,7 +179,7 @@
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(0, 550);
+            this.button3.Location = new System.Drawing.Point(0, 610);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(211, 71);
             this.button3.TabIndex = 3;
@@ -200,7 +205,7 @@
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 273);
+            this.button2.Location = new System.Drawing.Point(0, 333);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(211, 68);
             this.button2.TabIndex = 1;
@@ -215,7 +220,7 @@
             this.btnPontoEletronico.BackColor = System.Drawing.Color.Transparent;
             this.btnPontoEletronico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPontoEletronico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 146);
+            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 206);
             this.btnPontoEletronico.Name = "btnPontoEletronico";
             this.btnPontoEletronico.Size = new System.Drawing.Size(211, 68);
             this.btnPontoEletronico.TabIndex = 0;
@@ -227,6 +232,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.pnCadastraSubtipos);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -274,7 +280,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(298, 94);
+            this.label1.Location = new System.Drawing.Point(311, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 22);
             this.label1.TabIndex = 20;
@@ -299,7 +305,7 @@
             this.AdicionarRegime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarRegime.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarRegime.ForeColor = System.Drawing.Color.White;
-            this.AdicionarRegime.Location = new System.Drawing.Point(277, 148);
+            this.AdicionarRegime.Location = new System.Drawing.Point(287, 148);
             this.AdicionarRegime.Name = "AdicionarRegime";
             this.AdicionarRegime.Size = new System.Drawing.Size(113, 30);
             this.AdicionarRegime.TabIndex = 22;
@@ -315,7 +321,7 @@
             this.AdicionarGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarGrupo.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarGrupo.ForeColor = System.Drawing.Color.White;
-            this.AdicionarGrupo.Location = new System.Drawing.Point(591, 148);
+            this.AdicionarGrupo.Location = new System.Drawing.Point(597, 148);
             this.AdicionarGrupo.Name = "AdicionarGrupo";
             this.AdicionarGrupo.Size = new System.Drawing.Size(113, 30);
             this.AdicionarGrupo.TabIndex = 26;
@@ -361,7 +367,7 @@
             this.AdicionarAtividadeEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarAtividadeEmpresa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarAtividadeEmpresa.ForeColor = System.Drawing.Color.White;
-            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(903, 148);
+            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(903, 150);
             this.AdicionarAtividadeEmpresa.Name = "AdicionarAtividadeEmpresa";
             this.AdicionarAtividadeEmpresa.Size = new System.Drawing.Size(113, 30);
             this.AdicionarAtividadeEmpresa.TabIndex = 30;
@@ -407,7 +413,7 @@
             this.btnAdicionaTipoDatas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionaTipoDatas.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionaTipoDatas.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionaTipoDatas.Location = new System.Drawing.Point(277, 416);
+            this.btnAdicionaTipoDatas.Location = new System.Drawing.Point(287, 416);
             this.btnAdicionaTipoDatas.Name = "btnAdicionaTipoDatas";
             this.btnAdicionaTipoDatas.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionaTipoDatas.TabIndex = 34;
@@ -453,7 +459,7 @@
             this.btnAdicionarTipoValor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionarTipoValor.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarTipoValor.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarTipoValor.Location = new System.Drawing.Point(591, 416);
+            this.btnAdicionarTipoValor.Location = new System.Drawing.Point(903, 416);
             this.btnAdicionarTipoValor.Name = "btnAdicionarTipoValor";
             this.btnAdicionarTipoValor.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionarTipoValor.TabIndex = 38;
@@ -464,7 +470,7 @@
             // dgTipoValor
             // 
             this.dgTipoValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTipoValor.Location = new System.Drawing.Point(551, 452);
+            this.dgTipoValor.Location = new System.Drawing.Point(863, 452);
             this.dgTipoValor.MultiSelect = false;
             this.dgTipoValor.Name = "dgTipoValor";
             this.dgTipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -478,7 +484,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(597, 365);
+            this.label5.Location = new System.Drawing.Point(909, 365);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 22);
             this.label5.TabIndex = 36;
@@ -486,7 +492,7 @@
             // 
             // txtTipoValor
             // 
-            this.txtTipoValor.Location = new System.Drawing.Point(551, 390);
+            this.txtTipoValor.Location = new System.Drawing.Point(863, 390);
             this.txtTipoValor.Name = "txtTipoValor";
             this.txtTipoValor.Size = new System.Drawing.Size(196, 20);
             this.txtTipoValor.TabIndex = 35;
@@ -499,7 +505,7 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Location = new System.Drawing.Point(893, 564);
+            this.btnSair.Location = new System.Drawing.Point(891, 661);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(134, 42);
             this.btnSair.TabIndex = 41;
@@ -515,7 +521,7 @@
             this.btnCadastrarSubtipos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCadastrarSubtipos.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrarSubtipos.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarSubtipos.Location = new System.Drawing.Point(863, 452);
+            this.btnCadastrarSubtipos.Location = new System.Drawing.Point(551, 644);
             this.btnCadastrarSubtipos.Name = "btnCadastrarSubtipos";
             this.btnCadastrarSubtipos.Size = new System.Drawing.Size(196, 72);
             this.btnCadastrarSubtipos.TabIndex = 42;
@@ -542,7 +548,7 @@
             this.pnCadastraSubtipos.Controls.Add(this.dgSubtipoValor);
             this.pnCadastraSubtipos.Controls.Add(this.txtSubtipoValor);
             this.pnCadastraSubtipos.Controls.Add(this.label6);
-            this.pnCadastraSubtipos.Location = new System.Drawing.Point(211, 68);
+            this.pnCadastraSubtipos.Location = new System.Drawing.Point(0, 68);
             this.pnCadastraSubtipos.Name = "pnCadastraSubtipos";
             this.pnCadastraSubtipos.Size = new System.Drawing.Size(874, 553);
             this.pnCadastraSubtipos.TabIndex = 43;
@@ -745,14 +751,63 @@
             this.label6.TabIndex = 45;
             this.label6.Text = "Subtipo de Valor";
             // 
+            // btnAdicionarClassificacao
+            // 
+            this.btnAdicionarClassificacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionarClassificacao.AutoSize = true;
+            this.btnAdicionarClassificacao.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarClassificacao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAdicionarClassificacao.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarClassificacao.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(597, 416);
+            this.btnAdicionarClassificacao.Name = "btnAdicionarClassificacao";
+            this.btnAdicionarClassificacao.Size = new System.Drawing.Size(113, 30);
+            this.btnAdicionarClassificacao.TabIndex = 46;
+            this.btnAdicionarClassificacao.Text = "Adicionar";
+            this.btnAdicionarClassificacao.UseVisualStyleBackColor = false;
+            this.btnAdicionarClassificacao.Click += new System.EventHandler(this.btnAdicionarClassificacao_Click);
+            // 
+            // dgTipoClassificacao
+            // 
+            this.dgTipoClassificacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTipoClassificacao.Location = new System.Drawing.Point(551, 452);
+            this.dgTipoClassificacao.MultiSelect = false;
+            this.dgTipoClassificacao.Name = "dgTipoClassificacao";
+            this.dgTipoClassificacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgTipoClassificacao.Size = new System.Drawing.Size(196, 157);
+            this.dgTipoClassificacao.TabIndex = 45;
+            this.dgTipoClassificacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoClassificacao_UserDeletingRow);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(575, 365);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(144, 22);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "Tipo de Classificação";
+            // 
+            // txtClassificacao
+            // 
+            this.txtClassificacao.Location = new System.Drawing.Point(551, 390);
+            this.txtClassificacao.Name = "txtClassificacao";
+            this.txtClassificacao.Size = new System.Drawing.Size(196, 20);
+            this.txtClassificacao.TabIndex = 43;
+            // 
             // CadastroAuxiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1085, 621);
-            this.Controls.Add(this.pnCadastraSubtipos);
+            this.ClientSize = new System.Drawing.Size(1085, 740);
+            this.Controls.Add(this.btnAdicionarClassificacao);
+            this.Controls.Add(this.dgTipoClassificacao);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtClassificacao);
             this.Controls.Add(this.btnCadastrarSubtipos);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnAdicionarTipoValor);
@@ -797,6 +852,7 @@
             this.pnCadastraSubtipos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoAtividade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoValor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTipoClassificacao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -854,5 +910,9 @@
         private System.Windows.Forms.Button btnAdicionaSubtipoAtividade;
         private System.Windows.Forms.DataGridView dgSubtipoAtividade;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAdicionarClassificacao;
+        private System.Windows.Forms.DataGridView dgTipoClassificacao;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtClassificacao;
     }
 }

@@ -49,7 +49,6 @@ namespace OrangePoint.DataAccess
                 {
                     Empresa empresa = new Empresa();
                     empresa.Regime = listaRegimeEmpresa.Find(o => o.CodRegime == int.Parse(registro["COD_REGIME"].ToString()));
-                    empresa.Classificacao = registro["CLASSIFICACAO"].ToString();
                     empresa.CNPJ = registro["CNPJ"].ToString();
                     empresa.ESocial = registro["ESOCIAL"].ToString();
                     empresa.Grupo = listaGrupoEmpresa.Find(o => o.CodGrupo == int.Parse(registro["COD_GRUPO"].ToString()));

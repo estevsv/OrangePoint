@@ -24,6 +24,7 @@ namespace OrangePoint.View
         TipoValorRule tipoValorRule = new TipoValorRule();
         SubtipoValorRule subtipoValorRule = new SubtipoValorRule(); 
         SubtipoAtividadeRule subtipoAtividadeRule = new SubtipoAtividadeRule(); 
+        TipoClassificacaoRule tipoClassificacaoRule = new TipoClassificacaoRule(); 
         bool fechamentoSistema;
 
         public CadastroAuxiliar(Usuario usuario)
@@ -55,6 +56,7 @@ namespace OrangePoint.View
             CarregaGridSubtipoValor();
             CarregaCbTipoValor();
             CarregaGridSubtipoAtividade();
+            CarregaGridTipoClassificacao();
         }
 
         #region Controle de Acessos
@@ -307,7 +309,39 @@ namespace OrangePoint.View
 
             e.Cancel = true;
         }
-        #endregion 
+        #endregion
+
+        #region Dados Tipo Classificação
+        private void CarregaGridTipoClassificacao()
+        {
+            dgTipoClassificacao.DataSource = tipoClassificacaoRule.PesquisaTipoClassificacaoTabela();
+            if (dgTipoClassificacao.Columns.Count != 0)
+            {
+                dgTipoClassificacao.Columns["COD_TIPO_CLASSIFICACAO"].Visible = false;
+                dgTipoClassificacao.Columns["DESCRICAO"].HeaderText = "Descrição";
+                dgTipoClassificacao.Columns["DESCRICAO"].ReadOnly = true;
+                dgTipoClassificacao.Columns["DESCRICAO"].Width = 187;
+            }
+        }
+
+        private void btnAdicionarClassificacao_Click(object sender, EventArgs e)
+        {
+            if (txtClassificacao.Text != "")
+                tipoClassificacaoRule.IncluirTipoClassificacao(txtClassificacao.Text);
+
+            CarregaGridTipoClassificacao();
+        }
+
+        private void dgTipoClassificacao_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            tipoClassificacaoRule.ExcluiTipoClassificacao(int.Parse(dgTipoClassificacao.CurrentRow.Cells[0].Value.ToString()));
+            dgTipoClassificacao.Rows.RemoveAt(dgTipoClassificacao.CurrentRow.Index);
+
+            CarregaGridTipoClassificacao();
+
+            e.Cancel = true;
+        }
+        #endregion
 
         #endregion
 
@@ -411,11 +445,11 @@ namespace OrangePoint.View
             e.Cancel = true;
         }
 
-        #endregion
 
         #endregion
 
         #endregion
 
+        #endregion
     }
 }

@@ -120,7 +120,7 @@ namespace OrangePoint.View
             dgEmpresa.Columns["Grupo"].ReadOnly = true;
             dgEmpresa.Columns["Regime"].ReadOnly = true;
         }
-
+         
         private void CarregaComboBoxes()
         {
             cbGrupo.DataSource = grupoRule.PesquisaGrupoEmpresasTabela();
@@ -154,10 +154,10 @@ namespace OrangePoint.View
                 listaFiltrada = listaFiltrada.Where(o => o.RazaoSocial == txtFiltroRazaoSocial.Text).ToList();
             if(txtCnpj.Text != "")
                 listaFiltrada = listaFiltrada.Where(o => o.CNPJ == txtCnpj.Text).ToList();
-            if (int.Parse(cbRegime.SelectedValue.ToString()) != -1)
-                listaFiltrada.Where(o => o.Regime.CodRegime == int.Parse(cbRegime.SelectedValue.ToString()));
-            if (int.Parse(cbGrupo.SelectedValue.ToString()) != -1)
-                listaFiltrada.Where(o => o.Grupo.CodGrupo == int.Parse(cbGrupo.SelectedValue.ToString()));
+            if (cbRegime.SelectedText != "")
+                listaFiltrada = listaFiltrada.Where(o => o.Regime.CodRegime == int.Parse(cbRegime.SelectedValue.ToString())).ToList();
+            if (cbGrupo.SelectedText != "")
+                listaFiltrada = listaFiltrada.Where(o => o.Grupo.CodGrupo == int.Parse(cbGrupo.SelectedValue.ToString())).ToList();
 
             CarregaGrid(empresaRule.ElaboraTabelaEmpresa(listaFiltrada));
         }
@@ -166,6 +166,13 @@ namespace OrangePoint.View
         {
             if (fechamentoSistema)
                 Application.Exit();
+        }
+
+        private void dgEmpresa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Empresa empresaSelecionada = empresaRule.PesquisaEmpresaPorId(int.Parse(dgEmpresa.CurrentRow.Cells[0].Value.ToString()));
+            FechaPagina();
+            new EspecificacoesEmpresa(usuarioPagina, empresaSelecionada).Show();
         }
     }
 }

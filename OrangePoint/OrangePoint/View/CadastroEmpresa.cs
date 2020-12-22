@@ -174,6 +174,7 @@ namespace OrangePoint.View
                     empresaRule.IncluirEmpresa(int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
                         int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
                 }
+
                 CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
 
                 LimparCampos();

@@ -253,6 +253,7 @@
             this.dgEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgEmpresa.Size = new System.Drawing.Size(856, 379);
             this.dgEmpresa.TabIndex = 9;
+            this.dgEmpresa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmpresa_CellDoubleClick);
             // 
             // button1
             // 

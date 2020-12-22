@@ -106,7 +106,6 @@
     <Compile Include="DataAccess\TipoDataDAO.cs" />
     <Compile Include="DataAccess\TipoPermissaoDAO.cs" />
     <Compile Include="DataAccess\TipoValorDAO.cs" />
-    <Compile Include="Model\AlvaraEmpresa.cs" />
     <Compile Include="Model\Atividade.cs" />
     <Compile Include="Model\AtividadeEmpresa.cs" />
     <Compile Include="Model\Balanço Patrimonial\SubtipoBalancoPatrimonial.cs" />
@@ -187,6 +186,12 @@
     <Compile Include="View\EmpresaView.Designer.cs">
       <DependentUpon>EmpresaView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\EspecificacoesEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\EspecificacoesEmpresa.Designer.cs">
+      <DependentUpon>EspecificacoesEmpresa.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FolhadePonto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +237,9 @@
     </Compile>
     <EmbeddedResource Include="View\EmpresaView.resx">
       <DependentUpon>EmpresaView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\EspecificacoesEmpresa.resx">
+      <DependentUpon>EspecificacoesEmpresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FolhadePonto.resx">
       <DependentUpon>FolhadePonto.cs</DependentUpon>

@@ -16,11 +16,15 @@ namespace OrangePoint.View
     public partial class CadastroEmpresa : Form
     {
         private Usuario usuarioPagina;
+        private Empresa empresaEdicao;
+
         Utilities utilities = new Utilities();
         bool fechamentoSistema;
         RegimeEmpresaRule regimeEmpresaRule = new RegimeEmpresaRule();
         GrupoRule grupoRule = new GrupoRule();
         EmpresaRule empresaRule = new EmpresaRule();
+
+
 
         public CadastroEmpresa(Usuario usuario)
         {
@@ -153,10 +157,74 @@ namespace OrangePoint.View
         private void btnCadastrarEmpresa_Click(object sender, EventArgs e)
         {
             if (txtRazaoSocial.Text != "" && cbRegime.Text != "" && cbRegime.Text != "")
-                empresaRule.IncluirEmpresa(int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
-                    int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
+            {
+                if (txtNumSocios.Text == "")
+                    txtNumSocios.Text = "0";
+                if (txtNumVinculos.Text == "")
+                    txtNumVinculos.Text = "0";
 
-            CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
+                if (btnCadastrarEmpresa.Text == "Editar Empresa")
+                {
+                    empresaRule.AtualizarEmpresa(empresaEdicao.CodEmpresa, int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
+                        int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
+                    btnCadastrarEmpresa.Text = "Cadastrar Empresa";
+                }
+                else
+                {
+                    empresaRule.IncluirEmpresa(int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
+                        int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
+                }
+                CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
+
+                LimparCampos();
+            }
+        }
+
+        private void dgEmpresa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            empresaEdicao = empresaRule.PesquisaEmpresaPorId(int.Parse(dgEmpresa.CurrentRow.Cells[0].Value.ToString()));
+
+            txtRazaoSocial.Text = empresaEdicao.RazaoSocial;
+            txtNumSocios.Text = empresaEdicao.NumSocios.ToString();
+            txtNumVinculos.Text = empresaEdicao.NumVinculos.ToString();
+            txtCNPJ.Text = empresaEdicao.CNPJ;
+            txtSenhaSIAT.Text = empresaEdicao.SenhaSIAT;
+            txtEsocial.Text = empresaEdicao.ESocial;
+            txtObservacoes.Text = empresaEdicao.Observacao;
+            cbGrupo.SelectedValue = empresaEdicao.Grupo.CodGrupo;
+            cbRegime.SelectedValue = empresaEdicao.Regime.CodRegime;
+
+            btnCadastrarEmpresa.Text = "Editar Empresa";
+            btnCancelaEdicao.Visible = true;
+        }
+
+        private void LimparCampos()
+        {
+            txtRazaoSocial.Text = "";
+            txtNumSocios.Text = "";
+            txtNumVinculos.Text = "";
+            txtCNPJ.Text = "";
+            txtSenhaSIAT.Text = "";
+            txtEsocial.Text = "";
+            txtObservacoes.Text = "";
+        }
+
+        private void btnCancelaEdicao_Click(object sender, EventArgs e)
+        {
+            empresaEdicao = new Empresa();
+            LimparCampos();
+            btnCadastrarEmpresa.Text = "Cadastrar Empresa";
+            btnCancelaEdicao.Visible = false;
+        }
+
+        private void txtRazaoSocial_TextChanged(object sender, EventArgs e)
+        {
+            CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(txtRazaoSocial.Text != "" ? empresaRule.listaEmpresas().Where(o => o.RazaoSocial == txtRazaoSocial.Text).ToList() : empresaRule.listaEmpresas()));
+        }
+
+        private void txtCNPJ_TextChanged(object sender, EventArgs e)
+        {
+            CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(txtCNPJ.Text != "" ? empresaRule.listaEmpresas().Where(o => o.CNPJ == txtCNPJ.Text).ToList() : empresaRule.listaEmpresas()));
         }
     }
 }

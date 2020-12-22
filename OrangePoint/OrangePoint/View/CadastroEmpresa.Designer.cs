@@ -62,6 +62,7 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnCadastrarEmpresa = new System.Windows.Forms.Button();
             this.dgEmpresa = new System.Windows.Forms.DataGridView();
+            this.btnCancelaEdicao = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -256,6 +257,7 @@
             this.txtRazaoSocial.Name = "txtRazaoSocial";
             this.txtRazaoSocial.Size = new System.Drawing.Size(261, 20);
             this.txtRazaoSocial.TabIndex = 17;
+            this.txtRazaoSocial.TextChanged += new System.EventHandler(this.txtRazaoSocial_TextChanged);
             // 
             // cbRegime
             // 
@@ -297,6 +299,7 @@
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(117, 20);
             this.txtCNPJ.TabIndex = 22;
+            this.txtCNPJ.TextChanged += new System.EventHandler(this.txtCNPJ_TextChanged);
             // 
             // cbGrupo
             // 
@@ -444,7 +447,7 @@
             this.btnCadastrarEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCadastrarEmpresa.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrarEmpresa.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarEmpresa.Location = new System.Drawing.Point(885, 253);
+            this.btnCadastrarEmpresa.Location = new System.Drawing.Point(884, 245);
             this.btnCadastrarEmpresa.Name = "btnCadastrarEmpresa";
             this.btnCadastrarEmpresa.Size = new System.Drawing.Size(155, 42);
             this.btnCadastrarEmpresa.TabIndex = 43;
@@ -461,6 +464,24 @@
             this.dgEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgEmpresa.Size = new System.Drawing.Size(848, 215);
             this.dgEmpresa.TabIndex = 44;
+            this.dgEmpresa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEmpresa_CellDoubleClick);
+            // 
+            // btnCancelaEdicao
+            // 
+            this.btnCancelaEdicao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelaEdicao.AutoSize = true;
+            this.btnCancelaEdicao.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelaEdicao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelaEdicao.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelaEdicao.ForeColor = System.Drawing.Color.White;
+            this.btnCancelaEdicao.Location = new System.Drawing.Point(884, 293);
+            this.btnCancelaEdicao.Name = "btnCancelaEdicao";
+            this.btnCancelaEdicao.Size = new System.Drawing.Size(155, 42);
+            this.btnCancelaEdicao.TabIndex = 45;
+            this.btnCancelaEdicao.Text = "Cancelar Edição";
+            this.btnCancelaEdicao.UseVisualStyleBackColor = false;
+            this.btnCancelaEdicao.Visible = false;
+            this.btnCancelaEdicao.Click += new System.EventHandler(this.btnCancelaEdicao_Click);
             // 
             // CadastroEmpresa
             // 
@@ -469,6 +490,7 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.btnCancelaEdicao);
             this.Controls.Add(this.dgEmpresa);
             this.Controls.Add(this.btnCadastrarEmpresa);
             this.Controls.Add(this.btnSair);
@@ -545,5 +567,6 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnCadastrarEmpresa;
         private System.Windows.Forms.DataGridView dgEmpresa;
+        private System.Windows.Forms.Button btnCancelaEdicao;
     }
 }

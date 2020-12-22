@@ -78,7 +78,7 @@ namespace OrangePoint.BusinessRule
                 row["id"] = empresa.CodEmpresa;
                 row["Razão Social"] = empresa.RazaoSocial;
                 row["CNPJ"] = empresa.CNPJ;
-                row["Grupo"] = empresa.Grupo;
+                row["Grupo"] = empresa.Grupo.Descricao;
                 row["Regime"] = empresa.Regime.Descricao;
                 table.Rows.Add(row);
             }
@@ -90,18 +90,11 @@ namespace OrangePoint.BusinessRule
         {
             if (!EmpresaExistente(CNPJ, razaoSocial, codRegime, codGrupo))
             {
-                Empresa empresa = new Empresa();
-                empresa.Regime = regimeEmpresaRule.listaRegimeEmpresas().Find(o => o.CodRegime == codRegime);
-                empresa.Grupo = grupoRule.listaGrupoEmpresas().Find(o => o.CodGrupo == codGrupo);
-                empresa.RazaoSocial = razaoSocial;
-                empresa.CNPJ = CNPJ;
-                empresa.NumSocios = numSocios;
-                empresa.NumVinculos = numVinculos;
-                empresa.Observacao = observacao;
-                empresa.SenhaSIAT = senhaSiat;
-                empresa.ESocial = Esocial;
+                Empresa empresa = CarregaDadosEmpresa(new Empresa(), codRegime, codGrupo, razaoSocial, CNPJ, numSocios, numVinculos, observacao, senhaSiat, Esocial);
 
                 empresaDAO.IncluirEmpresa(empresa);
+
+                MessageBox.Show("Cadastro Realizado!");
             }
             else 
                 MessageBox.Show("Empresa Existente!");
@@ -109,7 +102,39 @@ namespace OrangePoint.BusinessRule
 
         private bool EmpresaExistente(string CNPJ, string razaoSocial, int codRegime, int codGrupo)
         {
-            return empresaDAO.PesquisaEmpresasLista().Exists(o => o.CNPJ == CNPJ && o.RazaoSocial == razaoSocial && o.Regime.CodRegime == codRegime && o.Grupo.CodGrupo == codGrupo);
+            return empresaDAO.PesquisaEmpresasLista().Exists(o => o.CNPJ == CNPJ ||( o.RazaoSocial == razaoSocial && o.Regime.CodRegime == codRegime && o.Grupo.CodGrupo == codGrupo));
+        }
+
+        public Empresa PesquisaEmpresaPorId(int idEmpresa)
+        {
+            return empresaDAO.PesquisaEmpresaPorId(idEmpresa);
+        }
+
+        public void AtualizarEmpresa(int codEmpresa , int codRegime, int codGrupo, string razaoSocial, string CNPJ, int numSocios, int numVinculos, string observacao, 
+            string senhaSiat, string Esocial)
+        {
+            Empresa empresa = CarregaDadosEmpresa(new Empresa(), codRegime, codGrupo, razaoSocial, CNPJ, numSocios, numVinculos, observacao, senhaSiat, Esocial);
+            empresa.CodEmpresa = codEmpresa;
+
+            empresaDAO.AtualizaEmpresa(empresa);
+
+            MessageBox.Show("Atualização Realizada!");
+        }
+
+        private Empresa CarregaDadosEmpresa(Empresa empresa,int codRegime, int codGrupo, string razaoSocial, string CNPJ, int numSocios, int numVinculos, string observacao,
+            string senhaSiat, string Esocial)
+        {
+            empresa.Regime = regimeEmpresaRule.listaRegimeEmpresas().Find(o => o.CodRegime == codRegime);
+            empresa.Grupo = grupoRule.listaGrupoEmpresas().Find(o => o.CodGrupo == codGrupo);
+            empresa.RazaoSocial = razaoSocial;
+            empresa.CNPJ = CNPJ;
+            empresa.NumSocios = numSocios;
+            empresa.NumVinculos = numVinculos;
+            empresa.Observacao = observacao;
+            empresa.SenhaSIAT = senhaSiat;
+            empresa.ESocial = Esocial;
+
+            return empresa;
         }
     }
 }

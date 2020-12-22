@@ -40,5 +40,41 @@ namespace OrangePoint.BusinessRule
             DataEmpresaDAO.ExcluiDataEmpresa(codData);
             MessageBox.Show("Data Excluída!");
         }
+
+        public DataTable ElaboraTabelaDataEmpresa(List<DataEmpresa> listaDataEmpresa)
+        {
+            DataTable table = new DataTable("TabelaGridClasse");
+            DataColumn column;
+            DataRow row;
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.Int32"),
+                ColumnName = "id",
+                ReadOnly = true,
+                Unique = true
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Data",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+
+            DataColumn[] PrimaryKeyColumns = new DataColumn[1];
+            PrimaryKeyColumns[0] = table.Columns["id"];
+            table.PrimaryKey = PrimaryKeyColumns;
+
+            foreach (DataEmpresa data in listaDataEmpresa)
+            {
+                row = table.NewRow();
+                row["id"] = data.CodData;
+                row["Data"] = data.Data.ToShortDateString();
+                table.Rows.Add(row);
+            }
+
+            return table;
+        }
     }
 }

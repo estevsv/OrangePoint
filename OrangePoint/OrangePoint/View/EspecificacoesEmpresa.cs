@@ -19,6 +19,10 @@ namespace OrangePoint.View
         private Empresa empresaOperacao;
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
+        TipoClassificacaoRule tipoClassificacaoRule = new TipoClassificacaoRule();
+        TipoDataRule tipoDataRule = new TipoDataRule();
+        DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
+        ClassificacaoEmpresaRule classificacaoEmpresaRule = new ClassificacaoEmpresaRule();
         bool fechamentoSistema;
 
         public EspecificacoesEmpresa(Usuario usuario, Empresa empresa)
@@ -39,6 +43,7 @@ namespace OrangePoint.View
             lblTxtEmpresaInfo.Text = "Empresa: " + empresaOperacao.RazaoSocial +"  CNPJ:" + empresaOperacao.CNPJ;
 
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
+            CarregaComboBoxes();
         }
 
         #region Controle de Acesso da Página
@@ -108,9 +113,62 @@ namespace OrangePoint.View
         {
             FechaPagina();
             new CadastroAuxiliar(usuarioPagina).Show();
+        }
+        #endregion
+
+        #region Carregamento de ComboBox
+        private void CarregaComboBoxes()
+        {
+            CarregaComboBoxClassificacao();
+            CarregaComboBoxTipoData();
+            CarregaComboBoxDataEmpresa();
+        }
+
+        private void CarregaComboBoxClassificacao()
+        {
+            cbClassificacao.DataSource = tipoClassificacaoRule.PesquisaTipoClassificacaoTabela();
+            cbClassificacao.DisplayMember = "DESCRICAO";
+            cbClassificacao.ValueMember = "COD_TIPO_CLASSIFICACAO";
+        }
+
+        private void CarregaComboBoxTipoData()
+        {
+            cbTipoData.DataSource = tipoDataRule.PesquisaTipoDataTabela();
+            cbTipoData.DisplayMember = "DESC_TIPO";
+            cbTipoData.ValueMember = "COD_TIPO_DATA";
+
+            cbTipoData1.DataSource = cbTipoData;
+            cbTipoData1.DisplayMember = "DESC_TIPO";
+            cbTipoData1.ValueMember = "COD_TIPO_DATA";
+        }
+
+        private void CarregaComboBoxDataEmpresa()
+        {
+            cbData.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.TipoData.CodTipoData == int.Parse(cbTipoData.SelectedValue.ToString())).ToList());
+            cbData.DisplayMember = "Data";
+            cbData.ValueMember = "id";
         } 
         #endregion
 
+        private void CarregaGrids()
+        {
 
+        }
+
+        private void CarregaGridControleFC()
+        {
+            dgControleFC.DataSource = classificacaoEmpresaRule.PesquisaClassificacaoEmpresaTabela();
+            //dgEmpresa.Columns["id"].Visible = false;
+
+            //dgEmpresa.Columns["Razão Social"].Width = 250;
+            //dgEmpresa.Columns["CNPJ"].Width = 165;
+            //dgEmpresa.Columns["Grupo"].Width = 200;
+            //dgEmpresa.Columns["Regime"].Width = 200;
+
+            //dgEmpresa.Columns["Razão Social"].ReadOnly = true;
+            //dgEmpresa.Columns["CNPJ"].ReadOnly = true;
+            //dgEmpresa.Columns["Grupo"].ReadOnly = true;
+            //dgEmpresa.Columns["Regime"].ReadOnly = true;
+        }
     }
 }

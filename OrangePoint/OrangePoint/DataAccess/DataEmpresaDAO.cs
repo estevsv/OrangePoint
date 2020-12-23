@@ -87,16 +87,65 @@ namespace OrangePoint.DataAccess
 
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`datas_empresa` (`COD_TIPO_DATA`, `COD_EMPRESA`, `DATA`) VALUES (" + codTipoData + "," + codEmpresa + "," + dataFiltrada + ");";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`datas_empresa` (`COD_TIPO_DATA`, `COD_EMPRESA`, `DATA`) VALUES (" + codTipoData + "," + codEmpresa + ", @dataFiltrada);";
+                cmd.Parameters.AddWithValue("@dataFiltrada", dataFiltrada);
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("Erro DataEmpresaDAO/IncluirDataEmpresa. Contate o Suporte");
             }
+        }
+
+        public string VerificaUsoData(int codData)
+        {
+            int verificacao = 0;
+            try
+            {
+                #region Verifica Classificacao_empresa
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "SELECT * FROM bdorangepoint.classificacao_empresa where COD_DATA = " + codData + ";";
+                conexao.Desconectar();
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                if (registro.Read())
+                {
+                    verificacao = 1;
+                }
+                conexao.Desconectar();
+                #endregion
+
+                #region Verifica Classificacao_empresa
+                cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "SELECT * FROM bdorangepoint.valor where COD_DATA = " + codData + ";";
+                conexao.Desconectar();
+                conexao.Conectar();
+                registro = cmd.ExecuteReader();
+                if (registro.Read())
+                {
+                    verificacao = verificacao == 1 ? verificacao+2 : 2;
+                }
+                conexao.Desconectar();
+                #endregion
+
+                switch (verificacao)
+                {
+                    case 1:
+                        return "Data sendo usada no Controle Fiscal e Contábil";
+                    case 2:
+                        return "Data sendo usada em um valor desta empresa";
+                    case 3:
+                        return "Data sendo usada no Controle Fiscal e Contábil, e em um valor desta empresa";
+                }
+            }
+            catch { MessageBox.Show("Erro DataEmpresaDAO/PesquisaDataEmpresaLista. Contate o Suporte"); }
+
+            return "";
         }
     }
 }

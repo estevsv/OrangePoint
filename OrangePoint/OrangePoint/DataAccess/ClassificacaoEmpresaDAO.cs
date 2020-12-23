@@ -51,7 +51,6 @@ namespace OrangePoint.DataAccess
                     classificacaoEmpresa.CodClassificacao = int.Parse(registro["COD_CLASSIFICACAO"].ToString());
                     classificacaoEmpresa.TipoClassificacao = listTipoClassificacaoDAO.Find(o => o.CodTipoClassificacao == int.Parse(registro["COD_TIPO_CLASSIFICACAO"].ToString()));
                     classificacaoEmpresa.DataEmpresa = listDataEmpresaDAO.Find(o => o.CodData == int.Parse(registro["COD_DATA"].ToString()));
-                    classificacaoEmpresa.FlagAtivo = int.Parse(registro["FLAG_ATIVO"].ToString());
 
                     listClassificacaoEmpresa.Add(classificacaoEmpresa);
                 }
@@ -79,13 +78,13 @@ namespace OrangePoint.DataAccess
             }
         }
 
-        public void IncluirClassificacaoEmpresa(int codTipoClassificacao, int codData, int FlagAtivo)
+        public void IncluirClassificacaoEmpresa(int codTipoClassificacao, int codData)
         {
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`classificacao_empresa` (`COD_TIPO_CLASSIFICACAO`, `COD_DATA`, `FLAG_ATIVO`) VALUES (" + codTipoClassificacao + "," + codData + "," + FlagAtivo + ");";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`classificacao_empresa` (`COD_TIPO_CLASSIFICACAO`, `COD_DATA`) VALUES (" + codTipoClassificacao + "," + codData + ");";
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

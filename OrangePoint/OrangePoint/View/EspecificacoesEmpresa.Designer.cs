@@ -309,6 +309,7 @@
             this.dgControleFC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgControleFC.Size = new System.Drawing.Size(343, 106);
             this.dgControleFC.TabIndex = 21;
+            this.dgControleFC.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgControleFC_UserDeletingRow);
             // 
             // cbClassificacao
             // 
@@ -353,6 +354,7 @@
             this.cbTipoData.Name = "cbTipoData";
             this.cbTipoData.Size = new System.Drawing.Size(196, 21);
             this.cbTipoData.TabIndex = 63;
+            this.cbTipoData.SelectedIndexChanged += new System.EventHandler(this.cbTipoData_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -382,13 +384,6 @@
             // 
             this.cbData.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbData.FormattingEnabled = true;
-            this.cbData.Items.AddRange(new object[] {
-            "Cadastros",
-            "Consultoria Contábil",
-            "Apuração de Lucro Real",
-            "Controle de Usuários",
-            "Folha de Ponto",
-            "Controle de Folha de Ponto"});
             this.cbData.Location = new System.Drawing.Point(359, 263);
             this.cbData.Name = "cbData";
             this.cbData.Size = new System.Drawing.Size(196, 21);
@@ -407,6 +402,7 @@
             this.btnControleFC.TabIndex = 68;
             this.btnControleFC.Text = "=>";
             this.btnControleFC.UseVisualStyleBackColor = false;
+            this.btnControleFC.Click += new System.EventHandler(this.btnControleFC_Click);
             // 
             // label3
             // 
@@ -459,6 +455,7 @@
             this.cbTipoData1.Name = "cbTipoData1";
             this.cbTipoData1.Size = new System.Drawing.Size(196, 21);
             this.cbTipoData1.TabIndex = 70;
+            this.cbTipoData1.SelectedIndexChanged += new System.EventHandler(this.cbTipoData1_SelectedIndexChanged);
             // 
             // dgDatas
             // 
@@ -469,6 +466,7 @@
             this.dgDatas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgDatas.Size = new System.Drawing.Size(321, 199);
             this.dgDatas.TabIndex = 74;
+            this.dgDatas.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgDatas_UserDeletingRow);
             // 
             // btnAdicionarData
             // 
@@ -483,6 +481,7 @@
             this.btnAdicionarData.TabIndex = 75;
             this.btnAdicionarData.Text = "+";
             this.btnAdicionarData.UseVisualStyleBackColor = false;
+            this.btnAdicionarData.Click += new System.EventHandler(this.btnAdicionarData_Click);
             // 
             // txtData
             // 

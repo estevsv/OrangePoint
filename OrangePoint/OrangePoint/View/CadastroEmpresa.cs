@@ -167,7 +167,7 @@ namespace OrangePoint.View
                 {
                     empresaRule.AtualizarEmpresa(empresaEdicao.CodEmpresa, int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
                         int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
-                    btnCadastrarEmpresa.Text = "Cadastrar Empresa";
+                    
                 }
                 else
                 {
@@ -175,9 +175,8 @@ namespace OrangePoint.View
                         int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
                 }
 
-                CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
-
                 LimparCampos();
+                CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
             }
         }
 
@@ -208,6 +207,9 @@ namespace OrangePoint.View
             txtSenhaSIAT.Text = "";
             txtEsocial.Text = "";
             txtObservacoes.Text = "";
+
+            btnCadastrarEmpresa.Text = "Cadastrar Empresa";
+            btnCancelaEdicao.Visible = false;
         }
 
         private void btnCancelaEdicao_Click(object sender, EventArgs e)
@@ -216,6 +218,7 @@ namespace OrangePoint.View
             LimparCampos();
             btnCadastrarEmpresa.Text = "Cadastrar Empresa";
             btnCancelaEdicao.Visible = false;
+            CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(empresaRule.listaEmpresas()));
         }
 
         private void txtRazaoSocial_TextChanged(object sender, EventArgs e)

@@ -17,7 +17,5 @@ namespace OrangePoint.Model
         private DataEmpresa dataEmpresa;
         public DataEmpresa DataEmpresa { get => dataEmpresa; set => dataEmpresa = value; }
 
-        private int flagAtivo;
-        public int FlagAtivo { get => flagAtivo; set => flagAtivo = value; }
     }
 }

@@ -24,21 +24,37 @@ namespace OrangePoint.BusinessRule
             return DataEmpresaDAO.PesquisaDataEmpresaLista();
         }
 
-        public void IncluirDataEmpresa(int codTipoData, int codEmpresa, DateTime data)
+        public void IncluirDataEmpresa(int codTipoData, int codEmpresa, string data)
         {
-            if (listaDataEmpresa().Exists(o => o.TipoData.CodTipoData == codTipoData && o.Empresa.CodEmpresa == codEmpresa && o.Data.Date == data.Date))
-                MessageBox.Show("Data já cadastrada!");
+            Tuple<bool, DateTime> retornaDataValida = RetornaDataValida(data);
+            if (retornaDataValida.Item1)
+                if (listaDataEmpresa().Exists(o => o.TipoData.CodTipoData == codTipoData && o.Empresa.CodEmpresa == codEmpresa && o.Data.Date == retornaDataValida.Item2.Date))
+                    MessageBox.Show("Data já cadastrada!");
+                else
+                {
+                    DataEmpresaDAO.IncluirDataEmpresa(codTipoData, codEmpresa, retornaDataValida.Item2);
+                    MessageBox.Show("Data cadastrada!");
+                }
             else
-            {
-                DataEmpresaDAO.IncluirDataEmpresa(codTipoData, codEmpresa,data);
-                MessageBox.Show("Data cadastrada!");
-            }
+                MessageBox.Show("Data Inválida!");
+        }
+
+        private Tuple<bool,DateTime> RetornaDataValida(string data)
+        {
+            DateTime dataConversao = new DateTime();
+            return new Tuple<bool, DateTime>(DateTime.TryParse(data, out dataConversao),dataConversao);
         }
 
         public void ExcluiDataEmpresa(int codData)
         {
-            DataEmpresaDAO.ExcluiDataEmpresa(codData);
-            MessageBox.Show("Data Excluída!");
+            string verificacao = DataEmpresaDAO.VerificaUsoData(codData);
+            if (verificacao == "")
+            {
+                DataEmpresaDAO.ExcluiDataEmpresa(codData);
+                MessageBox.Show("Data Excluída!");
+            }
+            else
+                MessageBox.Show(verificacao);
         }
 
         public DataTable ElaboraTabelaDataEmpresa(List<DataEmpresa> listaDataEmpresa)

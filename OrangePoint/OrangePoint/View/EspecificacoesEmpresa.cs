@@ -17,17 +17,21 @@ namespace OrangePoint.View
     {
         private Usuario usuarioPagina;
         private Empresa empresaOperacao;
+        private bool fechamentoSistema;
+        private bool aberturaPagina;
+
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
         TipoClassificacaoRule tipoClassificacaoRule = new TipoClassificacaoRule();
         TipoDataRule tipoDataRule = new TipoDataRule();
         DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
         ClassificacaoEmpresaRule classificacaoEmpresaRule = new ClassificacaoEmpresaRule();
-        bool fechamentoSistema;
 
         public EspecificacoesEmpresa(Usuario usuario, Empresa empresa)
         {
             InitializeComponent();
+
+            aberturaPagina = true;
             usuarioPagina = usuario;
             empresaOperacao = empresa;
         }
@@ -44,6 +48,9 @@ namespace OrangePoint.View
 
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
             CarregaComboBoxes();
+            CarregaGrids();
+
+            aberturaPagina = false;
         }
 
         #region Controle de Acesso da Página
@@ -137,7 +144,7 @@ namespace OrangePoint.View
             cbTipoData.DisplayMember = "DESC_TIPO";
             cbTipoData.ValueMember = "COD_TIPO_DATA";
 
-            cbTipoData1.DataSource = cbTipoData;
+            cbTipoData1.DataSource = cbTipoData.DataSource;
             cbTipoData1.DisplayMember = "DESC_TIPO";
             cbTipoData1.ValueMember = "COD_TIPO_DATA";
         }
@@ -152,23 +159,75 @@ namespace OrangePoint.View
 
         private void CarregaGrids()
         {
-
+            CarregaGridControleFC();
+            CarregaGridDataEmpresa();
         }
 
         private void CarregaGridControleFC()
         {
-            dgControleFC.DataSource = classificacaoEmpresaRule.PesquisaClassificacaoEmpresaTabela();
-            //dgEmpresa.Columns["id"].Visible = false;
+            dgControleFC.DataSource = classificacaoEmpresaRule.ElaboraTabelaClassificacaoEmpresa(classificacaoEmpresaRule.listaClassificacaoEmpresa()
+                .Where(o => o.DataEmpresa.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList());
+            dgControleFC.Columns["id"].Visible = false;
 
-            //dgEmpresa.Columns["Razão Social"].Width = 250;
-            //dgEmpresa.Columns["CNPJ"].Width = 165;
-            //dgEmpresa.Columns["Grupo"].Width = 200;
-            //dgEmpresa.Columns["Regime"].Width = 200;
+            dgControleFC.Columns["Tipo Classificacao"].Width = 160;
+            dgControleFC.Columns["Data"].Width = 140;
 
-            //dgEmpresa.Columns["Razão Social"].ReadOnly = true;
-            //dgEmpresa.Columns["CNPJ"].ReadOnly = true;
-            //dgEmpresa.Columns["Grupo"].ReadOnly = true;
-            //dgEmpresa.Columns["Regime"].ReadOnly = true;
+            dgControleFC.Columns["Tipo Classificacao"].ReadOnly = true;
+            dgControleFC.Columns["Data"].ReadOnly = true;
+        }
+
+        private void CarregaGridDataEmpresa()
+        {
+            dgDatas.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa && o.TipoData.CodTipoData == int.Parse(cbTipoData1.SelectedValue.ToString())).ToList());
+
+            dgDatas.Columns["id"].Visible = false;
+            dgDatas.Columns["Data"].Width = 200;
+            dgDatas.Columns["Data"].ReadOnly = true;
+        }
+
+        private void cbTipoData_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(!aberturaPagina)
+                CarregaComboBoxDataEmpresa();
+        }
+
+        private void cbTipoData1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!aberturaPagina)
+                CarregaGridDataEmpresa(); 
+        }
+
+        private void btnControleFC_Click(object sender, EventArgs e)
+        {
+            if (cbData.Text != "")
+            {
+                classificacaoEmpresaRule.IncluirClassificacaoEmpresa(int.Parse(cbClassificacao.SelectedValue.ToString()), int.Parse(cbData.SelectedValue.ToString()));
+                CarregaGridControleFC();
+            }
+        }
+
+        private void btnAdicionarData_Click(object sender, EventArgs e)
+        {
+            dataEmpresaRule.IncluirDataEmpresa(int.Parse(cbTipoData1.SelectedValue.ToString()), empresaOperacao.CodEmpresa, txtData.Text);
+            CarregaGridDataEmpresa();
+            CarregaComboBoxDataEmpresa();
+        }
+
+        private void dgControleFC_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            classificacaoEmpresaRule.ExcluiClassificacaoEmpresa(int.Parse(dgControleFC.CurrentRow.Cells[0].Value.ToString()));
+            dgControleFC.Rows.RemoveAt(dgControleFC.CurrentRow.Index);
+            CarregaGridControleFC();
+            e.Cancel = true;
+        }
+
+        private void dgDatas_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            dataEmpresaRule.ExcluiDataEmpresa(int.Parse(dgDatas.CurrentRow.Cells[0].Value.ToString()));
+            dgDatas.Rows.RemoveAt(dgDatas.CurrentRow.Index);
+            CarregaComboBoxDataEmpresa();
+            CarregaGridDataEmpresa();
+            e.Cancel = true;
         }
     }
 }

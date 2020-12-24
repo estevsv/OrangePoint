@@ -102,6 +102,7 @@
     <Compile Include="DataAccess\AtividadeDAO.cs" />
     <Compile Include="DataAccess\AtividadeEmpresaDAO.cs" />
     <Compile Include="DataAccess\ClassificacaoEmpresaDAO.cs" />
+    <Compile Include="DataAccess\DadosWebEmpresaDAO.cs" />
     <Compile Include="DataAccess\DataEmpresaDAO.cs" />
     <Compile Include="DataAccess\EmpresaDAO.cs" />
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />

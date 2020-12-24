@@ -18,7 +18,7 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         private FolhaPonto folhaAlteracao;
 
-        Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
+        
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
         FolhaPontoRule folhaPontoRule = new FolhaPontoRule();
@@ -226,39 +226,45 @@ namespace OrangePoint.View
 
         private void btnExportar_Click(object sender, EventArgs e)
         {
-            if (dgFolhaPonto.Rows.Count > 0)
+            try
             {
-                try
+                Microsoft.Office.Interop.Excel.Application XcelApp = new Microsoft.Office.Interop.Excel.Application();
+           
+                if (dgFolhaPonto.Rows.Count > 0)
                 {
-                    XcelApp.Application.Workbooks.Add(Type.Missing);
-                    int cont = 1;
-                    for (int i =3; i < dgFolhaPonto.Columns.Count + 1; i++)
+                    try
                     {
-                        XcelApp.Cells[1, cont] = dgFolhaPonto.Columns[i - 1].HeaderText;
-                        cont++;
-                    }
-                    //
-                    for (int i = 0; i < dgFolhaPonto.Rows.Count - 1; i++)
-                    {
-                        cont = 2;
-                        for (int j = 0; j < 6; j++)
+                            XcelApp.Application.Workbooks.Add(Type.Missing);
+                        int cont = 1;
+                        for (int i =3; i < dgFolhaPonto.Columns.Count + 1; i++)
                         {
-                            XcelApp.Cells[i + 2, j + 1] = dgFolhaPonto.Rows[i].Cells[cont].Value.ToString();
+                            XcelApp.Cells[1, cont] = dgFolhaPonto.Columns[i - 1].HeaderText;
                             cont++;
                         }
+                        //
+                        for (int i = 0; i < dgFolhaPonto.Rows.Count - 1; i++)
+                        {
+                            cont = 2;
+                            for (int j = 0; j < 6; j++)
+                            {
+                                XcelApp.Cells[i + 2, j + 1] = dgFolhaPonto.Rows[i].Cells[cont].Value.ToString();
+                                cont++;
+                            }
+                        }
+                        //
+                        XcelApp.Columns.AutoFit();
+                        //
+                        XcelApp.Visible = true;
                     }
-                    //
-                    XcelApp.Columns.AutoFit();
-                    //
-                    XcelApp.Visible = true;
-                }
-                catch
-                {
-                    MessageBox.Show("Erro ao exportar. Contate o Suporte.");
-                    return;
-                }
-            } else
-                MessageBox.Show("Nenhum dado existente!");
+                    catch
+                    {
+                        MessageBox.Show("Erro ao exportar. Contate o Suporte.");
+                        return;
+                    }
+                } else
+                    MessageBox.Show("Nenhum dado existente!");
+            }
+            catch { }
         }
 
         private void ControleFolhaPonto_FormClosing(object sender, FormClosingEventArgs e)

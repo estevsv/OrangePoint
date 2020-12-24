@@ -19,8 +19,8 @@ namespace OrangePoint.Model
                 this.StringConexao = "SERVER=localhost;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=Required";
                 this._conexao.ConnectionString = "SERVER=localhost;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=Required";
 #else
-                this.StringConexao = "SERVER=10.10.11.252;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=Required";
-                this._conexao.ConnectionString = "SERVER=10.10.11.252;DATABASE=bdorangepoint;UID=root;PWD=123456;SslMode=Required"; 
+                this.StringConexao = "SERVER=10.10.11.252;DATABASE=bdorangepoint;UID=orangepointuser;PWD=orangepoint2020;SslMode=Required";
+                this._conexao.ConnectionString = "SERVER=10.10.11.252;DATABASE=bdorangepoint;UID=orangepointuser;PWD=orangepoint2020;SslMode=Required"; 
 #endif
         }
 

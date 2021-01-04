@@ -282,6 +282,7 @@
             this.dgFolhaPonto.Size = new System.Drawing.Size(816, 327);
             this.dgFolhaPonto.TabIndex = 40;
             this.dgFolhaPonto.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgFolhaPonto_CellBeginEdit);
+            this.dgFolhaPonto.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgFolhaPonto_UserDeletingRow);
             // 
             // btnSair
             // 

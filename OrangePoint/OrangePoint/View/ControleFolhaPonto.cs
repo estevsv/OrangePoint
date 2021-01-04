@@ -54,25 +54,33 @@ namespace OrangePoint.View
 
         private void CarregaGridFolhaPonto(Usuario usuario, bool filtro)
         {
+            DataTable retorno = new DataTable();
             if (filtro)
-                dgFolhaPonto.DataSource = folhaPontoRule.PesquisaPontoPorIdUsuarioeData(usuario, dateTimePicker1.Value.Date);
+                retorno = folhaPontoRule.PesquisaPontoPorIdUsuarioeData(usuario, dateTimePicker1.Value.Date);
             else
-                dgFolhaPonto.DataSource = folhaPontoRule.PesquisaPontoPorIdUsuario(usuario);
-            dgFolhaPonto.Columns["COD_PONTO"].Visible = false;
-            dgFolhaPonto.Columns["COD_USUARIO"].Visible = false;
-            dgFolhaPonto.Columns["DATA_PONTO"].HeaderText = "Data";
-            dgFolhaPonto.Columns["ENTRADA_1"].HeaderText = "Primeira Entrada";
-            dgFolhaPonto.Columns["SAIDA_1"].HeaderText = "Primeira Saída";
-            dgFolhaPonto.Columns["ENTRADA_2"].HeaderText = "Segunda Entrada";
-            dgFolhaPonto.Columns["SAIDA_2"].HeaderText = "Segunda Saída";
+                retorno = folhaPontoRule.PesquisaPontoPorIdUsuario(usuario);
 
-            dgFolhaPonto.Columns["DATA_PONTO"].Width = 172;
-            dgFolhaPonto.Columns["ENTRADA_1"].Width = 160;
-            dgFolhaPonto.Columns["SAIDA_1"].Width = 160;
-            dgFolhaPonto.Columns["ENTRADA_2"].Width = 160;
-            dgFolhaPonto.Columns["SAIDA_2"].Width = 160;
+            if (retorno.Rows.Count == 0)
+                MessageBox.Show("Usuário sem pontos registrados");
+            else
+            {
+                dgFolhaPonto.DataSource = retorno;
+                dgFolhaPonto.Columns["COD_PONTO"].Visible = false;
+                dgFolhaPonto.Columns["COD_USUARIO"].Visible = false;
+                dgFolhaPonto.Columns["DATA_PONTO"].HeaderText = "Data";
+                dgFolhaPonto.Columns["ENTRADA_1"].HeaderText = "Primeira Entrada";
+                dgFolhaPonto.Columns["SAIDA_1"].HeaderText = "Primeira Saída";
+                dgFolhaPonto.Columns["ENTRADA_2"].HeaderText = "Segunda Entrada";
+                dgFolhaPonto.Columns["SAIDA_2"].HeaderText = "Segunda Saída";
 
-            dgFolhaPonto.Columns["DATA_PONTO"].ReadOnly = true;
+                dgFolhaPonto.Columns["DATA_PONTO"].Width = 172;
+                dgFolhaPonto.Columns["ENTRADA_1"].Width = 160;
+                dgFolhaPonto.Columns["SAIDA_1"].Width = 160;
+                dgFolhaPonto.Columns["ENTRADA_2"].Width = 160;
+                dgFolhaPonto.Columns["SAIDA_2"].Width = 160;
+
+                dgFolhaPonto.Columns["DATA_PONTO"].ReadOnly = true;
+            }
         }
 
         //Referências das Posições[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto, Controle de Folha de Ponto]
@@ -201,17 +209,21 @@ namespace OrangePoint.View
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if (txtPrimeiraEntrada.Text.Length != 8 || txtPrimeiraSaida.Text.Length != 8 || txtSegundaEntrada.Text.Length != 8 ||
+            if (txtPrimeiraEntrada.Text.Length != 8 && txtPrimeiraSaida.Text.Length != 8 && txtSegundaEntrada.Text.Length != 8 &&
                 txtSegundaSaida.Text.Length != 8)
             {
-                MessageBox.Show("Hora inválida");
+                MessageBox.Show("Edição Inválida");
                 return;
             }
 
-            folhaAlteracao.Entrada1 = txtPrimeiraEntrada.Text;
-            folhaAlteracao.Saida1 = txtPrimeiraSaida.Text;
-            folhaAlteracao.Entrada2 = txtSegundaEntrada.Text;
-            folhaAlteracao.Saida2 = txtSegundaSaida.Text;
+            if(txtPrimeiraEntrada.Text != "  :  :")
+                folhaAlteracao.Entrada1 = txtPrimeiraEntrada.Text;
+            if (txtPrimeiraSaida.Text != "  :  :")
+                folhaAlteracao.Saida1 = txtPrimeiraSaida.Text;
+            if (txtSegundaEntrada.Text != "  :  :")
+                folhaAlteracao.Entrada2 = txtSegundaEntrada.Text;
+            if (txtSegundaSaida.Text != "  :  :")
+                folhaAlteracao.Saida2 = txtSegundaSaida.Text;
             folhaAlteracao.Usuario = loginRule.PesquisaUsuarioPorId(int.Parse(cbUsuario.SelectedValue.ToString()));
 
             folhaPontoRule.AtualizaPonto(folhaAlteracao);
@@ -271,6 +283,20 @@ namespace OrangePoint.View
         {
             if (fechamentoSistema)
                 Application.Exit();
+        }
+
+        private void dgFolhaPonto_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            int idFolha = int.Parse(dgFolhaPonto.CurrentRow.Cells[0].Value.ToString());
+            if (DialogResult.Yes == MessageBox.Show("Deseja deletar este dia do ponto eletrônico deste usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                Usuario usuarioFolha = folhaPontoRule.PesquisaPontoPorId(idFolha).Usuario;
+                folhaPontoRule.ExcluirPorId(idFolha);
+                dgFolhaPonto.Rows.RemoveAt(dgFolhaPonto.CurrentRow.Index);
+
+                CarregaGridFolhaPonto(usuarioFolha,false);
+            }
+            e.Cancel = true;
         }
     }
 }

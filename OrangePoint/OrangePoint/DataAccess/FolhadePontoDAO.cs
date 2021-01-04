@@ -86,8 +86,18 @@ namespace OrangePoint.DataAccess
             DataTable tabela = new DataTable();
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = "+ usuario .CodUsuario + ";", conexao.StringConexao);
-                da.Fill(tabela);
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = "+ usuario .CodUsuario + "; ";
+                conexao.Desconectar();
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                if (registro.HasRows)
+                {
+                    MySqlDataAdapter da = new MySqlDataAdapter("select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = " + usuario.CodUsuario + ";", conexao.StringConexao);
+                    da.Fill(tabela);
+                }
+                conexao.Desconectar();
             }
             catch
             {
@@ -145,6 +155,36 @@ namespace OrangePoint.DataAccess
             return ponto;
         }
 
+        public FolhaPonto PesquisaFolhadePontoPorId(int codigoID)
+        {
+            FolhaPonto ponto = new FolhaPonto();
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+
+                cmd.CommandText = "select * from bdorangepoint.folha_ponto_usuario where COD_PONTO = '" + codigoID + "';";
+                conexao.Desconectar();
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                registro.Read();
+                if (registro.HasRows)
+                {
+                    ponto.Usuario = new LoginDAO().PesquisaUsuarioPorId(Convert.ToInt32(registro["COD_PONTO"]));
+                    ponto.CodPonto = codigoID;
+                    ponto.DataPonto = Convert.ToDateTime(registro["DATA_PONTO"]);
+                    ponto.Entrada1 = registro["ENTRADA_1"].ToString();
+                    ponto.Saida1 = registro["SAIDA_1"].ToString();
+                    ponto.Entrada2 = registro["ENTRADA_2"].ToString();
+                    ponto.Saida2 = registro["SAIDA_2"].ToString();
+                    ponto.Observacao = registro["OBSERVACAO"].ToString();
+                }
+                conexao.Desconectar();
+            }
+            catch { MessageBox.Show("Erro FolhaPontoDAO/PesquisaFolhadePontoPorId. Contate o Suporte"); }
+            return ponto;
+        }
+
         public void AtualizaPonto(FolhaPonto folhaPonto)
         {
             try
@@ -187,6 +227,24 @@ namespace OrangePoint.DataAccess
             catch
             {
                 MessageBox.Show("Erro FolhaPontoDAO/ExcluiFolhaPorUsuario. Contate o Suporte");
+            }
+        }
+
+        public void ExcluiFolhaPorId(int codFolha)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete from bdorangepoint.folha_ponto_usuario where COD_PONTO = " + codFolha;
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro FolhaPontoDAO/ExcluiFolhaPorId. Contate o Suporte");
             }
         }
     }

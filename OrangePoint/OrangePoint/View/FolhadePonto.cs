@@ -3,6 +3,7 @@ using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace OrangePoint.View
@@ -36,29 +37,33 @@ namespace OrangePoint.View
 
         private void CarregaGridFolhaPonto()
         {
-            dgPontoUsuario.DataSource = folhaPontoRule.PesquisaPontoPorIdUsuario(usuarioPagina);
-            dgPontoUsuario.Columns["COD_PONTO"].Visible = false;
-            dgPontoUsuario.Columns["COD_USUARIO"].Visible = false;
-            dgPontoUsuario.Columns["DATA_PONTO"].HeaderText = "Data";
-            dgPontoUsuario.Columns["ENTRADA_1"].HeaderText = "Primeira Entrada";
-            dgPontoUsuario.Columns["SAIDA_1"].HeaderText = "Primeira Saída";
-            dgPontoUsuario.Columns["ENTRADA_2"].HeaderText = "Segunda Entrada";
-            dgPontoUsuario.Columns["SAIDA_2"].HeaderText = "Segunda Saída";
-            dgPontoUsuario.Columns["OBSERVACAO"].HeaderText = "Observação";
+            DataTable tabelaData = folhaPontoRule.PesquisaPontoPorIdUsuario(usuarioPagina);
+            if (tabelaData.Columns.Count != 0)
+            {
+                dgPontoUsuario.DataSource = tabelaData;
+                dgPontoUsuario.Columns["COD_PONTO"].Visible = false;
+                dgPontoUsuario.Columns["COD_USUARIO"].Visible = false;
+                dgPontoUsuario.Columns["DATA_PONTO"].HeaderText = "Data";
+                dgPontoUsuario.Columns["ENTRADA_1"].HeaderText = "Primeira Entrada";
+                dgPontoUsuario.Columns["SAIDA_1"].HeaderText = "Primeira Saída";
+                dgPontoUsuario.Columns["ENTRADA_2"].HeaderText = "Segunda Entrada";
+                dgPontoUsuario.Columns["SAIDA_2"].HeaderText = "Segunda Saída";
+                dgPontoUsuario.Columns["OBSERVACAO"].HeaderText = "Observação";
 
-            dgPontoUsuario.Columns["DATA_PONTO"].Width = 135;
-            dgPontoUsuario.Columns["ENTRADA_1"].Width = 135;
-            dgPontoUsuario.Columns["SAIDA_1"].Width = 135;
-            dgPontoUsuario.Columns["ENTRADA_2"].Width = 135;
-            dgPontoUsuario.Columns["SAIDA_2"].Width = 135;
-            dgPontoUsuario.Columns["OBSERVACAO"].Width = 135;
+                dgPontoUsuario.Columns["DATA_PONTO"].Width = 135;
+                dgPontoUsuario.Columns["ENTRADA_1"].Width = 135;
+                dgPontoUsuario.Columns["SAIDA_1"].Width = 135;
+                dgPontoUsuario.Columns["ENTRADA_2"].Width = 135;
+                dgPontoUsuario.Columns["SAIDA_2"].Width = 135;
+                dgPontoUsuario.Columns["OBSERVACAO"].Width = 135;
 
-            dgPontoUsuario.Columns["DATA_PONTO"].ReadOnly = true;
-            dgPontoUsuario.Columns["ENTRADA_1"].ReadOnly = true;
-            dgPontoUsuario.Columns["SAIDA_1"].ReadOnly = true;
-            dgPontoUsuario.Columns["ENTRADA_2"].ReadOnly = true;
-            dgPontoUsuario.Columns["SAIDA_2"].ReadOnly = true;
-            dgPontoUsuario.Columns["OBSERVACAO"].ReadOnly = true;
+                dgPontoUsuario.Columns["DATA_PONTO"].ReadOnly = true;
+                dgPontoUsuario.Columns["ENTRADA_1"].ReadOnly = true;
+                dgPontoUsuario.Columns["SAIDA_1"].ReadOnly = true;
+                dgPontoUsuario.Columns["ENTRADA_2"].ReadOnly = true;
+                dgPontoUsuario.Columns["SAIDA_2"].ReadOnly = true;
+                dgPontoUsuario.Columns["OBSERVACAO"].ReadOnly = true;
+            }
         }
 
         #region Controle de Hora de Ponto

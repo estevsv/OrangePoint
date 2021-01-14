@@ -230,5 +230,11 @@ namespace OrangePoint.View
         {
             CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(txtCNPJ.Text != "" ? empresaRule.listaEmpresas().Where(o => o.CNPJ == txtCNPJ.Text).ToList() : empresaRule.listaEmpresas()));
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
     }
 }

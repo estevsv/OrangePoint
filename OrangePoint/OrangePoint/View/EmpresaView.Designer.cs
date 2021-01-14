@@ -53,6 +53,7 @@
             this.button7 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCnpj = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -178,6 +179,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.userImage);
@@ -196,7 +198,7 @@
             this.button6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(179, 1);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(137, 68);
+            this.button6.Size = new System.Drawing.Size(173, 68);
             this.button6.TabIndex = 11;
             this.button6.Text = "Cadastro Auxiliar";
             this.button6.UseVisualStyleBackColor = false;
@@ -368,6 +370,21 @@
             this.txtCnpj.Size = new System.Drawing.Size(165, 20);
             this.txtCnpj.TabIndex = 22;
             // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(358, 1);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(173, 68);
+            this.button8.TabIndex = 12;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // EmpresaView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,5 +450,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCnpj;
+        private System.Windows.Forms.Button button8;
     }
 }

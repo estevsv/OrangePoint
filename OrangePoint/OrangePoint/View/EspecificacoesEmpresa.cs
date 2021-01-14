@@ -121,6 +121,12 @@ namespace OrangePoint.View
             FechaPagina();
             new CadastroAuxiliar(usuarioPagina).Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
         #endregion
 
         #region Carregamento de ComboBox

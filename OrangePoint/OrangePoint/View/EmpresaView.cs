@@ -174,5 +174,11 @@ namespace OrangePoint.View
             FechaPagina();
             new EspecificacoesEmpresa(usuarioPagina, empresaSelecionada).Show();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
     }
 }

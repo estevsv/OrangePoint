@@ -39,6 +39,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.userImage = new System.Windows.Forms.PictureBox();
             this.pnCadastraSubtipos = new System.Windows.Forms.Panel();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -55,8 +57,6 @@
             this.dgSubtipoValor = new System.Windows.Forms.DataGridView();
             this.txtSubtipoValor = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.userImage = new System.Windows.Forms.PictureBox();
             this.txtNovoRegime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgRegime = new System.Windows.Forms.DataGridView();
@@ -83,12 +83,13 @@
             this.dgTipoClassificacao = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.txtClassificacao = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.pnCadastraSubtipos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoAtividade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoValor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGrupo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividade)).BeginInit();
@@ -232,6 +233,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -239,6 +241,32 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(0, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(211, 68);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Cadastro de Empresa";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // userImage
+            // 
+            this.userImage.BackColor = System.Drawing.Color.Transparent;
+            this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
+            this.userImage.Location = new System.Drawing.Point(811, 12);
+            this.userImage.Name = "userImage";
+            this.userImage.Size = new System.Drawing.Size(51, 50);
+            this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.userImage.TabIndex = 0;
+            this.userImage.TabStop = false;
             // 
             // pnCadastraSubtipos
             // 
@@ -461,32 +489,6 @@
             this.label6.Size = new System.Drawing.Size(114, 22);
             this.label6.TabIndex = 45;
             this.label6.Text = "Subtipo de Valor";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(0, 1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(211, 68);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Cadastro de Empresa";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // userImage
-            // 
-            this.userImage.BackColor = System.Drawing.Color.Transparent;
-            this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
-            this.userImage.Location = new System.Drawing.Point(811, 12);
-            this.userImage.Name = "userImage";
-            this.userImage.Size = new System.Drawing.Size(51, 50);
-            this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.userImage.TabIndex = 0;
-            this.userImage.TabStop = false;
             // 
             // txtNovoRegime
             // 
@@ -796,6 +798,21 @@
             this.txtClassificacao.Size = new System.Drawing.Size(196, 20);
             this.txtClassificacao.TabIndex = 43;
             // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(217, 1);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(211, 68);
+            this.button8.TabIndex = 13;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // CadastroAuxiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -842,11 +859,11 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.pnCadastraSubtipos.ResumeLayout(false);
             this.pnCadastraSubtipos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoAtividade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgSubtipoValor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgGrupo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividade)).EndInit();
@@ -914,5 +931,6 @@
         private System.Windows.Forms.DataGridView dgTipoClassificacao;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtClassificacao;
+        private System.Windows.Forms.Button button8;
     }
 }

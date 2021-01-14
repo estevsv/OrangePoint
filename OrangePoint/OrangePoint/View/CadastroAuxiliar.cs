@@ -451,5 +451,11 @@ namespace OrangePoint.View
         #endregion
 
         #endregion
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
     }
 }

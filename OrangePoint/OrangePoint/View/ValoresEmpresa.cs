@@ -16,10 +16,13 @@ namespace OrangePoint.View
     public partial class ValoresEmpresa : Form
     {
         private Usuario usuarioPagina;
+        private bool fechamentoSistema;
         Utilities utilities = new Utilities();
-        bool fechamentoSistema;
         EmpresaRule empresaRule = new EmpresaRule();
+        DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
         private List<Empresa> listaEmpresas;
+        private bool isLoad;
+        SubtipoValorRule subtipoValorRule = new SubtipoValorRule();
 
         public ValoresEmpresa(Usuario usuario)
         {
@@ -30,6 +33,7 @@ namespace OrangePoint.View
         private void ValoresEmpresa_Load(object sender, EventArgs e)
         {
             fechamentoSistema = true;
+            isLoad = true;
 
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
@@ -39,6 +43,8 @@ namespace OrangePoint.View
 
             listaEmpresas = empresaRule.listaEmpresas();
             CarregaComboBox();
+
+            isLoad = false;
         }
 
         #region Controle de Tela
@@ -114,13 +120,17 @@ namespace OrangePoint.View
 
         private void CarregaComboBox(string razaoSocial = "")
         {
+            List<Empresa> filtroLista = razaoSocial == "" ? listaEmpresas : listaEmpresas.FindAll(o => o.RazaoSocial.Substring(0, 1) == razaoSocial).OrderBy(o => o.RazaoSocial).ToList();
             if (listaEmpresas.Count != 0)
             {
-                cbEmpresa.DataSource = empresaRule.ElaboraTabelaEmpresa(razaoSocial == "" ? listaEmpresas : listaEmpresas.FindAll(o => o.RazaoSocial.Substring(0,1) == razaoSocial).OrderBy(o => o.RazaoSocial).ToList());
+                cbEmpresa.DataSource = empresaRule.ElaboraTabelaEmpresa(filtroLista);
                 cbEmpresa.DisplayMember = "Razão Social";
                 cbEmpresa.ValueMember = "id";
+                CarregaGridDataEmpresa();
             }
-            cbEmpresa.SelectedIndex = -1;
+
+            if (filtroLista.Count == 0)
+                cbEmpresa.Text = "";
         }
 
         private void cbEmpresa_TextUpdate(object sender, EventArgs e)
@@ -129,6 +139,45 @@ namespace OrangePoint.View
                 CarregaComboBox();
             else
                 CarregaComboBox(cbEmpresa.Text);
+        }
+
+        private void CarregaGridDataEmpresa()
+        {
+            if (cbEmpresa.SelectedValue != null)
+            {
+                List<DataEmpresa> listaData = dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
+                if (listaData.Count != 0)
+                {
+                    cbData.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(listaData);
+                    cbData.DisplayMember = "Data";
+                    cbData.ValueMember = "id";
+                }
+                else
+                    cbData.DataSource = null;
+            }
+            else
+                cbData.DataSource = null;
+        }
+
+        private void cbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbEmpresa.SelectedIndex != -1 && !isLoad)
+                CarregaGridDataEmpresa();
+        }
+
+        private void CarregarComboBoxSubtipoValor()
+        {
+            cbSubtipoValor.DataSource = subtipoValorRule.FiltraPesquisaSubtipoValorTabela();
+            cbSubtipoValor.DisplayMember = "SubtipoValor";
+            cbSubtipoValor.ValueMember = "id";
+        }
+
+        private void btnCadastrarValor_Click(object sender, EventArgs e)
+        {
+            Valor valor = new Valor();
+            valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == int.Parse(cbData.SelectedValue.ToString()));
+            valor.SubtipoValor = subtipoValorRule.listaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
+            valor.NumValor = decimal.Parse(txtValor.Text);
         }
     }
 }

@@ -99,6 +99,7 @@
     <Compile Include="BusinessRule\TipoDataRule.cs" />
     <Compile Include="BusinessRule\TipoPermissaoRule.cs" />
     <Compile Include="BusinessRule\TipoValorRule.cs" />
+    <Compile Include="BusinessRule\ValorRule.cs" />
     <Compile Include="DataAccess\AtividadeDAO.cs" />
     <Compile Include="DataAccess\AtividadeEmpresaDAO.cs" />
     <Compile Include="DataAccess\ClassificacaoEmpresaDAO.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="DataAccess\TipoDataDAO.cs" />
     <Compile Include="DataAccess\TipoPermissaoDAO.cs" />
     <Compile Include="DataAccess\TipoValorDAO.cs" />
+    <Compile Include="DataAccess\ValorDAO.cs" />
     <Compile Include="Model\Atividade.cs" />
     <Compile Include="Model\AtividadeEmpresa.cs" />
     <Compile Include="Model\Balanço Patrimonial\SubtipoBalancoPatrimonial.cs" />

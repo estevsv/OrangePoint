@@ -331,7 +331,7 @@
             this.btnCadastrarValor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCadastrarValor.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrarValor.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarValor.Location = new System.Drawing.Point(572, 296);
+            this.btnCadastrarValor.Location = new System.Drawing.Point(918, 380);
             this.btnCadastrarValor.Name = "btnCadastrarValor";
             this.btnCadastrarValor.Size = new System.Drawing.Size(134, 42);
             this.btnCadastrarValor.TabIndex = 50;
@@ -345,7 +345,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(530, 244);
+            this.label4.Location = new System.Drawing.Point(902, 328);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 22);
             this.label4.TabIndex = 51;
@@ -354,16 +354,17 @@
             // dgValor
             // 
             this.dgValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgValor.Location = new System.Drawing.Point(217, 352);
+            this.dgValor.Location = new System.Drawing.Point(217, 256);
             this.dgValor.MultiSelect = false;
             this.dgValor.Name = "dgValor";
             this.dgValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgValor.Size = new System.Drawing.Size(856, 206);
+            this.dgValor.Size = new System.Drawing.Size(651, 293);
             this.dgValor.TabIndex = 53;
+            this.dgValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgValor_UserDeletingRow);
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(614, 247);
+            this.txtValor.Location = new System.Drawing.Point(951, 331);
             this.txtValor.Mask = "9999999999999.99";
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(102, 20);

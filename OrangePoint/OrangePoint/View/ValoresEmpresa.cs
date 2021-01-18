@@ -15,14 +15,16 @@ namespace OrangePoint.View
 {
     public partial class ValoresEmpresa : Form
     {
-        private Usuario usuarioPagina;
-        private bool fechamentoSistema;
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
         DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
+        SubtipoValorRule subtipoValorRule = new SubtipoValorRule();
+        ValorRule valorRule = new ValorRule();
+        private Usuario usuarioPagina;
+        private bool fechamentoSistema;
         private List<Empresa> listaEmpresas;
         private bool isLoad;
-        SubtipoValorRule subtipoValorRule = new SubtipoValorRule();
+        private int idEmpresaSelecionada;
 
         public ValoresEmpresa(Usuario usuario)
         {
@@ -32,6 +34,7 @@ namespace OrangePoint.View
 
         private void ValoresEmpresa_Load(object sender, EventArgs e)
         {
+            idEmpresaSelecionada = 0;
             fechamentoSistema = true;
             isLoad = true;
 
@@ -43,6 +46,8 @@ namespace OrangePoint.View
 
             listaEmpresas = empresaRule.listaEmpresas();
             CarregaComboBox();
+            CarregarComboBoxSubtipoValor();
+            CarregaGridValorEmpresa();
 
             isLoad = false;
         }
@@ -118,6 +123,25 @@ namespace OrangePoint.View
         }
         #endregion
 
+        private void CarregaGridValorEmpresa()
+        {
+            if (idEmpresaSelecionada == 0)
+                return;
+            List<Valor> listaValor = valorRule.listaValor();
+
+            dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada).ToList());
+
+            dgValor.Columns["id"].Visible = false;
+
+            dgValor.Columns["Data"].Width = 250;
+            dgValor.Columns["Valor"].Width = 165;
+            dgValor.Columns["Subtipo"].Width = 200;
+
+            dgValor.Columns["Data"].ReadOnly = true;
+            dgValor.Columns["Valor"].ReadOnly = true;
+            dgValor.Columns["Subtipo"].ReadOnly = true;
+        }
+
         private void CarregaComboBox(string razaoSocial = "")
         {
             List<Empresa> filtroLista = razaoSocial == "" ? listaEmpresas : listaEmpresas.FindAll(o => o.RazaoSocial.Substring(0, 1) == razaoSocial).OrderBy(o => o.RazaoSocial).ToList();
@@ -126,7 +150,7 @@ namespace OrangePoint.View
                 cbEmpresa.DataSource = empresaRule.ElaboraTabelaEmpresa(filtroLista);
                 cbEmpresa.DisplayMember = "Razão Social";
                 cbEmpresa.ValueMember = "id";
-                CarregaGridDataEmpresa();
+                CarregaComboBoxEmpresa();
             }
 
             if (filtroLista.Count == 0)
@@ -141,10 +165,11 @@ namespace OrangePoint.View
                 CarregaComboBox(cbEmpresa.Text);
         }
 
-        private void CarregaGridDataEmpresa()
+        private void CarregaComboBoxEmpresa()
         {
             if (cbEmpresa.SelectedValue != null)
             {
+                idEmpresaSelecionada = int.Parse(cbEmpresa.SelectedValue.ToString());
                 List<DataEmpresa> listaData = dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
                 if (listaData.Count != 0)
                 {
@@ -162,7 +187,9 @@ namespace OrangePoint.View
         private void cbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbEmpresa.SelectedIndex != -1 && !isLoad)
-                CarregaGridDataEmpresa();
+                CarregaComboBoxEmpresa();
+
+            CarregaGridValorEmpresa();
         }
 
         private void CarregarComboBoxSubtipoValor()
@@ -174,10 +201,31 @@ namespace OrangePoint.View
 
         private void btnCadastrarValor_Click(object sender, EventArgs e)
         {
-            Valor valor = new Valor();
-            valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == int.Parse(cbData.SelectedValue.ToString()));
-            valor.SubtipoValor = subtipoValorRule.listaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
-            valor.NumValor = decimal.Parse(txtValor.Text);
+            if (cbData.SelectedIndex != -1 && cbEmpresa.SelectedIndex != -1 && cbSubtipoValor.SelectedIndex != -1 && txtValor.Text != "             ,")
+            {
+                Valor valor = new Valor();
+                valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == int.Parse(cbData.SelectedValue.ToString()));
+                valor.SubtipoValor = subtipoValorRule.listaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
+                valor.NumValor = decimal.Parse(txtValor.Text);
+
+                valorRule.IncluirValor(valor.DataEmpresa.CodData, valor.SubtipoValor.CodSubtipoValor, valor.NumValor.ToString());
+                CarregaGridValorEmpresa();
+            }
+            else
+                MessageBox.Show("Campos Inválidos");
+        }
+
+        private void dgValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            int idValor = int.Parse(dgValor.CurrentRow.Cells[0].Value.ToString());
+            if (DialogResult.Yes == MessageBox.Show("Deseja deletar este Valor?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2))
+            {
+                valorRule.ExcluiValor(idValor);
+                dgValor.Rows.RemoveAt(dgValor.CurrentRow.Index);
+
+                CarregaGridValorEmpresa();
+            }
+            e.Cancel = true;
         }
     }
 }

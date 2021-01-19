@@ -30,68 +30,70 @@ namespace OrangePoint.DataAccess
             return tabela;
         }
 
-        //public List<SubtipoValor> PesquisaSubtipoValorLista()
-        //{
-        //    List<SubtipoValor> listSubtipoValorEmpresa = new List<SubtipoValor>();
-        //    List<TipoValor> listTipoValor = tipoValorDAO.PesquisaTipoValorLista();
+        public List<DadosWebEmpresa> PesquisaDadosWebEmpresaLista()
+        {
+            List<DadosWebEmpresa> listDadosWebEmpresa = new List<DadosWebEmpresa>();
+            List<Empresa> listEmpresa = empresaDAO.PesquisaEmpresasLista();
 
-        //    try
-        //    {
-        //        MySqlCommand cmd = new MySqlCommand();
-        //        cmd.Connection = conexao.ObjetoConexao;
-        //        cmd.CommandText = "SELECT * FROM bdorangepoint.subtipo_valor;";
-        //        conexao.Desconectar();
-        //        conexao.Conectar();
-        //        MySqlDataReader registro = cmd.ExecuteReader();
-        //        while (registro.Read())
-        //        {
-        //            SubtipoValor SubtipoValor = new SubtipoValor();
-        //            SubtipoValor.CodSubtipoValor = int.Parse(registro["COD_SUBTIPO_VALOR"].ToString());
-        //            SubtipoValor.TipoValor = listTipoValor.Find(o => o.CodTipoValor == int.Parse(registro["COD_TIPO_VALOR"].ToString()));
-        //            SubtipoValor.DescSubtipo = registro["DESC_SUBTIPO"].ToString();
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "SELECT * FROM bdorangepoint.dados_web_empresa;";
+                conexao.Desconectar();
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                while (registro.Read())
+                {
+                    DadosWebEmpresa dadosWebEmpresa = new DadosWebEmpresa();
+                    dadosWebEmpresa.CodDadoWeb = int.Parse(registro["COD_DADO_WEB"].ToString());
+                    dadosWebEmpresa.Empresa = listEmpresa.Find(o => o.CodEmpresa == int.Parse(registro["COD_EMPRESA"].ToString()));
+                    dadosWebEmpresa.UsuarioWeb = registro["USUARIO_WEB"].ToString();
+                    dadosWebEmpresa.SenhaWeb = registro["SENHA_WEB"].ToString();
+                    dadosWebEmpresa.DescDado = registro["DESC_DADO"].ToString();
 
-        //            listSubtipoValorEmpresa.Add(SubtipoValor);
-        //        }
-        //        conexao.Desconectar();
-        //    }
-        //    catch { MessageBox.Show("Erro SubtipoValorDAO/PesquisaSubtipoValorLista. Contate o Suporte"); }
-        //    return listSubtipoValorEmpresa;
-        //}
+                    listDadosWebEmpresa.Add(dadosWebEmpresa);
+                }
+                conexao.Desconectar();
+            }
+            catch { MessageBox.Show("Erro DadosWebEmpresaDAO/PesquisaDadosWebEmpresaLista. Contate o Suporte"); }
+            return listDadosWebEmpresa;
+        }
 
-        //public void ExcluiSubtipoValor(int codSubtipoValor)
-        //{
-        //    try
-        //    {
-        //        MySqlCommand cmd = new MySqlCommand();
-        //        cmd.Connection = conexao.ObjetoConexao;
-        //        cmd.CommandText = "delete from bdorangepoint.subtipo_valor where COD_SUBTIPO_VALOR = " + codSubtipoValor;
-        //        conexao.Desconectar();
-        //        conexao.Conectar();
-        //        cmd.ExecuteNonQuery();
-        //        conexao.Desconectar();
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("Erro SubtipoValorDAO/ExcluiSubtipoValor. Contate o Suporte");
-        //    }
-        //}
+        public void ExcluiDadoWebEmpresa(int codDadoWebEmpresa)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "delete from bdorangepoint.dados_web_empresa where COD_DADO_WEB = " + codDadoWebEmpresa;
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro DadosWebEmpresaDAO/ExcluiDadoWebEmpresa. Contate o Suporte");
+            }
+        }
 
-        //public void IncluirSubtipoValor(int codTipoValor, string descricao)
-        //{
-        //    try
-        //    {
-        //        MySqlCommand cmd = new MySqlCommand();
-        //        cmd.Connection = conexao.ObjetoConexao;
-        //        cmd.CommandText = "INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES (" + codTipoValor + ",'" + descricao + "');";
-        //        conexao.Desconectar();
-        //        conexao.Conectar();
-        //        cmd.ExecuteNonQuery();
-        //        conexao.Desconectar();
-        //    }
-        //    catch
-        //    {
-        //        MessageBox.Show("Erro SubtipoValorDAO/IncluirSubtipoValor. Contate o Suporte");
-        //    }
-        //}
+        public void IncluirDadosWebEmpresa(int codEmpresa,string usuarioWeb, string senhaWeb, string descricao)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`dados_web_empresa` (`COD_EMPRESA`, `USUARIO_WEB`, `SENHA_WEB`, `DESC_DADO`) VALUES ('"+ codEmpresa + "', '"+ usuarioWeb + "', '"+ senhaWeb + "', '"+ descricao + "');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro DadosWebEmpresaDAO/IncluirDadosWebEmpresa. Contate o Suporte");
+            }
+        }
     }
 }

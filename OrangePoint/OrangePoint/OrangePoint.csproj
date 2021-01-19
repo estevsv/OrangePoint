@@ -85,6 +85,7 @@
     <Compile Include="BusinessRule\AtividadeEmpresaRule.cs" />
     <Compile Include="BusinessRule\AtividadeRule.cs" />
     <Compile Include="BusinessRule\ClassificacaoEmpresaRule.cs" />
+    <Compile Include="BusinessRule\DadosWebRule.cs" />
     <Compile Include="BusinessRule\DataEmpresaRule.cs" />
     <Compile Include="BusinessRule\EmpresaRule.cs" />
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />

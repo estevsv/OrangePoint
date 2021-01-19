@@ -39,6 +39,7 @@
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
@@ -68,7 +69,7 @@
             this.txtUsuarioWEB = new System.Windows.Forms.TextBox();
             this.txtSenhaWEB = new System.Windows.Forms.TextBox();
             this.txtDescricaoWEB = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnCadastrarDadosWeb = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -221,6 +222,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 8;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(358, 0);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(173, 68);
+            this.button8.TabIndex = 14;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button6
             // 
@@ -551,6 +567,7 @@
             this.dgControleWeb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgControleWeb.Size = new System.Drawing.Size(343, 92);
             this.dgControleWeb.TabIndex = 81;
+            this.dgControleWeb.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgControleWeb_UserDeletingRow);
             // 
             // txtUsuarioWEB
             // 
@@ -573,20 +590,20 @@
             this.txtDescricaoWEB.Size = new System.Drawing.Size(235, 20);
             this.txtDescricaoWEB.TabIndex = 84;
             // 
-            // button8
+            // btnCadastrarDadosWeb
             // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button8.AutoSize = true;
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(358, 0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(173, 68);
-            this.button8.TabIndex = 14;
-            this.button8.Text = "Financeiro";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnCadastrarDadosWeb.AutoSize = true;
+            this.btnCadastrarDadosWeb.BackColor = System.Drawing.Color.Transparent;
+            this.btnCadastrarDadosWeb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCadastrarDadosWeb.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.btnCadastrarDadosWeb.ForeColor = System.Drawing.Color.White;
+            this.btnCadastrarDadosWeb.Location = new System.Drawing.Point(1001, 491);
+            this.btnCadastrarDadosWeb.Name = "btnCadastrarDadosWeb";
+            this.btnCadastrarDadosWeb.Size = new System.Drawing.Size(35, 33);
+            this.btnCadastrarDadosWeb.TabIndex = 85;
+            this.btnCadastrarDadosWeb.Text = "+";
+            this.btnCadastrarDadosWeb.UseVisualStyleBackColor = false;
+            this.btnCadastrarDadosWeb.Click += new System.EventHandler(this.btnCadastrarDadosWeb_Click);
             // 
             // EspecificacoesEmpresa
             // 
@@ -595,6 +612,7 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 658);
+            this.Controls.Add(this.btnCadastrarDadosWeb);
             this.Controls.Add(this.txtDescricaoWEB);
             this.Controls.Add(this.txtSenhaWEB);
             this.Controls.Add(this.txtUsuarioWEB);
@@ -682,5 +700,6 @@
         private System.Windows.Forms.TextBox txtSenhaWEB;
         private System.Windows.Forms.TextBox txtDescricaoWEB;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnCadastrarDadosWeb;
     }
 }

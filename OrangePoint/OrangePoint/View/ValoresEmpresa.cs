@@ -201,7 +201,8 @@ namespace OrangePoint.View
 
         private void btnCadastrarValor_Click(object sender, EventArgs e)
         {
-            if (cbData.SelectedIndex != -1 && cbEmpresa.SelectedIndex != -1 && cbSubtipoValor.SelectedIndex != -1 && txtValor.Text != "             ,")
+            decimal number;
+            if (cbData.SelectedIndex != -1 && cbEmpresa.SelectedIndex != -1 && cbSubtipoValor.SelectedIndex != -1 && txtValor.Text != "             ," && decimal.TryParse(txtValor.Text,out number))
             {
                 Valor valor = new Valor();
                 valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == int.Parse(cbData.SelectedValue.ToString()));

@@ -10,33 +10,38 @@ using System.Windows.Forms;
 
 namespace OrangePoint.BusinessRule
 {
-    public class ValorRule
+    public class DadosWebRule
     {
-        ValorDAO valorDAO = new ValorDAO();
+        DadosWebEmpresaDAO dadosWebEmpresaDAO = new DadosWebEmpresaDAO();
 
-        public List<Valor> listaValor()
+        public DataTable PesquisaDadosWebEmpresaTabela()
         {
-            return valorDAO.PesquisaValorLista();
+            return dadosWebEmpresaDAO.PesquisaDadosWebEmpresaTabela();
         }
 
-        public void IncluirValor(int codData, int codSubtipoValor, string valor)
+        public List<DadosWebEmpresa> listaDadosWeb()
         {
-            if (listaValor().Exists(o => o.DataEmpresa.CodData == codData && o.SubtipoValor.CodSubtipoValor == codSubtipoValor && o.NumValor.ToString() == valor))
-                MessageBox.Show("Valor já existente!");
+            return dadosWebEmpresaDAO.PesquisaDadosWebEmpresaLista();
+        }
+
+        public void IncluirTipoValor(int codEmpresa, string usuarioWeb, string senhaWeb, string descricao)
+        {
+            if (listaDadosWeb().Exists(o => o.Empresa.CodEmpresa == codEmpresa && o.UsuarioWeb == usuarioWeb && o.SenhaWeb == senhaWeb && o.DescDado == descricao))
+                MessageBox.Show("Dado já existente!");
             else
             {
-                valorDAO.IncluirValor(codData, codSubtipoValor, valor);
-                MessageBox.Show("Valor cadastrado");
+                dadosWebEmpresaDAO.IncluirDadosWebEmpresa(codEmpresa, usuarioWeb, senhaWeb, descricao);
+                MessageBox.Show("Dado cadastrado");
             }
         }
 
-        public void ExcluiValor(int codValor)
+        public void ExcluiTipoValor(int codDado)
         {
-            valorDAO.ExcluiValor(codValor);
-            MessageBox.Show("Valor Excluído");
+            dadosWebEmpresaDAO.ExcluiDadoWebEmpresa(codDado);
+            MessageBox.Show("Dado Excluído");
         }
 
-        public DataTable ElaboraTabelaValor(List<Valor> listaValor)
+        public DataTable FiltraPesquisaDadoWebTabela(int codEmpresa)
         {
             DataTable table = new DataTable("TabelaGridClasse");
             DataColumn column;
@@ -52,37 +57,36 @@ namespace OrangePoint.BusinessRule
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "Data",
+                ColumnName = "Usuário",
                 ReadOnly = true,
             };
             table.Columns.Add(column);
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "Valor",
+                ColumnName = "Senha",
                 ReadOnly = true,
             };
             table.Columns.Add(column);
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "Subtipo",
+                ColumnName = "Descrição",
                 ReadOnly = true,
             };
             table.Columns.Add(column);
-            
 
             DataColumn[] PrimaryKeyColumns = new DataColumn[1];
             PrimaryKeyColumns[0] = table.Columns["id"];
             table.PrimaryKey = PrimaryKeyColumns;
 
-            foreach (Valor valor in listaValor)
+            foreach (DadosWebEmpresa dado in listaDadosWeb().Where(o => o.Empresa.CodEmpresa == codEmpresa))
             {
                 row = table.NewRow();
-                row["id"] = valor.CodValor;
-                row["Data"] = valor.DataEmpresa.Data.ToShortDateString();
-                row["Valor"] = valor.NumValor;
-                row["Subtipo"] = valor.SubtipoValor.DescSubtipo;
+                row["id"] = dado.CodDadoWeb;
+                row["Usuário"] = dado.UsuarioWeb;
+                row["Senha"] = dado.SenhaWeb;
+                row["Descrição"] = dado.DescDado;
                 table.Rows.Add(row);
             }
 

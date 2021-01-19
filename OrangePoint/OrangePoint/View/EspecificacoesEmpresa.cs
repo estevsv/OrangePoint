@@ -26,6 +26,7 @@ namespace OrangePoint.View
         TipoDataRule tipoDataRule = new TipoDataRule();
         DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
         ClassificacaoEmpresaRule classificacaoEmpresaRule = new ClassificacaoEmpresaRule();
+        DadosWebRule dadoWebRule = new DadosWebRule();
 
         public EspecificacoesEmpresa(Usuario usuario, Empresa empresa)
         {
@@ -167,6 +168,7 @@ namespace OrangePoint.View
         {
             CarregaGridControleFC();
             CarregaGridDataEmpresa();
+            CarregaGridDadosWeb();
         }
 
         private void CarregaGridControleFC()
@@ -187,7 +189,7 @@ namespace OrangePoint.View
             dgDatas.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa && o.TipoData.CodTipoData == int.Parse(cbTipoData1.SelectedValue.ToString())).ToList());
 
             dgDatas.Columns["id"].Visible = false;
-            dgDatas.Columns["Data"].Width = 200;
+            dgDatas.Columns["Data"].Width = 300;
             dgDatas.Columns["Data"].ReadOnly = true;
         }
 
@@ -205,18 +207,25 @@ namespace OrangePoint.View
 
         private void btnControleFC_Click(object sender, EventArgs e)
         {
-            if (cbData.Text != "")
+            if (cbClassificacao.SelectedValue != null && cbData.SelectedValue != null && cbData.Text != "")
             {
                 classificacaoEmpresaRule.IncluirClassificacaoEmpresa(int.Parse(cbClassificacao.SelectedValue.ToString()), int.Parse(cbData.SelectedValue.ToString()));
                 CarregaGridControleFC();
             }
+            else
+                MessageBox.Show("Campos inválidos");
         }
 
         private void btnAdicionarData_Click(object sender, EventArgs e)
         {
-            dataEmpresaRule.IncluirDataEmpresa(int.Parse(cbTipoData1.SelectedValue.ToString()), empresaOperacao.CodEmpresa, txtData.Text);
-            CarregaGridDataEmpresa();
-            CarregaComboBoxDataEmpresa();
+            if (cbTipoData1.SelectedValue != null)
+            {
+                dataEmpresaRule.IncluirDataEmpresa(int.Parse(cbTipoData1.SelectedValue.ToString()), empresaOperacao.CodEmpresa, txtData.Text);
+                CarregaGridDataEmpresa();
+                CarregaComboBoxDataEmpresa();
+            }
+            else
+                MessageBox.Show("Tipo de Data Inválido");
         }
 
         private void dgControleFC_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -233,6 +242,41 @@ namespace OrangePoint.View
             dgDatas.Rows.RemoveAt(dgDatas.CurrentRow.Index);
             CarregaComboBoxDataEmpresa();
             CarregaGridDataEmpresa();
+            e.Cancel = true;
+        }
+
+        private void CarregaGridDadosWeb()
+        {
+            dgControleWeb.DataSource = dadoWebRule.FiltraPesquisaDadoWebTabela(empresaOperacao.CodEmpresa);
+
+            dgControleWeb.Columns["id"].Visible = false;
+
+            dgControleWeb.Columns["Usuário"].Width = 100;
+            dgControleWeb.Columns["Senha"].Width = 100;
+            dgControleWeb.Columns["Descrição"].Width = 100;
+
+            dgControleWeb.Columns["Usuário"].ReadOnly = true;
+            dgControleWeb.Columns["Senha"].ReadOnly = true;
+            dgControleWeb.Columns["Descrição"].ReadOnly = true;
+        }
+
+        private void btnCadastrarDadosWeb_Click(object sender, EventArgs e)
+        {
+            if (txtUsuarioWEB.Text != "" && txtSenhaWEB.Text != "" && txtDescricaoWEB.Text != "")
+            {
+                dadoWebRule.IncluirTipoValor(empresaOperacao.CodEmpresa, txtUsuarioWEB.Text, txtSenhaWEB.Text, txtDescricaoWEB.Text);
+                CarregaGridDadosWeb();
+            }
+            else
+                MessageBox.Show("Campos Inválidos!");
+
+        }
+
+        private void dgControleWeb_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            dadoWebRule.ExcluiTipoValor(int.Parse(dgControleWeb.CurrentRow.Cells[0].Value.ToString()));
+            dgControleWeb.Rows.RemoveAt(dgControleWeb.CurrentRow.Index);
+            CarregaGridDadosWeb();
             e.Cancel = true;
         }
     }

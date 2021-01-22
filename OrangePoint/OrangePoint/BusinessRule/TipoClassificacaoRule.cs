@@ -29,11 +29,11 @@ namespace OrangePoint.BusinessRule
         public void IncluirTipoClassificacao(string descricao)
         {
             if (listaTipoClassificacao().Exists(o => o.Descricao == descricao))
-                MessageBox.Show("Tipo de Classificacao já existente!");
+                MessageBox.Show("Obrigação já existente!");
             else
             {
                 tipoClassificacaoDAO.IncluirTipoClassificacao(descricao);
-                MessageBox.Show("Tipo de Classificacao cadastrado");
+                MessageBox.Show("Obrigação cadastrado");
             }
         }
 

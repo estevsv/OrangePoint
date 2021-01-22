@@ -17,7 +17,6 @@ namespace OrangePoint.View
     {
         private Usuario usuarioPagina;
         private Empresa empresaOperacao;
-        private bool fechamentoSistema;
         private bool aberturaPagina;
 
         Utilities utilities = new Utilities();
@@ -31,6 +30,8 @@ namespace OrangePoint.View
         AtividadeEmpresaRule atividadeEmpresaRule = new AtividadeEmpresaRule();
         ObrigacaoEmpresaRule obrigacaoEmpresaRule = new ObrigacaoEmpresaRule();
 
+        public bool FechamentoSistema { get; set; }
+
         public EspecificacoesEmpresa(Usuario usuario, Empresa empresa)
         {
             InitializeComponent();
@@ -42,7 +43,7 @@ namespace OrangePoint.View
 
         private void EspecificacoesEmpresa_Load(object sender, EventArgs e)
         {
-            fechamentoSistema = true;
+            FechamentoSistema = true;
 
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
             lblTipoUsuario.Text = usuarioPagina.TipoPermissao.DescPermissao;
@@ -61,7 +62,7 @@ namespace OrangePoint.View
         #region Controle de Acesso da Página
         private void FechaPagina()
         {
-            fechamentoSistema = false;
+            FechamentoSistema = false;
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();

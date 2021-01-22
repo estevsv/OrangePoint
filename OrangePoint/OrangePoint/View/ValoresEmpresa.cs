@@ -21,10 +21,11 @@ namespace OrangePoint.View
         SubtipoValorRule subtipoValorRule = new SubtipoValorRule();
         ValorRule valorRule = new ValorRule();
         private Usuario usuarioPagina;
-        private bool fechamentoSistema;
         private List<Empresa> listaEmpresas;
         private bool isLoad;
         private int idEmpresaSelecionada;
+
+        public bool FechamentoSistema { get; set; }
 
         public ValoresEmpresa(Usuario usuario)
         {
@@ -35,7 +36,7 @@ namespace OrangePoint.View
         private void ValoresEmpresa_Load(object sender, EventArgs e)
         {
             idEmpresaSelecionada = 0;
-            fechamentoSistema = true;
+            FechamentoSistema = true;
             isLoad = true;
 
             lblWelcomeUser.Text = "Usuário: " + usuarioPagina.NmeFuncionario;
@@ -61,7 +62,7 @@ namespace OrangePoint.View
 
         private void FechaPagina()
         {
-            fechamentoSistema = false;
+            FechamentoSistema = false;
             this.Visible = false;
             this.Close();
             userImage = new PictureBox();

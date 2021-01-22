@@ -236,5 +236,26 @@ namespace OrangePoint.View
             FechaPagina();
             new ValoresEmpresa(usuarioPagina).Show();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

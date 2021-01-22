@@ -34,11 +34,8 @@
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnDashboard = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.dgPontoUsuario = new System.Windows.Forms.DataGridView();
@@ -49,6 +46,10 @@
             this.rtObservacao = new System.Windows.Forms.RichTextBox();
             this.registrarObservacao = new System.Windows.Forms.Button();
             this.dateTimePickerObs = new System.Windows.Forms.DateTimePicker();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -82,12 +83,13 @@
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.lblTipoUsuario);
+            this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.lblWelcomeUser);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnDashboard);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -105,36 +107,6 @@
             this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
             this.lblTipoUsuario.TabIndex = 7;
             this.lblTipoUsuario.Text = "Tipo Usuário";
-            // 
-            // button5
-            // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button5.AutoSize = true;
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(0, 350);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(211, 68);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Apuração de Lucro Real";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button4.AutoSize = true;
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(0, 276);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(211, 68);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Consultoria Contábil";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -161,21 +133,6 @@
             this.lblWelcomeUser.Size = new System.Drawing.Size(41, 23);
             this.lblWelcomeUser.TabIndex = 2;
             this.lblWelcomeUser.Text = "Text";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 202);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 68);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Empresas";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnDashboard
             // 
@@ -289,6 +246,62 @@
             this.dateTimePickerObs.Size = new System.Drawing.Size(299, 20);
             this.dateTimePickerObs.TabIndex = 12;
             // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(0, 387);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(211, 68);
+            this.button8.TabIndex = 19;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button5.AutoSize = true;
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(0, 313);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(211, 68);
+            this.button5.TabIndex = 18;
+            this.button5.Text = "Apuração de Lucro Real";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button4.AutoSize = true;
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(0, 239);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(211, 68);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Consultoria Contábil";
+            this.button4.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 165);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(211, 68);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Empresas";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
             // FolhadePonto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,10 +341,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox userImage;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label lblWelcomeUser;
         private System.Windows.Forms.Button btnDashboard;
@@ -344,5 +354,9 @@
         private System.Windows.Forms.RichTextBox rtObservacao;
         private System.Windows.Forms.Button registrarObservacao;
         private System.Windows.Forms.DateTimePicker dateTimePickerObs;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button2;
     }
 }

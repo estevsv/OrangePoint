@@ -94,7 +94,7 @@ namespace OrangePoint.DataAccess
                 cmd.ExecuteNonQuery();
                 conexao.Desconectar();
             }
-            catch(Exception ex)
+            catch
             {
                 MessageBox.Show("Erro DataEmpresaDAO/IncluirDataEmpresa. Contate o Suporte");
             }

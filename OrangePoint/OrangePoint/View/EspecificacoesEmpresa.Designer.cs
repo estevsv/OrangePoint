@@ -30,11 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EspecificacoesEmpresa));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
@@ -71,17 +68,21 @@
             this.txtDescricaoWEB = new System.Windows.Forms.TextBox();
             this.btnCadastrarDadosWeb = new System.Windows.Forms.Button();
             this.pnCadastraAtividadeEmpresa = new System.Windows.Forms.Panel();
+            this.dgObrigacao = new System.Windows.Forms.DataGridView();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbObrigacao = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.dgAtividadeEmpresa = new System.Windows.Forms.DataGridView();
             this.button9 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.cbAtividade = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
-            this.dgObrigacao = new System.Windows.Forms.DataGridView();
-            this.button11 = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cbObrigacao = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -89,8 +90,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgDatas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).BeginInit();
             this.pnCadastraAtividadeEmpresa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgObrigacao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,10 +100,11 @@
             this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button12);
+            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.lblTipoUsuario);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.lblWelcomeUser);
             this.panel1.Controls.Add(this.btnPontoEletronico);
@@ -111,21 +113,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 658);
             this.panel1.TabIndex = 7;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(0, 275);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(211, 68);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Empresas";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button7
             // 
@@ -152,36 +139,6 @@
             this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
             this.lblTipoUsuario.TabIndex = 8;
             this.lblTipoUsuario.Text = "Tipo Usuário";
-            // 
-            // button5
-            // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button5.AutoSize = true;
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(0, 423);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(211, 68);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Apuração de Lucro Real";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button4.AutoSize = true;
-            this.button4.BackColor = System.Drawing.Color.Transparent;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(0, 349);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(211, 68);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Consultoria Contábil";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -639,6 +596,72 @@
             this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 279);
             this.pnCadastraAtividadeEmpresa.TabIndex = 86;
             // 
+            // dgObrigacao
+            // 
+            this.dgObrigacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgObrigacao.Location = new System.Drawing.Point(418, 96);
+            this.dgObrigacao.MultiSelect = false;
+            this.dgObrigacao.Name = "dgObrigacao";
+            this.dgObrigacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgObrigacao.Size = new System.Drawing.Size(343, 171);
+            this.dgObrigacao.TabIndex = 90;
+            this.dgObrigacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgObrigacao_UserDeletingRow);
+            // 
+            // button11
+            // 
+            this.button11.AutoSize = true;
+            this.button11.BackColor = System.Drawing.Color.Transparent;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button11.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(737, 47);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(35, 33);
+            this.button11.TabIndex = 91;
+            this.button11.Text = "+";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(495, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(180, 23);
+            this.label14.TabIndex = 92;
+            this.label14.Text = "Obrigações da Empresa";
+            // 
+            // cbObrigacao
+            // 
+            this.cbObrigacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbObrigacao.FormattingEnabled = true;
+            this.cbObrigacao.Items.AddRange(new object[] {
+            "Cadastros",
+            "Consultoria Contábil",
+            "Apuração de Lucro Real",
+            "Controle de Usuários",
+            "Folha de Ponto",
+            "Controle de Folha de Ponto"});
+            this.cbObrigacao.Location = new System.Drawing.Point(519, 50);
+            this.cbObrigacao.Name = "cbObrigacao";
+            this.cbObrigacao.Size = new System.Drawing.Size(196, 21);
+            this.cbObrigacao.TabIndex = 89;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(421, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 22);
+            this.label15.TabIndex = 88;
+            this.label15.Text = "Obrigação";
+            // 
             // dgAtividadeEmpresa
             // 
             this.dgAtividadeEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -721,71 +744,61 @@
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // dgObrigacao
+            // button2
             // 
-            this.dgObrigacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgObrigacao.Location = new System.Drawing.Point(418, 96);
-            this.dgObrigacao.MultiSelect = false;
-            this.dgObrigacao.Name = "dgObrigacao";
-            this.dgObrigacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgObrigacao.Size = new System.Drawing.Size(343, 171);
-            this.dgObrigacao.TabIndex = 90;
-            this.dgObrigacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgObrigacao_UserDeletingRow);
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 472);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(211, 68);
+            this.button2.TabIndex = 19;
+            this.button2.Text = "Financeiro";
+            this.button2.UseVisualStyleBackColor = false;
             // 
-            // button11
+            // button5
             // 
-            this.button11.AutoSize = true;
-            this.button11.BackColor = System.Drawing.Color.Transparent;
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button11.Font = new System.Drawing.Font("Arial Narrow", 14F);
-            this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(737, 47);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(35, 33);
-            this.button11.TabIndex = 91;
-            this.button11.Text = "+";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button5.AutoSize = true;
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(0, 398);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(211, 68);
+            this.button5.TabIndex = 18;
+            this.button5.Text = "Apuração de Lucro Real";
+            this.button5.UseVisualStyleBackColor = false;
             // 
-            // label14
+            // button4
             // 
-            this.label14.AutoSize = true;
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(495, 12);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(180, 23);
-            this.label14.TabIndex = 92;
-            this.label14.Text = "Obrigações da Empresa";
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button4.AutoSize = true;
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(0, 324);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(211, 68);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Consultoria Contábil";
+            this.button4.UseVisualStyleBackColor = false;
             // 
-            // cbObrigacao
+            // button12
             // 
-            this.cbObrigacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbObrigacao.FormattingEnabled = true;
-            this.cbObrigacao.Items.AddRange(new object[] {
-            "Cadastros",
-            "Consultoria Contábil",
-            "Apuração de Lucro Real",
-            "Controle de Usuários",
-            "Folha de Ponto",
-            "Controle de Folha de Ponto"});
-            this.cbObrigacao.Location = new System.Drawing.Point(519, 50);
-            this.cbObrigacao.Name = "cbObrigacao";
-            this.cbObrigacao.Size = new System.Drawing.Size(196, 21);
-            this.cbObrigacao.TabIndex = 89;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(421, 47);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(76, 22);
-            this.label15.TabIndex = 88;
-            this.label15.Text = "Obrigação";
+            this.button12.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button12.AutoSize = true;
+            this.button12.BackColor = System.Drawing.Color.Transparent;
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button12.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(0, 250);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(211, 68);
+            this.button12.TabIndex = 16;
+            this.button12.Text = "Empresas";
+            this.button12.UseVisualStyleBackColor = false;
             // 
             // EspecificacoesEmpresa
             // 
@@ -840,8 +853,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).EndInit();
             this.pnCadastraAtividadeEmpresa.ResumeLayout(false);
             this.pnCadastraAtividadeEmpresa.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgObrigacao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -849,11 +862,8 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label lblTipoUsuario;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label lblWelcomeUser;
         private System.Windows.Forms.Button btnPontoEletronico;
@@ -901,5 +911,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cbObrigacao;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button12;
     }
 }

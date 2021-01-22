@@ -159,6 +159,12 @@
     <Compile Include="View\CadastroAuxiliar.Designer.cs">
       <DependentUpon>CadastroAuxiliar.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\CadastroAuxiliarFinanceiro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\CadastroAuxiliarFinanceiro.Designer.cs">
+      <DependentUpon>CadastroAuxiliarFinanceiro.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CadastroEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </Compile>
     <EmbeddedResource Include="View\CadastroAuxiliar.resx">
       <DependentUpon>CadastroAuxiliar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\CadastroAuxiliarFinanceiro.resx">
+      <DependentUpon>CadastroAuxiliarFinanceiro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CadastroEmpresa.resx">
       <DependentUpon>CadastroEmpresa.cs</DependentUpon>

@@ -110,6 +110,7 @@
     <Compile Include="DataAccess\FolhadePontoDAO.cs" />
     <Compile Include="DataAccess\GrupoDAO.cs" />
     <Compile Include="DataAccess\LoginDAO.cs" />
+    <Compile Include="DataAccess\ObrigacaoEmpresaDAO.cs" />
     <Compile Include="DataAccess\PermissaoTelaDAO.cs" />
     <Compile Include="DataAccess\PermissoesDAO.cs" />
     <Compile Include="DataAccess\RegimeEmpresaDAO.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Model\Lucro Real\SubtipoLucroReal.cs" />
     <Compile Include="Model\Lucro Real\TipoLucroReal.cs" />
     <Compile Include="Model\Lucro Real\ValorLucroReal.cs" />
+    <Compile Include="Model\ObrigacaoEmpresa.cs" />
     <Compile Include="Model\PermissaoTela.cs" />
     <Compile Include="Model\Permissoes.cs" />
     <Compile Include="Model\RegimeEmpresa.cs" />

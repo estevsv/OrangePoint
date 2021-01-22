@@ -41,5 +41,41 @@ namespace OrangePoint.BusinessRule
             atividadeEmpresaDAO.ExcluiAtividadeEmpresa(codAtividadeEmpresa);
             MessageBox.Show("Altividade da empresa retirada!");
         }
+
+        public DataTable ElaboraTabelaAtividadeEmpresa(List<AtividadeEmpresa> listaAtividadeEmpresas)
+        {
+            DataTable table = new DataTable("TabelaGridClasse");
+            DataColumn column;
+            DataRow row;
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.Int32"),
+                ColumnName = "id",
+                ReadOnly = true,
+                Unique = true
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Atividade",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+
+            DataColumn[] PrimaryKeyColumns = new DataColumn[1];
+            PrimaryKeyColumns[0] = table.Columns["id"];
+            table.PrimaryKey = PrimaryKeyColumns;
+
+            foreach (AtividadeEmpresa atividadeEmpresa in listaAtividadeEmpresas)
+            {
+                row = table.NewRow();
+                row["id"] = atividadeEmpresa.CodAtividadeEmpresa;
+                row["Atividade"] = atividadeEmpresa.Atividade.Descricao;
+                table.Rows.Add(row);
+            }
+
+            return table;
+        }
     }
 }

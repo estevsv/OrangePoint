@@ -32,11 +32,11 @@ namespace OrangePoint.Model
         private string observacao;
         public string Observacao { get => observacao; set => observacao = value; }
 
-        private string senhaSIAT;
-        public string SenhaSIAT { get => senhaSIAT; set => senhaSIAT = value; }
+        private string email;
+        public string Email { get => email; set => email = value; }
 
-        private string eSocial;
-        public string ESocial { get => eSocial; set => eSocial = value; }
+        private string telefone;
+        public string Telefone { get => telefone; set => telefone = value; }
 
     }
 }

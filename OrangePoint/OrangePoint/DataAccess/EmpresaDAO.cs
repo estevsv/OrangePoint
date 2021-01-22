@@ -51,13 +51,13 @@ namespace OrangePoint.DataAccess
                     empresa.CodEmpresa = int.Parse(registro["COD_EMPRESA"].ToString());
                     empresa.Regime = listaRegimeEmpresa.Find(o => o.CodRegime == int.Parse(registro["COD_REGIME"].ToString()));
                     empresa.CNPJ = registro["CNPJ"].ToString();
-                    empresa.ESocial = registro["ESOCIAL"].ToString();
+                    empresa.Telefone = registro["TELEFONE"].ToString();
                     empresa.Grupo = listaGrupoEmpresa.Find(o => o.CodGrupo == int.Parse(registro["COD_GRUPO"].ToString()));
                     empresa.NumSocios = int.Parse(registro["NUM_SOCIOS"].ToString() == "" ? "0" : registro["NUM_SOCIOS"].ToString());
                     empresa.NumVinculos = int.Parse(registro["NUM_VINCULOS"].ToString() == "" ? "0" : registro["NUM_VINCULOS"].ToString());
                     empresa.Observacao = registro["OBSERVACAO"].ToString();
                     empresa.RazaoSocial = registro["RAZAO_SOCIAL"].ToString();
-                    empresa.SenhaSIAT = registro["NUM_VINCULOS"].ToString();
+                    empresa.Email= registro["EMAIL"].ToString();
                     listEmpresa.Add(empresa);
                 }
                 conexao.Desconectar();
@@ -72,7 +72,7 @@ namespace OrangePoint.DataAccess
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`empresa` (`COD_REGIME`, `COD_GRUPO`, `RAZAO_SOCIAL`, `CNPJ`, `NUM_SOCIOS`, `NUM_VINCULOS`, `OBSERVACAO`, `SENHA_SIAT`, `ESOCIAL`) VALUES (@COD_REGIME, @COD_GRUPO, @RAZAO_SOCIAL, @CNPJ, @NUM_SOCIOS, @NUM_VINCULOS, @OBSERVACAO, @SENHA_SIAT, @ESOCIAL);";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`empresa` (`COD_REGIME`, `COD_GRUPO`, `RAZAO_SOCIAL`, `CNPJ`, `NUM_SOCIOS`, `NUM_VINCULOS`, `OBSERVACAO`, `EMAIL`, `TELEFONE`) VALUES (@COD_REGIME, @COD_GRUPO, @RAZAO_SOCIAL, @CNPJ, @NUM_SOCIOS, @NUM_VINCULOS, @OBSERVACAO, @EMAIL, @TELEFONE);";
                 cmd.Parameters.AddWithValue("@COD_REGIME", empresa.Regime.CodRegime);
                 cmd.Parameters.AddWithValue("@COD_GRUPO", empresa.Grupo.CodGrupo);
                 cmd.Parameters.AddWithValue("@RAZAO_SOCIAL", empresa.RazaoSocial);
@@ -80,8 +80,8 @@ namespace OrangePoint.DataAccess
                 cmd.Parameters.AddWithValue("@NUM_SOCIOS", empresa.NumSocios);
                 cmd.Parameters.AddWithValue("@NUM_VINCULOS", empresa.NumVinculos);
                 cmd.Parameters.AddWithValue("@OBSERVACAO", empresa.Observacao);
-                cmd.Parameters.AddWithValue("@SENHA_SIAT", empresa.SenhaSIAT);
-                cmd.Parameters.AddWithValue("@ESOCIAL", empresa.SenhaSIAT);
+                cmd.Parameters.AddWithValue("@EMAIL", empresa.Email);
+                cmd.Parameters.AddWithValue("@TELEFONE", empresa.Telefone);
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();
@@ -109,13 +109,13 @@ namespace OrangePoint.DataAccess
                     empresa.CodEmpresa = int.Parse(registro["COD_EMPRESA"].ToString());
                     empresa.Regime = listaRegimeEmpresa.Find(o => o.CodRegime == int.Parse(registro["COD_REGIME"].ToString()));
                     empresa.CNPJ = registro["CNPJ"].ToString();
-                    empresa.ESocial = registro["ESOCIAL"].ToString();
+                    empresa.Telefone = registro["TELEFONE"].ToString();
                     empresa.Grupo = listaGrupoEmpresa.Find(o => o.CodGrupo == int.Parse(registro["COD_GRUPO"].ToString()));
                     empresa.NumSocios = int.Parse(registro["NUM_SOCIOS"].ToString() == "" ? "0" : registro["NUM_SOCIOS"].ToString());
                     empresa.NumVinculos = int.Parse(registro["NUM_VINCULOS"].ToString() == "" ? "0" : registro["NUM_VINCULOS"].ToString());
                     empresa.Observacao = registro["OBSERVACAO"].ToString();
                     empresa.RazaoSocial = registro["RAZAO_SOCIAL"].ToString();
-                    empresa.SenhaSIAT = registro["SENHA_SIAT"].ToString();
+                    empresa.Email= registro["EMAIL"].ToString();
                 }
                 conexao.Desconectar();
             }
@@ -129,7 +129,7 @@ namespace OrangePoint.DataAccess
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "update bdorangepoint.empresa set COD_REGIME = @COD_REGIME, COD_GRUPO = @COD_GRUPO, RAZAO_SOCIAL = @RAZAO_SOCIAL, CNPJ = @CNPJ, NUM_SOCIOS = @NUM_SOCIOS, NUM_VINCULOS = @NUM_VINCULOS, OBSERVACAO = @OBSERVACAO, SENHA_SIAT = @SENHA_SIAT, ESOCIAL = @ESOCIAL " +
+                cmd.CommandText = "update bdorangepoint.empresa set COD_REGIME = @COD_REGIME, COD_GRUPO = @COD_GRUPO, RAZAO_SOCIAL = @RAZAO_SOCIAL, CNPJ = @CNPJ, NUM_SOCIOS = @NUM_SOCIOS, NUM_VINCULOS = @NUM_VINCULOS, OBSERVACAO = @OBSERVACAO, EMAIL = @EMAIL, TELEFONE = @TELEFONE " +
                     "where COD_EMPRESA = @COD_EMPRESA;";
                 cmd.Parameters.AddWithValue("@COD_EMPRESA", empresa.CodEmpresa);
                 cmd.Parameters.AddWithValue("@COD_REGIME", empresa.Regime.CodRegime);
@@ -139,8 +139,8 @@ namespace OrangePoint.DataAccess
                 cmd.Parameters.AddWithValue("@NUM_SOCIOS", empresa.NumSocios);
                 cmd.Parameters.AddWithValue("@NUM_VINCULOS", empresa.NumVinculos);
                 cmd.Parameters.AddWithValue("@OBSERVACAO", empresa.Observacao);
-                cmd.Parameters.AddWithValue("@SENHA_SIAT", empresa.SenhaSIAT);
-                cmd.Parameters.AddWithValue("@ESOCIAL", empresa.ESocial);
+                cmd.Parameters.AddWithValue("@EMAIL", empresa.Email);
+                cmd.Parameters.AddWithValue("@TELEFONE", empresa.Telefone);
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

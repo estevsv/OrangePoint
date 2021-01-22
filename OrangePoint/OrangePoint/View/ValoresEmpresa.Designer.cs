@@ -52,7 +52,7 @@
             this.btnCadastrarValor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgValor = new System.Windows.Forms.DataGridView();
-            this.txtValor = new System.Windows.Forms.MaskedTextBox();
+            this.txtValor = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -364,11 +364,11 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(951, 331);
-            this.txtValor.Mask = "9999999999999.99";
+            this.txtValor.Location = new System.Drawing.Point(952, 330);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(102, 20);
+            this.txtValor.Size = new System.Drawing.Size(100, 20);
             this.txtValor.TabIndex = 54;
+            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
             // ValoresEmpresa
             // 
@@ -431,6 +431,6 @@
         private System.Windows.Forms.Button btnCadastrarValor;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgValor;
-        private System.Windows.Forms.MaskedTextBox txtValor;
+        private System.Windows.Forms.TextBox txtValor;
     }
 }

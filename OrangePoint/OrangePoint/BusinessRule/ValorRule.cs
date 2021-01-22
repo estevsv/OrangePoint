@@ -81,7 +81,7 @@ namespace OrangePoint.BusinessRule
                 row = table.NewRow();
                 row["id"] = valor.CodValor;
                 row["Data"] = valor.DataEmpresa.Data.ToShortDateString();
-                row["Valor"] = valor.NumValor;
+                row["Valor"] = valor.NumValor.ToString("N2");
                 row["Subtipo"] = valor.SubtipoValor.DescSubtipo;
                 table.Rows.Add(row);
             }

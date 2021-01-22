@@ -1,4 +1,4 @@
-Link empresa - atividade
+Link empresa - atividade -- ok
 
 Cadastro de obrigações da empresa
 
@@ -10,13 +10,13 @@ Trocar controle de dados para controle de acessos{
 Obrigatoriedade de usuario e descricao
 tirar nomeclatura "WEB"
 }
-}
+} -- ok
 
-Cadastro de Empresa{
+Cadastro de Empresa{ 
 Senha SIAT - EMAIL
 ESOCIAL - TELEFONE
 Obs: Mudar no Banco de dados
-}
+}--- OK
 
 Trocar Financeiro para Registro Contábil  e colocá- lo como ACESSO PRINCIPAL À ESQUERDA
 

@@ -131,8 +131,8 @@ namespace OrangePoint.BusinessRule
             empresa.NumSocios = numSocios;
             empresa.NumVinculos = numVinculos;
             empresa.Observacao = observacao;
-            empresa.SenhaSIAT = senhaSiat;
-            empresa.ESocial = Esocial;
+            empresa.Email= senhaSiat;
+            empresa.Telefone = Esocial;
 
             return empresa;
         }

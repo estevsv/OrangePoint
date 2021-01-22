@@ -70,12 +70,21 @@
             this.txtSenhaWEB = new System.Windows.Forms.TextBox();
             this.txtDescricaoWEB = new System.Windows.Forms.TextBox();
             this.btnCadastrarDadosWeb = new System.Windows.Forms.Button();
+            this.pnCadastraAtividadeEmpresa = new System.Windows.Forms.Panel();
+            this.cbAtividade = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.dgAtividadeEmpresa = new System.Windows.Forms.DataGridView();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleFC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).BeginInit();
+            this.pnCadastraAtividadeEmpresa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -314,9 +323,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(544, 146);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 23);
+            this.label1.Size = new System.Drawing.Size(189, 23);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Controle Fiscal e Contábil";
+            this.label1.Text = "Registro Fiscal e Contábil";
             // 
             // dgControleFC
             // 
@@ -380,11 +389,11 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(230, 182);
+            this.label9.Location = new System.Drawing.Point(245, 182);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 22);
+            this.label9.Size = new System.Drawing.Size(76, 22);
             this.label9.TabIndex = 61;
-            this.label9.Text = "Classificação";
+            this.label9.Text = "Obrigação";
             // 
             // label2
             // 
@@ -516,11 +525,11 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(734, 316);
+            this.label6.Location = new System.Drawing.Point(766, 316);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(179, 23);
+            this.label6.Size = new System.Drawing.Size(156, 23);
             this.label6.TabIndex = 77;
-            this.label6.Text = "Controle de Dados Web";
+            this.label6.Text = "Controle de Acessos";
             // 
             // label8
             // 
@@ -530,9 +539,9 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(648, 354);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 22);
+            this.label8.Size = new System.Drawing.Size(59, 22);
             this.label8.TabIndex = 78;
-            this.label8.Text = "Usuário Web";
+            this.label8.Text = "Usuário";
             // 
             // label10
             // 
@@ -542,9 +551,9 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(648, 399);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(84, 22);
+            this.label10.Size = new System.Drawing.Size(51, 22);
             this.label10.TabIndex = 79;
-            this.label10.Text = "Senha Web";
+            this.label10.Text = "Senha";
             // 
             // label11
             // 
@@ -605,6 +614,102 @@
             this.btnCadastrarDadosWeb.UseVisualStyleBackColor = false;
             this.btnCadastrarDadosWeb.Click += new System.EventHandler(this.btnCadastrarDadosWeb_Click);
             // 
+            // pnCadastraAtividadeEmpresa
+            // 
+            this.pnCadastraAtividadeEmpresa.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
+            this.pnCadastraAtividadeEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.dgAtividadeEmpresa);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.button9);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label13);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbAtividade);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label12);
+            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(652, 316);
+            this.pnCadastraAtividadeEmpresa.Name = "pnCadastraAtividadeEmpresa";
+            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(384, 267);
+            this.pnCadastraAtividadeEmpresa.TabIndex = 86;
+            // 
+            // cbAtividade
+            // 
+            this.cbAtividade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAtividade.FormattingEnabled = true;
+            this.cbAtividade.Items.AddRange(new object[] {
+            "Cadastros",
+            "Consultoria Contábil",
+            "Apuração de Lucro Real",
+            "Controle de Usuários",
+            "Folha de Ponto",
+            "Controle de Folha de Ponto"});
+            this.cbAtividade.Location = new System.Drawing.Point(128, 50);
+            this.cbAtividade.Name = "cbAtividade";
+            this.cbAtividade.Size = new System.Drawing.Size(196, 21);
+            this.cbAtividade.TabIndex = 67;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(30, 47);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(67, 22);
+            this.label12.TabIndex = 66;
+            this.label12.Text = "Atividade";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(104, 12);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(171, 23);
+            this.label13.TabIndex = 87;
+            this.label13.Text = "Atividades da Empresa";
+            // 
+            // button9
+            // 
+            this.button9.AutoSize = true;
+            this.button9.BackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button9.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(346, 47);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(35, 33);
+            this.button9.TabIndex = 87;
+            this.button9.Text = "+";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // dgAtividadeEmpresa
+            // 
+            this.dgAtividadeEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAtividadeEmpresa.Location = new System.Drawing.Point(27, 96);
+            this.dgAtividadeEmpresa.MultiSelect = false;
+            this.dgAtividadeEmpresa.Name = "dgAtividadeEmpresa";
+            this.dgAtividadeEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgAtividadeEmpresa.Size = new System.Drawing.Size(343, 157);
+            this.dgAtividadeEmpresa.TabIndex = 87;
+            this.dgAtividadeEmpresa.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividadeEmpresa_UserDeletingRow);
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.AutoSize = true;
+            this.button10.BackColor = System.Drawing.Color.Transparent;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button10.ForeColor = System.Drawing.Color.White;
+            this.button10.Location = new System.Drawing.Point(652, 601);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(159, 42);
+            this.button10.TabIndex = 87;
+            this.button10.Text = "Atividades da Empresa";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
             // EspecificacoesEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -612,6 +717,8 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 658);
+            this.Controls.Add(this.button10);
+            this.Controls.Add(this.pnCadastraAtividadeEmpresa);
             this.Controls.Add(this.btnCadastrarDadosWeb);
             this.Controls.Add(this.txtDescricaoWEB);
             this.Controls.Add(this.txtSenhaWEB);
@@ -644,7 +751,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EspecificacoesEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Controle de Empresa";
+            this.Text = "Registro de Empresa";
             this.Load += new System.EventHandler(this.EspecificacoesEmpresa_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -654,6 +761,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgControleFC)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgDatas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).EndInit();
+            this.pnCadastraAtividadeEmpresa.ResumeLayout(false);
+            this.pnCadastraAtividadeEmpresa.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -701,5 +811,12 @@
         private System.Windows.Forms.TextBox txtDescricaoWEB;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button btnCadastrarDadosWeb;
+        private System.Windows.Forms.Panel pnCadastraAtividadeEmpresa;
+        private System.Windows.Forms.DataGridView dgAtividadeEmpresa;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cbAtividade;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button10;
     }
 }

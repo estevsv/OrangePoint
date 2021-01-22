@@ -39,6 +39,7 @@
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,17 +54,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNumVinculos = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtEsocial = new System.Windows.Forms.TextBox();
+            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtSenhaSIAT = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnCadastrarEmpresa = new System.Windows.Forms.Button();
             this.dgEmpresa = new System.Windows.Forms.DataGridView();
             this.btnCancelaEdicao = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -214,6 +214,21 @@
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 6;
             // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(217, 1);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(173, 68);
+            this.button8.TabIndex = 13;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -326,7 +341,7 @@
             // 
             // txtNumSocios
             // 
-            this.txtNumSocios.Location = new System.Drawing.Point(758, 116);
+            this.txtNumSocios.Location = new System.Drawing.Point(740, 117);
             this.txtNumSocios.MaxLength = 45;
             this.txtNumSocios.Name = "txtNumSocios";
             this.txtNumSocios.Size = new System.Drawing.Size(68, 20);
@@ -338,7 +353,7 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(624, 114);
+            this.label5.Location = new System.Drawing.Point(599, 114);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(128, 22);
             this.label5.TabIndex = 25;
@@ -346,10 +361,10 @@
             // 
             // txtNumVinculos
             // 
-            this.txtNumVinculos.Location = new System.Drawing.Point(1016, 113);
+            this.txtNumVinculos.Location = new System.Drawing.Point(982, 114);
             this.txtNumVinculos.MaxLength = 45;
             this.txtNumVinculos.Name = "txtNumVinculos";
-            this.txtNumVinculos.Size = new System.Drawing.Size(57, 20);
+            this.txtNumVinculos.Size = new System.Drawing.Size(91, 20);
             this.txtNumVinculos.TabIndex = 28;
             // 
             // label6
@@ -358,19 +373,19 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(871, 113);
+            this.label6.Location = new System.Drawing.Point(832, 113);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(139, 22);
             this.label6.TabIndex = 27;
             this.label6.Text = "Número de Vínculos";
             // 
-            // txtEsocial
+            // txtTelefone
             // 
-            this.txtEsocial.Location = new System.Drawing.Point(914, 171);
-            this.txtEsocial.MaxLength = 45;
-            this.txtEsocial.Name = "txtEsocial";
-            this.txtEsocial.Size = new System.Drawing.Size(159, 20);
-            this.txtEsocial.TabIndex = 30;
+            this.txtTelefone.Location = new System.Drawing.Point(902, 174);
+            this.txtTelefone.MaxLength = 45;
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(171, 20);
+            this.txtTelefone.TabIndex = 30;
             // 
             // label7
             // 
@@ -378,11 +393,11 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(844, 171);
+            this.label7.Location = new System.Drawing.Point(832, 174);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 22);
+            this.label7.Size = new System.Drawing.Size(65, 22);
             this.label7.TabIndex = 29;
-            this.label7.Text = "ESOCIAL";
+            this.label7.Text = "Telefone";
             // 
             // txtObservacoes
             // 
@@ -405,13 +420,13 @@
             this.label8.TabIndex = 32;
             this.label8.Text = "Observação";
             // 
-            // txtSenhaSIAT
+            // txtEmail
             // 
-            this.txtSenhaSIAT.Location = new System.Drawing.Point(550, 173);
-            this.txtSenhaSIAT.MaxLength = 45;
-            this.txtSenhaSIAT.Name = "txtSenhaSIAT";
-            this.txtSenhaSIAT.Size = new System.Drawing.Size(276, 20);
-            this.txtSenhaSIAT.TabIndex = 34;
+            this.txtEmail.Location = new System.Drawing.Point(532, 174);
+            this.txtEmail.MaxLength = 45;
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(276, 20);
+            this.txtEmail.TabIndex = 34;
             // 
             // label9
             // 
@@ -419,11 +434,11 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(459, 170);
+            this.label9.Location = new System.Drawing.Point(475, 170);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 22);
+            this.label9.Size = new System.Drawing.Size(51, 22);
             this.label9.TabIndex = 33;
-            this.label9.Text = "Senha SIAT";
+            this.label9.Text = "E-mail";
             // 
             // btnSair
             // 
@@ -485,21 +500,6 @@
             this.btnCancelaEdicao.Visible = false;
             this.btnCancelaEdicao.Click += new System.EventHandler(this.btnCancelaEdicao_Click);
             // 
-            // button8
-            // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button8.AutoSize = true;
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(217, 1);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(173, 68);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "Financeiro";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
             // CadastroEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,11 +511,11 @@
             this.Controls.Add(this.dgEmpresa);
             this.Controls.Add(this.btnCadastrarEmpresa);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.txtSenhaSIAT);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtObservacoes);
-            this.Controls.Add(this.txtEsocial);
+            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtNumVinculos);
             this.Controls.Add(this.label6);
@@ -575,11 +575,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtNumVinculos;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtEsocial;
+        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox txtObservacoes;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtSenhaSIAT;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnCadastrarEmpresa;

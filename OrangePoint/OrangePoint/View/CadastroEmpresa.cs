@@ -166,13 +166,13 @@ namespace OrangePoint.View
                 if (btnCadastrarEmpresa.Text == "Editar Empresa")
                 {
                     empresaRule.AtualizarEmpresa(empresaEdicao.CodEmpresa, int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
-                        int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
+                        int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtEmail.Text, txtTelefone.Text);
                     
                 }
                 else
                 {
                     empresaRule.IncluirEmpresa(int.Parse(cbRegime.SelectedValue.ToString()), int.Parse(cbGrupo.SelectedValue.ToString()), txtRazaoSocial.Text, txtCNPJ.Text, int.Parse(txtNumSocios.Text),
-                        int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtSenhaSIAT.Text, txtEsocial.Text);
+                        int.Parse(txtNumVinculos.Text), txtObservacoes.Text, txtEmail.Text, txtTelefone.Text);
                 }
 
                 LimparCampos();
@@ -188,8 +188,8 @@ namespace OrangePoint.View
             txtNumSocios.Text = empresaEdicao.NumSocios.ToString();
             txtNumVinculos.Text = empresaEdicao.NumVinculos.ToString();
             txtCNPJ.Text = empresaEdicao.CNPJ;
-            txtSenhaSIAT.Text = empresaEdicao.SenhaSIAT;
-            txtEsocial.Text = empresaEdicao.ESocial;
+            txtEmail.Text = empresaEdicao.Email;
+            txtTelefone.Text = empresaEdicao.Telefone;
             txtObservacoes.Text = empresaEdicao.Observacao;
             cbGrupo.SelectedValue = empresaEdicao.Grupo.CodGrupo;
             cbRegime.SelectedValue = empresaEdicao.Regime.CodRegime;
@@ -204,8 +204,8 @@ namespace OrangePoint.View
             txtNumSocios.Text = "";
             txtNumVinculos.Text = "";
             txtCNPJ.Text = "";
-            txtSenhaSIAT.Text = "";
-            txtEsocial.Text = "";
+            txtEmail.Text = "";
+            txtTelefone.Text = "";
             txtObservacoes.Text = "";
 
             btnCadastrarEmpresa.Text = "Cadastrar Empresa";

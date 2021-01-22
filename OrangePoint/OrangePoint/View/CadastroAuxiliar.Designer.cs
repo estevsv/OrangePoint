@@ -39,6 +39,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.pnCadastraSubtipos = new System.Windows.Forms.Panel();
@@ -83,7 +84,6 @@
             this.dgTipoClassificacao = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.txtClassificacao = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -241,6 +241,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 7;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(217, 1);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(211, 68);
+            this.button8.TabIndex = 13;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button1
             // 
@@ -785,11 +800,11 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(575, 365);
+            this.label12.Location = new System.Drawing.Point(615, 365);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(144, 22);
+            this.label12.Size = new System.Drawing.Size(83, 22);
             this.label12.TabIndex = 44;
-            this.label12.Text = "Tipo de Classificação";
+            this.label12.Text = "Obrigações";
             // 
             // txtClassificacao
             // 
@@ -797,21 +812,6 @@
             this.txtClassificacao.Name = "txtClassificacao";
             this.txtClassificacao.Size = new System.Drawing.Size(196, 20);
             this.txtClassificacao.TabIndex = 43;
-            // 
-            // button8
-            // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button8.AutoSize = true;
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(217, 1);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(211, 68);
-            this.button8.TabIndex = 13;
-            this.button8.Text = "Financeiro";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // CadastroAuxiliar
             // 

@@ -82,7 +82,9 @@ namespace OrangePoint.View
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -94,6 +96,17 @@ namespace OrangePoint.View
         {
             FechaPagina();
             new CadastroAuxiliar(usuarioPagina).Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
         }
 
         //Referências das Posições[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto, Controle de Folha de Ponto]
@@ -173,12 +186,6 @@ namespace OrangePoint.View
             Empresa empresaSelecionada = empresaRule.PesquisaEmpresaPorId(int.Parse(dgEmpresa.CurrentRow.Cells[0].Value.ToString()));
             FechaPagina();
             new EspecificacoesEmpresa(usuarioPagina, empresaSelecionada).Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            FechaPagina();
-            new ValoresEmpresa(usuarioPagina).Show();
         }
     }
 }

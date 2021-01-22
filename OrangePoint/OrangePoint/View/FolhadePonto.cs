@@ -140,6 +140,12 @@ namespace OrangePoint.View
 
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
+
         private void registrarObservacao_Click(object sender, EventArgs e)
         {
             folhaPontoRule.RegistraObservacao(dateTimePickerObs.Value,usuarioPagina,rtObservacao.Text);

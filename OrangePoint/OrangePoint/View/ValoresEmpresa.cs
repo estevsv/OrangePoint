@@ -114,7 +114,7 @@ namespace OrangePoint.View
         private void button6_Click(object sender, EventArgs e)
         {
             FechaPagina();
-            new CadastroAuxiliar(usuarioPagina).Show();
+            new CadastroAuxiliarFinanceiro(usuarioPagina).Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -122,6 +122,7 @@ namespace OrangePoint.View
             FechaPagina();
             new Configuracoes(usuarioPagina).Show();
         }
+
         #endregion
 
         private void CarregaGridValorEmpresa()

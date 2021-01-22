@@ -76,12 +76,6 @@ namespace OrangePoint.View
             new CadastroAuxiliar(usuarioPagina).Show();
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            FechaPagina();
-            new Dashboard(usuarioPagina).Show();
-        }
-
         private void btnPontoEletronico_Click(object sender, EventArgs e)
         {
             FechaPagina();
@@ -91,7 +85,7 @@ namespace OrangePoint.View
         private void button2_Click(object sender, EventArgs e)
         {
             FechaPagina();
-            new EmpresaView(usuarioPagina).Show();
+            new ValoresEmpresa(usuarioPagina).Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -109,11 +103,30 @@ namespace OrangePoint.View
 
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new EmpresaView(usuarioPagina).Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new Dashboard(usuarioPagina).Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
+
+
         private void CadastroEmpresa_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (fechamentoSistema)
                 Application.Exit();
-        } 
+        }
         #endregion
 
         private void CarregaGridseComboBoxes()
@@ -229,33 +242,6 @@ namespace OrangePoint.View
         private void txtCNPJ_TextChanged(object sender, EventArgs e)
         {
             CarregaGridEmpresa(empresaRule.ElaboraTabelaEmpresa(txtCNPJ.Text != "" ? empresaRule.listaEmpresas().Where(o => o.CNPJ == txtCNPJ.Text).ToList() : empresaRule.listaEmpresas()));
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            FechaPagina();
-            new ValoresEmpresa(usuarioPagina).Show();
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            FechaPagina();
-            new ValoresEmpresa(usuarioPagina).Show();
-        }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

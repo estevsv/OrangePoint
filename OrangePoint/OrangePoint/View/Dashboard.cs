@@ -87,5 +87,11 @@ namespace OrangePoint.View
             if (fechamentoSistema)
                 Application.Exit();
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
     }
 }

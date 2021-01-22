@@ -158,6 +158,12 @@ namespace OrangePoint.View
             new Dashboard(usuarioPagina).Show();
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
+        }
+
         private void Configuracoes_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (fechamentoSistema)

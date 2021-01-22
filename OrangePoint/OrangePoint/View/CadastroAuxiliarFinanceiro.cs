@@ -22,6 +22,7 @@ namespace OrangePoint.View
         TipoValorRule tipoValorRule = new TipoValorRule();
         SubtipoValorRule subtipoValorRule = new SubtipoValorRule();
         SubtipoAtividadeRule subtipoAtividadeRule = new SubtipoAtividadeRule();
+        AtividadeRule atividadeRule = new AtividadeRule();
 
         public CadastroAuxiliarFinanceiro(Usuario usuario)
         {
@@ -72,6 +73,7 @@ namespace OrangePoint.View
             CarregaGridSubtipoValor();
             CarregaCbTipoValor();
             CarregaGridSubtipoAtividade();
+            CarregaGridAtividade();
         }
 
         #region Dados Tipo Valor
@@ -209,6 +211,38 @@ namespace OrangePoint.View
 
         #endregion
 
+        #endregion
+
+        #region Dados Atividade
+        private void CarregaGridAtividade()
+        {
+            dgAtividade.DataSource = atividadeRule.PesquisaAtividadeTabela();
+            if (dgAtividade.Columns.Count != 0)
+            {
+                dgAtividade.Columns["COD_Atividade"].Visible = false;
+                dgAtividade.Columns["DESCRICAO"].HeaderText = "Descrição";
+                dgAtividade.Columns["DESCRICAO"].ReadOnly = true;
+                dgAtividade.Columns["DESCRICAO"].Width = 187;
+            }
+        }
+
+        private void AdicionarAtividadeEmpresa_Click(object sender, EventArgs e)
+        {
+            if (txtAtividade.Text != "")
+                atividadeRule.IncluirAtividade(txtAtividade.Text);
+
+            CarregaGridAtividade();
+        }
+
+        private void dgAtividade_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            atividadeRule.ExcluiAtividade(int.Parse(dgAtividade.CurrentRow.Cells[0].Value.ToString()));
+            dgAtividade.Rows.RemoveAt(dgAtividade.CurrentRow.Index);
+
+            CarregaGridAtividade();
+
+            e.Cancel = true;
+        }
         #endregion
 
         #region Controle de Tela

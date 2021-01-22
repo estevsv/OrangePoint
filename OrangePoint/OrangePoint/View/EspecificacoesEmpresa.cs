@@ -94,7 +94,7 @@ namespace OrangePoint.View
             new FolhadePonto(usuarioPagina).Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button12_Click(object sender, EventArgs e)
         {
             FechaPagina();
             new EmpresaView(usuarioPagina).Show();
@@ -128,7 +128,7 @@ namespace OrangePoint.View
             new CadastroAuxiliar(usuarioPagina).Show();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             FechaPagina();
             new ValoresEmpresa(usuarioPagina).Show();

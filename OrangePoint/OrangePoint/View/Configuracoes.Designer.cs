@@ -352,6 +352,7 @@
             this.button8.TabIndex = 19;
             this.button8.Text = "Financeiro";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button5
             // 
@@ -366,6 +367,7 @@
             this.button5.TabIndex = 18;
             this.button5.Text = "Apuração de Lucro Real";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -380,6 +382,7 @@
             this.button4.TabIndex = 17;
             this.button4.Text = "Consultoria Contábil";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 
@@ -394,6 +397,7 @@
             this.button2.TabIndex = 16;
             this.button2.Text = "Empresas";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Configuracoes
             // 

@@ -32,6 +32,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.dgAtividade = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAtividade = new System.Windows.Forms.TextBox();
-            this.button8 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -114,6 +114,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 740);
             this.panel1.TabIndex = 8;
+            // 
+            // button8
+            // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Location = new System.Drawing.Point(0, 512);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(211, 68);
+            this.button8.TabIndex = 15;
+            this.button8.Text = "Financeiro";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -482,6 +497,7 @@
             this.AdicionarAtividadeEmpresa.TabIndex = 85;
             this.AdicionarAtividadeEmpresa.Text = "Adicionar";
             this.AdicionarAtividadeEmpresa.UseVisualStyleBackColor = false;
+            this.AdicionarAtividadeEmpresa.Click += new System.EventHandler(this.AdicionarAtividadeEmpresa_Click);
             // 
             // dgAtividade
             // 
@@ -492,6 +508,7 @@
             this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgAtividade.Size = new System.Drawing.Size(196, 157);
             this.dgAtividade.TabIndex = 84;
+            this.dgAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividade_UserDeletingRow);
             // 
             // label3
             // 
@@ -511,21 +528,6 @@
             this.txtAtividade.Name = "txtAtividade";
             this.txtAtividade.Size = new System.Drawing.Size(243, 20);
             this.txtAtividade.TabIndex = 82;
-            // 
-            // button8
-            // 
-            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button8.AutoSize = true;
-            this.button8.BackColor = System.Drawing.Color.Transparent;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(0, 512);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(211, 68);
-            this.button8.TabIndex = 15;
-            this.button8.Text = "Financeiro";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // CadastroAuxiliarFinanceiro
             // 
@@ -561,6 +563,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CadastroAuxiliarFinanceiro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Auxiliar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CadastroAuxiliarFinanceiro_FormClosing);
             this.Load += new System.EventHandler(this.CadastroAuxiliarFinanceiro_Load);

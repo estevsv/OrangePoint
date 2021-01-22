@@ -169,12 +169,6 @@ namespace OrangePoint.View
             btnPontoEletronico.Visible = listaPermissoes[4];
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FechaPagina();
-            new EmpresaView(usuarioPagina).Show();
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
 
@@ -189,6 +183,18 @@ namespace OrangePoint.View
         {
             if (fechamentoSistema)
                 Application.Exit();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new EmpresaView(usuarioPagina).Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FechaPagina();
+            new ValoresEmpresa(usuarioPagina).Show();
         }
     }
 }

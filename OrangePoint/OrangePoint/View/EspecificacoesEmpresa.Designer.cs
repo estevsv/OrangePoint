@@ -71,12 +71,17 @@
             this.txtDescricaoWEB = new System.Windows.Forms.TextBox();
             this.btnCadastrarDadosWeb = new System.Windows.Forms.Button();
             this.pnCadastraAtividadeEmpresa = new System.Windows.Forms.Panel();
+            this.dgAtividadeEmpresa = new System.Windows.Forms.DataGridView();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.cbAtividade = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.button9 = new System.Windows.Forms.Button();
-            this.dgAtividadeEmpresa = new System.Windows.Forms.DataGridView();
             this.button10 = new System.Windows.Forms.Button();
+            this.dgObrigacao = new System.Windows.Forms.DataGridView();
+            this.button11 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbObrigacao = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -85,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).BeginInit();
             this.pnCadastraAtividadeEmpresa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgObrigacao)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -618,15 +624,58 @@
             // 
             this.pnCadastraAtividadeEmpresa.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.pnCadastraAtividadeEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.dgObrigacao);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.button11);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label14);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbObrigacao);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label15);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.dgAtividadeEmpresa);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.button9);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label13);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbAtividade);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label12);
-            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(652, 316);
+            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(234, 316);
             this.pnCadastraAtividadeEmpresa.Name = "pnCadastraAtividadeEmpresa";
-            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(384, 267);
+            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 279);
             this.pnCadastraAtividadeEmpresa.TabIndex = 86;
+            // 
+            // dgAtividadeEmpresa
+            // 
+            this.dgAtividadeEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAtividadeEmpresa.Location = new System.Drawing.Point(27, 96);
+            this.dgAtividadeEmpresa.MultiSelect = false;
+            this.dgAtividadeEmpresa.Name = "dgAtividadeEmpresa";
+            this.dgAtividadeEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgAtividadeEmpresa.Size = new System.Drawing.Size(343, 171);
+            this.dgAtividadeEmpresa.TabIndex = 87;
+            this.dgAtividadeEmpresa.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividadeEmpresa_UserDeletingRow);
+            // 
+            // button9
+            // 
+            this.button9.AutoSize = true;
+            this.button9.BackColor = System.Drawing.Color.Transparent;
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button9.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.button9.ForeColor = System.Drawing.Color.White;
+            this.button9.Location = new System.Drawing.Point(346, 47);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(35, 33);
+            this.button9.TabIndex = 87;
+            this.button9.Text = "+";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(104, 12);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(171, 23);
+            this.label13.TabIndex = 87;
+            this.label13.Text = "Atividades da Empresa";
             // 
             // cbAtividade
             // 
@@ -656,44 +705,6 @@
             this.label12.TabIndex = 66;
             this.label12.Text = "Atividade";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(104, 12);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(171, 23);
-            this.label13.TabIndex = 87;
-            this.label13.Text = "Atividades da Empresa";
-            // 
-            // button9
-            // 
-            this.button9.AutoSize = true;
-            this.button9.BackColor = System.Drawing.Color.Transparent;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button9.Font = new System.Drawing.Font("Arial Narrow", 14F);
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(346, 47);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(35, 33);
-            this.button9.TabIndex = 87;
-            this.button9.Text = "+";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // dgAtividadeEmpresa
-            // 
-            this.dgAtividadeEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAtividadeEmpresa.Location = new System.Drawing.Point(27, 96);
-            this.dgAtividadeEmpresa.MultiSelect = false;
-            this.dgAtividadeEmpresa.Name = "dgAtividadeEmpresa";
-            this.dgAtividadeEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgAtividadeEmpresa.Size = new System.Drawing.Size(343, 157);
-            this.dgAtividadeEmpresa.TabIndex = 87;
-            this.dgAtividadeEmpresa.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividadeEmpresa_UserDeletingRow);
-            // 
             // button10
             // 
             this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -702,13 +713,79 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button10.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.White;
-            this.button10.Location = new System.Drawing.Point(652, 601);
+            this.button10.Location = new System.Drawing.Point(561, 601);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(159, 42);
+            this.button10.Size = new System.Drawing.Size(214, 38);
             this.button10.TabIndex = 87;
-            this.button10.Text = "Atividades da Empresa";
+            this.button10.Text = "Detalhes Adicionais da Empresa";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // dgObrigacao
+            // 
+            this.dgObrigacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgObrigacao.Location = new System.Drawing.Point(418, 96);
+            this.dgObrigacao.MultiSelect = false;
+            this.dgObrigacao.Name = "dgObrigacao";
+            this.dgObrigacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgObrigacao.Size = new System.Drawing.Size(343, 171);
+            this.dgObrigacao.TabIndex = 90;
+            this.dgObrigacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgObrigacao_UserDeletingRow);
+            // 
+            // button11
+            // 
+            this.button11.AutoSize = true;
+            this.button11.BackColor = System.Drawing.Color.Transparent;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button11.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.button11.ForeColor = System.Drawing.Color.White;
+            this.button11.Location = new System.Drawing.Point(737, 47);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(35, 33);
+            this.button11.TabIndex = 91;
+            this.button11.Text = "+";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(495, 12);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(180, 23);
+            this.label14.TabIndex = 92;
+            this.label14.Text = "Obrigações da Empresa";
+            // 
+            // cbObrigacao
+            // 
+            this.cbObrigacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbObrigacao.FormattingEnabled = true;
+            this.cbObrigacao.Items.AddRange(new object[] {
+            "Cadastros",
+            "Consultoria Contábil",
+            "Apuração de Lucro Real",
+            "Controle de Usuários",
+            "Folha de Ponto",
+            "Controle de Folha de Ponto"});
+            this.cbObrigacao.Location = new System.Drawing.Point(519, 50);
+            this.cbObrigacao.Name = "cbObrigacao";
+            this.cbObrigacao.Size = new System.Drawing.Size(196, 21);
+            this.cbObrigacao.TabIndex = 89;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(421, 47);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(76, 22);
+            this.label15.TabIndex = 88;
+            this.label15.Text = "Obrigação";
             // 
             // EspecificacoesEmpresa
             // 
@@ -764,6 +841,7 @@
             this.pnCadastraAtividadeEmpresa.ResumeLayout(false);
             this.pnCadastraAtividadeEmpresa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgObrigacao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -818,5 +896,10 @@
         private System.Windows.Forms.ComboBox cbAtividade;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.DataGridView dgObrigacao;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox cbObrigacao;
+        private System.Windows.Forms.Label label15;
     }
 }

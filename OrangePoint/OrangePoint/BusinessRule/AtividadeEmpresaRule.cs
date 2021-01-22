@@ -39,7 +39,7 @@ namespace OrangePoint.BusinessRule
         public void ExcluiAtividadeEmpresa(int codAtividadeEmpresa)
         {
             atividadeEmpresaDAO.ExcluiAtividadeEmpresa(codAtividadeEmpresa);
-            MessageBox.Show("Altividade da empresa retirada!");
+            MessageBox.Show("Atividade da empresa retirada!");
         }
 
         public DataTable ElaboraTabelaAtividadeEmpresa(List<AtividadeEmpresa> listaAtividadeEmpresas)

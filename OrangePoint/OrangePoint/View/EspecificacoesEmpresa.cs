@@ -29,6 +29,7 @@ namespace OrangePoint.View
         DadosWebRule dadoWebRule = new DadosWebRule();
         AtividadeRule atividadeRule = new AtividadeRule();
         AtividadeEmpresaRule atividadeEmpresaRule = new AtividadeEmpresaRule();
+        ObrigacaoEmpresaRule obrigacaoEmpresaRule = new ObrigacaoEmpresaRule();
 
         public EspecificacoesEmpresa(Usuario usuario, Empresa empresa)
         {
@@ -140,6 +141,7 @@ namespace OrangePoint.View
             CarregaComboBoxTipoData();
             CarregaComboBoxDataEmpresa();
             CarregaComboBoxAtividadeEmpresa();
+            CarregaComboBoxObrigacoesEmpresa();
         }
 
         private void CarregaComboBoxClassificacao()
@@ -173,6 +175,13 @@ namespace OrangePoint.View
             cbAtividade.DisplayMember = "DESCRICAO";
             cbAtividade.ValueMember = "COD_ATIVIDADE";
         }
+
+        private void CarregaComboBoxObrigacoesEmpresa()
+        {
+            cbObrigacao.DataSource = tipoClassificacaoRule.PesquisaTipoClassificacaoTabela();
+            cbObrigacao.DisplayMember = "DESCRICAO";
+            cbObrigacao.ValueMember = "COD_TIPO_CLASSIFICACAO";
+        }
         #endregion
 
         private void CarregaGrids()
@@ -181,6 +190,7 @@ namespace OrangePoint.View
             CarregaGridDataEmpresa();
             CarregaGridDadosWeb();
             CarregaGridAtividade();
+            CarregaObrigacoes();
         }
 
         private void CarregaGridControleFC()
@@ -276,7 +286,7 @@ namespace OrangePoint.View
         {
             if (txtUsuarioWEB.Text != "" && txtDescricaoWEB.Text != "")
             {
-                dadoWebRule.IncluirTipoValor(empresaOperacao.CodEmpresa, txtUsuarioWEB.Text, txtSenhaWEB.Text, txtDescricaoWEB.Text);
+                dadoWebRule.IncluirDadosWebEmpresa(empresaOperacao.CodEmpresa, txtUsuarioWEB.Text, txtSenhaWEB.Text, txtDescricaoWEB.Text);
                 CarregaGridDadosWeb();
             }
             else
@@ -286,7 +296,7 @@ namespace OrangePoint.View
 
         private void dgControleWeb_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            dadoWebRule.ExcluiTipoValor(int.Parse(dgControleWeb.CurrentRow.Cells[0].Value.ToString()));
+            dadoWebRule.ExcluiDadosWebEmpresa(int.Parse(dgControleWeb.CurrentRow.Cells[0].Value.ToString()));
             dgControleWeb.Rows.RemoveAt(dgControleWeb.CurrentRow.Index);
             CarregaGridDadosWeb();
             e.Cancel = true;
@@ -294,26 +304,38 @@ namespace OrangePoint.View
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (button10.Text == "Atividades da Empresa")
+            if (button10.Text == "Detalhes Adicionais da Empresa")
             {
                 pnCadastraAtividadeEmpresa.Visible = true;
+                dgDatas.Visible = false;
                 button10.Text = "Dados Gerais da Empresa";
             }
             else
             {
                 pnCadastraAtividadeEmpresa.Visible = false;
-                button10.Text = "Atividades da Empresa";
+                dgDatas.Visible = true;
+                button10.Text = "Detalhes Adicionais da Empresa";
             }
         }
 
         private void CarregaGridAtividade()
         {
             List<AtividadeEmpresa> listaAtvEmp = atividadeEmpresaRule.listaAtividadeEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList();
-           
+
             dgAtividadeEmpresa.DataSource = atividadeEmpresaRule.ElaboraTabelaAtividadeEmpresa(listaAtvEmp);
             dgAtividadeEmpresa.Columns["id"].Visible = false;
             dgAtividadeEmpresa.Columns["Atividade"].Width = 300;
             dgAtividadeEmpresa.Columns["Atividade"].ReadOnly = true;
+        }
+
+        private void CarregaObrigacoes()
+        {
+            List<ObrigacaoEmpresa> listaObrigacaoEmp = obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList();
+
+            dgObrigacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
+            dgObrigacao.Columns["id"].Visible = false;
+            dgObrigacao.Columns["Obrigação"].Width = 300;
+            dgObrigacao.Columns["Obrigação"].ReadOnly = true;
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -332,6 +354,25 @@ namespace OrangePoint.View
             atividadeEmpresaRule.ExcluiAtividadeEmpresa(int.Parse(dgAtividadeEmpresa.CurrentRow.Cells[0].Value.ToString()));
             dgAtividadeEmpresa.Rows.RemoveAt(dgAtividadeEmpresa.CurrentRow.Index);
             CarregaGridAtividade();
+            e.Cancel = true;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (!obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList().Exists(o => o.TipoClassificacao.CodTipoClassificacao == int.Parse(cbObrigacao.SelectedValue.ToString())))
+            {
+                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa);
+                CarregaObrigacoes();
+            }
+            else
+                MessageBox.Show("Obrigação já alocada para esta empresa!");
+        }
+
+        private void dgObrigacao_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            obrigacaoEmpresaRule.ExcluiObrigacaoEmpresa(int.Parse(dgObrigacao.CurrentRow.Cells[0].Value.ToString()));
+            dgObrigacao.Rows.RemoveAt(dgObrigacao.CurrentRow.Index);
+            CarregaObrigacoes();
             e.Cancel = true;
         }
     }

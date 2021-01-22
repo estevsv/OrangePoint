@@ -24,7 +24,7 @@ namespace OrangePoint.BusinessRule
             return dadosWebEmpresaDAO.PesquisaDadosWebEmpresaLista();
         }
 
-        public void IncluirTipoValor(int codEmpresa, string usuarioWeb, string senhaWeb, string descricao)
+        public void IncluirDadosWebEmpresa(int codEmpresa, string usuarioWeb, string senhaWeb, string descricao)
         {
             if (listaDadosWeb().Exists(o => o.Empresa.CodEmpresa == codEmpresa && o.UsuarioWeb == usuarioWeb && o.SenhaWeb == senhaWeb && o.DescDado == descricao))
                 MessageBox.Show("Dado já existente!");
@@ -35,7 +35,7 @@ namespace OrangePoint.BusinessRule
             }
         }
 
-        public void ExcluiTipoValor(int codDado)
+        public void ExcluiDadosWebEmpresa(int codDado)
         {
             dadosWebEmpresaDAO.ExcluiDadoWebEmpresa(codDado);
             MessageBox.Show("Dado Excluído");

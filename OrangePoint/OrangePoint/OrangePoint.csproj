@@ -91,6 +91,7 @@
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
     <Compile Include="BusinessRule\GrupoRule.cs" />
     <Compile Include="BusinessRule\LoginRule.cs" />
+    <Compile Include="BusinessRule\ObrigacaoEmpresaRule.cs" />
     <Compile Include="BusinessRule\PermissaoTelaRule.cs" />
     <Compile Include="BusinessRule\PermissoesRule.cs" />
     <Compile Include="BusinessRule\RegimeEmpresaRule.cs" />

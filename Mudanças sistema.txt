@@ -1,6 +1,6 @@
 Link empresa - atividade -- ok
 
-Cadastro de obrigações da empresa
+Cadastro de obrigações da empresa -- ok
 
 Controle de Empresas{
 Trocar nomeação de Controle para registro (Controle é a nalise feita no dashboard)

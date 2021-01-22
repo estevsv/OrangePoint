@@ -13,6 +13,7 @@ namespace OrangePoint.BusinessRule
     public class SubtipoValorRule
     {
         SubtipoValorDAO subtipoValorDAO = new SubtipoValorDAO();
+        ValorRule valorRule = new ValorRule();
 
         public DataTable PesquisaSubtipoValorTabela()
         {
@@ -37,8 +38,15 @@ namespace OrangePoint.BusinessRule
 
         public void ExcluiSubtipoValor(int codSubtipoValor)
         {
-            subtipoValorDAO.ExcluiSubtipoValor(codSubtipoValor);
-            MessageBox.Show("Subtipo Removido!");
+            List<Valor> listaValor = valorRule.listaValor();
+            if (!listaValor.Exists(o => o.SubtipoValor.CodSubtipoValor == codSubtipoValor))
+            {
+                subtipoValorDAO.ExcluiSubtipoValor(codSubtipoValor);
+                MessageBox.Show("Subtipo Removido!");
+            }
+            else
+                MessageBox.Show("Subtipo já alocado em um valor de uma empresa. Exclusão não realizada!");
+
         }
 
         public DataTable FiltraPesquisaSubtipoValorTabela()

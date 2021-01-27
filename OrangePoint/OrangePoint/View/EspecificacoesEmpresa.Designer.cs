@@ -40,7 +40,6 @@
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
@@ -245,7 +244,6 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.userImage);
@@ -886,7 +884,6 @@
         private System.Windows.Forms.TextBox txtUsuarioWEB;
         private System.Windows.Forms.TextBox txtSenhaWEB;
         private System.Windows.Forms.TextBox txtDescricaoWEB;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button btnCadastrarDadosWeb;
         private System.Windows.Forms.Panel pnCadastraAtividadeEmpresa;
         private System.Windows.Forms.DataGridView dgAtividadeEmpresa;

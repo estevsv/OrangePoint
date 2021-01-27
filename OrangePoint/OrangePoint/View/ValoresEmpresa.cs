@@ -47,8 +47,10 @@ namespace OrangePoint.View
 
             listaEmpresas = empresaRule.listaEmpresas();
             CarregaComboBox();
-            CarregarComboBoxSubtipoValor();
             CarregaGridValorEmpresa();
+
+            if(cbEmpresa.Text != "")
+                CarregarComboBoxSubtipoValor();
 
             isLoad = false;
         }
@@ -196,7 +198,7 @@ namespace OrangePoint.View
 
         private void CarregarComboBoxSubtipoValor()
         {
-            cbSubtipoValor.DataSource = subtipoValorRule.FiltraPesquisaSubtipoValorTabela();
+            cbSubtipoValor.DataSource = subtipoValorRule.FiltraPesquisaSubtipoValorTabela(subtipoValorRule.ListaSubtiposPorEmpresa(empresaRule.PesquisaEmpresaPorId(int.Parse(cbEmpresa.SelectedValue.ToString()))));
             cbSubtipoValor.DisplayMember = "SubtipoValor";
             cbSubtipoValor.ValueMember = "id";
         }
@@ -208,7 +210,7 @@ namespace OrangePoint.View
             {
                 Valor valor = new Valor();
                 valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == int.Parse(cbData.SelectedValue.ToString()));
-                valor.SubtipoValor = subtipoValorRule.listaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
+                valor.SubtipoValor = subtipoValorRule.ListaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
                 valor.NumValor = decimal.Parse(txtValor.Text);
 
                 valorRule.IncluirValor(valor.DataEmpresa.CodData, valor.SubtipoValor.CodSubtipoValor, valor.NumValor.ToString());

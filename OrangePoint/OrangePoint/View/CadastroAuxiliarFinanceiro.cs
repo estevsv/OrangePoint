@@ -71,7 +71,6 @@ namespace OrangePoint.View
         {
             CarregaGridTipoValor();
             CarregaGridSubtipoValor();
-            CarregaCbTipoValor();
             CarregaGridSubtipoAtividade();
             CarregaGridAtividade();
         }
@@ -86,6 +85,8 @@ namespace OrangePoint.View
                 dgTipoValor.Columns["DESC_TIPO"].HeaderText = "Descrição";
                 dgTipoValor.Columns["DESC_TIPO"].ReadOnly = true;
                 dgTipoValor.Columns["DESC_TIPO"].Width = 187;
+
+                CarregaCbTipoValor();
             }
         }
 
@@ -223,6 +224,8 @@ namespace OrangePoint.View
                 dgAtividade.Columns["DESCRICAO"].HeaderText = "Descrição";
                 dgAtividade.Columns["DESCRICAO"].ReadOnly = true;
                 dgAtividade.Columns["DESCRICAO"].Width = 187;
+
+                CarregaCbAtividade();
             }
         }
 

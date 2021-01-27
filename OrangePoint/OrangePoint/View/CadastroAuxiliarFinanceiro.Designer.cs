@@ -270,13 +270,6 @@
             // 
             this.cbAtividade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAtividade.FormattingEnabled = true;
-            this.cbAtividade.Items.AddRange(new object[] {
-            "Cadastros",
-            "Consultoria Contábil",
-            "Apuração de Lucro Real",
-            "Controle de Usuários",
-            "Folha de Ponto",
-            "Controle de Folha de Ponto"});
             this.cbAtividade.Location = new System.Drawing.Point(824, 356);
             this.cbAtividade.Name = "cbAtividade";
             this.cbAtividade.Size = new System.Drawing.Size(196, 21);
@@ -335,6 +328,7 @@
             this.dgSubtipoAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgSubtipoAtividade.Size = new System.Drawing.Size(332, 183);
             this.dgSubtipoAtividade.TabIndex = 70;
+            this.dgSubtipoAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgSubtipoAtividade_UserDeletingRow);
             // 
             // label9
             // 
@@ -401,6 +395,7 @@
             this.dgSubtipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgSubtipoValor.Size = new System.Drawing.Size(332, 183);
             this.dgSubtipoValor.TabIndex = 65;
+            this.dgSubtipoValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgSubtipoValor_UserDeletingRow);
             // 
             // txtSubtipoValor
             // 

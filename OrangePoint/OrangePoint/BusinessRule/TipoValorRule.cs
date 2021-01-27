@@ -38,7 +38,7 @@ namespace OrangePoint.BusinessRule
 
         public void ExcluiTipoValor(int codTipoValor)
         {
-            List<SubtipoValor> listaSubtipos = subtipoValorRule.listaSubtipoValor();
+            List<SubtipoValor> listaSubtipos = subtipoValorRule.ListaSubtipoValor();
             if (!listaSubtipos.Exists(o => o.TipoValor.CodTipoValor == codTipoValor))
             {
                 tipoValorDAO.ExcluiTipoValor(codTipoValor);

@@ -14,20 +14,22 @@ namespace OrangePoint.BusinessRule
     {
         SubtipoValorDAO subtipoValorDAO = new SubtipoValorDAO();
         ValorRule valorRule = new ValorRule();
+        AtividadeEmpresaRule atividadeEmpresaRule = new AtividadeEmpresaRule();
+        SubtipoAtividadeRule subtipoAtividadeRule = new SubtipoAtividadeRule();
 
         public DataTable PesquisaSubtipoValorTabela()
         {
             return subtipoValorDAO.PesquisaSubtipoValorTabela();
         }
 
-        public List<SubtipoValor> listaSubtipoValor()
+        public List<SubtipoValor> ListaSubtipoValor()
         {
             return subtipoValorDAO.PesquisaSubtipoValorLista();
         }
 
         public void IncluirSubtipoValor(int codTipoValor, string descricao)
         {
-            if (listaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))
+            if (ListaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))
                 MessageBox.Show("Subtipo já existente!");
             else
             {
@@ -49,8 +51,10 @@ namespace OrangePoint.BusinessRule
 
         }
 
-        public DataTable FiltraPesquisaSubtipoValorTabela()
+        public DataTable FiltraPesquisaSubtipoValorTabela(List<SubtipoValor> listaSubtipoValor = null)
         {
+            if(listaSubtipoValor == null)
+                listaSubtipoValor = ListaSubtipoValor();
             DataTable table = new DataTable("TabelaGridClasse");
             DataColumn column;
             DataRow row;
@@ -81,7 +85,7 @@ namespace OrangePoint.BusinessRule
             PrimaryKeyColumns[0] = table.Columns["id"];
             table.PrimaryKey = PrimaryKeyColumns;
 
-            foreach (SubtipoValor subtipo in listaSubtipoValor())
+            foreach (SubtipoValor subtipo in listaSubtipoValor)
             {
                 row = table.NewRow();
                 row["id"] = subtipo.CodSubtipoValor;
@@ -92,5 +96,13 @@ namespace OrangePoint.BusinessRule
 
             return table;
         }
+
+        public List<SubtipoValor> ListaSubtiposPorEmpresa(Empresa empresa)
+        {
+            List<AtividadeEmpresa> listaAtividadesEmpresa = atividadeEmpresaRule.listaAtividadeEmpresas().Where(o => o.Empresa.CodEmpresa == empresa.CodEmpresa).ToList();
+            List<SubtipoAtividade> listaSubtipoAtividade = subtipoAtividadeRule.listaSubtipoAtividade().Where(o => listaAtividadesEmpresa.Exists(p => p.Atividade.CodAtividade == o.Atividade.CodAtividade)).ToList();
+
+            return ListaSubtipoValor().Where(o => listaSubtipoAtividade.Exists(p => p.SubtipoValor.CodSubtipoValor == o.CodSubtipoValor)).ToList();
+        } 
     }
 }

@@ -116,6 +116,7 @@ namespace OrangePoint.View
         {
             button2.Visible = listaPermissoes[0];
             button4.Visible = listaPermissoes[1];
+            button8.Visible = listaPermissoes[1];
             button5.Visible = listaPermissoes[2];
             btnPontoEletronico.Visible = listaPermissoes[4];
         }

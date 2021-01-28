@@ -71,6 +71,8 @@ namespace OrangePoint.View
         //Referências das Posições[Cadastros, Consultoria Contábil, Apuração de Lucro Real,Controle de Usuarios,Folha de Ponto, Controle de Folha de Ponto]
         private void HabilitaPermissoes(List<bool> listaPermissoes)
         {
+            button12.Visible = listaPermissoes[0];
+            button2.Visible = listaPermissoes[1];
             button4.Visible = listaPermissoes[1];
             button5.Visible = listaPermissoes[2];
             btnPontoEletronico.Visible = listaPermissoes[4];

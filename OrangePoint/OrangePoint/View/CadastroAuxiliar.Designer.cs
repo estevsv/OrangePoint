@@ -121,6 +121,7 @@
             this.button5.TabIndex = 18;
             this.button5.Text = "Apuração de Lucro Real";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -135,6 +136,7 @@
             this.button4.TabIndex = 17;
             this.button4.Text = "Consultoria Contábil";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button2
             // 

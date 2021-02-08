@@ -3,6 +3,7 @@ using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace OrangePoint.View
@@ -12,7 +13,9 @@ namespace OrangePoint.View
         private Usuario usuarioPagina;
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
+        EmpresaRule empresaRule = new EmpresaRule();
         bool fechamentoSistema;
+        private List<Empresa> listaEmpresas;
 
         public Dashboard(Usuario usuario)
         {
@@ -29,6 +32,31 @@ namespace OrangePoint.View
             userImage.Image = utilities.CarregaImagemUsuario(usuarioPagina, userImage.Image);
 
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
+
+            listaEmpresas = empresaRule.listaEmpresas();
+            CarregaComboBox();
+        }
+
+        private void CarregaComboBox(string razaoSocial = "")
+        {
+            List<Empresa> filtroLista = razaoSocial == "" ? listaEmpresas : listaEmpresas.FindAll(o => o.RazaoSocial.Substring(0, 1) == razaoSocial).OrderBy(o => o.RazaoSocial).ToList();
+            if (listaEmpresas.Count != 0)
+            {
+                cbEmpresa.DataSource = empresaRule.ElaboraTabelaEmpresa(filtroLista);
+                cbEmpresa.DisplayMember = "Razão Social";
+                cbEmpresa.ValueMember = "id";
+            }
+
+            if (filtroLista.Count == 0)
+                cbEmpresa.Text = "";
+        }
+
+        private void cbEmpresa_TextUpdate(object sender, EventArgs e)
+        {
+            if (cbEmpresa.Text == "")
+                CarregaComboBox();
+            else
+                CarregaComboBox(cbEmpresa.Text);
         }
 
         private void btnSair_Click(object sender, EventArgs e)

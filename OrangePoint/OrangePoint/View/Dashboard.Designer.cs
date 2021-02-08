@@ -31,16 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.btnSair = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.lblTipoUsuario = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.userImage = new System.Windows.Forms.PictureBox();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cbEmpresa = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -54,7 +58,7 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.White;
-            this.btnSair.Location = new System.Drawing.Point(939, 567);
+            this.btnSair.Location = new System.Drawing.Point(897, 567);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(134, 42);
             this.btnSair.TabIndex = 0;
@@ -80,80 +84,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 621);
             this.panel1.TabIndex = 1;
-            // 
-            // lblTipoUsuario
-            // 
-            this.lblTipoUsuario.AutoSize = true;
-            this.lblTipoUsuario.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoUsuario.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoUsuario.Location = new System.Drawing.Point(12, 39);
-            this.lblTipoUsuario.Name = "lblTipoUsuario";
-            this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
-            this.lblTipoUsuario.TabIndex = 6;
-            this.lblTipoUsuario.Text = "Tipo Usuário";
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(0, 550);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(211, 71);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Configurações";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // lblWelcomeUser
-            // 
-            this.lblWelcomeUser.AutoSize = true;
-            this.lblWelcomeUser.BackColor = System.Drawing.Color.Transparent;
-            this.lblWelcomeUser.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 12);
-            this.lblWelcomeUser.Name = "lblWelcomeUser";
-            this.lblWelcomeUser.Size = new System.Drawing.Size(86, 23);
-            this.lblWelcomeUser.TabIndex = 2;
-            this.lblWelcomeUser.Text = "Bem Vindo";
-            // 
-            // btnPontoEletronico
-            // 
-            this.btnPontoEletronico.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.btnPontoEletronico.AutoSize = true;
-            this.btnPontoEletronico.BackColor = System.Drawing.Color.Transparent;
-            this.btnPontoEletronico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPontoEletronico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 75);
-            this.btnPontoEletronico.Name = "btnPontoEletronico";
-            this.btnPontoEletronico.Size = new System.Drawing.Size(211, 68);
-            this.btnPontoEletronico.TabIndex = 0;
-            this.btnPontoEletronico.Text = "Ponto Eletrônico";
-            this.btnPontoEletronico.UseVisualStyleBackColor = false;
-            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.userImage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(211, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(874, 69);
-            this.panel2.TabIndex = 2;
-            // 
-            // userImage
-            // 
-            this.userImage.BackColor = System.Drawing.Color.Transparent;
-            this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
-            this.userImage.Location = new System.Drawing.Point(811, 12);
-            this.userImage.Name = "userImage";
-            this.userImage.Size = new System.Drawing.Size(51, 50);
-            this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.userImage.TabIndex = 0;
-            this.userImage.TabStop = false;
             // 
             // button8
             // 
@@ -215,6 +145,122 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // lblTipoUsuario
+            // 
+            this.lblTipoUsuario.AutoSize = true;
+            this.lblTipoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.lblTipoUsuario.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoUsuario.Location = new System.Drawing.Point(12, 39);
+            this.lblTipoUsuario.Name = "lblTipoUsuario";
+            this.lblTipoUsuario.Size = new System.Drawing.Size(99, 23);
+            this.lblTipoUsuario.TabIndex = 6;
+            this.lblTipoUsuario.Text = "Tipo Usuário";
+            // 
+            // button3
+            // 
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button3.AutoSize = true;
+            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(0, 550);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(211, 71);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Configurações";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // lblWelcomeUser
+            // 
+            this.lblWelcomeUser.AutoSize = true;
+            this.lblWelcomeUser.BackColor = System.Drawing.Color.Transparent;
+            this.lblWelcomeUser.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcomeUser.Location = new System.Drawing.Point(12, 12);
+            this.lblWelcomeUser.Name = "lblWelcomeUser";
+            this.lblWelcomeUser.Size = new System.Drawing.Size(86, 23);
+            this.lblWelcomeUser.TabIndex = 2;
+            this.lblWelcomeUser.Text = "Bem Vindo";
+            // 
+            // btnPontoEletronico
+            // 
+            this.btnPontoEletronico.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnPontoEletronico.AutoSize = true;
+            this.btnPontoEletronico.BackColor = System.Drawing.Color.Transparent;
+            this.btnPontoEletronico.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPontoEletronico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPontoEletronico.Location = new System.Drawing.Point(0, 75);
+            this.btnPontoEletronico.Name = "btnPontoEletronico";
+            this.btnPontoEletronico.Size = new System.Drawing.Size(211, 68);
+            this.btnPontoEletronico.TabIndex = 0;
+            this.btnPontoEletronico.Text = "Ponto Eletrônico";
+            this.btnPontoEletronico.UseVisualStyleBackColor = false;
+            this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.userImage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(211, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(832, 69);
+            this.panel2.TabIndex = 2;
+            // 
+            // userImage
+            // 
+            this.userImage.BackColor = System.Drawing.Color.Transparent;
+            this.userImage.Image = ((System.Drawing.Image)(resources.GetObject("userImage.Image")));
+            this.userImage.Location = new System.Drawing.Point(769, 12);
+            this.userImage.Name = "userImage";
+            this.userImage.Size = new System.Drawing.Size(51, 50);
+            this.userImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.userImage.TabIndex = 0;
+            this.userImage.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(238, 99);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(160, 23);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Selecione a Empresa";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(776, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(130, 23);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Selecione a Data";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MMMM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(912, 105);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(124, 20);
+            this.dateTimePicker1.TabIndex = 22;
+            // 
+            // cbEmpresa
+            // 
+            this.cbEmpresa.FormattingEnabled = true;
+            this.cbEmpresa.Location = new System.Drawing.Point(404, 104);
+            this.cbEmpresa.Name = "cbEmpresa";
+            this.cbEmpresa.Size = new System.Drawing.Size(365, 21);
+            this.cbEmpresa.TabIndex = 46;
+            this.cbEmpresa.TextUpdate += new System.EventHandler(this.cbEmpresa_TextUpdate);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,7 +268,11 @@
             this.AutoSize = true;
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.ClientSize = new System.Drawing.Size(1043, 621);
+            this.Controls.Add(this.cbEmpresa);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSair);
@@ -256,5 +306,9 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cbEmpresa;
     }
 }

@@ -127,4 +127,7 @@
   <data name="Background Padrão" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Background Padrão.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="obrigações-contábeis-e-fiscais-para-supermercados" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\obrigações-contábeis-e-fiscais-para-supermercados.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -308,6 +308,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Icone.ico" />
+    <None Include="Resources\obrigações-contábeis-e-fiscais-para-supermercados.jpg" />
     <None Include="Resources\Background Padrão.jpg" />
     <Content Include="Resources\imagem perfil padrao.png" />
   </ItemGroup>

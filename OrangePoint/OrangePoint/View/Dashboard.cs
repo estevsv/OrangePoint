@@ -14,6 +14,8 @@ namespace OrangePoint.View
         Utilities utilities = new Utilities();
         LoginRule loginRule = new LoginRule();
         EmpresaRule empresaRule = new EmpresaRule();
+        ObrigacaoEmpresaRule obrigacaoEmpresaRule = new ObrigacaoEmpresaRule();
+        ClassificacaoEmpresaRule classificacaoEmpresaRule = new ClassificacaoEmpresaRule();
         bool fechamentoSistema;
         private List<Empresa> listaEmpresas;
 
@@ -35,6 +37,34 @@ namespace OrangePoint.View
 
             listaEmpresas = empresaRule.listaEmpresas();
             CarregaComboBox();
+            CalculaObrigacoes();
+        }
+
+        private void CalculaObrigacoes()
+        {
+            int obrigacoesAnuais = 0;
+            int obrigacoesMensais = 0;
+
+            List<ObrigacaoEmpresa> listaObrigacoes = new List<ObrigacaoEmpresa>();
+            listaObrigacoes = obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList(); ;
+
+            obrigacoesMensais = listaObrigacoes.Count();
+            obrigacoesAnuais = listaObrigacoes.Count() * 12;
+
+            if(listaEmpresas.Count() > 0)
+            {
+                List<ClassificacaoEmpresa> classificacaoEmpresa = classificacaoEmpresaRule.listaClassificacaoEmpresa().Where(o => o.DataEmpresa.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
+                if(classificacaoEmpresa.Count > 0)
+                {
+                    obrigacoesAnuais = (listaObrigacoes.Count() *12) - (classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count());
+                    
+                    obrigacoesMensais = listaObrigacoes.Count() - classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
+                    && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+                }
+            }
+
+            lblObrigacaoMensal.Text = obrigacoesMensais.ToString();
+            lblObrigacaoAnual.Text = obrigacoesAnuais.ToString();
         }
 
         private void CarregaComboBox(string razaoSocial = "")
@@ -121,6 +151,11 @@ namespace OrangePoint.View
         {
             FechaPagina();
             new ValoresEmpresa(usuarioPagina).Show();
+        }
+
+        private void cbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //CalculaObrigacoes();
         }
     }
 }

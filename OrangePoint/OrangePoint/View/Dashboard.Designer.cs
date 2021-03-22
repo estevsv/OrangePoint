@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.btnSair = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbEmpresa = new System.Windows.Forms.ComboBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -48,15 +53,14 @@
             this.button3 = new System.Windows.Forms.Button();
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblObrigacaoMensal = new System.Windows.Forms.Label();
-            this.lblObrigacaoAnual = new System.Windows.Forms.Label();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSair
@@ -117,42 +121,6 @@
             this.cbEmpresa.TabIndex = 46;
             this.cbEmpresa.SelectedIndexChanged += new System.EventHandler(this.cbEmpresa_SelectedIndexChanged);
             this.cbEmpresa.TextUpdate += new System.EventHandler(this.cbEmpresa_TextUpdate);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.lblObrigacaoAnual);
-            this.panel3.Controls.Add(this.lblObrigacaoMensal);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.label2);
-            this.panel3.Location = new System.Drawing.Point(242, 168);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(339, 164);
-            this.panel3.TabIndex = 47;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 28);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Obrigações";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::OrangePoint.Properties.Resources.obrigações_contábeis_e_fiscais_para_supermercados;
-            this.pictureBox1.Location = new System.Drawing.Point(210, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(129, 164);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -307,49 +275,69 @@
             this.btnPontoEletronico.UseVisualStyleBackColor = false;
             this.btnPontoEletronico.Click += new System.EventHandler(this.btnPontoEletronico_Click);
             // 
-            // label3
+            // chart1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Mensal";
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            this.chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.chart1.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.Scaled;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(242, 161);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "S1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(392, 397);
+            this.chart1.TabIndex = 48;
+            this.chart1.Text = "chart1";
+            title1.BackColor = System.Drawing.Color.Transparent;
+            title1.BackSecondaryColor = System.Drawing.Color.Transparent;
+            title1.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.ForeColor = System.Drawing.Color.White;
+            title1.Name = "Obm";
+            title1.Text = "Obrigações Mensais";
+            this.chart1.Titles.Add(title1);
             // 
-            // label5
+            // chart2
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(12, 110);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 25);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Anual";
+            this.chart2.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
+            this.chart2.Location = new System.Drawing.Point(639, 161);
+            this.chart2.Name = "chart2";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "S1";
+            this.chart2.Series.Add(series2);
+            this.chart2.Size = new System.Drawing.Size(392, 397);
+            this.chart2.TabIndex = 49;
+            this.chart2.Text = "chart2";
+            title2.BackColor = System.Drawing.Color.Transparent;
+            title2.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.ForeColor = System.Drawing.Color.White;
+            title2.Name = "Oba";
+            title2.Text = "Obrigações Anuais";
+            this.chart2.Titles.Add(title2);
             // 
-            // lblObrigacaoMensal
+            // checkBox1
             // 
-            this.lblObrigacaoMensal.AutoSize = true;
-            this.lblObrigacaoMensal.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObrigacaoMensal.ForeColor = System.Drawing.Color.White;
-            this.lblObrigacaoMensal.Location = new System.Drawing.Point(119, 56);
-            this.lblObrigacaoMensal.Name = "lblObrigacaoMensal";
-            this.lblObrigacaoMensal.Size = new System.Drawing.Size(85, 25);
-            this.lblObrigacaoMensal.TabIndex = 4;
-            this.lblObrigacaoMensal.Text = "Mensal";
-            // 
-            // lblObrigacaoAnual
-            // 
-            this.lblObrigacaoAnual.AutoSize = true;
-            this.lblObrigacaoAnual.Font = new System.Drawing.Font("Century", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblObrigacaoAnual.ForeColor = System.Drawing.Color.White;
-            this.lblObrigacaoAnual.Location = new System.Drawing.Point(119, 110);
-            this.lblObrigacaoAnual.Name = "lblObrigacaoAnual";
-            this.lblObrigacaoAnual.Size = new System.Drawing.Size(85, 25);
-            this.lblObrigacaoAnual.TabIndex = 5;
-            this.lblObrigacaoAnual.Text = "Mensal";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(650, 131);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(119, 17);
+            this.checkBox1.TabIndex = 50;
+            this.checkBox1.Text = "Todas as Empresas";
+            this.checkBox1.UseVisualStyleBackColor = false;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Dashboard
             // 
@@ -359,7 +347,9 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1043, 621);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chart2);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.cbEmpresa);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
@@ -374,13 +364,12 @@
             this.Text = "Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -404,12 +393,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ComboBox cbEmpresa;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblObrigacaoAnual;
-        private System.Windows.Forms.Label lblObrigacaoMensal;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

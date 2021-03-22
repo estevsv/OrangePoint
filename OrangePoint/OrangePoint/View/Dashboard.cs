@@ -3,6 +3,7 @@ using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -36,35 +37,50 @@ namespace OrangePoint.View
             HabilitaPermissoes(utilities.GeraListaPermissoes(usuarioPagina));
 
             listaEmpresas = empresaRule.listaEmpresas();
+            checkBox1.Checked = true;
             CarregaComboBox();
             CalculaObrigacoes();
         }
 
         private void CalculaObrigacoes()
         {
-            int obrigacoesAnuais = 0;
-            int obrigacoesMensais = 0;
+            chart1.Series["S1"].Points.Clear();
+            chart2.Series["S1"].Points.Clear();
+
+            int obrigacoesMensaisRealizadas = 0;
+            int obrigacoesAnuaisRealizadas = 0;
+            int totalObrigacoesMensais = 0;
+            int totalObrigacoesAnuais = 0;
 
             List<ObrigacaoEmpresa> listaObrigacoes = new List<ObrigacaoEmpresa>();
-            listaObrigacoes = obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList(); ;
+            listaObrigacoes = checkBox1.Checked ? obrigacaoEmpresaRule.listaObrigacaoEmpresas() : obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList(); ;
 
-            obrigacoesMensais = listaObrigacoes.Count();
-            obrigacoesAnuais = listaObrigacoes.Count() * 12;
+            totalObrigacoesMensais = listaObrigacoes.Count();
+            totalObrigacoesAnuais = listaObrigacoes.Count() * 12;
 
-            if(listaEmpresas.Count() > 0)
+            if (listaEmpresas.Count() > 0)
             {
-                List<ClassificacaoEmpresa> classificacaoEmpresa = classificacaoEmpresaRule.listaClassificacaoEmpresa().Where(o => o.DataEmpresa.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
+                List<ClassificacaoEmpresa> classificacaoEmpresa = checkBox1.Checked ? classificacaoEmpresaRule.listaClassificacaoEmpresa() : classificacaoEmpresaRule.listaClassificacaoEmpresa().Where(o => o.DataEmpresa.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
                 if(classificacaoEmpresa.Count > 0)
                 {
-                    obrigacoesAnuais = (listaObrigacoes.Count() *12) - (classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count());
-                    
-                    obrigacoesMensais = listaObrigacoes.Count() - classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
+                    obrigacoesMensaisRealizadas = totalObrigacoesMensais - classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
                     && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+
+                    obrigacoesAnuaisRealizadas = totalObrigacoesAnuais - (classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count());
                 }
             }
 
-            lblObrigacaoMensal.Text = obrigacoesMensais.ToString();
-            lblObrigacaoAnual.Text = obrigacoesAnuais.ToString();
+            ConstroiCharts(new List<string> { obrigacoesMensaisRealizadas.ToString(),(totalObrigacoesMensais - obrigacoesMensaisRealizadas).ToString(),
+            obrigacoesAnuaisRealizadas.ToString(),(totalObrigacoesAnuais - obrigacoesAnuaisRealizadas).ToString()});
+        }
+
+        private void ConstroiCharts(List<string> listXY)
+        {
+            chart1.Series["S1"].Points.AddXY("Realizadas", listXY[0]);
+            chart1.Series["S1"].Points.AddXY("Restantes", listXY[1]);
+
+            chart2.Series["S1"].Points.AddXY("Realizadas", listXY[2]);
+            chart2.Series["S1"].Points.AddXY("Restantes", listXY[3]);
         }
 
         private void CarregaComboBox(string razaoSocial = "")
@@ -155,7 +171,14 @@ namespace OrangePoint.View
 
         private void cbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //CalculaObrigacoes();
+            if (cbEmpresa.Enabled)
+                CalculaObrigacoes();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            cbEmpresa.Enabled = !checkBox1.Checked;
+            CalculaObrigacoes();
         }
     }
 }

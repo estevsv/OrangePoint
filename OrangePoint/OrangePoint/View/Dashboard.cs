@@ -76,11 +76,17 @@ namespace OrangePoint.View
 
         private void ConstroiCharts(List<string> listXY)
         {
-            chart1.Series["S1"].Points.AddXY("Realizadas", listXY[0]);
-            chart1.Series["S1"].Points.AddXY("Restantes", listXY[1]);
+            chart1.Series["S1"].IsValueShownAsLabel = true;
+            if(listXY[0] != "0")
+                chart1.Series["S1"].Points.AddXY("Realizadas", listXY[0]);
+            if (listXY[1] != "0")
+                chart1.Series["S1"].Points.AddXY("Restantes", listXY[1]);
 
-            chart2.Series["S1"].Points.AddXY("Realizadas", listXY[2]);
-            chart2.Series["S1"].Points.AddXY("Restantes", listXY[3]);
+            chart2.Series["S1"].IsValueShownAsLabel = true;
+            if (listXY[2] != "0")
+                chart2.Series["S1"].Points.AddXY("Realizadas", listXY[2]);
+            if (listXY[3] != "0")
+                chart2.Series["S1"].Points.AddXY("Restantes", listXY[3]);
         }
 
         private void CarregaComboBox(string razaoSocial = "")

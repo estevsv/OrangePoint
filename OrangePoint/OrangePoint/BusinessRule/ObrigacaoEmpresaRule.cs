@@ -62,6 +62,13 @@ namespace OrangePoint.BusinessRule
                 ReadOnly = true,
             };
             table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "idTipoObrigação",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
 
             DataColumn[] PrimaryKeyColumns = new DataColumn[1];
             PrimaryKeyColumns[0] = table.Columns["id"];
@@ -71,6 +78,7 @@ namespace OrangePoint.BusinessRule
             {
                 row = table.NewRow();
                 row["id"] = obrigacaoEmpresa.CodObrigacaoEmpresa;
+                row["idTipoObrigação"] = obrigacaoEmpresa.TipoClassificacao.CodTipoClassificacao;
                 row["Obrigação"] = obrigacaoEmpresa.TipoClassificacao.Descricao;
                 table.Rows.Add(row);
             }

@@ -186,5 +186,10 @@ namespace OrangePoint.View
             cbEmpresa.Enabled = !checkBox1.Checked;
             CalculaObrigacoes();
         }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            CalculaObrigacoes();
+        }
     }
 }

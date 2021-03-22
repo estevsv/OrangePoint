@@ -149,9 +149,11 @@ namespace OrangePoint.View
 
         private void CarregaComboBoxClassificacao()
         {
-            cbClassificacao.DataSource = tipoClassificacaoRule.PesquisaTipoClassificacaoTabela();
-            cbClassificacao.DisplayMember = "DESCRICAO";
-            cbClassificacao.ValueMember = "COD_TIPO_CLASSIFICACAO";
+            List<ObrigacaoEmpresa> listaObrigacaoEmp = obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList();
+
+            cbClassificacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
+            cbClassificacao.DisplayMember = "Obrigação";
+            cbClassificacao.ValueMember = "idTipoObrigação";
         }
 
         private void CarregaComboBoxTipoData()
@@ -167,7 +169,7 @@ namespace OrangePoint.View
 
         private void CarregaComboBoxDataEmpresa()
         {
-            cbData.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.TipoData.CodTipoData == int.Parse(cbTipoData.SelectedValue.ToString())).ToList());
+            cbData.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa && o.TipoData.CodTipoData == int.Parse(cbTipoData.SelectedValue.ToString())).ToList());
             cbData.DisplayMember = "Data";
             cbData.ValueMember = "id";
         }
@@ -234,8 +236,16 @@ namespace OrangePoint.View
         {
             if (cbClassificacao.SelectedValue != null && cbData.SelectedValue != null && cbData.Text != "")
             {
-                classificacaoEmpresaRule.IncluirClassificacaoEmpresa(int.Parse(cbClassificacao.SelectedValue.ToString()), int.Parse(cbData.SelectedValue.ToString()));
-                CarregaGridControleFC();
+                int codTipoClassificacao = int.Parse(cbClassificacao.SelectedValue.ToString());
+                int codData = int.Parse(cbData.SelectedValue.ToString());
+
+                if(!classificacaoEmpresaRule.listaClassificacaoEmpresa().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.DataEmpresa.CodData == codData))
+                {
+                    classificacaoEmpresaRule.IncluirClassificacaoEmpresa(codTipoClassificacao, codData);
+                    CarregaGridControleFC();
+                } else
+                    MessageBox.Show("Obrigação já cadastrada");
+
             }
             else
                 MessageBox.Show("Campos inválidos");
@@ -366,6 +376,7 @@ namespace OrangePoint.View
             {
                 obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa);
                 CarregaObrigacoes();
+                CarregaComboBoxClassificacao();
             }
             else
                 MessageBox.Show("Obrigação já alocada para esta empresa!");
@@ -376,6 +387,7 @@ namespace OrangePoint.View
             obrigacaoEmpresaRule.ExcluiObrigacaoEmpresa(int.Parse(dgObrigacao.CurrentRow.Cells[0].Value.ToString()));
             dgObrigacao.Rows.RemoveAt(dgObrigacao.CurrentRow.Index);
             CarregaObrigacoes();
+            CarregaComboBoxClassificacao();
             e.Cancel = true;
         }
     }

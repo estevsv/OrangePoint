@@ -16,5 +16,8 @@ namespace OrangePoint.Model
 
         private TipoClassificacao tipoClassificacao;
         public TipoClassificacao TipoClassificacao { get => tipoClassificacao; set => tipoClassificacao = value; }
+
+        private int tipoObrigacao;
+        public int TipoObrigacao { get => tipoObrigacao; set => tipoObrigacao = value; }
     }
 }

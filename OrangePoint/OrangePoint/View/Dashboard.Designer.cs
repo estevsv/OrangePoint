@@ -29,20 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title5 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title6 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.btnSair = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbEmpresa = new System.Windows.Forms.ComboBox();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
@@ -56,11 +55,16 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.panel2.SuspendLayout();
+            this.dgDetalhamento = new System.Windows.Forms.DataGridView();
+            this.cbTipoDetalhamento = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDetalhamento)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSair
@@ -122,17 +126,6 @@
             this.cbEmpresa.TabIndex = 46;
             this.cbEmpresa.SelectedIndexChanged += new System.EventHandler(this.cbEmpresa_SelectedIndexChanged);
             this.cbEmpresa.TextUpdate += new System.EventHandler(this.cbEmpresa_TextUpdate);
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.userImage);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(211, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(832, 69);
-            this.panel2.TabIndex = 2;
             // 
             // userImage
             // 
@@ -281,51 +274,51 @@
             this.chart1.BackColor = System.Drawing.Color.Transparent;
             this.chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.chart1.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.Scaled;
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(242, 161);
+            chartArea5.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart1.Legends.Add(legend5);
+            this.chart1.Location = new System.Drawing.Point(230, 154);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Legend = "Legend1";
-            series3.Name = "S1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(392, 397);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Legend = "Legend1";
+            series5.Name = "S1";
+            this.chart1.Series.Add(series5);
+            this.chart1.Size = new System.Drawing.Size(392, 277);
             this.chart1.TabIndex = 48;
             this.chart1.Text = "chart1";
-            title3.BackColor = System.Drawing.Color.Transparent;
-            title3.BackSecondaryColor = System.Drawing.Color.Transparent;
-            title3.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title3.ForeColor = System.Drawing.Color.White;
-            title3.Name = "Obm";
-            title3.Text = "Obrigações Mensais";
-            this.chart1.Titles.Add(title3);
+            title5.BackColor = System.Drawing.Color.Transparent;
+            title5.BackSecondaryColor = System.Drawing.Color.Transparent;
+            title5.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title5.ForeColor = System.Drawing.Color.White;
+            title5.Name = "Obm";
+            title5.Text = "Obrigações Mensais";
+            this.chart1.Titles.Add(title5);
             // 
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea4.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart2.Legends.Add(legend4);
-            this.chart2.Location = new System.Drawing.Point(639, 161);
+            chartArea6.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chart2.Legends.Add(legend6);
+            this.chart2.Location = new System.Drawing.Point(644, 154);
             this.chart2.Name = "chart2";
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "S1";
-            this.chart2.Series.Add(series4);
-            this.chart2.Size = new System.Drawing.Size(392, 397);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series6.Legend = "Legend1";
+            series6.Name = "S1";
+            this.chart2.Series.Add(series6);
+            this.chart2.Size = new System.Drawing.Size(392, 277);
             this.chart2.TabIndex = 49;
             this.chart2.Text = "chart2";
-            title4.BackColor = System.Drawing.Color.Transparent;
-            title4.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title4.ForeColor = System.Drawing.Color.White;
-            title4.Name = "Oba";
-            title4.Text = "Obrigações Anuais";
-            this.chart2.Titles.Add(title4);
+            title6.BackColor = System.Drawing.Color.Transparent;
+            title6.Font = new System.Drawing.Font("Palatino Linotype", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title6.ForeColor = System.Drawing.Color.White;
+            title6.Name = "Oba";
+            title6.Text = "Obrigações Anuais";
+            this.chart2.Titles.Add(title6);
             // 
             // checkBox1
             // 
@@ -340,6 +333,51 @@
             this.checkBox1.UseVisualStyleBackColor = false;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // dgDetalhamento
+            // 
+            this.dgDetalhamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgDetalhamento.Location = new System.Drawing.Point(242, 459);
+            this.dgDetalhamento.Name = "dgDetalhamento";
+            this.dgDetalhamento.ReadOnly = true;
+            this.dgDetalhamento.Size = new System.Drawing.Size(649, 150);
+            this.dgDetalhamento.TabIndex = 51;
+            // 
+            // cbTipoDetalhamento
+            // 
+            this.cbTipoDetalhamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoDetalhamento.FormattingEnabled = true;
+            this.cbTipoDetalhamento.Items.AddRange(new object[] {
+            "Mensal",
+            "Anual"});
+            this.cbTipoDetalhamento.Location = new System.Drawing.Point(770, 432);
+            this.cbTipoDetalhamento.Name = "cbTipoDetalhamento";
+            this.cbTipoDetalhamento.Size = new System.Drawing.Size(121, 21);
+            this.cbTipoDetalhamento.TabIndex = 52;
+            this.cbTipoDetalhamento.SelectedIndexChanged += new System.EventHandler(this.cbTipoDetalhamento_SelectedIndexChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.userImage);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(211, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(832, 69);
+            this.panel2.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(431, 432);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(217, 20);
+            this.label2.TabIndex = 53;
+            this.label2.Text = "Detalhamento de Obrigações";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -348,6 +386,9 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1043, 621);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbTipoDetalhamento);
+            this.Controls.Add(this.dgDetalhamento);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
@@ -365,12 +406,13 @@
             this.Text = "Dashboard";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Dashboard_FormClosing);
             this.Load += new System.EventHandler(this.Dashboard_Load);
-            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgDetalhamento)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -380,7 +422,6 @@
 
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblWelcomeUser;
         private System.Windows.Forms.Button btnPontoEletronico;
         private System.Windows.Forms.Button button3;
@@ -397,5 +438,9 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataGridView dgDetalhamento;
+        private System.Windows.Forms.ComboBox cbTipoDetalhamento;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label2;
     }
 }

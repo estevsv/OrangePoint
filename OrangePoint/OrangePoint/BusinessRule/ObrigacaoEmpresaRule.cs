@@ -25,13 +25,13 @@ namespace OrangePoint.BusinessRule
             return obrigacaoEmpresaDAO.PesquisaObrigacaoEmpresaLista();
         }
 
-        public void IncluirObrigacaoEmpresa(int codTipoClassificacao, int codEmpresa)
+        public void IncluirObrigacaoEmpresa(int codTipoClassificacao, int codEmpresa, int tipo)
         {
             if (listaObrigacaoEmpresas().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.Empresa.CodEmpresa == codEmpresa))
                 MessageBox.Show("Obrigação já alocada para esta Empresa!");
             else
             {
-                obrigacaoEmpresaDAO.IncluirObrigacaoEmpresa(codTipoClassificacao, codEmpresa);
+                obrigacaoEmpresaDAO.IncluirObrigacaoEmpresa(codTipoClassificacao, codEmpresa, tipo);
                 MessageBox.Show("Obrigação alocada!");
             }
         }
@@ -69,6 +69,13 @@ namespace OrangePoint.BusinessRule
                 ReadOnly = true,
             };
             table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Tipo",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
 
             DataColumn[] PrimaryKeyColumns = new DataColumn[1];
             PrimaryKeyColumns[0] = table.Columns["id"];
@@ -80,6 +87,7 @@ namespace OrangePoint.BusinessRule
                 row["id"] = obrigacaoEmpresa.CodObrigacaoEmpresa;
                 row["idTipoObrigação"] = obrigacaoEmpresa.TipoClassificacao.CodTipoClassificacao;
                 row["Obrigação"] = obrigacaoEmpresa.TipoClassificacao.Descricao;
+                row["Tipo"] = obrigacaoEmpresa.TipoObrigacao == 1 ? "Mensal" : "Anual";
                 table.Rows.Add(row);
             }
 

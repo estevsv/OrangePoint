@@ -358,7 +358,7 @@
             this.AdicionarAtividadeEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarAtividadeEmpresa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarAtividadeEmpresa.ForeColor = System.Drawing.Color.White;
-            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(889, 276);
+            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(592, 405);
             this.AdicionarAtividadeEmpresa.Name = "AdicionarAtividadeEmpresa";
             this.AdicionarAtividadeEmpresa.Size = new System.Drawing.Size(113, 30);
             this.AdicionarAtividadeEmpresa.TabIndex = 30;
@@ -369,7 +369,7 @@
             // dgAtividade
             // 
             this.dgAtividade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAtividade.Location = new System.Drawing.Point(850, 312);
+            this.dgAtividade.Location = new System.Drawing.Point(553, 441);
             this.dgAtividade.MultiSelect = false;
             this.dgAtividade.Name = "dgAtividade";
             this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -383,7 +383,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(911, 222);
+            this.label3.Location = new System.Drawing.Point(614, 351);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 22);
             this.label3.TabIndex = 28;
@@ -391,7 +391,7 @@
             // 
             // txtAtividade
             // 
-            this.txtAtividade.Location = new System.Drawing.Point(850, 250);
+            this.txtAtividade.Location = new System.Drawing.Point(553, 379);
             this.txtAtividade.Name = "txtAtividade";
             this.txtAtividade.Size = new System.Drawing.Size(196, 20);
             this.txtAtividade.TabIndex = 27;
@@ -466,7 +466,7 @@
             this.btnAdicionarClassificacao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionarClassificacao.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarClassificacao.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(599, 402);
+            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(872, 223);
             this.btnAdicionarClassificacao.Name = "btnAdicionarClassificacao";
             this.btnAdicionarClassificacao.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionarClassificacao.TabIndex = 46;
@@ -477,11 +477,11 @@
             // dgTipoClassificacao
             // 
             this.dgTipoClassificacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTipoClassificacao.Location = new System.Drawing.Point(551, 438);
+            this.dgTipoClassificacao.Location = new System.Drawing.Point(836, 259);
             this.dgTipoClassificacao.MultiSelect = false;
             this.dgTipoClassificacao.Name = "dgTipoClassificacao";
             this.dgTipoClassificacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgTipoClassificacao.Size = new System.Drawing.Size(196, 157);
+            this.dgTipoClassificacao.Size = new System.Drawing.Size(196, 219);
             this.dgTipoClassificacao.TabIndex = 45;
             this.dgTipoClassificacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoClassificacao_UserDeletingRow);
             // 
@@ -491,7 +491,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(615, 351);
+            this.label12.Location = new System.Drawing.Point(889, 160);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 22);
             this.label12.TabIndex = 44;
@@ -499,7 +499,7 @@
             // 
             // txtClassificacao
             // 
-            this.txtClassificacao.Location = new System.Drawing.Point(551, 376);
+            this.txtClassificacao.Location = new System.Drawing.Point(836, 188);
             this.txtClassificacao.Name = "txtClassificacao";
             this.txtClassificacao.Size = new System.Drawing.Size(196, 20);
             this.txtClassificacao.TabIndex = 43;

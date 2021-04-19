@@ -227,3 +227,5 @@ INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_
 INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Controle de Usuários');
 INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Folha de Ponto');
 INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Controle de Folha de Ponto');
+
+ALTER TABLE `bdOrangePoint`.`OBRIGACAO_EMPRESA` ADD COLUMN `TIPO` int;

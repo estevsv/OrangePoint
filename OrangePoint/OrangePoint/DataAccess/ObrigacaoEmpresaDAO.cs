@@ -51,6 +51,7 @@ namespace OrangePoint.DataAccess
                     obrigacaoEmpresa.CodObrigacaoEmpresa = int.Parse(registro["COD_OBRIGACAO_EMPRESA"].ToString());
                     obrigacaoEmpresa.TipoClassificacao = listTipoClassificacao.Find(o => o.CodTipoClassificacao == int.Parse(registro["COD_TIPO_CLASSIFICACAO"].ToString()));
                     obrigacaoEmpresa.Empresa = listEmpresaDAO.Find(o => o.CodEmpresa == int.Parse(registro["COD_EMPRESA"].ToString()));
+                    obrigacaoEmpresa.TipoObrigacao = int.Parse(registro["TIPO"].ToString());
 
                     listObrigacaoEmpresa.Add(obrigacaoEmpresa);
                 }
@@ -78,13 +79,13 @@ namespace OrangePoint.DataAccess
             }
         }
 
-        public void IncluirObrigacaoEmpresa(int codClassificacao, int codEmpresa)
+        public void IncluirObrigacaoEmpresa(int codClassificacao, int codEmpresa, int tipo)
         {
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`obrigacao_empresa` (`COD_EMPRESA`, `COD_TIPO_CLASSIFICACAO`) VALUES  (" + codEmpresa + "," + codClassificacao + ");";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`obrigacao_empresa` (`COD_EMPRESA`, `COD_TIPO_CLASSIFICACAO`,`TIPO`) VALUES  (" + codEmpresa + "," + codClassificacao + "," + tipo +");";
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

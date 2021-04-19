@@ -347,7 +347,8 @@ namespace OrangePoint.View
 
             dgObrigacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
             dgObrigacao.Columns["id"].Visible = false;
-            dgObrigacao.Columns["Obrigação"].Width = 300;
+            dgObrigacao.Columns["idTipoObrigação"].Visible = false;
+            dgObrigacao.Columns["Obrigação"].Width = 230;
             dgObrigacao.Columns["Obrigação"].ReadOnly = true;
         }
 
@@ -372,9 +373,9 @@ namespace OrangePoint.View
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (!obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList().Exists(o => o.TipoClassificacao.CodTipoClassificacao == int.Parse(cbObrigacao.SelectedValue.ToString())))
+            if (cbObrigacao.Text != "" && !obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList().Exists(o => o.TipoClassificacao.CodTipoClassificacao == int.Parse(cbObrigacao.SelectedValue.ToString())))
             {
-                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa);
+                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa, cbObrigacoes.Text == "Mensal" ? 1 : 2);
                 CarregaObrigacoes();
                 CarregaComboBoxClassificacao();
             }

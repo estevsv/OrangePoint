@@ -3,6 +3,7 @@ using OrangePoint.Model;
 using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -38,12 +39,15 @@ namespace OrangePoint.View
 
             listaEmpresas = empresaRule.listaEmpresas();
             checkBox1.Checked = true;
+            cbTipoDetalhamento.SelectedIndex = 0;
             CarregaComboBox();
             CalculaObrigacoes();
         }
 
         private void CalculaObrigacoes()
         {
+            int tipoObrigacao = cbTipoDetalhamento.Text == "Mensal" ? 1 : 2;
+
             chart1.Series["S1"].Points.Clear();
             chart2.Series["S1"].Points.Clear();
 
@@ -53,20 +57,28 @@ namespace OrangePoint.View
             int totalObrigacoesAnuais = 0;
 
             List<ObrigacaoEmpresa> listaObrigacoes = new List<ObrigacaoEmpresa>();
-            listaObrigacoes = checkBox1.Checked ? obrigacaoEmpresaRule.listaObrigacaoEmpresas() : obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList(); ;
+            listaObrigacoes = checkBox1.Checked ? obrigacaoEmpresaRule.listaObrigacaoEmpresas() : obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.RazaoSocial == cbEmpresa.Text).ToList(); ;
 
-            totalObrigacoesMensais = listaObrigacoes.Count();
-            totalObrigacoesAnuais = listaObrigacoes.Count() * 12;
+            totalObrigacoesMensais = listaObrigacoes.Where(o => o.TipoObrigacao == 1).Count();
+            totalObrigacoesAnuais = listaObrigacoes.Where(o => o.TipoObrigacao == 2).Count();
 
             if (listaEmpresas.Count() > 0)
             {
-                List<ClassificacaoEmpresa> classificacaoEmpresa = checkBox1.Checked ? classificacaoEmpresaRule.listaClassificacaoEmpresa() : classificacaoEmpresaRule.listaClassificacaoEmpresa().Where(o => o.DataEmpresa.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
+                List<ClassificacaoEmpresa> classificacaoEmpresa = checkBox1.Checked ? classificacaoEmpresaRule.listaClassificacaoEmpresa() : classificacaoEmpresaRule.listaClassificacaoEmpresa().Where(o => o.DataEmpresa.Empresa.RazaoSocial == cbEmpresa.Text).ToList();
                 if(classificacaoEmpresa.Count > 0)
                 {
-                    obrigacoesMensaisRealizadas = totalObrigacoesMensais - classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
+                    List<ClassificacaoEmpresa> classificacaoEmpresaMensal = classificacaoEmpresa.Where(o => listaObrigacoes.Exists(p => p.TipoClassificacao.CodTipoClassificacao == o.TipoClassificacao.CodTipoClassificacao && p.TipoObrigacao == 1)).ToList();
+                    List<ClassificacaoEmpresa> classificacaoEmpresaAnual = classificacaoEmpresa.Where(o => listaObrigacoes.Exists(p => p.TipoClassificacao.CodTipoClassificacao == o.TipoClassificacao.CodTipoClassificacao && p.TipoObrigacao == 2)).ToList();
+
+                    obrigacoesMensaisRealizadas = classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
                     && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
 
-                    obrigacoesAnuaisRealizadas = totalObrigacoesAnuais - (classificacaoEmpresa.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count());
+                    obrigacoesAnuaisRealizadas = classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+
+                    dgDetalhamento.DataSource = ElaboraTabelaDetalhamentoObrigacoes(listaObrigacoes.Where(o => o.TipoObrigacao == tipoObrigacao).ToList(),
+                        tipoObrigacao == 1 ? classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
+                    && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).ToList() : classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).ToList());
+                    dgDetalhamento.Columns["id"].Visible = false;
                 }
             }
 
@@ -76,17 +88,39 @@ namespace OrangePoint.View
 
         private void ConstroiCharts(List<string> listXY)
         {
+            bool realizada = false;
             chart1.Series["S1"].IsValueShownAsLabel = true;
-            if(listXY[0] != "0")
+            if (listXY[0] != "0")
+            {
                 chart1.Series["S1"].Points.AddXY("Realizadas", listXY[0]);
+                chart1.Series["S1"].Points[0].Color = Color.Orange;
+                realizada = true;
+            }
             if (listXY[1] != "0")
+            {
                 chart1.Series["S1"].Points.AddXY("Restantes", listXY[1]);
+                if (realizada)
+                    chart1.Series["S1"].Points[1].Color = Color.Blue;
+                else
+                    chart1.Series["S1"].Points[0].Color = Color.Blue;
+            }
 
+            realizada = false;
             chart2.Series["S1"].IsValueShownAsLabel = true;
             if (listXY[2] != "0")
+            {
                 chart2.Series["S1"].Points.AddXY("Realizadas", listXY[2]);
+                chart2.Series["S1"].Points[0].Color = Color.Orange;
+                realizada = true;
+            }
             if (listXY[3] != "0")
+            {
                 chart2.Series["S1"].Points.AddXY("Restantes", listXY[3]);
+                if (realizada)
+                    chart2.Series["S1"].Points[1].Color = Color.Blue;
+                else
+                    chart2.Series["S1"].Points[0].Color = Color.Blue;
+            }
         }
 
         private void CarregaComboBox(string razaoSocial = "")
@@ -183,11 +217,69 @@ namespace OrangePoint.View
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            cbEmpresa.Enabled = !checkBox1.Checked;
+            cbEmpresa.Enabled = !checkBox1.Checked && listaEmpresas.Count > 0;
+
             CalculaObrigacoes();
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            CalculaObrigacoes();
+        }
+        public DataTable ElaboraTabelaDetalhamentoObrigacoes(List<ObrigacaoEmpresa> listaObrigacaoEmpresas,List<ClassificacaoEmpresa> listaClassificacaoEmpresa)
+        {
+            DataTable table = new DataTable("TabelaGridClasse");
+            DataColumn column;
+            DataRow row;
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.Int32"),
+                ColumnName = "id",
+                ReadOnly = true,
+                Unique = true
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Empresa",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Obrigação",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Status",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+
+            DataColumn[] PrimaryKeyColumns = new DataColumn[1];
+            PrimaryKeyColumns[0] = table.Columns["id"];
+            table.PrimaryKey = PrimaryKeyColumns;
+            int cont = -1;
+
+            foreach (ObrigacaoEmpresa obrigacaoEmpresa in listaObrigacaoEmpresas)
+            {
+                row = table.NewRow();
+                row["id"] = cont++;
+                row["Empresa"] = obrigacaoEmpresa.Empresa.RazaoSocial;
+                row["Obrigação"] = obrigacaoEmpresa.TipoClassificacao.Descricao;
+                row["Status"] = listaClassificacaoEmpresa.Exists(o => o.TipoClassificacao.CodTipoClassificacao == obrigacaoEmpresa.TipoClassificacao.CodTipoClassificacao 
+                && o.DataEmpresa.Empresa.CodEmpresa == obrigacaoEmpresa.Empresa.CodEmpresa) ? "Concluído" : "Pedente";
+                table.Rows.Add(row);
+            }
+            return table;
+        }
+
+        private void cbTipoDetalhamento_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalculaObrigacoes();
         }

@@ -82,6 +82,7 @@
             this.cbAtividade = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
+            this.cbObrigacoes = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -624,6 +625,7 @@
             // 
             this.pnCadastraAtividadeEmpresa.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.pnCadastraAtividadeEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbObrigacoes);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.dgObrigacao);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.button11);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label14);
@@ -688,7 +690,7 @@
             "Controle de Usuários",
             "Folha de Ponto",
             "Controle de Folha de Ponto"});
-            this.cbObrigacao.Location = new System.Drawing.Point(519, 50);
+            this.cbObrigacao.Location = new System.Drawing.Point(519, 47);
             this.cbObrigacao.Name = "cbObrigacao";
             this.cbObrigacao.Size = new System.Drawing.Size(196, 21);
             this.cbObrigacao.TabIndex = 89;
@@ -699,7 +701,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(421, 47);
+            this.label15.Location = new System.Drawing.Point(421, 44);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 22);
             this.label15.TabIndex = 88;
@@ -786,6 +788,18 @@
             this.button10.Text = "Detalhes Adicionais da Empresa";
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // cbObrigacoes
+            // 
+            this.cbObrigacoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbObrigacoes.FormattingEnabled = true;
+            this.cbObrigacoes.Items.AddRange(new object[] {
+            "Mensal",
+            "Anual"});
+            this.cbObrigacoes.Location = new System.Drawing.Point(519, 69);
+            this.cbObrigacoes.Name = "cbObrigacoes";
+            this.cbObrigacoes.Size = new System.Drawing.Size(196, 21);
+            this.cbObrigacoes.TabIndex = 93;
             // 
             // EspecificacoesEmpresa
             // 
@@ -901,5 +915,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.ComboBox cbObrigacoes;
     }
 }

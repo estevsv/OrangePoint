@@ -173,20 +173,7 @@ namespace OrangePoint.View
         private void CarregaComboBoxEmpresa()
         {
             if (cbEmpresa.SelectedValue != null)
-            {
                 idEmpresaSelecionada = int.Parse(cbEmpresa.SelectedValue.ToString());
-                List<DataEmpresa> listaData = dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == int.Parse(cbEmpresa.SelectedValue.ToString())).ToList();
-                if (listaData.Count != 0)
-                {
-                    cbData.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(listaData);
-                    cbData.DisplayMember = "Data";
-                    cbData.ValueMember = "id";
-                }
-                else
-                    cbData.DataSource = null;
-            }
-            else
-                cbData.DataSource = null;
         }
 
         private void cbEmpresa_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,10 +194,15 @@ namespace OrangePoint.View
         private void btnCadastrarValor_Click(object sender, EventArgs e)
         {
             decimal number;
-            if (cbData.SelectedIndex != -1 && cbEmpresa.SelectedIndex != -1 && cbSubtipoValor.SelectedIndex != -1 && txtValor.Text != "             ," && decimal.TryParse(txtValor.Text,out number))
+            Tuple<bool, DateTime> retornaDataValida = dataEmpresaRule.RetornaDataValida(cbData.Text);
+            if (cbData.Text != "" && retornaDataValida.Item1 && cbEmpresa.SelectedIndex != -1 && cbSubtipoValor.SelectedIndex != -1 && txtValor.Text != "             ," && decimal.TryParse(txtValor.Text,out number))
             {
                 Valor valor = new Valor();
-                valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == int.Parse(cbData.SelectedValue.ToString()));
+
+                dataEmpresaRule.IncluirDataEmpresa(idEmpresaSelecionada, cbData.Text);
+                int codData = int.Parse(dataEmpresaRule.listaDataEmpresa(idEmpresaSelecionada, cbData.Text).First().CodData.ToString());
+
+                valor.DataEmpresa = dataEmpresaRule.listaDataEmpresa().Find(o => o.CodData == codData);
                 valor.SubtipoValor = subtipoValorRule.ListaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
                 valor.NumValor = decimal.Parse(txtValor.Text);
 

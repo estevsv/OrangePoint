@@ -22,7 +22,6 @@ namespace OrangePoint.View
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
         TipoClassificacaoRule tipoClassificacaoRule = new TipoClassificacaoRule();
-        TipoDataRule tipoDataRule = new TipoDataRule();
         DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
         ClassificacaoEmpresaRule classificacaoEmpresaRule = new ClassificacaoEmpresaRule();
         DadosWebRule dadoWebRule = new DadosWebRule();
@@ -141,8 +140,6 @@ namespace OrangePoint.View
         private void CarregaComboBoxes()
         {
             CarregaComboBoxClassificacao();
-            CarregaComboBoxTipoData();
-            CarregaComboBoxDataEmpresa();
             CarregaComboBoxAtividadeEmpresa();
             CarregaComboBoxObrigacoesEmpresa();
         }
@@ -154,24 +151,6 @@ namespace OrangePoint.View
             cbClassificacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
             cbClassificacao.DisplayMember = "Obrigação";
             cbClassificacao.ValueMember = "idTipoObrigação";
-        }
-
-        private void CarregaComboBoxTipoData()
-        {
-            cbTipoData.DataSource = tipoDataRule.PesquisaTipoDataTabela();
-            cbTipoData.DisplayMember = "DESC_TIPO";
-            cbTipoData.ValueMember = "COD_TIPO_DATA";
-
-            cbTipoData1.DataSource = cbTipoData.DataSource;
-            cbTipoData1.DisplayMember = "DESC_TIPO";
-            cbTipoData1.ValueMember = "COD_TIPO_DATA";
-        }
-
-        private void CarregaComboBoxDataEmpresa()
-        {
-            cbData.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa && o.TipoData.CodTipoData == int.Parse(cbTipoData.SelectedValue.ToString())).ToList());
-            cbData.DisplayMember = "Data";
-            cbData.ValueMember = "id";
         }
 
         private void CarregaComboBoxAtividadeEmpresa()
@@ -192,7 +171,6 @@ namespace OrangePoint.View
         private void CarregaGrids()
         {
             CarregaGridControleFC();
-            CarregaGridDataEmpresa();
             CarregaGridDadosWeb();
             CarregaGridAtividade();
             CarregaObrigacoes();
@@ -211,38 +189,19 @@ namespace OrangePoint.View
             dgControleFC.Columns["Data"].ReadOnly = true;
         }
 
-        private void CarregaGridDataEmpresa()
-        {
-            dgDatas.DataSource = dataEmpresaRule.ElaboraTabelaDataEmpresa(dataEmpresaRule.listaDataEmpresa().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa && o.TipoData.CodTipoData == int.Parse(cbTipoData1.SelectedValue.ToString())).ToList());
-
-            dgDatas.Columns["id"].Visible = false;
-            dgDatas.Columns["Data"].Width = 300;
-            dgDatas.Columns["Data"].ReadOnly = true;
-        }
-
-        private void cbTipoData_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(!aberturaPagina)
-                CarregaComboBoxDataEmpresa();
-        }
-
-        private void cbTipoData1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!aberturaPagina)
-                CarregaGridDataEmpresa(); 
-        }
-
         private void btnControleFC_Click(object sender, EventArgs e)
         {
-            if (cbClassificacao.SelectedValue != null && cbData.SelectedValue != null && cbData.Text != "")
+            if (cbClassificacao.SelectedValue != null && txtData.Text != "")
             {
                 int codTipoClassificacao = int.Parse(cbClassificacao.SelectedValue.ToString());
-                int codData = int.Parse(cbData.SelectedValue.ToString());
+                dataEmpresaRule.IncluirDataEmpresa(empresaOperacao.CodEmpresa, txtData.Text);
+                int codData = int.Parse(dataEmpresaRule.listaDataEmpresa(empresaOperacao.CodEmpresa, txtData.Text).First().CodData.ToString()) ;
 
                 if(!classificacaoEmpresaRule.listaClassificacaoEmpresa().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.DataEmpresa.CodData == codData))
                 {
                     classificacaoEmpresaRule.IncluirClassificacaoEmpresa(codTipoClassificacao, codData);
                     CarregaGridControleFC();
+                    MessageBox.Show("Obrigação cadastrada");
                 } else
                     MessageBox.Show("Obrigação já cadastrada");
 
@@ -251,32 +210,11 @@ namespace OrangePoint.View
                 MessageBox.Show("Campos inválidos");
         }
 
-        private void btnAdicionarData_Click(object sender, EventArgs e)
-        {
-            if (cbTipoData1.SelectedValue != null)
-            {
-                dataEmpresaRule.IncluirDataEmpresa(int.Parse(cbTipoData1.SelectedValue.ToString()), empresaOperacao.CodEmpresa, txtData.Text);
-                CarregaGridDataEmpresa();
-                CarregaComboBoxDataEmpresa();
-            }
-            else
-                MessageBox.Show("Tipo de Data Inválido");
-        }
-
         private void dgControleFC_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             classificacaoEmpresaRule.ExcluiClassificacaoEmpresa(int.Parse(dgControleFC.CurrentRow.Cells[0].Value.ToString()));
             dgControleFC.Rows.RemoveAt(dgControleFC.CurrentRow.Index);
             CarregaGridControleFC();
-            e.Cancel = true;
-        }
-
-        private void dgDatas_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            dataEmpresaRule.ExcluiDataEmpresa(int.Parse(dgDatas.CurrentRow.Cells[0].Value.ToString()));
-            dgDatas.Rows.RemoveAt(dgDatas.CurrentRow.Index);
-            CarregaComboBoxDataEmpresa();
-            CarregaGridDataEmpresa();
             e.Cancel = true;
         }
 
@@ -320,13 +258,11 @@ namespace OrangePoint.View
             if (button10.Text == "Detalhes Adicionais da Empresa")
             {
                 pnCadastraAtividadeEmpresa.Visible = true;
-                dgDatas.Visible = false;
                 button10.Text = "Dados Gerais da Empresa";
             }
             else
             {
                 pnCadastraAtividadeEmpresa.Visible = false;
-                dgDatas.Visible = true;
                 button10.Text = "Detalhes Adicionais da Empresa";
             }
         }

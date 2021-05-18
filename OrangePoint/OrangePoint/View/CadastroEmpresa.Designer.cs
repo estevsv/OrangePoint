@@ -401,7 +401,7 @@
             // 
             // txtObservacoes
             // 
-            this.txtObservacoes.Location = new System.Drawing.Point(314, 228);
+            this.txtObservacoes.Location = new System.Drawing.Point(320, 228);
             this.txtObservacoes.MaxLength = 45;
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(267, 96);

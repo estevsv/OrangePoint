@@ -48,18 +48,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgControleFC = new System.Windows.Forms.DataGridView();
             this.cbClassificacao = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbTipoData = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbData = new System.Windows.Forms.ComboBox();
             this.btnControleFC = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbTipoData1 = new System.Windows.Forms.ComboBox();
-            this.dgDatas = new System.Windows.Forms.DataGridView();
-            this.btnAdicionarData = new System.Windows.Forms.Button();
             this.txtData = new System.Windows.Forms.MaskedTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -71,6 +62,7 @@
             this.txtDescricaoWEB = new System.Windows.Forms.TextBox();
             this.btnCadastrarDadosWeb = new System.Windows.Forms.Button();
             this.pnCadastraAtividadeEmpresa = new System.Windows.Forms.Panel();
+            this.cbObrigacoes = new System.Windows.Forms.ComboBox();
             this.dgObrigacao = new System.Windows.Forms.DataGridView();
             this.button11 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -82,16 +74,24 @@
             this.cbAtividade = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
-            this.cbObrigacoes = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleFC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgDatas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).BeginInit();
             this.pnCadastraAtividadeEmpresa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgObrigacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -328,7 +328,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(544, 146);
+            this.label1.Location = new System.Drawing.Point(532, 124);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(189, 23);
             this.label1.TabIndex = 20;
@@ -337,11 +337,11 @@
             // dgControleFC
             // 
             this.dgControleFC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgControleFC.Location = new System.Drawing.Point(652, 182);
+            this.dgControleFC.Location = new System.Drawing.Point(249, 259);
             this.dgControleFC.MultiSelect = false;
             this.dgControleFC.Name = "dgControleFC";
             this.dgControleFC.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgControleFC.Size = new System.Drawing.Size(343, 106);
+            this.dgControleFC.Size = new System.Drawing.Size(378, 324);
             this.dgControleFC.TabIndex = 21;
             this.dgControleFC.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgControleFC_UserDeletingRow);
             // 
@@ -361,35 +361,6 @@
             this.cbClassificacao.Size = new System.Drawing.Size(196, 21);
             this.cbClassificacao.TabIndex = 65;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(230, 221);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 22);
-            this.label7.TabIndex = 64;
-            this.label7.Text = "Tipo de Data";
-            // 
-            // cbTipoData
-            // 
-            this.cbTipoData.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTipoData.FormattingEnabled = true;
-            this.cbTipoData.Items.AddRange(new object[] {
-            "Cadastros",
-            "Consultoria Contábil",
-            "Apuração de Lucro Real",
-            "Controle de Usuários",
-            "Folha de Ponto",
-            "Controle de Folha de Ponto"});
-            this.cbTipoData.Location = new System.Drawing.Point(359, 224);
-            this.cbTipoData.Name = "cbTipoData";
-            this.cbTipoData.Size = new System.Drawing.Size(196, 21);
-            this.cbTipoData.TabIndex = 63;
-            this.cbTipoData.SelectedIndexChanged += new System.EventHandler(this.cbTipoData_SelectedIndexChanged);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -408,20 +379,11 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(282, 262);
+            this.label2.Location = new System.Drawing.Point(245, 227);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 22);
             this.label2.TabIndex = 67;
             this.label2.Text = "Data";
-            // 
-            // cbData
-            // 
-            this.cbData.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbData.FormattingEnabled = true;
-            this.cbData.Location = new System.Drawing.Point(359, 263);
-            this.cbData.Name = "cbData";
-            this.cbData.Size = new System.Drawing.Size(196, 21);
-            this.cbData.TabIndex = 66;
             // 
             // btnControleFC
             // 
@@ -430,96 +392,17 @@
             this.btnControleFC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnControleFC.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnControleFC.ForeColor = System.Drawing.Color.White;
-            this.btnControleFC.Location = new System.Drawing.Point(592, 217);
+            this.btnControleFC.Location = new System.Drawing.Point(520, 223);
             this.btnControleFC.Name = "btnControleFC";
             this.btnControleFC.Size = new System.Drawing.Size(35, 30);
             this.btnControleFC.TabIndex = 68;
-            this.btnControleFC.Text = "=>";
+            this.btnControleFC.Text = "+";
             this.btnControleFC.UseVisualStyleBackColor = false;
             this.btnControleFC.Click += new System.EventHandler(this.btnControleFC_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(320, 316);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(137, 23);
-            this.label3.TabIndex = 69;
-            this.label3.Text = "Controle de Datas";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(282, 399);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 22);
-            this.label4.TabIndex = 73;
-            this.label4.Text = "Data";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(230, 351);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 22);
-            this.label5.TabIndex = 71;
-            this.label5.Text = "Tipo de Data";
-            // 
-            // cbTipoData1
-            // 
-            this.cbTipoData1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTipoData1.FormattingEnabled = true;
-            this.cbTipoData1.Items.AddRange(new object[] {
-            "Cadastros",
-            "Consultoria Contábil",
-            "Apuração de Lucro Real",
-            "Controle de Usuários",
-            "Folha de Ponto",
-            "Controle de Folha de Ponto"});
-            this.cbTipoData1.Location = new System.Drawing.Point(359, 354);
-            this.cbTipoData1.Name = "cbTipoData1";
-            this.cbTipoData1.Size = new System.Drawing.Size(196, 21);
-            this.cbTipoData1.TabIndex = 70;
-            this.cbTipoData1.SelectedIndexChanged += new System.EventHandler(this.cbTipoData1_SelectedIndexChanged);
-            // 
-            // dgDatas
-            // 
-            this.dgDatas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDatas.Location = new System.Drawing.Point(234, 431);
-            this.dgDatas.MultiSelect = false;
-            this.dgDatas.Name = "dgDatas";
-            this.dgDatas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgDatas.Size = new System.Drawing.Size(321, 199);
-            this.dgDatas.TabIndex = 74;
-            this.dgDatas.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgDatas_UserDeletingRow);
-            // 
-            // btnAdicionarData
-            // 
-            this.btnAdicionarData.AutoSize = true;
-            this.btnAdicionarData.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionarData.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAdicionarData.Font = new System.Drawing.Font("Arial Narrow", 14F);
-            this.btnAdicionarData.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarData.Location = new System.Drawing.Point(520, 392);
-            this.btnAdicionarData.Name = "btnAdicionarData";
-            this.btnAdicionarData.Size = new System.Drawing.Size(35, 33);
-            this.btnAdicionarData.TabIndex = 75;
-            this.btnAdicionarData.Text = "+";
-            this.btnAdicionarData.UseVisualStyleBackColor = false;
-            this.btnAdicionarData.Click += new System.EventHandler(this.btnAdicionarData_Click);
-            // 
             // txtData
             // 
-            this.txtData.Location = new System.Drawing.Point(359, 402);
+            this.txtData.Location = new System.Drawing.Point(359, 227);
             this.txtData.Mask = "00/00/0000";
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(70, 20);
@@ -532,7 +415,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(766, 316);
+            this.label6.Location = new System.Drawing.Point(786, 174);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(156, 23);
             this.label6.TabIndex = 77;
@@ -544,7 +427,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(648, 354);
+            this.label8.Location = new System.Drawing.Point(668, 212);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 22);
             this.label8.TabIndex = 78;
@@ -556,7 +439,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(648, 399);
+            this.label10.Location = new System.Drawing.Point(668, 257);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 22);
             this.label10.TabIndex = 79;
@@ -568,7 +451,7 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(648, 447);
+            this.label11.Location = new System.Drawing.Point(668, 305);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(73, 22);
             this.label11.TabIndex = 80;
@@ -577,7 +460,7 @@
             // dgControleWeb
             // 
             this.dgControleWeb.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgControleWeb.Location = new System.Drawing.Point(652, 491);
+            this.dgControleWeb.Location = new System.Drawing.Point(672, 349);
             this.dgControleWeb.MultiSelect = false;
             this.dgControleWeb.Name = "dgControleWeb";
             this.dgControleWeb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -587,21 +470,21 @@
             // 
             // txtUsuarioWEB
             // 
-            this.txtUsuarioWEB.Location = new System.Drawing.Point(760, 354);
+            this.txtUsuarioWEB.Location = new System.Drawing.Point(780, 212);
             this.txtUsuarioWEB.Name = "txtUsuarioWEB";
             this.txtUsuarioWEB.Size = new System.Drawing.Size(235, 20);
             this.txtUsuarioWEB.TabIndex = 82;
             // 
             // txtSenhaWEB
             // 
-            this.txtSenhaWEB.Location = new System.Drawing.Point(760, 405);
+            this.txtSenhaWEB.Location = new System.Drawing.Point(780, 263);
             this.txtSenhaWEB.Name = "txtSenhaWEB";
             this.txtSenhaWEB.Size = new System.Drawing.Size(235, 20);
             this.txtSenhaWEB.TabIndex = 83;
             // 
             // txtDescricaoWEB
             // 
-            this.txtDescricaoWEB.Location = new System.Drawing.Point(760, 449);
+            this.txtDescricaoWEB.Location = new System.Drawing.Point(780, 307);
             this.txtDescricaoWEB.Name = "txtDescricaoWEB";
             this.txtDescricaoWEB.Size = new System.Drawing.Size(235, 20);
             this.txtDescricaoWEB.TabIndex = 84;
@@ -613,7 +496,7 @@
             this.btnCadastrarDadosWeb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCadastrarDadosWeb.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.btnCadastrarDadosWeb.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarDadosWeb.Location = new System.Drawing.Point(1001, 491);
+            this.btnCadastrarDadosWeb.Location = new System.Drawing.Point(1021, 349);
             this.btnCadastrarDadosWeb.Name = "btnCadastrarDadosWeb";
             this.btnCadastrarDadosWeb.Size = new System.Drawing.Size(35, 33);
             this.btnCadastrarDadosWeb.TabIndex = 85;
@@ -636,15 +519,27 @@
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label13);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbAtividade);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label12);
-            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(234, 316);
+            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(249, 304);
             this.pnCadastraAtividadeEmpresa.Name = "pnCadastraAtividadeEmpresa";
             this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 279);
             this.pnCadastraAtividadeEmpresa.TabIndex = 86;
             // 
+            // cbObrigacoes
+            // 
+            this.cbObrigacoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbObrigacoes.FormattingEnabled = true;
+            this.cbObrigacoes.Items.AddRange(new object[] {
+            "Mensal",
+            "Anual"});
+            this.cbObrigacoes.Location = new System.Drawing.Point(522, 59);
+            this.cbObrigacoes.Name = "cbObrigacoes";
+            this.cbObrigacoes.Size = new System.Drawing.Size(196, 21);
+            this.cbObrigacoes.TabIndex = 93;
+            // 
             // dgObrigacao
             // 
             this.dgObrigacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgObrigacao.Location = new System.Drawing.Point(418, 96);
+            this.dgObrigacao.Location = new System.Drawing.Point(421, 86);
             this.dgObrigacao.MultiSelect = false;
             this.dgObrigacao.Name = "dgObrigacao";
             this.dgObrigacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -673,7 +568,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(495, 12);
+            this.label14.Location = new System.Drawing.Point(498, 2);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(180, 23);
             this.label14.TabIndex = 92;
@@ -690,7 +585,7 @@
             "Controle de Usuários",
             "Folha de Ponto",
             "Controle de Folha de Ponto"});
-            this.cbObrigacao.Location = new System.Drawing.Point(519, 47);
+            this.cbObrigacao.Location = new System.Drawing.Point(522, 37);
             this.cbObrigacao.Name = "cbObrigacao";
             this.cbObrigacao.Size = new System.Drawing.Size(196, 21);
             this.cbObrigacao.TabIndex = 89;
@@ -701,7 +596,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(421, 44);
+            this.label15.Location = new System.Drawing.Point(424, 34);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 22);
             this.label15.TabIndex = 88;
@@ -710,7 +605,7 @@
             // dgAtividadeEmpresa
             // 
             this.dgAtividadeEmpresa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAtividadeEmpresa.Location = new System.Drawing.Point(27, 96);
+            this.dgAtividadeEmpresa.Location = new System.Drawing.Point(30, 86);
             this.dgAtividadeEmpresa.MultiSelect = false;
             this.dgAtividadeEmpresa.Name = "dgAtividadeEmpresa";
             this.dgAtividadeEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -725,7 +620,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button9.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(346, 47);
+            this.button9.Location = new System.Drawing.Point(349, 37);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(35, 33);
             this.button9.TabIndex = 87;
@@ -739,7 +634,7 @@
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(104, 12);
+            this.label13.Location = new System.Drawing.Point(107, 2);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(171, 23);
             this.label13.TabIndex = 87;
@@ -756,7 +651,7 @@
             "Controle de Usuários",
             "Folha de Ponto",
             "Controle de Folha de Ponto"});
-            this.cbAtividade.Location = new System.Drawing.Point(128, 50);
+            this.cbAtividade.Location = new System.Drawing.Point(131, 40);
             this.cbAtividade.Name = "cbAtividade";
             this.cbAtividade.Size = new System.Drawing.Size(196, 21);
             this.cbAtividade.TabIndex = 67;
@@ -767,7 +662,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(30, 47);
+            this.label12.Location = new System.Drawing.Point(33, 37);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(67, 22);
             this.label12.TabIndex = 66;
@@ -789,17 +684,100 @@
             this.button10.UseVisualStyleBackColor = false;
             this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // cbObrigacoes
+            // label3
             // 
-            this.cbObrigacoes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbObrigacoes.FormattingEnabled = true;
-            this.cbObrigacoes.Items.AddRange(new object[] {
-            "Mensal",
-            "Anual"});
-            this.cbObrigacoes.Location = new System.Drawing.Point(519, 69);
-            this.cbObrigacoes.Name = "cbObrigacoes";
-            this.cbObrigacoes.Size = new System.Drawing.Size(196, 21);
-            this.cbObrigacoes.TabIndex = 93;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(786, 174);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 23);
+            this.label3.TabIndex = 77;
+            this.label3.Text = "Controle de Acessos";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(668, 212);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 22);
+            this.label4.TabIndex = 78;
+            this.label4.Text = "Usuário";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(668, 257);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 22);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Senha";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(668, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 22);
+            this.label7.TabIndex = 80;
+            this.label7.Text = "Descrição";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(672, 349);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(343, 234);
+            this.dataGridView1.TabIndex = 81;
+            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgControleWeb_UserDeletingRow);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(780, 212);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(235, 20);
+            this.textBox1.TabIndex = 82;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(780, 263);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(235, 20);
+            this.textBox2.TabIndex = 83;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(780, 307);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(235, 20);
+            this.textBox3.TabIndex = 84;
+            // 
+            // button8
+            // 
+            this.button8.AutoSize = true;
+            this.button8.BackColor = System.Drawing.Color.Transparent;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button8.Font = new System.Drawing.Font("Arial Narrow", 14F);
+            this.button8.ForeColor = System.Drawing.Color.White;
+            this.button8.Location = new System.Drawing.Point(1021, 349);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(35, 33);
+            this.button8.TabIndex = 85;
+            this.button8.Text = "+";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.btnCadastrarDadosWeb_Click);
             // 
             // EspecificacoesEmpresa
             // 
@@ -809,29 +787,29 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 658);
             this.Controls.Add(this.button10);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.pnCadastraAtividadeEmpresa);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.btnCadastrarDadosWeb);
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txtDescricaoWEB);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtSenhaWEB);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtUsuarioWEB);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dgControleWeb);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtData);
-            this.Controls.Add(this.btnAdicionarData);
-            this.Controls.Add(this.dgDatas);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbTipoData1);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnControleFC);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbData);
             this.Controls.Add(this.cbClassificacao);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbTipoData);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.dgControleFC);
             this.Controls.Add(this.label1);
@@ -850,12 +828,12 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleFC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgDatas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgControleWeb)).EndInit();
             this.pnCadastraAtividadeEmpresa.ResumeLayout(false);
             this.pnCadastraAtividadeEmpresa.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgObrigacao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAtividadeEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -877,18 +855,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgControleFC;
         private System.Windows.Forms.ComboBox cbClassificacao;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cbTipoData;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbData;
         private System.Windows.Forms.Button btnControleFC;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbTipoData1;
-        private System.Windows.Forms.DataGridView dgDatas;
-        private System.Windows.Forms.Button btnAdicionarData;
         private System.Windows.Forms.MaskedTextBox txtData;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
@@ -916,5 +885,14 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.ComboBox cbObrigacoes;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button button8;
     }
 }

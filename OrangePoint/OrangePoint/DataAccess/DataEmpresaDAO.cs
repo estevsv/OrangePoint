@@ -13,7 +13,6 @@ namespace OrangePoint.DataAccess
     public class DataEmpresaDAO
     {
         private ConexaoBD conexao = new ConexaoBD();
-        TipoDataDAO tipoDataDAO = new TipoDataDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
 
         public DataTable PesquisaDataEmpresaTabela()
@@ -31,17 +30,23 @@ namespace OrangePoint.DataAccess
             return tabela;
         }
 
-        public List<DataEmpresa> PesquisaDataEmpresaLista()
+        public List<DataEmpresa> PesquisaDataEmpresaLista(int codEmpresa = -1, string data = "")
         {
             List<DataEmpresa> listDataEmpresa = new List<DataEmpresa>();
-            List<TipoData> listTipoData = tipoDataDAO.PesquisaTipoDataLista();
             List<Empresa> listEmpresa = empresaDAO.PesquisaEmpresasLista();
 
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "SELECT * FROM bdorangepoint.datas_empresa;";
+                if (codEmpresa == -1)
+                    cmd.CommandText = "SELECT * FROM bdorangepoint.datas_empresa;";
+                else
+                {
+                    string formataPesquisa = data.Substring(6, 4) + "-" + data.Substring(3, 2) + "-" + data.Substring(0, 2);
+                    cmd.CommandText = "SELECT * FROM bdorangepoint.datas_empresa where COD_EMPRESA = '" + codEmpresa + "' and " +
+                        "DATA = '" + formataPesquisa + "';";
+                }
                 conexao.Desconectar();
                 conexao.Conectar();
                 MySqlDataReader registro = cmd.ExecuteReader();
@@ -50,7 +55,6 @@ namespace OrangePoint.DataAccess
                     DataEmpresa dataEmpresa = new DataEmpresa();
                     dataEmpresa.CodData = int.Parse(registro["COD_DATA"].ToString());
                     dataEmpresa.Data = Convert.ToDateTime(registro["DATA"]);
-                    dataEmpresa.TipoData = listTipoData.Find(o => o.CodTipoData == int.Parse(registro["COD_TIPO_DATA"].ToString()));
                     dataEmpresa.Empresa = listEmpresa.Find(o => o.CodEmpresa == int.Parse(registro["COD_EMPRESA"].ToString()));
 
                     listDataEmpresa.Add(dataEmpresa);
@@ -79,7 +83,7 @@ namespace OrangePoint.DataAccess
             }
         }
 
-        public void IncluirDataEmpresa(int codTipoData, int codEmpresa, DateTime data)
+        public void IncluirDataEmpresa(int codEmpresa, DateTime data)
         {
             try
             {
@@ -87,7 +91,7 @@ namespace OrangePoint.DataAccess
 
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`datas_empresa` (`COD_TIPO_DATA`, `COD_EMPRESA`, `DATA`) VALUES (" + codTipoData + "," + codEmpresa + ", @dataFiltrada);";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`datas_empresa` (`COD_EMPRESA`, `DATA`) VALUES (" + codEmpresa + ", @dataFiltrada);";
                 cmd.Parameters.AddWithValue("@dataFiltrada", dataFiltrada);
                 conexao.Desconectar();
                 conexao.Conectar();
@@ -98,54 +102,6 @@ namespace OrangePoint.DataAccess
             {
                 MessageBox.Show("Erro DataEmpresaDAO/IncluirDataEmpresa. Contate o Suporte");
             }
-        }
-
-        public string VerificaUsoData(int codData)
-        {
-            int verificacao = 0;
-            try
-            {
-                #region Verifica Classificacao_empresa
-                MySqlCommand cmd = new MySqlCommand();
-                cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "SELECT * FROM bdorangepoint.classificacao_empresa where COD_DATA = " + codData + ";";
-                conexao.Desconectar();
-                conexao.Conectar();
-                MySqlDataReader registro = cmd.ExecuteReader();
-                if (registro.Read())
-                {
-                    verificacao = 1;
-                }
-                conexao.Desconectar();
-                #endregion
-
-                #region Verifica Classificacao_empresa
-                cmd = new MySqlCommand();
-                cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "SELECT * FROM bdorangepoint.valor where COD_DATA = " + codData + ";";
-                conexao.Desconectar();
-                conexao.Conectar();
-                registro = cmd.ExecuteReader();
-                if (registro.Read())
-                {
-                    verificacao = verificacao == 1 ? verificacao+2 : 2;
-                }
-                conexao.Desconectar();
-                #endregion
-
-                switch (verificacao)
-                {
-                    case 1:
-                        return "Data sendo usada no Controle Fiscal e Contábil";
-                    case 2:
-                        return "Data sendo usada em um valor desta empresa";
-                    case 3:
-                        return "Data sendo usada no Controle Fiscal e Contábil, e em um valor desta empresa";
-                }
-            }
-            catch { MessageBox.Show("Erro DataEmpresaDAO/PesquisaDataEmpresaLista. Contate o Suporte"); }
-
-            return "";
         }
     }
 }

@@ -28,7 +28,6 @@ namespace OrangePoint.BusinessRule
         public void IncluirClassificacaoEmpresa(int codTipoClassificacao, int codData)
         {
             classificacaoEmpresaDAO.IncluirClassificacaoEmpresa(codTipoClassificacao, codData);
-            MessageBox.Show("Inclusão Concluída!");
         }
 
         public void ExcluiClassificacaoEmpresa(int codClassificacaoEmpresa)

@@ -19,42 +19,29 @@ namespace OrangePoint.BusinessRule
             return DataEmpresaDAO.PesquisaDataEmpresaTabela();
         }
 
-        public List<DataEmpresa> listaDataEmpresa()
+        public List<DataEmpresa> listaDataEmpresa(int codEmpresa = -1, string data = "")
         {
-            return DataEmpresaDAO.PesquisaDataEmpresaLista();
+            return DataEmpresaDAO.PesquisaDataEmpresaLista(codEmpresa, data);
         }
 
-        public void IncluirDataEmpresa(int codTipoData, int codEmpresa, string data)
+        public void IncluirDataEmpresa(int codEmpresa, string data)
         {
             Tuple<bool, DateTime> retornaDataValida = RetornaDataValida(data);
             if (retornaDataValida.Item1)
-                if (listaDataEmpresa().Exists(o => o.TipoData.CodTipoData == codTipoData && o.Empresa.CodEmpresa == codEmpresa && o.Data.Date == retornaDataValida.Item2.Date))
+                if (listaDataEmpresa().Exists(o => o.Empresa.CodEmpresa == codEmpresa && o.Data.Date == retornaDataValida.Item2.Date))
                     MessageBox.Show("Data já cadastrada!");
                 else
                 {
-                    DataEmpresaDAO.IncluirDataEmpresa(codTipoData, codEmpresa, retornaDataValida.Item2);
-                    MessageBox.Show("Data cadastrada!");
+                    DataEmpresaDAO.IncluirDataEmpresa(codEmpresa, retornaDataValida.Item2);
                 }
             else
                 MessageBox.Show("Data Inválida!");
         }
 
-        private Tuple<bool,DateTime> RetornaDataValida(string data)
+        public Tuple<bool,DateTime> RetornaDataValida(string data)
         {
             DateTime dataConversao = new DateTime();
             return new Tuple<bool, DateTime>(DateTime.TryParse(data, out dataConversao),dataConversao);
-        }
-
-        public void ExcluiDataEmpresa(int codData)
-        {
-            string verificacao = DataEmpresaDAO.VerificaUsoData(codData);
-            if (verificacao == "")
-            {
-                DataEmpresaDAO.ExcluiDataEmpresa(codData);
-                MessageBox.Show("Data Excluída!");
-            }
-            else
-                MessageBox.Show(verificacao);
         }
 
         public DataTable ElaboraTabelaDataEmpresa(List<DataEmpresa> listaDataEmpresa)

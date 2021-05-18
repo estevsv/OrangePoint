@@ -45,13 +45,13 @@
             this.cbEmpresa = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbData = new System.Windows.Forms.ComboBox();
             this.cbSubtipoValor = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCadastrarValor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.dgValor = new System.Windows.Forms.DataGridView();
             this.txtValor = new System.Windows.Forms.TextBox();
+            this.cbData = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -277,19 +277,11 @@
             this.label3.TabIndex = 46;
             this.label3.Text = "Data";
             // 
-            // cbData
-            // 
-            this.cbData.FormattingEnabled = true;
-            this.cbData.Location = new System.Drawing.Point(351, 208);
-            this.cbData.Name = "cbData";
-            this.cbData.Size = new System.Drawing.Size(212, 21);
-            this.cbData.TabIndex = 47;
-            // 
             // cbSubtipoValor
             // 
             this.cbSubtipoValor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSubtipoValor.FormattingEnabled = true;
-            this.cbSubtipoValor.Location = new System.Drawing.Point(798, 208);
+            this.cbSubtipoValor.Location = new System.Drawing.Point(594, 207);
             this.cbSubtipoValor.Name = "cbSubtipoValor";
             this.cbSubtipoValor.Size = new System.Drawing.Size(212, 21);
             this.cbSubtipoValor.TabIndex = 49;
@@ -300,7 +292,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(675, 205);
+            this.label1.Location = new System.Drawing.Point(471, 204);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 22);
             this.label1.TabIndex = 48;
@@ -314,7 +306,7 @@
             this.btnCadastrarValor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCadastrarValor.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrarValor.ForeColor = System.Drawing.Color.White;
-            this.btnCadastrarValor.Location = new System.Drawing.Point(918, 380);
+            this.btnCadastrarValor.Location = new System.Drawing.Point(876, 256);
             this.btnCadastrarValor.Name = "btnCadastrarValor";
             this.btnCadastrarValor.Size = new System.Drawing.Size(134, 42);
             this.btnCadastrarValor.TabIndex = 50;
@@ -328,7 +320,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(902, 328);
+            this.label4.Location = new System.Drawing.Point(860, 206);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 22);
             this.label4.TabIndex = 51;
@@ -347,11 +339,20 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(952, 330);
+            this.txtValor.Location = new System.Drawing.Point(910, 208);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(100, 20);
             this.txtValor.TabIndex = 54;
             this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
+            // 
+            // cbData
+            // 
+            this.cbData.Location = new System.Drawing.Point(351, 205);
+            this.cbData.Mask = "00/00/0000";
+            this.cbData.Name = "cbData";
+            this.cbData.Size = new System.Drawing.Size(70, 20);
+            this.cbData.TabIndex = 77;
+            this.cbData.ValidatingType = typeof(System.DateTime);
             // 
             // ValoresEmpresa
             // 
@@ -360,13 +361,13 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.cbData);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.dgValor);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCadastrarValor);
             this.Controls.Add(this.cbSubtipoValor);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbData);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbEmpresa);
             this.Controls.Add(this.label2);
@@ -404,7 +405,6 @@
         private System.Windows.Forms.ComboBox cbEmpresa;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbData;
         private System.Windows.Forms.ComboBox cbSubtipoValor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCadastrarValor;
@@ -414,5 +414,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.MaskedTextBox cbData;
     }
 }

@@ -11,9 +11,6 @@ namespace OrangePoint.Model
         private int codData;
         public int CodData { get => codData; set => codData = value; }
 
-        private TipoData tipoData;
-        public TipoData TipoData { get => tipoData; set => tipoData = value; }
-
         private Empresa empresa;
         public Empresa Empresa { get => empresa; set => empresa = value; }
 

@@ -20,7 +20,6 @@ namespace OrangePoint.View
         RegimeEmpresaRule regimeEmpresaRule = new RegimeEmpresaRule();
         GrupoRule grupoRule = new GrupoRule();
         AtividadeRule atividadeRule = new AtividadeRule();
-        TipoDataRule tipoDataRule = new TipoDataRule();
         TipoValorRule tipoValorRule = new TipoValorRule();
         SubtipoValorRule subtipoValorRule = new SubtipoValorRule(); 
         SubtipoAtividadeRule subtipoAtividadeRule = new SubtipoAtividadeRule(); 
@@ -51,7 +50,6 @@ namespace OrangePoint.View
             CarregaGridRegime();
             CarregaGridGrupo();
             CarregaGridAtividade();
-            CarregaGridTipoData();
             CarregaGridTipoClassificacao();
         }
 
@@ -226,38 +224,6 @@ namespace OrangePoint.View
             dgAtividade.Rows.RemoveAt(dgAtividade.CurrentRow.Index);
 
             CarregaGridAtividade();
-
-            e.Cancel = true;
-        }
-        #endregion
-
-        #region Dados Tipo Data
-        private void CarregaGridTipoData()
-        {
-            dgTipoDatas.DataSource = tipoDataRule.PesquisaTipoDataTabela();
-            if (dgTipoDatas.Columns.Count != 0)
-            {
-                dgTipoDatas.Columns["COD_TIPO_DATA"].Visible = false;
-                dgTipoDatas.Columns["DESC_TIPO"].HeaderText = "Descrição";
-                dgTipoDatas.Columns["DESC_TIPO"].ReadOnly = true;
-                dgTipoDatas.Columns["DESC_TIPO"].Width = 187;
-            }
-        }
-
-        private void btnAdicionaTipoDatas_Click(object sender, EventArgs e)
-        {
-            if (txtTipoDatas.Text != "")
-                tipoDataRule.IncluirTipoData(txtTipoDatas.Text);
-
-            CarregaGridTipoData();
-        }
-
-        private void dgTipoDatas_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            tipoDataRule.ExcluiTipoData(int.Parse(dgTipoDatas.CurrentRow.Cells[0].Value.ToString()));
-            dgTipoDatas.Rows.RemoveAt(dgTipoDatas.CurrentRow.Index);
-
-            CarregaGridTipoData();
 
             e.Cancel = true;
         }

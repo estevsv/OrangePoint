@@ -340,10 +340,10 @@
             // txtValor
             // 
             this.txtValor.Location = new System.Drawing.Point(910, 208);
+            this.txtValor.MaxLength = 999999;
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(100, 20);
             this.txtValor.TabIndex = 54;
-            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
             // cbData
             // 

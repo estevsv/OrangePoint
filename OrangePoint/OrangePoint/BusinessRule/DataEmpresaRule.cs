@@ -28,12 +28,12 @@ namespace OrangePoint.BusinessRule
         {
             Tuple<bool, DateTime> retornaDataValida = RetornaDataValida(data);
             if (retornaDataValida.Item1)
-                if (listaDataEmpresa().Exists(o => o.Empresa.CodEmpresa == codEmpresa && o.Data.Date == retornaDataValida.Item2.Date))
-                    MessageBox.Show("Data já cadastrada!");
-                else
+            {
+                if (!listaDataEmpresa().Exists(o => o.Empresa.CodEmpresa == codEmpresa && o.Data.Date == retornaDataValida.Item2.Date))
                 {
                     DataEmpresaDAO.IncluirDataEmpresa(codEmpresa, retornaDataValida.Item2);
                 }
+            }
             else
                 MessageBox.Show("Data Inválida!");
         }

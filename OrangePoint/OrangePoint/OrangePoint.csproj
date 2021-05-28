@@ -90,6 +90,7 @@
     <Compile Include="BusinessRule\DataEmpresaRule.cs" />
     <Compile Include="BusinessRule\EmpresaRule.cs" />
     <Compile Include="BusinessRule\FolhaPontoRule.cs" />
+    <Compile Include="BusinessRule\GeradorExcel.cs" />
     <Compile Include="BusinessRule\GrupoRule.cs" />
     <Compile Include="BusinessRule\LoginRule.cs" />
     <Compile Include="BusinessRule\ObrigacaoEmpresaRule.cs" />

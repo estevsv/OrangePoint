@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace OrangePoint.View
         {
             InitializeComponent();
             usuarioPagina = usuario;
+
+            AplicarEventos(txtValor);
         }
 
         private void ValoresEmpresa_Load(object sender, EventArgs e)
@@ -195,6 +198,8 @@ namespace OrangePoint.View
         {
             decimal number;
             Tuple<bool, DateTime> retornaDataValida = dataEmpresaRule.RetornaDataValida(cbData.Text);
+            txtValor.Text = txtValor.Text.Replace("R$", "").Trim();
+            txtValor.Text = txtValor.Text.Replace(" ", "").Trim();
             if (cbData.Text != "" && retornaDataValida.Item1 && cbEmpresa.SelectedIndex != -1 && cbSubtipoValor.SelectedIndex != -1 && txtValor.Text != "             ," && decimal.TryParse(txtValor.Text,out number))
             {
                 Valor valor = new Valor();
@@ -226,33 +231,40 @@ namespace OrangePoint.View
             e.Cancel = true;
         }
 
-        private void txtValor_TextChanged(object sender, EventArgs e)
+        private void RetornarMascara(object sender, EventArgs e)
         {
             TextBox txt = (TextBox)sender;
-            Moeda(ref txt);
+            txt.Text = double.Parse(txt.Text).ToString("C2");
         }
 
-        public static void Moeda(ref TextBox txt)
+        private void TirarMascara(object sender, EventArgs e)
         {
-            string n = string.Empty;
-            double v = 0;
-            try
+            TextBox txt = (TextBox)sender;
+            txt.Text = txt.Text.Replace("R$", "").Trim();
+        }
+
+        private void ApenasValorNumerico(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != Convert.ToChar(Keys.Back))
             {
-                n = txt.Text.Replace(",", "").Replace(".", "");
-                if (n.Equals(""))
-                    n = "";
-                n = n.PadLeft(3, '0');
-                if (n.Length > 3 && n.Substring(0, 1) == "0")
-                    n = n.Substring(1, n.Length - 1);
-                v = Convert.ToDouble(n) / 100;
-                txt.Text = string.Format("{0:N}", v);
-                txt.SelectionStart = txt.Text.Length;
-            }
-            catch
-            {
-                MessageBox.Show("Caractere inválido!");
-                txt.Text = "";
+                if (e.KeyChar == ',')
+                {
+                    e.Handled = (txt.Text.Contains(','));
+                }
+                else if (txt.Text.Length == 0 && e.KeyChar == '-') {
+                    e.Handled = (txt.Text.Contains('-'));
+                }
+                else
+                    e.Handled = true;
             }
         }
+        private void AplicarEventos(TextBox txt)
+        {
+            txt.Enter += TirarMascara;
+            txt.Leave += RetornarMascara;
+            txt.KeyPress += ApenasValorNumerico;
+        }
+
     }
 }

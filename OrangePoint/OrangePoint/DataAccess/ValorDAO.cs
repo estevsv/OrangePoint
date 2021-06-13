@@ -34,6 +34,7 @@ namespace OrangePoint.DataAccess
                     valor.DataEmpresa = dataEmpresaDAO.PesquisaDataEmpresaLista().Find(o => o.CodData == int.Parse(registro["COD_DATA"].ToString()));
                     valor.SubtipoValor = subtipoValorDAO.PesquisaSubtipoValorLista().Find(o => o.CodSubtipoValor == int.Parse(registro["COD_SUBTIPO_VALOR"].ToString()));
                     valor.NumValor = decimal.Parse(registro["DESCRICAO"].ToString());
+                    valor.ValorRelatorio = int.Parse(registro["VALOR_RELATORIO"].ToString());
 
                     listValorlista.Add(valor);
                 }
@@ -61,14 +62,14 @@ namespace OrangePoint.DataAccess
             }
         }
 
-        public void IncluirValor(int codData, int codSubtipoValor,string valor)
+        public void IncluirValor(int codData, int codSubtipoValor,string valor, int valorRelatorio)
         {
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`valor` (`COD_SUBTIPO_VALOR`, `COD_DATA`, `DESCRICAO`) VALUES ('"+ codSubtipoValor + "'," +
-                    " '"+ codData + "', '"+ valor +"');";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`valor` (`COD_SUBTIPO_VALOR`, `COD_DATA`, `DESCRICAO`, `VALOR_RELATORIO`) VALUES ('" + codSubtipoValor + "'," +
+                    " '"+ codData + "', '"+ valor + "','" + valorRelatorio + "');";
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

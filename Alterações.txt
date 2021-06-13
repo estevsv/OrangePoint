@@ -1,8 +1,2 @@
-DashBoard - {
-Gráficos - 2 (mensal e anual)
-Grid com filtro e seleção de periodicidade
-detalhamento com nomes de obrigações
-Dashboard exclusivo para obrigações
-}
-
-Não será implementada área de funcionários da empresa e beneficios
+ALTER TABLE bdorangepoint.subtipo_valor
+ADD VALOR_RELATORIO int;

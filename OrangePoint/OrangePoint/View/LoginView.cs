@@ -19,17 +19,17 @@ namespace OrangePoint.View
 
         private void LoginView_Load(object sender, EventArgs e)
         {
-            /*
+            
             fechamentoSistema = true;
 
             if (!loginRule.VerificaBanco())
                 Application.Exit();
 
-            LimpaFotosInutilizadas();*/
+            LimpaFotosInutilizadas();
 
-            GeradorExcel geradorExcel = new GeradorExcel();
+           /* GeradorExcel geradorExcel = new GeradorExcel();
             geradorExcel.GeraExcelConsultoriaContabil(1, new List<string> {"12/2019","03/2020","06/2020" });
-            Application.Exit();
+            Application.Exit();*/
         }
 
         private void Entrar_Click(object sender, EventArgs e)

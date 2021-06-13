@@ -19,5 +19,8 @@ namespace OrangePoint.Model
 
         private decimal numValor;
         public decimal NumValor { get => numValor; set => numValor = value; }
+
+        private int valorRelatorio;
+        public int ValorRelatorio { get => valorRelatorio; set => valorRelatorio = value; }
     }
 }

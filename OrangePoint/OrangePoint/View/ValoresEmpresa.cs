@@ -56,6 +56,8 @@ namespace OrangePoint.View
                 CarregarComboBoxSubtipoValor();
 
             isLoad = false;
+
+            cbRelatorio.SelectedIndex = 0;
         }
 
         #region Controle de Tela
@@ -137,7 +139,37 @@ namespace OrangePoint.View
                 return;
             List<Valor> listaValor = valorRule.listaValor();
 
-            dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada).ToList());
+            if (cbFiltraData.Checked) {
+                if (dataEmpresaRule.RetornaDataValida(cbData.Text).Item1 && cbData.Text.Length == 10) {
+                    dataEmpresaRule.IncluirDataEmpresa(idEmpresaSelecionada, cbData.Text);
+                    int codData = int.Parse(dataEmpresaRule.listaDataEmpresa(idEmpresaSelecionada, cbData.Text).First().CodData.ToString());
+                    listaValor = listaValor.Where(o => o.DataEmpresa.CodData == codData).ToList();
+                }
+                else
+                    listaValor = new List<Valor>();
+            }
+
+            if (cbFiltraSubtipo.Checked) {
+                listaValor = listaValor.Where(o => o.SubtipoValor.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString())).ToList();
+            }
+
+            if (cbFiltraValor.Checked) 
+            {
+                if (txtValor.Text != "")
+                {
+                    string valor = txtValor.Text;
+                    valor = valor.Replace("R$", "").Trim();
+                    valor = valor.Replace(" ", "").Trim();
+                    valor = decimal.Parse(valor).ToString();
+                    listaValor = listaValor.Where(o => o.NumValor.ToString() == valor).ToList();
+                }else
+                    listaValor = new List<Valor>();
+            }
+
+            if (cbSelecionaRelatorio.Checked)
+                dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada && o.ValorRelatorio == cbRelatorio.SelectedIndex).ToList());
+            else
+                dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada && o.ValorRelatorio == -1).ToList());
 
             dgValor.Columns["id"].Visible = false;
 
@@ -211,7 +243,7 @@ namespace OrangePoint.View
                 valor.SubtipoValor = subtipoValorRule.ListaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
                 valor.NumValor = decimal.Parse(txtValor.Text);
 
-                valorRule.IncluirValor(valor.DataEmpresa.CodData, valor.SubtipoValor.CodSubtipoValor, valor.NumValor.ToString());
+                valorRule.IncluirValor(valor.DataEmpresa.CodData, valor.SubtipoValor.CodSubtipoValor, valor.NumValor.ToString(), cbSelecionaRelatorio.Checked ? cbRelatorio.SelectedIndex : -1);
                 CarregaGridValorEmpresa();
             }
             else
@@ -233,8 +265,11 @@ namespace OrangePoint.View
 
         private void RetornarMascara(object sender, EventArgs e)
         {
-            TextBox txt = (TextBox)sender;
-            txt.Text = double.Parse(txt.Text).ToString("C2");
+            if (txtValor.Text != "")
+            {
+                TextBox txt = (TextBox)sender;
+                txt.Text = double.Parse(txt.Text).ToString("C2");
+            }
         }
 
         private void TirarMascara(object sender, EventArgs e)
@@ -266,5 +301,42 @@ namespace OrangePoint.View
             txt.KeyPress += ApenasValorNumerico;
         }
 
+        private void cbSelecionaRelatorio_CheckedChanged(object sender, EventArgs e)
+        {
+            lblRelatorio.Visible = cbSelecionaRelatorio.Checked;
+            cbRelatorio.Visible = cbSelecionaRelatorio.Checked;
+
+            CarregaGridValorEmpresa();
+        }
+
+        private void cbFiltraData_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregaGridValorEmpresa();
+        }
+
+        private void cbFiltraSubtipo_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregaGridValorEmpresa();
+        }
+
+        private void cbFiltraValor_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregaGridValorEmpresa();
+        }
+
+        private void cbData_TextChanged(object sender, EventArgs e)
+        {
+            CarregaGridValorEmpresa();
+        }
+
+        private void cbSubtipoValor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregaGridValorEmpresa();
+        }
+
+        private void txtValor_TextChanged(object sender, EventArgs e)
+        {
+            CarregaGridValorEmpresa();
+        }
     }
 }

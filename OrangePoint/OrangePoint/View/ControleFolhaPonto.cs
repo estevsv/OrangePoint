@@ -253,7 +253,7 @@ namespace OrangePoint.View
                 {
                     try
                     {
-                            XcelApp.Application.Workbooks.Add(Type.Missing);
+                        XcelApp.Application.Workbooks.Add(Type.Missing);
                         int cont = 1;
                         for (int i =3; i < dgFolhaPonto.Columns.Count + 1; i++)
                         {
@@ -266,7 +266,12 @@ namespace OrangePoint.View
                             cont = 2;
                             for (int j = 0; j < 6; j++)
                             {
-                                XcelApp.Cells[i + 2, j + 1] = dgFolhaPonto.Rows[i].Cells[cont].Value.ToString();
+                                string insercao = dgFolhaPonto.Rows[i].Cells[cont].Value.ToString();
+
+                                if (j == 0 && insercao.Length > 10) {
+                                    insercao = insercao.Remove(10, 9);
+                                }
+                                XcelApp.Cells[i + 2, j + 1] = insercao;
                                 cont++;
                             }
                         }

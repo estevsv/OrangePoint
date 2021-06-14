@@ -120,7 +120,6 @@ namespace OrangePoint.View
         {
             button2.Visible = listaPermissoes[0];
             button8.Visible = listaPermissoes[1];
-            button4.Visible = listaPermissoes[1];
             button5.Visible = listaPermissoes[2];
             btnRegistrarPonto.Visible = listaPermissoes[4];
         }

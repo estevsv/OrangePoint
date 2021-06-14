@@ -182,7 +182,6 @@ namespace OrangePoint.View
         private void HabilitaPermissoes(List<bool> listaPermissoes)
         {
             button2.Visible = listaPermissoes[1];
-            button4.Visible = listaPermissoes[1];
             button5.Visible = listaPermissoes[2];
             button6.Visible = listaPermissoes[3];
             button7.Visible = listaPermissoes[0];

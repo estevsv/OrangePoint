@@ -47,17 +47,24 @@ namespace OrangePoint.BusinessRule
 
 
             planilha.Cells[2, 2] = "Balanço Patrimonial";
-            planilha.Cells[3, 2] = empresa.RazaoSocial;
+            planilha.Cells[3, 2] = empresa.RazaoSocial.ToUpper();
+            planilha.Range[planilha.Cells[2, 2], planilha.Cells[2, 2]].Font.Bold = true; 
+
             planilha.Cells[3, 8] = "Data Base:";
             planilha.Cells[3, 9] = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year;
 
             planilha.Range[planilha.Cells[4, 2], planilha.Cells[4, 9]].Merge();
             planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 5]].Merge();
-            planilha.Cells[5, 2] = "Ativo";
+            planilha.Cells[5, 2] = "ATIVO";
             planilha.Range[planilha.Cells[5, 6], planilha.Cells[5, 9]].Merge();
-            planilha.Cells[5, 6] = "Passivo";
+
+            planilha.Cells[5, 6] = "PASSIVO";
             planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 9]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
             planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 9]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 9]].Cells.VerticalAlignment = XlHAlign.xlHAlignCenter;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 9]].Font.Bold = true;
 
 
             planilha.Range[planilha.Cells[6, 2], planilha.Cells[6, 5]].Merge();
@@ -69,6 +76,7 @@ namespace OrangePoint.BusinessRule
             planilha.Cells[7, 8] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
             planilha.Cells[7, 9] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
 
+            planilha.Range[planilha.Cells[7, 2], planilha.Cells[7, 9]].Font.Bold = true;
 
             planilha.Range[planilha.Cells[7, 3], planilha.Cells[7, 9]].Font.Color = XlRgbColor.rgbDarkOrange;
 
@@ -160,6 +168,7 @@ namespace OrangePoint.BusinessRule
             if (ladoEsquerdo)
             {
                 planilha.Cells[contadorEsquerdo, 2] = tipo;
+                planilha.Range[planilha.Cells[contadorEsquerdo, 2], planilha.Cells[contadorEsquerdo, 2]].Font.Bold = true;
                 planilha.Range[planilha.Cells[contadorEsquerdo, 5], planilha.Cells[contadorEsquerdo, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
                 contadorEsquerdo++;
 
@@ -198,6 +207,7 @@ namespace OrangePoint.BusinessRule
             else
             {
                 planilha.Cells[contadorDireito, 6] = tipo;
+                planilha.Range[planilha.Cells[contadorDireito, 6], planilha.Cells[contadorDireito, 6]].Font.Bold = true;
                 contadorDireito++;
 
                 int contadorInicial = contadorDireito;
@@ -280,6 +290,8 @@ namespace OrangePoint.BusinessRule
             format.Interior.Color = XlRgbColor.rgbRed;
             format.Font.Color = XlRgbColor.rgbBlack;
         }
-    } 
     #endregion
+    
+
+    } 
 }

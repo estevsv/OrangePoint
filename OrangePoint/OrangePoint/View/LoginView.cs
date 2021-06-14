@@ -26,10 +26,6 @@ namespace OrangePoint.View
                 Application.Exit();
 
             LimpaFotosInutilizadas();
-
-           /* GeradorExcel geradorExcel = new GeradorExcel();
-            geradorExcel.GeraExcelConsultoriaContabil(1, new List<string> {"12/2019","03/2020","06/2020" });
-            Application.Exit();*/
         }
 
         private void Entrar_Click(object sender, EventArgs e)

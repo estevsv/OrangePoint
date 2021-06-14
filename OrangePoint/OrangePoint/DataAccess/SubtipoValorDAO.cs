@@ -58,6 +58,32 @@ namespace OrangePoint.DataAccess
             return listSubtipoValorEmpresa;
         }
 
+        public SubtipoValor PesquisaSubtipoValorPorId(int id) {
+            List<TipoValor> listTipoValor = tipoValorDAO.PesquisaTipoValorLista();
+            SubtipoValor subtipoValor = new SubtipoValor();
+
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "SELECT * FROM bdorangepoint.subtipo_valor where COD_SUBTIPO_VALOR = "+ id +" ;";
+                conexao.Desconectar();
+                conexao.Conectar();
+                MySqlDataReader registro = cmd.ExecuteReader();
+                if (registro.HasRows)
+                {
+                    registro.Read();
+                    subtipoValor.CodSubtipoValor = int.Parse(registro["COD_SUBTIPO_VALOR"].ToString());
+                    subtipoValor.TipoValor = listTipoValor.Find(o => o.CodTipoValor == int.Parse(registro["COD_TIPO_VALOR"].ToString()));
+                    subtipoValor.DescSubtipo = registro["DESC_SUBTIPO"].ToString();
+
+                }
+                conexao.Desconectar();
+            }
+            catch { MessageBox.Show("Erro SubtipoValorDAO/PesquisaSubtipoValorLista. Contate o Suporte"); }
+            return subtipoValor;
+        }
+
         public void ExcluiSubtipoValor(int codSubtipoValor)
         {
             try

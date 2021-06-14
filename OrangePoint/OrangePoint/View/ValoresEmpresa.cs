@@ -16,6 +16,7 @@ namespace OrangePoint.View
 {
     public partial class ValoresEmpresa : Form
     {
+        GeradorExcel geradorExcel = new GeradorExcel();
         Utilities utilities = new Utilities();
         EmpresaRule empresaRule = new EmpresaRule();
         DataEmpresaRule dataEmpresaRule = new DataEmpresaRule();
@@ -56,8 +57,6 @@ namespace OrangePoint.View
                 CarregarComboBoxSubtipoValor();
 
             isLoad = false;
-
-            cbRelatorio.SelectedIndex = 0;
         }
 
         #region Controle de Tela
@@ -166,10 +165,7 @@ namespace OrangePoint.View
                     listaValor = new List<Valor>();
             }
 
-            if (cbSelecionaRelatorio.Checked)
-                dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada && o.ValorRelatorio == cbRelatorio.SelectedIndex).ToList());
-            else
-                dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada && o.ValorRelatorio == -1).ToList());
+            dgValor.DataSource = valorRule.ElaboraTabelaValor(listaValor.Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresaSelecionada).ToList());
 
             dgValor.Columns["id"].Visible = false;
 
@@ -217,11 +213,14 @@ namespace OrangePoint.View
                 CarregaComboBoxEmpresa();
 
             CarregaGridValorEmpresa();
+
+            if (idEmpresaSelecionada != 0)
+                CarregarComboBoxSubtipoValor();
         }
 
         private void CarregarComboBoxSubtipoValor()
         {
-            cbSubtipoValor.DataSource = subtipoValorRule.FiltraPesquisaSubtipoValorTabela(subtipoValorRule.ListaSubtiposPorEmpresa(empresaRule.PesquisaEmpresaPorId(int.Parse(cbEmpresa.SelectedValue.ToString()))));
+            cbSubtipoValor.DataSource = subtipoValorRule.FiltraPesquisaSubtipoValorTabela(subtipoValorRule.ListaSubtiposPorEmpresa(empresaRule.PesquisaEmpresaPorId(int.Parse(cbEmpresa.SelectedValue.ToString()))).OrderBy(o => o.DescSubtipo).ToList());
             cbSubtipoValor.DisplayMember = "SubtipoValor";
             cbSubtipoValor.ValueMember = "id";
         }
@@ -243,7 +242,7 @@ namespace OrangePoint.View
                 valor.SubtipoValor = subtipoValorRule.ListaSubtipoValor().Find(o => o.CodSubtipoValor == int.Parse(cbSubtipoValor.SelectedValue.ToString()));
                 valor.NumValor = decimal.Parse(txtValor.Text);
 
-                valorRule.IncluirValor(valor.DataEmpresa.CodData, valor.SubtipoValor.CodSubtipoValor, valor.NumValor.ToString(), cbSelecionaRelatorio.Checked ? cbRelatorio.SelectedIndex : -1);
+                valorRule.IncluirValor(valor.DataEmpresa.CodData, valor.SubtipoValor.CodSubtipoValor, valor.NumValor.ToString());
                 CarregaGridValorEmpresa();
             }
             else
@@ -301,14 +300,6 @@ namespace OrangePoint.View
             txt.KeyPress += ApenasValorNumerico;
         }
 
-        private void cbSelecionaRelatorio_CheckedChanged(object sender, EventArgs e)
-        {
-            lblRelatorio.Visible = cbSelecionaRelatorio.Checked;
-            cbRelatorio.Visible = cbSelecionaRelatorio.Checked;
-
-            CarregaGridValorEmpresa();
-        }
-
         private void cbFiltraData_CheckedChanged(object sender, EventArgs e)
         {
             CarregaGridValorEmpresa();
@@ -332,11 +323,33 @@ namespace OrangePoint.View
         private void cbSubtipoValor_SelectedIndexChanged(object sender, EventArgs e)
         {
             CarregaGridValorEmpresa();
+
+            if (idEmpresaSelecionada != 0)
+            {
+                SubtipoValor subtipoValor = subtipoValorRule.PesquisaSubtipoValorPorId(isLoad? subtipoValorRule.ListaSubtiposPorEmpresa(empresaRule.PesquisaEmpresaPorId(int.Parse(cbEmpresa.SelectedValue.ToString()))).OrderBy(o => o.DescSubtipo).ToList().First().CodSubtipoValor 
+                    : int.Parse(cbSubtipoValor.SelectedValue.ToString()));
+                if (subtipoValor.TipoValor != null)
+                    txtTipoValor.Text = subtipoValor.TipoValor.DescTipo;
+            }
         }
 
         private void txtValor_TextChanged(object sender, EventArgs e)
         {
             CarregaGridValorEmpresa();
+        }
+
+        private void btnGeraConsultoriaContabil_Click(object sender, EventArgs e)
+        {
+            if (idEmpresaSelecionada != 0)
+                if (dataEmpresaRule.RetornaDataValida(cbData.Text).Item1)
+                {
+                    DateTime data = dataEmpresaRule.RetornaDataValida(cbData.Text).Item2;
+                    geradorExcel.GeraExcelConsultoriaContabil(idEmpresaSelecionada, new List<DateTime> { data, data.AddMonths(3), data.AddMonths(6) });
+                }
+                else
+                    MessageBox.Show("Data Inválida");
+            else
+                MessageBox.Show("Selecione uma Empresa");
         }
     }
 }

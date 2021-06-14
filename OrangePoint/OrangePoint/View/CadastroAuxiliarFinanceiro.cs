@@ -101,9 +101,15 @@ namespace OrangePoint.View
 
         private void dgTipoValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            tipoValorRule.ExcluiTipoValor(int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()));
-            dgTipoValor.Rows.RemoveAt(dgTipoValor.CurrentRow.Index);
-
+            if (int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()) > 5)
+            {
+                tipoValorRule.ExcluiTipoValor(int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()));
+                dgTipoValor.Rows.RemoveAt(dgTipoValor.CurrentRow.Index);
+            }
+            else
+            {
+                MessageBox.Show("Este item não pode ser excluído (Padrão)");
+            }
             CarregaGridTipoValor();
 
             e.Cancel = true;

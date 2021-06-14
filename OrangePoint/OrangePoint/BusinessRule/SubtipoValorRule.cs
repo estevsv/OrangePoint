@@ -27,6 +27,11 @@ namespace OrangePoint.BusinessRule
             return subtipoValorDAO.PesquisaSubtipoValorLista();
         }
 
+        public SubtipoValor PesquisaSubtipoValorPorId(int id)
+        {
+            return subtipoValorDAO.PesquisaSubtipoValorPorId(id);
+        }
+
         public void IncluirSubtipoValor(int codTipoValor, string descricao)
         {
             if (ListaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))

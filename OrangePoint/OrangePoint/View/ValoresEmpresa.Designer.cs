@@ -39,6 +39,7 @@
             this.lblWelcomeUser = new System.Windows.Forms.Label();
             this.btnPontoEletronico = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnGeraConsultoriaContabil = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.userImage = new System.Windows.Forms.PictureBox();
             this.btnSair = new System.Windows.Forms.Button();
@@ -52,12 +53,11 @@
             this.dgValor = new System.Windows.Forms.DataGridView();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.cbData = new System.Windows.Forms.MaskedTextBox();
-            this.cbSelecionaRelatorio = new System.Windows.Forms.CheckBox();
-            this.cbRelatorio = new System.Windows.Forms.ComboBox();
-            this.lblRelatorio = new System.Windows.Forms.Label();
             this.cbFiltraValor = new System.Windows.Forms.CheckBox();
             this.cbFiltraSubtipo = new System.Windows.Forms.CheckBox();
             this.cbFiltraData = new System.Windows.Forms.CheckBox();
+            this.txtTipoValor = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -199,6 +199,7 @@
             // 
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.btnGeraConsultoriaContabil);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.userImage);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -206,6 +207,21 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(874, 69);
             this.panel2.TabIndex = 7;
+            // 
+            // btnGeraConsultoriaContabil
+            // 
+            this.btnGeraConsultoriaContabil.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnGeraConsultoriaContabil.AutoSize = true;
+            this.btnGeraConsultoriaContabil.BackColor = System.Drawing.Color.Transparent;
+            this.btnGeraConsultoriaContabil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGeraConsultoriaContabil.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGeraConsultoriaContabil.Location = new System.Drawing.Point(179, 0);
+            this.btnGeraConsultoriaContabil.Name = "btnGeraConsultoriaContabil";
+            this.btnGeraConsultoriaContabil.Size = new System.Drawing.Size(211, 68);
+            this.btnGeraConsultoriaContabil.TabIndex = 19;
+            this.btnGeraConsultoriaContabil.Text = "Gerar Consultoria Contábil";
+            this.btnGeraConsultoriaContabil.UseVisualStyleBackColor = false;
+            this.btnGeraConsultoriaContabil.Click += new System.EventHandler(this.btnGeraConsultoriaContabil_Click);
             // 
             // button6
             // 
@@ -340,7 +356,7 @@
             this.dgValor.MultiSelect = false;
             this.dgValor.Name = "dgValor";
             this.dgValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgValor.Size = new System.Drawing.Size(651, 317);
+            this.dgValor.Size = new System.Drawing.Size(651, 374);
             this.dgValor.TabIndex = 53;
             this.dgValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgValor_UserDeletingRow);
             // 
@@ -363,52 +379,13 @@
             this.cbData.ValidatingType = typeof(System.DateTime);
             this.cbData.TextChanged += new System.EventHandler(this.cbData_TextChanged);
             // 
-            // cbSelecionaRelatorio
-            // 
-            this.cbSelecionaRelatorio.AutoSize = true;
-            this.cbSelecionaRelatorio.BackColor = System.Drawing.Color.Transparent;
-            this.cbSelecionaRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSelecionaRelatorio.ForeColor = System.Drawing.Color.White;
-            this.cbSelecionaRelatorio.Location = new System.Drawing.Point(217, 555);
-            this.cbSelecionaRelatorio.Name = "cbSelecionaRelatorio";
-            this.cbSelecionaRelatorio.Size = new System.Drawing.Size(155, 24);
-            this.cbSelecionaRelatorio.TabIndex = 78;
-            this.cbSelecionaRelatorio.Text = "Valor de Relatório";
-            this.cbSelecionaRelatorio.UseVisualStyleBackColor = false;
-            this.cbSelecionaRelatorio.CheckedChanged += new System.EventHandler(this.cbSelecionaRelatorio_CheckedChanged);
-            // 
-            // cbRelatorio
-            // 
-            this.cbRelatorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbRelatorio.FormattingEnabled = true;
-            this.cbRelatorio.Items.AddRange(new object[] {
-            "Consultoria Contábil"});
-            this.cbRelatorio.Location = new System.Drawing.Point(289, 586);
-            this.cbRelatorio.Name = "cbRelatorio";
-            this.cbRelatorio.Size = new System.Drawing.Size(214, 21);
-            this.cbRelatorio.TabIndex = 80;
-            this.cbRelatorio.Visible = false;
-            // 
-            // lblRelatorio
-            // 
-            this.lblRelatorio.AutoSize = true;
-            this.lblRelatorio.BackColor = System.Drawing.Color.Transparent;
-            this.lblRelatorio.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRelatorio.ForeColor = System.Drawing.Color.White;
-            this.lblRelatorio.Location = new System.Drawing.Point(217, 585);
-            this.lblRelatorio.Name = "lblRelatorio";
-            this.lblRelatorio.Size = new System.Drawing.Size(66, 22);
-            this.lblRelatorio.TabIndex = 79;
-            this.lblRelatorio.Text = "Relatório";
-            this.lblRelatorio.Visible = false;
-            // 
             // cbFiltraValor
             // 
             this.cbFiltraValor.AutoSize = true;
             this.cbFiltraValor.BackColor = System.Drawing.Color.Transparent;
             this.cbFiltraValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltraValor.ForeColor = System.Drawing.Color.White;
-            this.cbFiltraValor.Location = new System.Drawing.Point(864, 190);
+            this.cbFiltraValor.Location = new System.Drawing.Point(864, 198);
             this.cbFiltraValor.Name = "cbFiltraValor";
             this.cbFiltraValor.Size = new System.Drawing.Size(136, 24);
             this.cbFiltraValor.TabIndex = 81;
@@ -422,7 +399,7 @@
             this.cbFiltraSubtipo.BackColor = System.Drawing.Color.Transparent;
             this.cbFiltraSubtipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltraSubtipo.ForeColor = System.Drawing.Color.White;
-            this.cbFiltraSubtipo.Location = new System.Drawing.Point(475, 190);
+            this.cbFiltraSubtipo.Location = new System.Drawing.Point(475, 198);
             this.cbFiltraSubtipo.Name = "cbFiltraSubtipo";
             this.cbFiltraSubtipo.Size = new System.Drawing.Size(154, 24);
             this.cbFiltraSubtipo.TabIndex = 82;
@@ -436,13 +413,34 @@
             this.cbFiltraData.BackColor = System.Drawing.Color.Transparent;
             this.cbFiltraData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltraData.ForeColor = System.Drawing.Color.White;
-            this.cbFiltraData.Location = new System.Drawing.Point(271, 190);
+            this.cbFiltraData.Location = new System.Drawing.Point(271, 198);
             this.cbFiltraData.Name = "cbFiltraData";
             this.cbFiltraData.Size = new System.Drawing.Size(134, 24);
             this.cbFiltraData.TabIndex = 83;
             this.cbFiltraData.Text = "Filtrar por Data";
             this.cbFiltraData.UseVisualStyleBackColor = false;
             this.cbFiltraData.CheckedChanged += new System.EventHandler(this.cbFiltraData_CheckedChanged);
+            // 
+            // txtTipoValor
+            // 
+            this.txtTipoValor.Enabled = false;
+            this.txtTipoValor.Location = new System.Drawing.Point(594, 172);
+            this.txtTipoValor.MaxLength = 999999;
+            this.txtTipoValor.Name = "txtTipoValor";
+            this.txtTipoValor.Size = new System.Drawing.Size(212, 20);
+            this.txtTipoValor.TabIndex = 84;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(471, 169);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 22);
+            this.label5.TabIndex = 85;
+            this.label5.Text = "Tipo Valor";
             // 
             // ValoresEmpresa
             // 
@@ -451,12 +449,11 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtTipoValor);
             this.Controls.Add(this.cbFiltraData);
             this.Controls.Add(this.cbFiltraSubtipo);
             this.Controls.Add(this.cbFiltraValor);
-            this.Controls.Add(this.cbRelatorio);
-            this.Controls.Add(this.lblRelatorio);
-            this.Controls.Add(this.cbSelecionaRelatorio);
             this.Controls.Add(this.cbData);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.dgValor);
@@ -511,11 +508,11 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.MaskedTextBox cbData;
-        private System.Windows.Forms.CheckBox cbSelecionaRelatorio;
-        private System.Windows.Forms.ComboBox cbRelatorio;
-        private System.Windows.Forms.Label lblRelatorio;
         private System.Windows.Forms.CheckBox cbFiltraValor;
         private System.Windows.Forms.CheckBox cbFiltraSubtipo;
         private System.Windows.Forms.CheckBox cbFiltraData;
+        private System.Windows.Forms.Button btnGeraConsultoriaContabil;
+        private System.Windows.Forms.TextBox txtTipoValor;
+        private System.Windows.Forms.Label label5;
     }
 }

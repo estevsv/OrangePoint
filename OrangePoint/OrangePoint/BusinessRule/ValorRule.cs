@@ -19,13 +19,13 @@ namespace OrangePoint.BusinessRule
             return valorDAO.PesquisaValorLista();
         }
 
-        public void IncluirValor(int codData, int codSubtipoValor, string valor,int valorRelatorio)
+        public void IncluirValor(int codData, int codSubtipoValor, string valor)
         {
             if (listaValor().Exists(o => o.DataEmpresa.CodData == codData && o.SubtipoValor.CodSubtipoValor == codSubtipoValor && o.NumValor.ToString() == valor))
                 MessageBox.Show("Valor já existente!");
             else
             {
-                valorDAO.IncluirValor(codData, codSubtipoValor, valor, valorRelatorio);
+                valorDAO.IncluirValor(codData, codSubtipoValor, valor);
                 MessageBox.Show("Valor cadastrado");
             }
         }

@@ -21,9 +21,11 @@ namespace OrangePoint.BusinessRule
         private int contadorDireito = 0;
         private List<List<string>> somatorioLadoEsquerdo;
         private List<List<string>> somatorioLadoDireito;
+        ValorRule valorRule = new ValorRule();
 
-        public void GeraExcelConsultoriaContabil(int idEmpresa, List<string> meses)
+        public void GeraExcelConsultoriaContabil(int idEmpresa, List<DateTime> meses)
         {
+
             somatorioLadoEsquerdo = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
             somatorioLadoDireito = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
 
@@ -60,12 +62,12 @@ namespace OrangePoint.BusinessRule
 
             planilha.Range[planilha.Cells[6, 2], planilha.Cells[6, 5]].Merge();
             planilha.Range[planilha.Cells[6, 6], planilha.Cells[6, 9]].Merge();
-            planilha.Cells[7, 3] = System.DateTime.DaysInMonth(int.Parse(meses[0].Substring(3, 4)), int.Parse(meses[0].Substring(0, 2))) + "/" + int.Parse(meses[0].Substring(0, 2)) + "/" + int.Parse(meses[0].Substring(3, 4));
-            planilha.Cells[7, 4] = System.DateTime.DaysInMonth(int.Parse(meses[1].Substring(3, 4)), int.Parse(meses[1].Substring(0, 2))) + "/" + int.Parse(meses[1].Substring(0, 2)) + "/" + int.Parse(meses[1].Substring(3, 4));
-            planilha.Cells[7, 5] = System.DateTime.DaysInMonth(int.Parse(meses[2].Substring(3, 4)), int.Parse(meses[2].Substring(0, 2))) + "/" + int.Parse(meses[2].Substring(0, 2)) + "/" + int.Parse(meses[2].Substring(3, 4));
-            planilha.Cells[7, 7] = System.DateTime.DaysInMonth(int.Parse(meses[0].Substring(3, 4)), int.Parse(meses[0].Substring(0, 2))) + "/" + int.Parse(meses[0].Substring(0, 2)) + "/" + int.Parse(meses[0].Substring(3, 4));
-            planilha.Cells[7, 8] = System.DateTime.DaysInMonth(int.Parse(meses[1].Substring(3, 4)), int.Parse(meses[1].Substring(0, 2))) + "/" + int.Parse(meses[1].Substring(0, 2)) + "/" + int.Parse(meses[1].Substring(3, 4));
-            planilha.Cells[7, 9] = System.DateTime.DaysInMonth(int.Parse(meses[2].Substring(3, 4)), int.Parse(meses[2].Substring(0, 2))) + "/" + int.Parse(meses[2].Substring(0, 2)) + "/" + int.Parse(meses[2].Substring(3, 4));
+            planilha.Cells[7, 3] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
+            planilha.Cells[7, 4] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
+            planilha.Cells[7, 5] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
+            planilha.Cells[7, 7] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
+            planilha.Cells[7, 8] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
+            planilha.Cells[7, 9] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
 
 
             planilha.Range[planilha.Cells[7, 3], planilha.Cells[7, 9]].Font.Color = XlRgbColor.rgbDarkOrange;
@@ -84,11 +86,11 @@ namespace OrangePoint.BusinessRule
             contadorEsquerdo = 8;
             contadorDireito = 8;
 
-            geraTipoBalanco(geraTuplaValoresEmpresa(idEmpresa, meses), planilha, "ATIVO CIRCULANTE", true);
-            geraTipoBalanco(geraTuplaValoresEmpresa(idEmpresa, meses), planilha, "ATIVO NÃO CIRCULANTE", true);
-            geraTipoBalanco(geraTuplaValoresEmpresa(idEmpresa, meses), planilha, "PASSIVO CIRCULANTE", false);
-            geraTipoBalanco(geraTuplaValoresEmpresa(idEmpresa, meses), planilha, "PASSIVO NÃO CIRCULANTE", false);
-            geraTipoBalanco(geraTuplaValoresEmpresa(idEmpresa, meses), planilha, "PATRIMÔNIO LÍQUIDO", false);
+            geraTipoBalanco(geraTuplaValoresEmpresa(1,idEmpresa, meses), planilha, "ATIVO CIRCULANTE", true);
+            geraTipoBalanco(geraTuplaValoresEmpresa(2,idEmpresa, meses), planilha, "PASSIVO CIRCULANTE", false);
+            geraTipoBalanco(geraTuplaValoresEmpresa(3,idEmpresa, meses), planilha, "ATIVO NÃO CIRCULANTE", true);
+            geraTipoBalanco(geraTuplaValoresEmpresa(4,idEmpresa, meses), planilha, "PASSIVO NÃO CIRCULANTE", false);
+            geraTipoBalanco(geraTuplaValoresEmpresa(5,idEmpresa, meses), planilha, "PATRIMÔNIO LÍQUIDO", false);
 
 
             contadorGeral = contadorEsquerdo > contadorDireito ? contadorEsquerdo : contadorDireito;
@@ -116,19 +118,41 @@ namespace OrangePoint.BusinessRule
             planilha.Visible = true;
         }
 
-        private List<Tuple<string, List<decimal>>> geraTuplaValoresEmpresa(int idEmpresa, List<string> meses)
+        private List<Tuple<string, List<decimal>>> geraTuplaValoresEmpresa(int tipo,int idEmpresa, List<DateTime> meses)
         {
-            List<decimal> listaValores = new List<decimal>();
-            //enche listaValores
+            List<Valor> listaValores = valorRule.listaValor().Where(o => o.DataEmpresa.Empresa.CodEmpresa == idEmpresa).ToList();
+
             List<Tuple<string, List<decimal>>> tupla = new List<Tuple<string, List<decimal>>>();
 
-            for (int i = 0; i < 10; i++)
+            if (listaValores.Exists(o => o.SubtipoValor.TipoValor.CodTipoValor == tipo)) 
             {
-                listaValores = new List<decimal> { 0, 0, 0 };
-                tupla.Add(new Tuple<string, List<decimal>>("teste" + i, listaValores));
+                //Lista de Subtipos de um tipo de valor específico
+                foreach (SubtipoValor subtipoValor in RetornaListaSubtipoValor(listaValores.Where(o => o.SubtipoValor.TipoValor.CodTipoValor == tipo).ToList()).OrderBy(o => o.DescSubtipo).ToList())
+                {
+                    List<Valor> listaValoresAux = listaValores.Where(o => o.SubtipoValor.CodSubtipoValor == subtipoValor.CodSubtipoValor).ToList();
+
+                    tupla.Add(new Tuple<string, List<decimal>>(subtipoValor.DescSubtipo,new List<decimal> { 
+                        listaValoresAux.Where(o => o.DataEmpresa.Data.Month == meses[0].Month && o.DataEmpresa.Data.Year == meses[0].Year).Sum(o => o.NumValor),
+                        listaValoresAux.Where(o => o.DataEmpresa.Data.Month == meses[1].Month && o.DataEmpresa.Data.Year == meses[1].Year).Sum(o => o.NumValor),
+                        listaValoresAux.Where(o => o.DataEmpresa.Data.Month == meses[2].Month && o.DataEmpresa.Data.Year == meses[2].Year).Sum(o => o.NumValor)
+                        }));
+                }
             }
 
             return tupla;
+        }
+
+        private List<SubtipoValor> RetornaListaSubtipoValor(List<Valor> listaValores) 
+        {
+            List<SubtipoValor> lista = new List<SubtipoValor>();
+            foreach (Valor valor in listaValores) {
+                if (lista.Where(o=> o.CodSubtipoValor == valor.SubtipoValor.CodSubtipoValor).Count() == 0)
+                {
+                    lista.Add(valor.SubtipoValor);
+                }
+            }
+
+            return lista;
         }
 
         private void geraTipoBalanco(List<Tuple<string, List<decimal>>> tuplaValores, Application planilha, string tipo, bool ladoEsquerdo)
@@ -151,6 +175,8 @@ namespace OrangePoint.BusinessRule
                     planilha.Range[planilha.Cells[contadorEsquerdo, 4], planilha.Cells[contadorEsquerdo, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
                     contadorEsquerdo++;
                 }
+                if(contadorInicial == contadorEsquerdo)
+                    contadorEsquerdo++;
                 planilha.Range[planilha.Cells[contadorEsquerdo, 2], planilha.Cells[contadorEsquerdo, 2]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
                 planilha.Range[planilha.Cells[contadorEsquerdo, 3], planilha.Cells[contadorEsquerdo, 3]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
                 planilha.Range[planilha.Cells[contadorEsquerdo, 4], planilha.Cells[contadorEsquerdo, 4]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
@@ -186,6 +212,8 @@ namespace OrangePoint.BusinessRule
                     planilha.Range[planilha.Cells[contadorDireito, 8], planilha.Cells[contadorDireito, 8]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
                     contadorDireito++;
                 }
+                if (contadorInicial == contadorDireito)
+                    contadorDireito++;
                 planilha.Range[planilha.Cells[contadorDireito, 6], planilha.Cells[contadorDireito, 6]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
                 planilha.Range[planilha.Cells[contadorDireito, 7], planilha.Cells[contadorDireito, 7]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
                 planilha.Range[planilha.Cells[contadorDireito, 8], planilha.Cells[contadorDireito, 8]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;

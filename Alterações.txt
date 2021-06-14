@@ -1,2 +1,5 @@
-ALTER TABLE bdorangepoint.subtipo_valor
-ADD VALOR_RELATORIO int;
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('1', 'Ativo Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('2', 'Passivo Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('3', 'Ativo Não Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('4', 'Passivo Não Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('5', 'Patrimônio Líquido');

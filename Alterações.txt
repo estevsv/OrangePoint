@@ -3,3 +3,7 @@ INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES 
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('3', 'Ativo Não Circulante');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('4', 'Passivo Não Circulante');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('5', 'Patrimônio Líquido');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('6', 'RECEITAS OPERACIONAIS');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('7', 'CUSTOS DO NEGÓCIO');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('8', '( +/- ) DESPESAS GERAIS');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('9', '( +/-) OPERAÇÕES FINANCEIRAS');

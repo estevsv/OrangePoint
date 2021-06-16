@@ -100,7 +100,7 @@ namespace OrangePoint.View
 
         private void dgTipoValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()) > 5)
+            if (int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()) > 9)
             {
                 tipoValorRule.ExcluiTipoValor(int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()));
                 dgTipoValor.Rows.RemoveAt(dgTipoValor.CurrentRow.Index);

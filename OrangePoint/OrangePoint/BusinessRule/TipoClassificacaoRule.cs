@@ -26,15 +26,21 @@ namespace OrangePoint.BusinessRule
             return tipoClassificacaoDAO.PesquisaTipoClassificacaoLista();
         }
 
-        public void IncluirTipoClassificacao(string descricao)
+        public void IncluirTipoClassificacao(string descricao, int id = -1)
         {
-            if (listaTipoClassificacao().Exists(o => o.Descricao == descricao))
-                MessageBox.Show("Obrigação já existente!");
-            else
+            if (id != -1)
             {
-                tipoClassificacaoDAO.IncluirTipoClassificacao(descricao);
-                MessageBox.Show("Obrigação cadastrado");
+                tipoClassificacaoDAO.AtualizaTipoClassificacao(descricao, id);
+                MessageBox.Show("Obrigação Atualizada");
             }
+            else
+                if (listaTipoClassificacao().Exists(o => o.Descricao == descricao))
+                    MessageBox.Show("Obrigação já existente!");
+                else
+                {
+                    tipoClassificacaoDAO.IncluirTipoClassificacao(descricao);
+                    MessageBox.Show("Obrigação cadastrada");
+                }
         }
 
         public void ExcluiTipoClassificacao(int codTipoClassificacao)

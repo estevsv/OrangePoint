@@ -24,6 +24,10 @@ namespace OrangePoint.View
         SubtipoAtividadeRule subtipoAtividadeRule = new SubtipoAtividadeRule();
         AtividadeRule atividadeRule = new AtividadeRule();
 
+        private int idTipoValorAlteracao = -1;
+        private int idAtividadeAlteracao = -1;
+        private int idSubtipoValorAlteracao = -1;
+
         public CadastroAuxiliarFinanceiro(Usuario usuario)
         {
             InitializeComponent();
@@ -93,14 +97,18 @@ namespace OrangePoint.View
         private void btnAdicionarTipoValor_Click(object sender, EventArgs e)
         {
             if (txtTipoValor.Text != "")
-                tipoValorRule.IncluirTipoValor(txtTipoValor.Text);
+            {
+                tipoValorRule.IncluirTipoValor(txtTipoValor.Text, idTipoValorAlteracao);
+                btnCancelaAlteracao.Visible = false;
+                idTipoValorAlteracao = -1;
+            }
 
             CarregaGridTipoValor();
         }
 
         private void dgTipoValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            if (int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()) > 9)
+            if (int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()) > 11)
             {
                 tipoValorRule.ExcluiTipoValor(int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString()));
                 dgTipoValor.Rows.RemoveAt(dgTipoValor.CurrentRow.Index);
@@ -163,7 +171,11 @@ namespace OrangePoint.View
         private void btnAdicionarSubitipoValor_Click(object sender, EventArgs e)
         {
             if (txtSubtipoValor.Text != "" && cbTipoValor.Text != "")
-                subtipoValorRule.IncluirSubtipoValor(int.Parse(cbTipoValor.SelectedValue.ToString()), txtSubtipoValor.Text);
+            {
+                subtipoValorRule.IncluirSubtipoValor(int.Parse(cbTipoValor.SelectedValue.ToString()), txtSubtipoValor.Text, idSubtipoValorAlteracao);
+                btnCancelarAlteracao3.Visible = false;
+                idSubtipoValorAlteracao = -1;
+            }
 
             CarregaGridSubtipoValor();
         }
@@ -238,7 +250,11 @@ namespace OrangePoint.View
         private void AdicionarAtividadeEmpresa_Click(object sender, EventArgs e)
         {
             if (txtAtividade.Text != "")
-                atividadeRule.IncluirAtividade(txtAtividade.Text);
+            {
+                atividadeRule.IncluirAtividade(txtAtividade.Text, idAtividadeAlteracao);
+                btnCancelarAlteracao2.Visible = false;
+                idAtividadeAlteracao = -1;
+            }
 
             CarregaGridAtividade();
         }
@@ -300,6 +316,47 @@ namespace OrangePoint.View
         {
             FechaPagina();
             new ValoresEmpresa(usuarioPagina).Show();
+        }
+
+        private void dgTipoValor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtTipoValor.Text = dgTipoValor.CurrentRow.Cells[1].Value.ToString();
+            idTipoValorAlteracao = int.Parse(dgTipoValor.CurrentRow.Cells[0].Value.ToString());
+            btnCancelaAlteracao.Visible = true;
+        }
+        private void dgSubtipoValor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtSubtipoValor.Text = dgSubtipoValor.CurrentRow.Cells[2].Value.ToString();
+            idSubtipoValorAlteracao = int.Parse(dgSubtipoValor.CurrentRow.Cells[0].Value.ToString());
+            btnCancelarAlteracao3.Visible = true;
+        }
+
+        private void dgAtividade_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtAtividade.Text = dgAtividade.CurrentRow.Cells[1].Value.ToString();
+            idAtividadeAlteracao = int.Parse(dgAtividade.CurrentRow.Cells[0].Value.ToString());
+            btnCancelarAlteracao2.Visible = true;
+        }
+
+        private void btnCancelaAlteracao_Click(object sender, EventArgs e)
+        {
+            idTipoValorAlteracao = -1;
+            btnCancelaAlteracao.Visible = false;
+            txtTipoValor.Text = "";
+        }
+
+        private void btnCancelarAlteracao2_Click(object sender, EventArgs e)
+        {
+            idAtividadeAlteracao = -1;
+            btnCancelarAlteracao2.Visible = false;
+            txtAtividade.Text = "";
+        }
+
+        private void btnCancelarAlteracao3_Click(object sender, EventArgs e)
+        {
+            idSubtipoValorAlteracao = -1;
+            btnCancelarAlteracao3.Visible = false;
+            txtSubtipoValor.Text = "";
         }
     }
 }

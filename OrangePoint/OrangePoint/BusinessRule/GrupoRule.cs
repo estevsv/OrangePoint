@@ -25,15 +25,21 @@ namespace OrangePoint.BusinessRule
             return grupoDAO.PesquisaGrupoEmpresasLista();
         }
 
-        public void IncluirGrupoEmpresa(string descricao)
+        public void IncluirGrupoEmpresa(string descricao, int id = -1)
         {
-            if (listaGrupoEmpresas().Exists(o => o.Descricao == descricao))
-                MessageBox.Show("Grupo já existente!");
-            else
+            if (id != -1)
             {
-                grupoDAO.IncluirGrupoEmpresa(descricao);
-                MessageBox.Show("Grupo cadastrado");
+                grupoDAO.AtualizaGrupoEmpresa(descricao, id);
+                MessageBox.Show("Grupo Atualizado");
             }
+            else
+                if (listaGrupoEmpresas().Exists(o => o.Descricao == descricao))
+                    MessageBox.Show("Grupo já existente!");
+                else
+                {
+                    grupoDAO.IncluirGrupoEmpresa(descricao);
+                    MessageBox.Show("Grupo cadastrado");
+                }
         }
 
         public void ExcluiGrupoEmpresa(int codGrupo)

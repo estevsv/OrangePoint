@@ -63,6 +63,9 @@
             this.dgAtividade = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.txtAtividade = new System.Windows.Forms.TextBox();
+            this.btnCancelaAlteracao = new System.Windows.Forms.Button();
+            this.btnCancelarAlteracao2 = new System.Windows.Forms.Button();
+            this.btnCancelarAlteracao3 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
@@ -294,7 +297,7 @@
             this.btnAdicionaSubtipoAtividade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionaSubtipoAtividade.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionaSubtipoAtividade.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionaSubtipoAtividade.Location = new System.Drawing.Point(811, 438);
+            this.btnAdicionaSubtipoAtividade.Location = new System.Drawing.Point(873, 438);
             this.btnAdicionaSubtipoAtividade.Name = "btnAdicionaSubtipoAtividade";
             this.btnAdicionaSubtipoAtividade.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionaSubtipoAtividade.TabIndex = 71;
@@ -361,7 +364,7 @@
             this.btnAdicionarSubitipoValor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionarSubitipoValor.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarSubitipoValor.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarSubitipoValor.Location = new System.Drawing.Point(364, 443);
+            this.btnAdicionarSubitipoValor.Location = new System.Drawing.Point(423, 438);
             this.btnAdicionarSubitipoValor.Name = "btnAdicionarSubitipoValor";
             this.btnAdicionarSubitipoValor.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionarSubitipoValor.TabIndex = 66;
@@ -378,6 +381,7 @@
             this.dgSubtipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgSubtipoValor.Size = new System.Drawing.Size(332, 183);
             this.dgSubtipoValor.TabIndex = 65;
+            this.dgSubtipoValor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSubtipoValor_CellDoubleClick);
             this.dgSubtipoValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgSubtipoValor_UserDeletingRow);
             // 
             // txtSubtipoValor
@@ -424,6 +428,7 @@
             this.dgTipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoValor.Size = new System.Drawing.Size(196, 157);
             this.dgTipoValor.TabIndex = 79;
+            this.dgTipoValor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoValor_CellDoubleClick);
             this.dgTipoValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoValor_UserDeletingRow);
             // 
             // label5
@@ -486,6 +491,7 @@
             this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgAtividade.Size = new System.Drawing.Size(196, 157);
             this.dgAtividade.TabIndex = 84;
+            this.dgAtividade.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAtividade_CellDoubleClick);
             this.dgAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividade_UserDeletingRow);
             // 
             // label3
@@ -507,6 +513,57 @@
             this.txtAtividade.Size = new System.Drawing.Size(243, 20);
             this.txtAtividade.TabIndex = 82;
             // 
+            // btnCancelaAlteracao
+            // 
+            this.btnCancelaAlteracao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelaAlteracao.AutoSize = true;
+            this.btnCancelaAlteracao.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelaAlteracao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelaAlteracao.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelaAlteracao.ForeColor = System.Drawing.Color.White;
+            this.btnCancelaAlteracao.Location = new System.Drawing.Point(230, 170);
+            this.btnCancelaAlteracao.Name = "btnCancelaAlteracao";
+            this.btnCancelaAlteracao.Size = new System.Drawing.Size(131, 30);
+            this.btnCancelaAlteracao.TabIndex = 86;
+            this.btnCancelaAlteracao.Text = "Cancelar Alteração";
+            this.btnCancelaAlteracao.UseVisualStyleBackColor = false;
+            this.btnCancelaAlteracao.Visible = false;
+            this.btnCancelaAlteracao.Click += new System.EventHandler(this.btnCancelaAlteracao_Click);
+            // 
+            // btnCancelarAlteracao2
+            // 
+            this.btnCancelarAlteracao2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarAlteracao2.AutoSize = true;
+            this.btnCancelarAlteracao2.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarAlteracao2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarAlteracao2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarAlteracao2.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarAlteracao2.Location = new System.Drawing.Point(667, 170);
+            this.btnCancelarAlteracao2.Name = "btnCancelarAlteracao2";
+            this.btnCancelarAlteracao2.Size = new System.Drawing.Size(131, 30);
+            this.btnCancelarAlteracao2.TabIndex = 87;
+            this.btnCancelarAlteracao2.Text = "Cancelar Alteração";
+            this.btnCancelarAlteracao2.UseVisualStyleBackColor = false;
+            this.btnCancelarAlteracao2.Visible = false;
+            this.btnCancelarAlteracao2.Click += new System.EventHandler(this.btnCancelarAlteracao2_Click);
+            // 
+            // btnCancelarAlteracao3
+            // 
+            this.btnCancelarAlteracao3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarAlteracao3.AutoSize = true;
+            this.btnCancelarAlteracao3.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarAlteracao3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarAlteracao3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarAlteracao3.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarAlteracao3.Location = new System.Drawing.Point(259, 438);
+            this.btnCancelarAlteracao3.Name = "btnCancelarAlteracao3";
+            this.btnCancelarAlteracao3.Size = new System.Drawing.Size(131, 30);
+            this.btnCancelarAlteracao3.TabIndex = 88;
+            this.btnCancelarAlteracao3.Text = "Cancelar Alteração";
+            this.btnCancelarAlteracao3.UseVisualStyleBackColor = false;
+            this.btnCancelarAlteracao3.Visible = false;
+            this.btnCancelarAlteracao3.Click += new System.EventHandler(this.btnCancelarAlteracao3_Click);
+            // 
             // CadastroAuxiliarFinanceiro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,6 +571,9 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 740);
+            this.Controls.Add(this.btnCancelarAlteracao3);
+            this.Controls.Add(this.btnCancelarAlteracao2);
+            this.Controls.Add(this.btnCancelaAlteracao);
             this.Controls.Add(this.AdicionarAtividadeEmpresa);
             this.Controls.Add(this.dgAtividade);
             this.Controls.Add(this.label3);
@@ -594,5 +654,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtAtividade;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnCancelaAlteracao;
+        private System.Windows.Forms.Button btnCancelarAlteracao2;
+        private System.Windows.Forms.Button btnCancelarAlteracao3;
     }
 }

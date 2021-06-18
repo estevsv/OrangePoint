@@ -113,5 +113,23 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro AtividadeDAO/IncluirAtividadeEmpresa. Contate o Suporte");
             }
         }
+
+        public void AtualizaAtividade(string descricao, int id)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "UPDATE `bdorangepoint`.`atividade` SET `DESCRICAO` = '"+ descricao +"' WHERE (`COD_ATIVIDADE` = '"+ id +"');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro AtividadeDAO/AtualizaAtividade. Contate o Suporte");
+            }
+        }
     }
 }

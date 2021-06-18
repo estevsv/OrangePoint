@@ -90,5 +90,23 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro GrupoDAO/IncluirGrupoEmpresa. Contate o Suporte");
             }
         }
+
+        public void AtualizaGrupoEmpresa(string descricao, int id)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "UPDATE `bdorangepoint`.`grupo_empresa` SET `DESCRICAO` = '"+ descricao +"' WHERE (`COD_GRUPO` = '"+id+"');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro GrupoDAO/AtualizaGrupoEmpresa. Contate o Suporte");
+            }
+        }
     }
 }

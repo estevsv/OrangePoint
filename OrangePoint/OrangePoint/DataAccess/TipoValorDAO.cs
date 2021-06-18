@@ -90,5 +90,23 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro TipoValorDAO/IncluirTipoValor. Contate o Suporte");
             }
         }
+
+        public void AtualizaTipoValor(string descricao, int id)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "UPDATE `bdorangepoint`.`tipo_valor` SET `DESC_TIPO` = '"+ descricao + "' WHERE(`COD_TIPO_VALOR` = '"+ id + "');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro TipoValorDAO/AtualizaTipoValor. Contate o Suporte");
+            }
+        }
     }
 }

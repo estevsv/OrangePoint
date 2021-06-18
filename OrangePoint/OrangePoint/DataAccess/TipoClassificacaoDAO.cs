@@ -90,5 +90,23 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro TipoClassificacaoDAO/IncluirTipoClassificacao. Contate o Suporte");
             }
         }
+
+        public void AtualizaTipoClassificacao(string descricao, int id)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "UPDATE `bdorangepoint`.`tipo_classificao` SET `DESCRICAO` = '"+descricao+"' WHERE (`COD_TIPO_CLASSIFICACAO` = '"+id+"');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro TipoClassificacaoDAO/AtualizaTipoClassificacao. Contate o Suporte");
+            }
+        }
     }
 }

@@ -12,28 +12,34 @@ namespace OrangePoint.BusinessRule
 {
     public class AtividadeRule
     {
-        AtividadeDAO AtividadeDAO = new AtividadeDAO();
+        AtividadeDAO atividadeDAO = new AtividadeDAO();
         AtividadeEmpresaDAO atividadeEmpresaDAO = new AtividadeEmpresaDAO();
 
         public DataTable PesquisaAtividadeTabela()
         {
-            return AtividadeDAO.PesquisaAtividadeTabela();
+            return atividadeDAO.PesquisaAtividadeTabela();
         }
 
         public List<Atividade> listaAtividade()
         {
-            return AtividadeDAO.PesquisaAtividadeLista();
+            return atividadeDAO.PesquisaAtividadeLista();
         }
 
-        public void IncluirAtividade(string descricao)
+        public void IncluirAtividade(string descricao, int id = -1)
         {
-            if (listaAtividade().Exists(o => o.Descricao == descricao))
-                MessageBox.Show("Atividade já existente!");
-            else
+            if (id != -1)
             {
-                AtividadeDAO.IncluirAtividade(descricao);
-                MessageBox.Show("Atividade cadastrado");
+                atividadeDAO.AtualizaAtividade(descricao, id);
+                MessageBox.Show("Atividade Atualizada");
             }
+            else
+                if (listaAtividade().Exists(o => o.Descricao == descricao))
+                    MessageBox.Show("Atividade já existente!");
+                else
+                {
+                    atividadeDAO.IncluirAtividade(descricao);
+                    MessageBox.Show("Atividade cadastrado");
+                }
         }
 
         public void ExcluiAtividade(int codAtividade)
@@ -41,7 +47,7 @@ namespace OrangePoint.BusinessRule
             List<AtividadeEmpresa> listaAtividadeEmpresa = atividadeEmpresaDAO.PesquisaAtividadeEmpresasLista();
             if (!listaAtividadeEmpresa.Exists(o => o.Atividade.CodAtividade == codAtividade))
             {
-                AtividadeDAO.ExcluiAtividade(codAtividade);
+                atividadeDAO.ExcluiAtividade(codAtividade);
                 MessageBox.Show("Atividade Excluído");
             }
             else

@@ -58,6 +58,10 @@
             this.dgTipoClassificacao = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.txtClassificacao = new System.Windows.Forms.TextBox();
+            this.btnCancelarRegime = new System.Windows.Forms.Button();
+            this.btnCancelarGrupo = new System.Windows.Forms.Button();
+            this.btnCancelarAtividade = new System.Windows.Forms.Button();
+            this.btnCancelarObrigacoes = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -264,6 +268,7 @@
             this.dgRegime.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgRegime.Size = new System.Drawing.Size(196, 157);
             this.dgRegime.TabIndex = 21;
+            this.dgRegime.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRegime_CellDoubleClick);
             this.dgRegime.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgRegime_UserDeletingRow);
             // 
             // AdicionarRegime
@@ -274,7 +279,7 @@
             this.AdicionarRegime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarRegime.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarRegime.ForeColor = System.Drawing.Color.White;
-            this.AdicionarRegime.Location = new System.Drawing.Point(284, 146);
+            this.AdicionarRegime.Location = new System.Drawing.Point(320, 148);
             this.AdicionarRegime.Name = "AdicionarRegime";
             this.AdicionarRegime.Size = new System.Drawing.Size(113, 30);
             this.AdicionarRegime.TabIndex = 22;
@@ -290,7 +295,7 @@
             this.AdicionarGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarGrupo.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarGrupo.ForeColor = System.Drawing.Color.White;
-            this.AdicionarGrupo.Location = new System.Drawing.Point(594, 146);
+            this.AdicionarGrupo.Location = new System.Drawing.Point(634, 148);
             this.AdicionarGrupo.Name = "AdicionarGrupo";
             this.AdicionarGrupo.Size = new System.Drawing.Size(113, 30);
             this.AdicionarGrupo.TabIndex = 26;
@@ -307,6 +312,7 @@
             this.dgGrupo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgGrupo.Size = new System.Drawing.Size(196, 157);
             this.dgGrupo.TabIndex = 25;
+            this.dgGrupo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGrupo_CellDoubleClick);
             this.dgGrupo.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgGrupo_UserDeletingRow);
             // 
             // label2
@@ -336,7 +342,7 @@
             this.AdicionarAtividadeEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarAtividadeEmpresa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarAtividadeEmpresa.ForeColor = System.Drawing.Color.White;
-            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(283, 410);
+            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(320, 410);
             this.AdicionarAtividadeEmpresa.Name = "AdicionarAtividadeEmpresa";
             this.AdicionarAtividadeEmpresa.Size = new System.Drawing.Size(113, 30);
             this.AdicionarAtividadeEmpresa.TabIndex = 30;
@@ -353,6 +359,7 @@
             this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgAtividade.Size = new System.Drawing.Size(196, 157);
             this.dgAtividade.TabIndex = 29;
+            this.dgAtividade.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAtividade_CellDoubleClick);
             this.dgAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividade_UserDeletingRow);
             // 
             // label3
@@ -398,7 +405,7 @@
             this.btnAdicionarClassificacao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionarClassificacao.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarClassificacao.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(594, 410);
+            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(634, 410);
             this.btnAdicionarClassificacao.Name = "btnAdicionarClassificacao";
             this.btnAdicionarClassificacao.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionarClassificacao.TabIndex = 46;
@@ -415,6 +422,7 @@
             this.dgTipoClassificacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgTipoClassificacao.Size = new System.Drawing.Size(196, 157);
             this.dgTipoClassificacao.TabIndex = 45;
+            this.dgTipoClassificacao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoClassificacao_CellDoubleClick);
             this.dgTipoClassificacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoClassificacao_UserDeletingRow);
             // 
             // label12
@@ -436,6 +444,74 @@
             this.txtClassificacao.Size = new System.Drawing.Size(196, 20);
             this.txtClassificacao.TabIndex = 43;
             // 
+            // btnCancelarRegime
+            // 
+            this.btnCancelarRegime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarRegime.AutoSize = true;
+            this.btnCancelarRegime.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarRegime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarRegime.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarRegime.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarRegime.Location = new System.Drawing.Point(237, 148);
+            this.btnCancelarRegime.Name = "btnCancelarRegime";
+            this.btnCancelarRegime.Size = new System.Drawing.Size(75, 30);
+            this.btnCancelarRegime.TabIndex = 47;
+            this.btnCancelarRegime.Text = "Cancelar";
+            this.btnCancelarRegime.UseVisualStyleBackColor = false;
+            this.btnCancelarRegime.Visible = false;
+            this.btnCancelarRegime.Click += new System.EventHandler(this.btnCancelarRegime_Click);
+            // 
+            // btnCancelarGrupo
+            // 
+            this.btnCancelarGrupo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarGrupo.AutoSize = true;
+            this.btnCancelarGrupo.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarGrupo.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarGrupo.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarGrupo.Location = new System.Drawing.Point(551, 148);
+            this.btnCancelarGrupo.Name = "btnCancelarGrupo";
+            this.btnCancelarGrupo.Size = new System.Drawing.Size(75, 30);
+            this.btnCancelarGrupo.TabIndex = 48;
+            this.btnCancelarGrupo.Text = "Cancelar";
+            this.btnCancelarGrupo.UseVisualStyleBackColor = false;
+            this.btnCancelarGrupo.Visible = false;
+            this.btnCancelarGrupo.Click += new System.EventHandler(this.btnCancelarGrupo_Click);
+            // 
+            // btnCancelarAtividade
+            // 
+            this.btnCancelarAtividade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarAtividade.AutoSize = true;
+            this.btnCancelarAtividade.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarAtividade.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarAtividade.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarAtividade.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarAtividade.Location = new System.Drawing.Point(237, 410);
+            this.btnCancelarAtividade.Name = "btnCancelarAtividade";
+            this.btnCancelarAtividade.Size = new System.Drawing.Size(75, 30);
+            this.btnCancelarAtividade.TabIndex = 49;
+            this.btnCancelarAtividade.Text = "Cancelar";
+            this.btnCancelarAtividade.UseVisualStyleBackColor = false;
+            this.btnCancelarAtividade.Visible = false;
+            this.btnCancelarAtividade.Click += new System.EventHandler(this.btnCancelarAtividade_Click);
+            // 
+            // btnCancelarObrigacoes
+            // 
+            this.btnCancelarObrigacoes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelarObrigacoes.AutoSize = true;
+            this.btnCancelarObrigacoes.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancelarObrigacoes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelarObrigacoes.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelarObrigacoes.ForeColor = System.Drawing.Color.White;
+            this.btnCancelarObrigacoes.Location = new System.Drawing.Point(551, 410);
+            this.btnCancelarObrigacoes.Name = "btnCancelarObrigacoes";
+            this.btnCancelarObrigacoes.Size = new System.Drawing.Size(75, 30);
+            this.btnCancelarObrigacoes.TabIndex = 50;
+            this.btnCancelarObrigacoes.Text = "Cancelar";
+            this.btnCancelarObrigacoes.UseVisualStyleBackColor = false;
+            this.btnCancelarObrigacoes.Visible = false;
+            this.btnCancelarObrigacoes.Click += new System.EventHandler(this.btnCancelarObrigacoes_Click);
+            // 
             // CadastroAuxiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +519,10 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(953, 621);
+            this.Controls.Add(this.btnCancelarObrigacoes);
+            this.Controls.Add(this.btnCancelarAtividade);
+            this.Controls.Add(this.btnCancelarGrupo);
+            this.Controls.Add(this.btnCancelarRegime);
             this.Controls.Add(this.btnAdicionarClassificacao);
             this.Controls.Add(this.dgTipoClassificacao);
             this.Controls.Add(this.label12);
@@ -513,5 +593,9 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCancelarRegime;
+        private System.Windows.Forms.Button btnCancelarGrupo;
+        private System.Windows.Forms.Button btnCancelarAtividade;
+        private System.Windows.Forms.Button btnCancelarObrigacoes;
     }
 }

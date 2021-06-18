@@ -26,6 +26,11 @@ namespace OrangePoint.View
         TipoClassificacaoRule tipoClassificacaoRule = new TipoClassificacaoRule(); 
         bool fechamentoSistema;
 
+        private int idRegimeAlteracao = -1;
+        private int idGrupoAlteracao = -1;
+        private int idAtividadeAlteracao = -1;
+        private int idTipoClassificacaoAlteracao = -1;
+
         public CadastroAuxiliar(Usuario usuario)
         {
             InitializeComponent();
@@ -148,7 +153,11 @@ namespace OrangePoint.View
         private void AdicionarRegime_Click(object sender, EventArgs e)
         {
             if (txtNovoRegime.Text != "")
-                regimeEmpresaRule.IncluirRegimeEmpresa(txtNovoRegime.Text);
+            {
+                regimeEmpresaRule.IncluirRegimeEmpresa(txtNovoRegime.Text, idRegimeAlteracao);
+                btnCancelarRegime.Visible = false;
+                idRegimeAlteracao = -1;
+            }
 
             CarregaGridRegime();
         }
@@ -180,7 +189,11 @@ namespace OrangePoint.View
         private void AdicionarGrupo_Click(object sender, EventArgs e)
         {
             if (txtNovoGrupo.Text != "")
-                grupoRule.IncluirGrupoEmpresa(txtNovoGrupo.Text);
+            {
+                grupoRule.IncluirGrupoEmpresa(txtNovoGrupo.Text, idGrupoAlteracao);
+                btnCancelarGrupo.Visible = false;
+                idGrupoAlteracao = -1;
+            }
 
             CarregaGridGrupo();
         }
@@ -212,7 +225,11 @@ namespace OrangePoint.View
         private void AdicionarAtividadeEmpresa_Click(object sender, EventArgs e)
         {
             if (txtAtividade.Text != "")
-                atividadeRule.IncluirAtividade(txtAtividade.Text);
+            {
+                atividadeRule.IncluirAtividade(txtAtividade.Text, idAtividadeAlteracao);
+                btnCancelarAtividade.Visible = false;
+                idAtividadeAlteracao = -1;
+            }
 
             CarregaGridAtividade();
         }
@@ -244,7 +261,11 @@ namespace OrangePoint.View
         private void btnAdicionarClassificacao_Click(object sender, EventArgs e)
         {
             if (txtClassificacao.Text != "")
-                tipoClassificacaoRule.IncluirTipoClassificacao(txtClassificacao.Text);
+            {
+                tipoClassificacaoRule.IncluirTipoClassificacao(txtClassificacao.Text, idTipoClassificacaoAlteracao);
+                btnCancelarObrigacoes.Visible = false;
+                idTipoClassificacaoAlteracao = -1;
+            }
 
             CarregaGridTipoClassificacao();
         }
@@ -268,6 +289,62 @@ namespace OrangePoint.View
         {
             FechaPagina();
             new ValoresEmpresa(usuarioPagina).Show();
+        }
+
+        private void dgRegime_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNovoRegime.Text = dgRegime.CurrentRow.Cells[1].Value.ToString();
+            idRegimeAlteracao = int.Parse(dgRegime.CurrentRow.Cells[0].Value.ToString());
+            btnCancelarRegime.Visible = true;
+        }
+
+        private void dgGrupo_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtNovoGrupo.Text = dgGrupo.CurrentRow.Cells[1].Value.ToString();
+            idGrupoAlteracao = int.Parse(dgGrupo.CurrentRow.Cells[0].Value.ToString());
+            btnCancelarGrupo.Visible = true;
+        }
+
+        private void dgAtividade_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtAtividade.Text = dgAtividade.CurrentRow.Cells[1].Value.ToString();
+            idAtividadeAlteracao = int.Parse(dgAtividade.CurrentRow.Cells[0].Value.ToString());
+            btnCancelarAtividade.Visible = true;
+        }
+
+        private void dgTipoClassificacao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtClassificacao.Text = dgTipoClassificacao.CurrentRow.Cells[1].Value.ToString();
+            idTipoClassificacaoAlteracao = int.Parse(dgTipoClassificacao.CurrentRow.Cells[0].Value.ToString());
+            btnCancelarObrigacoes.Visible = true;
+        }
+
+        private void btnCancelarRegime_Click(object sender, EventArgs e)
+        {
+            idRegimeAlteracao = -1;
+            btnCancelarRegime.Visible = false;
+            txtNovoRegime.Text = "";
+        }
+
+        private void btnCancelarGrupo_Click(object sender, EventArgs e)
+        {
+            idGrupoAlteracao = -1;
+            btnCancelarGrupo.Visible = false;
+            txtNovoGrupo.Text = "";
+        }
+
+        private void btnCancelarAtividade_Click(object sender, EventArgs e)
+        {
+            idAtividadeAlteracao = -1;
+            btnCancelarAtividade.Visible = false;
+            txtAtividade.Text = "";
+        }
+
+        private void btnCancelarObrigacoes_Click(object sender, EventArgs e)
+        {
+            idTipoClassificacaoAlteracao = -1;
+            btnCancelarObrigacoes.Visible = false;
+            txtClassificacao.Text = "";
         }
     }
 }

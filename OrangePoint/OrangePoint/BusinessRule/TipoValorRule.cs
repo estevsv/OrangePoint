@@ -25,15 +25,21 @@ namespace OrangePoint.BusinessRule
             return tipoValorDAO.PesquisaTipoValorLista();
         }
 
-        public void IncluirTipoValor(string descricao)
+        public void IncluirTipoValor(string descricao, int id = -1)
         {
-            if (listaTipoValor().Exists(o => o.DescTipo == descricao))
-                MessageBox.Show("Tipo de Valor já existente!");
-            else
+            if (id != -1)
             {
-                tipoValorDAO.IncluirTipoValor(descricao);
-                MessageBox.Show("Tipo de Valor cadastrado");
+                tipoValorDAO.AtualizaTipoValor(descricao, id);
+                MessageBox.Show("Tipo de Valor Atualizado");
             }
+            else
+                if (listaTipoValor().Exists(o => o.DescTipo == descricao))
+                    MessageBox.Show("Tipo de Valor já existente!");
+                else
+                {   
+                    tipoValorDAO.IncluirTipoValor(descricao);
+                    MessageBox.Show("Tipo de Valor cadastrado");
+                }
         }
 
         public void ExcluiTipoValor(int codTipoValor)

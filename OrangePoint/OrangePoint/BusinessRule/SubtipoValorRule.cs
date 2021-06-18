@@ -32,15 +32,21 @@ namespace OrangePoint.BusinessRule
             return subtipoValorDAO.PesquisaSubtipoValorPorId(id);
         }
 
-        public void IncluirSubtipoValor(int codTipoValor, string descricao)
+        public void IncluirSubtipoValor(int codTipoValor, string descricao, int id = -1)
         {
-            if (ListaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))
-                MessageBox.Show("Subtipo já existente!");
-            else
+            if (id != -1)
             {
-                subtipoValorDAO.IncluirSubtipoValor(codTipoValor, descricao);
-                MessageBox.Show("Subtipo Cadastrado!");
+                subtipoValorDAO.AtualizaSubtipoValor(descricao, id);
+                MessageBox.Show("Subtipo Atualizado");
             }
+            else
+                if (ListaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))
+                    MessageBox.Show("Subtipo já existente!");
+                else
+                {
+                    subtipoValorDAO.IncluirSubtipoValor(codTipoValor,descricao);
+                    MessageBox.Show("Subtipo Cadastrado!");
+                }
         }
 
         public void ExcluiSubtipoValor(int codSubtipoValor)

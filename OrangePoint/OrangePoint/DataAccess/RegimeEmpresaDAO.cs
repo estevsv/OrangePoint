@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -88,6 +89,24 @@ namespace OrangePoint.DataAccess
             catch
             {
                 MessageBox.Show("Erro RegimeEmpresaDAO/IncluirLogin. Contate o Suporte");
+            }
+        }
+
+        public void AtualizaRegimeEmpresa(string descricao, int id)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "UPDATE `bdorangepoint`.`regime_empresa` SET `DESCRICAO` = '" + descricao+"' WHERE (`COD_REGIME` = '"+id+"');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro RegimeEmpresaDAO/AtualizaRegimeEmpresa. Contate o Suporte");
             }
         }
     }

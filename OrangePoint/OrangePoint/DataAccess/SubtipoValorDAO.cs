@@ -119,5 +119,23 @@ namespace OrangePoint.DataAccess
                 MessageBox.Show("Erro SubtipoValorDAO/IncluirSubtipoValor. Contate o Suporte");
             }
         }
+
+        public void AtualizaSubtipoValor(string descricao, int id)
+        {
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand();
+                cmd.Connection = conexao.ObjetoConexao;
+                cmd.CommandText = "UPDATE `bdorangepoint`.`subtipo_valor` SET `DESC_SUBTIPO` = '" + descricao + "' WHERE (`COD_SUBTIPO_VALOR` = '" + id + "');";
+                conexao.Desconectar();
+                conexao.Conectar();
+                cmd.ExecuteNonQuery();
+                conexao.Desconectar();
+            }
+            catch
+            {
+                MessageBox.Show("Erro SubtipoValorDAO/AtualizaSubtipoValor. Contate o Suporte");
+            }
+        }
     }
 }

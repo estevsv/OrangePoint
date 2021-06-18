@@ -25,15 +25,21 @@ namespace OrangePoint.BusinessRule
             return regimeEmpresaDAO.PesquisaRegimeEmpresasLista();
         }
 
-        public void IncluirRegimeEmpresa(string descricao)
+        public void IncluirRegimeEmpresa(string descricao, int id = -1)
         {
-            if (listaRegimeEmpresas().Exists(o => o.Descricao == descricao))
-                MessageBox.Show("Regime já existente!");
-            else
+            if (id != -1)
             {
-                regimeEmpresaDAO.IncluirRegimeEmpresa(descricao);
-                MessageBox.Show("Regime cadastrado");
+                regimeEmpresaDAO.AtualizaRegimeEmpresa(descricao, id);
+                MessageBox.Show("Regime Atualizado");
             }
+            else
+                if (listaRegimeEmpresas().Exists(o => o.Descricao == descricao))
+                    MessageBox.Show("Regime já existente!");
+                else
+                {
+                    regimeEmpresaDAO.IncluirRegimeEmpresa(descricao);
+                    MessageBox.Show("Regime cadastrado");
+                }
         }
 
         public void ExcluiRegimeEmpresa(int codRegime)

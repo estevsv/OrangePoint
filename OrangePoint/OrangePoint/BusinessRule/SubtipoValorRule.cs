@@ -54,8 +54,14 @@ namespace OrangePoint.BusinessRule
             List<Valor> listaValor = valorRule.listaValor();
             if (!listaValor.Exists(o => o.SubtipoValor.CodSubtipoValor == codSubtipoValor))
             {
-                subtipoValorDAO.ExcluiSubtipoValor(codSubtipoValor);
-                MessageBox.Show("Subtipo Removido!");
+                List<SubtipoAtividade> subtipoAtividade = subtipoAtividadeRule.listaSubtipoAtividade();
+                if (!subtipoAtividade.Exists(o => o.SubtipoValor.CodSubtipoValor == codSubtipoValor))
+                {
+                    subtipoValorDAO.ExcluiSubtipoValor(codSubtipoValor);
+                    MessageBox.Show("Subtipo Removido!");
+                }
+                else
+                    MessageBox.Show("Subtipo alocado em uma atividade!");
             }
             else
                 MessageBox.Show("Subtipo já alocado em um valor de uma empresa. Exclusão não realizada!");

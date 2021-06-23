@@ -7,3 +7,5 @@ INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES 
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('7', 'CUSTOS DO NEGÓCIO');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('8', '( +/- ) DESPESAS GERAIS');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('9', '( +/-) OPERAÇÕES FINANCEIRAS');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('10', 'RECEITAS OPERACIONAIS LÍQUIDA (DRE)');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('11', 'DRE GERAL');

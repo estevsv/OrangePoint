@@ -344,6 +344,62 @@ namespace OrangePoint.BusinessRule
 
             Empresa empresa = empresaRule.PesquisaEmpresaPorId(idEmpresa);
 
+            CabecalhoDRE(planilha, empresa, meses);
+            contadorGeral++;
+            geraTipoDRE(geraTuplaValoresEmpresa(6, idEmpresa, meses), planilha, "RECEITAS OPERACIONAIS", "( = ) Receita Bruta de Vendas");contadorGeral--;
+            geraTipoDRE(geraTuplaValoresEmpresa(10, idEmpresa, meses), planilha);
+            SomatorioDRE(planilha, "( = ) RECEITA LÍQUIDA");
+
+            somatorioLadoEsquerdo = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
+            somatorioLadoEsquerdo[0].Add("C" + (contadorGeral-2));
+            somatorioLadoEsquerdo[1].Add("D" + (contadorGeral - 2));
+            somatorioLadoEsquerdo[2].Add("E" + (contadorGeral - 2));
+
+            geraTipoDRE(geraTuplaValoresEmpresa(7, idEmpresa, meses), planilha, "CUSTOS DO NEGÓCIO", "( = ) Custo Total");
+
+            SomatorioDRE(planilha, "( = ) RESULTADO BRUTO");
+            somatorioLadoEsquerdo = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
+            somatorioLadoEsquerdo[0].Add("C" + (contadorGeral - 2));
+            somatorioLadoEsquerdo[1].Add("D" + (contadorGeral - 2));
+            somatorioLadoEsquerdo[2].Add("E" + (contadorGeral - 2));
+
+            geraTipoDRE(geraTuplaValoresEmpresa(8, idEmpresa, meses), planilha, "( +/- ) DESPESAS GERAIS");
+            geraTipoDRE(geraTuplaValoresEmpresa(9, idEmpresa, meses), planilha, "( +/-) OPERAÇÕES FINANCEIRAS");
+
+            SomatorioDRE(planilha, "( = ) RESULTADO OPERACIONAL",true);
+
+            somatorioLadoEsquerdo = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
+            somatorioLadoEsquerdo[0].Add("C" + (contadorGeral - 2));
+            somatorioLadoEsquerdo[1].Add("D" + (contadorGeral - 2));
+            somatorioLadoEsquerdo[2].Add("E" + (contadorGeral - 2));
+
+            geraTipoDRE(geraTuplaValoresEmpresa(11, idEmpresa, meses), planilha);
+
+            SomatorioDRE(planilha, "( = ) RESULTADO LÍQUIDO DO EXERCÍCIO");
+
+            planilha.Range[planilha.Cells[contadorGeral - 2, 2], planilha.Cells[contadorGeral -2, 5]].Font.Color = XlRgbColor.rgbDarkOrange;
+
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
+            planilha.Cells[contadorGeral, 2] = "Responsável Administrativo";
+
+            contadorGeral += 4;
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
+            planilha.Cells[contadorGeral, 2] = "Contador"; contadorGeral++;
+            planilha.Cells[contadorGeral, 2] = "CRC";
+
+            planilha.Range[planilha.Cells[contadorGeral - 6, 2], planilha.Cells[contadorGeral, 2]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+            planilha.Range[planilha.Cells[2, 2], planilha.Cells[contadorGeral, 5]].Interior.Color = XlRgbColor.rgbWhite;
+
+            planilha.Range[planilha.Cells[1, 1], planilha.Cells[contadorGeral, 1]].Interior.Color = XlRgbColor.rgbBlack;
+            planilha.Range[planilha.Cells[contadorGeral - 9, 2], planilha.Cells[contadorGeral - 9, 5]].Interior.Color = XlRgbColor.rgbBlack;
+
+            planilha.Columns.AutoFit();
+            planilha.Calculate();
+        }
+
+        private void CabecalhoDRE(Application planilha, Empresa empresa, List<DateTime> meses)
+        {
             Range oRange = (Range)planilha.ActiveSheet.Cells[1, 1];
             float Left = (float)((double)oRange.Left);
             float Top = (float)((double)oRange.Top);
@@ -371,39 +427,21 @@ namespace OrangePoint.BusinessRule
             planilha.Cells[5, 3] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
             planilha.Cells[5, 4] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
             planilha.Cells[5, 5] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
-           
+
 
             planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 5]].Font.Bold = true;
             planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 5]].Font.Color = XlRgbColor.rgbDarkOrange;
             planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 5]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
 
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 2]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 3]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 4], planilha.Cells[5, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+
             contadorGeral = 5;
-            contadorEsquerdo = 5;
-            contadorDireito = 5;
-
-            geraTipoDRE(geraTuplaValoresEmpresa(6, idEmpresa, meses), planilha, "RECEITAS OPERACIONAIS");
-            geraTipoDRE(geraTuplaValoresEmpresa(7, idEmpresa, meses), planilha, "CUSTOS DO NEGÓCIO");
-            geraTipoDRE(geraTuplaValoresEmpresa(8, idEmpresa, meses), planilha, "(+/-) DESPESAS GERAIS");
-            geraTipoDRE(geraTuplaValoresEmpresa(9, idEmpresa, meses), planilha, "(+/-) OPERAÇÕES FINANCEIRAS");
-
-            somatorioDRE(planilha);
-
-            planilha.Range[planilha.Cells[1, 1], planilha.Cells[contadorGeral, 1]].Interior.Color = XlRgbColor.rgbBlack;
-
-            planilha.Columns.AutoFit();
-            planilha.Calculate();
         }
 
-        private void geraTipoDRE(List<Tuple<string, List<decimal>>> tuplaValores, Application planilha, string tipo)
+        private void LoopContrucaoValoresDRE(List<Tuple<string, List<decimal>>> tuplaValores,Application planilha) 
         {
-
-            planilha.Cells[contadorGeral, 2] = tipo;
-            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Font.Bold = true;
-            planilha.Range[planilha.Cells[contadorGeral, 5], planilha.Cells[contadorGeral, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
-            contadorGeral++;
-
-
-            int contadorInicial = contadorGeral;
             for (int i = 0; i < tuplaValores.Count; i++)
             {
                 planilha.Cells[contadorGeral, 2] = tuplaValores[i].Item1;
@@ -415,8 +453,26 @@ namespace OrangePoint.BusinessRule
                 planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
                 contadorGeral++;
             }
+        }
+
+        private void geraTipoDRE(List<Tuple<string, List<decimal>>> tuplaValores, Application planilha, string tipo = "", string tituloSomatorio = "")
+        {
+
+            planilha.Cells[contadorGeral, 2] = tipo;
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Font.Bold = true;
+            contadorGeral++;
+
+
+            int contadorInicial = contadorGeral;
+
+            LoopContrucaoValoresDRE(tuplaValores, planilha);
+
             if (contadorInicial == contadorGeral)
                 contadorGeral++;
+
+            planilha.Cells[contadorGeral, 2] = tituloSomatorio;
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Font.Bold = true;
+
             planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
             planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
             planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
@@ -436,12 +492,36 @@ namespace OrangePoint.BusinessRule
             contadorGeral += 2;
         }
 
-        private void somatorioDRE(Application planilha) {
-            planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[0][0] + ";" + somatorioLadoEsquerdo[0][1] + ";)";
-            planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[1][0] + ";" + somatorioLadoEsquerdo[1][1] + ";)";
-            planilha.Range[planilha.Cells[contadorGeral, 5], planilha.Cells[contadorGeral, 5]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[2][0] + ";" + somatorioLadoEsquerdo[2][1] + ";)";
+        private void SomatorioDRE(Application planilha,string tituloSomatorio = "", bool somaTripla = false) {
+            planilha.Cells[contadorGeral, 2] = tituloSomatorio;
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Font.Bold = true;
 
-            contadorGeral++;
+            if (somaTripla)
+            {
+                planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[0][0] + ";" + somatorioLadoEsquerdo[0][1] + ";"
+                    + ";" + somatorioLadoEsquerdo[0][2] + ";)";
+                planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[1][0] + ";" + somatorioLadoEsquerdo[1][1] + ";"
+                    + ";" + somatorioLadoEsquerdo[1][2] + ";)";
+                planilha.Range[planilha.Cells[contadorGeral, 5], planilha.Cells[contadorGeral, 5]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[2][0] + ";" + somatorioLadoEsquerdo[2][1] + ";"
+                    + ";" + somatorioLadoEsquerdo[2][2] + ";)";
+            }
+            else
+            {
+                planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[0][0] + ";" + somatorioLadoEsquerdo[0][1] + ";)";
+                planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[1][0] + ";" + somatorioLadoEsquerdo[1][1] + ";)";
+                planilha.Range[planilha.Cells[contadorGeral, 5], planilha.Cells[contadorGeral, 5]].FormulaLocal = "=SOMA(" + somatorioLadoEsquerdo[2][0] + ";" + somatorioLadoEsquerdo[2][1] + ";)";
+            }
+
+            planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 5]].Numberformat = "#.###,00 ";
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 5]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlDouble;
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 5]].Font.Bold = true;
+            planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 5]].Font.Color = XlRgbColor.rgbDarkOrange;
+
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+
+            contadorGeral+= 2;
         }
 
         #endregion

@@ -73,7 +73,7 @@ namespace OrangePoint.BusinessRule
             PrimaryKeyColumns[0] = table.Columns["id"];
             table.PrimaryKey = PrimaryKeyColumns;
 
-            foreach (SubtipoAtividade subtipo in listaSubtipoAtividade())
+            foreach (SubtipoAtividade subtipo in listaSubtipoAtividade().OrderBy(o => o.Atividade.Descricao))
             {
                 row = table.NewRow();
                 row["id"] = subtipo.CodSubtipoAtividade;

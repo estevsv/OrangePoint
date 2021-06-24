@@ -170,11 +170,11 @@ namespace OrangePoint.View
 
             dgValor.Columns["Data"].Width = 250;
             dgValor.Columns["Valor"].Width = 165;
-            dgValor.Columns["Subtipo"].Width = 200;
+            dgValor.Columns["Conta Analítica"].Width = 200;
 
             dgValor.Columns["Data"].ReadOnly = true;
             dgValor.Columns["Valor"].ReadOnly = true;
-            dgValor.Columns["Subtipo"].ReadOnly = true;
+            dgValor.Columns["Conta Analítica"].ReadOnly = true;
         }
 
         private void CarregaComboBox(string razaoSocial = "")

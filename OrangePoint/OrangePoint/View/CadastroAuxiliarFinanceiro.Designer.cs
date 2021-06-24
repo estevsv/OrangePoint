@@ -236,9 +236,9 @@
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(734, 312);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(219, 22);
+            this.label11.Size = new System.Drawing.Size(270, 22);
             this.label11.TabIndex = 76;
-            this.label11.Text = "Cadastro de Subtipo de Atividade";
+            this.label11.Text = "Cadastro de Conta Analítica por Atividade";
             // 
             // label10
             // 
@@ -269,9 +269,9 @@
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(692, 401);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 22);
+            this.label7.Size = new System.Drawing.Size(103, 22);
             this.label7.TabIndex = 73;
-            this.label7.Text = "Subtipo de Valor";
+            this.label7.Text = "Conta Analítica";
             // 
             // cbSubtipoValor
             // 
@@ -336,9 +336,9 @@
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(255, 401);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(95, 22);
+            this.label8.Size = new System.Drawing.Size(103, 22);
             this.label8.TabIndex = 68;
-            this.label8.Text = "Tipo de Valor";
+            this.label8.Text = "Conta Sintética";
             // 
             // cbTipoValor
             // 
@@ -399,9 +399,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(255, 358);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 22);
+            this.label6.Size = new System.Drawing.Size(103, 22);
             this.label6.TabIndex = 64;
-            this.label6.Text = "Subtipo de Valor";
+            this.label6.Text = "Conta Analítica";
             // 
             // btnAdicionarTipoValor
             // 
@@ -439,9 +439,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(244, 87);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 22);
+            this.label5.Size = new System.Drawing.Size(103, 22);
             this.label5.TabIndex = 78;
-            this.label5.Text = "Tipo de Valor";
+            this.label5.Text = "Conta Sintética";
             // 
             // txtTipoValor
             // 

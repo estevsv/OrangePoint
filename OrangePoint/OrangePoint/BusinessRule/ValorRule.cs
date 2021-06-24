@@ -66,7 +66,7 @@ namespace OrangePoint.BusinessRule
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "Subtipo",
+                ColumnName = "Conta Analítica",
                 ReadOnly = true,
             };
             table.Columns.Add(column);
@@ -82,7 +82,7 @@ namespace OrangePoint.BusinessRule
                 row["id"] = valor.CodValor;
                 row["Data"] = valor.DataEmpresa.Data.ToShortDateString();
                 row["Valor"] = valor.NumValor.ToString("N2");
-                row["Subtipo"] = valor.SubtipoValor.DescSubtipo;
+                row["Conta Analítica"] = valor.SubtipoValor.DescSubtipo;
                 table.Rows.Add(row);
             }
 

@@ -300,9 +300,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(471, 142);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 22);
+            this.label1.Size = new System.Drawing.Size(103, 22);
             this.label1.TabIndex = 48;
-            this.label1.Text = "Subtipo Valor";
+            this.label1.Text = "Conta Analítica";
             // 
             // btnCadastrarValor
             // 
@@ -421,9 +421,9 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(471, 169);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 22);
+            this.label5.Size = new System.Drawing.Size(103, 22);
             this.label5.TabIndex = 85;
-            this.label5.Text = "Tipo Valor";
+            this.label5.Text = "Conta Sintética";
             // 
             // ValoresEmpresa
             // 

@@ -72,6 +72,7 @@ namespace OrangePoint.BusinessRule
         {
             if(listaSubtipoValor == null)
                 listaSubtipoValor = ListaSubtipoValor();
+            listaSubtipoValor = listaSubtipoValor.OrderBy(o => o.DescSubtipo).ToList();
             DataTable table = new DataTable("TabelaGridClasse");
             DataColumn column;
             DataRow row;

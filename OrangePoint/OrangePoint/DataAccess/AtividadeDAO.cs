@@ -19,7 +19,7 @@ namespace OrangePoint.DataAccess
             DataTable tabela = new DataTable();
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM bdorangepoint.atividade;", conexao.StringConexao);
+                MySqlDataAdapter da = new MySqlDataAdapter("SELECT * FROM bdorangepoint.atividade order by DESCRICAO;", conexao.StringConexao);
                 da.Fill(tabela);
             }
             catch

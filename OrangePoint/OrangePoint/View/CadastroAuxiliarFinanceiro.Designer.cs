@@ -248,9 +248,9 @@
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(321, 312);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(195, 22);
+            this.label10.Size = new System.Drawing.Size(184, 22);
             this.label10.TabIndex = 75;
-            this.label10.Text = "Cadastro de Subtipo de Valor";
+            this.label10.Text = "Cadastro de Conta Analítica";
             // 
             // cbAtividade
             // 

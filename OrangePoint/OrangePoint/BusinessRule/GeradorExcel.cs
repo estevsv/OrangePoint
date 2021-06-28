@@ -44,13 +44,46 @@ namespace OrangePoint.BusinessRule
 
             GeraWorkSheetDRE(idEmpresa, meses, planilha);
 
+            xlSheets = planilha.ActiveWorkbook.Sheets as Microsoft.Office.Interop.Excel.Sheets;
+            xlNewSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlSheets.Add(xlSheets[3], Type.Missing, Type.Missing, Type.Missing);
+            xlNewSheet.Name = "Ind. Financeiros";
+
+            GeraWorkSheetIndicesFinanceiros(idEmpresa, meses, planilha);
+
             planilha.ActiveWorkbook.Sheets[1].Activate();
-            planilha.Worksheets[3].Delete();
+            planilha.Worksheets[4].Delete();
 
             planilha.Visible = true;
         }
 
         #region Métodos Auxiliares
+        private void CabecalhoGeral(Application planilha, Empresa empresa, string tituloRelatorio, int ultimaColuna = 5)
+        {
+            Range oRange = (Range)planilha.ActiveSheet.Cells[1, 1];
+            float Left = (float)((double)oRange.Left);
+            float Top = (float)((double)oRange.Top);
+            const float ImageSize = 40;
+            planilha.ActiveSheet.Shapes.AddPicture(capturaLogoFatore(), Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize, ImageSize);
+
+            planilha.Range[planilha.Cells[1, 2], planilha.Cells[1, ultimaColuna]].Interior.Color = XlRgbColor.rgbBlack;
+
+            planilha.Cells[1, 2] = "CONSULTORIA CONTABIL";
+            planilha.Range[planilha.Cells[1, 2], planilha.Cells[1, 2]].Font.Color = XlRgbColor.rgbDarkOrange;
+            planilha.Range[planilha.Cells[2, 2], planilha.Cells[2, ultimaColuna]].Merge();
+            planilha.Range[planilha.Cells[3, 2], planilha.Cells[2, ultimaColuna]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+
+
+
+            planilha.Cells[2, 2] = tituloRelatorio;
+            planilha.Cells[3, 2] = empresa.RazaoSocial.ToUpper();
+            planilha.Range[planilha.Cells[2, 2], planilha.Cells[2, 2]].Font.Bold = true;
+
+            planilha.Cells[3, ultimaColuna] = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year;
+
+            planilha.Range[planilha.Cells[3, 2], planilha.Cells[3, ultimaColuna-1]].Merge();
+            planilha.Range[planilha.Cells[4, 2], planilha.Cells[4, ultimaColuna]].Merge();
+        }
+
         private string capturaLogoFatore()
         {
             string directoryPath = Directory.GetCurrentDirectory().Replace('\\', '*');
@@ -412,29 +445,7 @@ namespace OrangePoint.BusinessRule
 
         private void CabecalhoDRE(Application planilha, Empresa empresa, List<DateTime> meses)
         {
-            Range oRange = (Range)planilha.ActiveSheet.Cells[1, 1];
-            float Left = (float)((double)oRange.Left);
-            float Top = (float)((double)oRange.Top);
-            const float ImageSize = 40;
-            planilha.ActiveSheet.Shapes.AddPicture(capturaLogoFatore(), Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left, Top, ImageSize, ImageSize);
-
-            planilha.Range[planilha.Cells[1, 2], planilha.Cells[1, 5]].Interior.Color = XlRgbColor.rgbBlack;
-
-            planilha.Cells[1, 2] = "CONSULTORIA CONTABIL";
-            planilha.Range[planilha.Cells[1, 2], planilha.Cells[1, 2]].Font.Color = XlRgbColor.rgbDarkOrange;
-            planilha.Range[planilha.Cells[2, 2], planilha.Cells[2, 5]].Merge();
-            planilha.Range[planilha.Cells[3, 2], planilha.Cells[2, 5]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
-
-
-
-            planilha.Cells[2, 2] = "Demonstração de Resultados";
-            planilha.Cells[3, 2] = empresa.RazaoSocial.ToUpper();
-            planilha.Range[planilha.Cells[2, 2], planilha.Cells[2, 2]].Font.Bold = true;
-
-            planilha.Cells[3, 5] = DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year;
-
-            planilha.Range[planilha.Cells[3, 2], planilha.Cells[3, 4]].Merge();
-            planilha.Range[planilha.Cells[4, 2], planilha.Cells[4, 5]].Merge();
+            CabecalhoGeral(planilha, empresa, "Demonstração de Resultados");
 
             planilha.Cells[5, 3] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
             planilha.Cells[5, 4] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
@@ -552,6 +563,61 @@ namespace OrangePoint.BusinessRule
             planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
 
             contadorGeral+= 2;
+        }
+
+        #endregion
+
+        #region Índices Financeiros
+
+        private void CabecalhoIndicesFinanceiros(Application planilha, Empresa empresa, List<DateTime> meses)
+        {
+            CabecalhoGeral(planilha, empresa, "Índices Financeiros",6);
+
+            planilha.Cells[5, 2] = "ÍNDICE";
+            planilha.Cells[5, 3] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
+            planilha.Cells[5, 4] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
+            planilha.Cells[5, 5] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
+            planilha.Cells[5, 6] = "ANÁLISE";
+
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 6]].Font.Bold = true;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 6]].Font.Color = XlRgbColor.rgbDarkOrange;
+            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 6]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 2]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 3]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 4], planilha.Cells[5, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 5], planilha.Cells[5, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 6]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+
+            contadorGeral = 5;
+        }
+
+        private void GeraWorkSheetIndicesFinanceiros(int idEmpresa, List<DateTime> meses, Application planilha)
+        {
+            Empresa empresa = empresaRule.PesquisaEmpresaPorId(idEmpresa);
+            CabecalhoIndicesFinanceiros(planilha, empresa, meses);
+            contadorGeral++;
+
+
+            #region Bottom
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
+            planilha.Cells[contadorGeral, 2] = "Responsável Administrativo";
+
+            contadorGeral += 4;
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
+            planilha.Cells[contadorGeral, 2] = "Contador"; contadorGeral++;
+            planilha.Cells[contadorGeral, 2] = "CRC";
+
+            planilha.Range[planilha.Cells[contadorGeral - 6, 2], planilha.Cells[contadorGeral, 2]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+
+            planilha.Range[planilha.Cells[2, 2], planilha.Cells[contadorGeral, 5]].Interior.Color = XlRgbColor.rgbWhite;
+
+            planilha.Range[planilha.Cells[1, 1], planilha.Cells[contadorGeral, 1]].Interior.Color = XlRgbColor.rgbBlack;
+
+            planilha.Columns.AutoFit();
+            planilha.Calculate();
+            #endregion
         }
 
         #endregion

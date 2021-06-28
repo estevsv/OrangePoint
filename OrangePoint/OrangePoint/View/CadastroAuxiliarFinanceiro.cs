@@ -157,8 +157,8 @@ namespace OrangePoint.View
             if (dgSubtipoValor.Columns.Count != 0)
             {
                 dgSubtipoValor.Columns["id"].Visible = false;
-                dgSubtipoValor.Columns["TipoValor"].HeaderText = "Tipo de Valor";
-                dgSubtipoValor.Columns["SubtipoValor"].HeaderText = "Subtipo de Valor";
+                dgSubtipoValor.Columns["TipoValor"].HeaderText = "Conta Sintética";
+                dgSubtipoValor.Columns["SubtipoValor"].HeaderText = "Conta Analítica";
                 dgSubtipoValor.Columns["TipoValor"].ReadOnly = true;
                 dgSubtipoValor.Columns["SubtipoValor"].ReadOnly = true;
                 dgSubtipoValor.Columns["TipoValor"].Width = 145;
@@ -201,7 +201,7 @@ namespace OrangePoint.View
             {
                 dgSubtipoAtividade.Columns["id"].Visible = false;
                 dgSubtipoAtividade.Columns["Atividade"].HeaderText = "Atividade";
-                dgSubtipoAtividade.Columns["SubtipoValor"].HeaderText = "Subtipo de Valor";
+                dgSubtipoAtividade.Columns["SubtipoValor"].HeaderText = "Conta Analítica";
                 dgSubtipoAtividade.Columns["Atividade"].ReadOnly = true;
                 dgSubtipoAtividade.Columns["SubtipoValor"].ReadOnly = true;
                 dgSubtipoAtividade.Columns["Atividade"].Width = 145;

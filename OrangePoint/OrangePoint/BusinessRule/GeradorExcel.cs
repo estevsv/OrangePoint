@@ -25,10 +25,16 @@ namespace OrangePoint.BusinessRule
         private int linhaResultadoExercicio;
         private List<List<string>> somatorioLadoEsquerdo;
         private List<List<string>> somatorioLadoDireito;
+        private List<Tuple<string, List<string>>> tuplaIndicesFinanceiros;
+
+        private List<string> listStringAuxiliar = new List<string>();
+
         ValorRule valorRule = new ValorRule();
 
         public void GeraExcelConsultoriaContabil(int idEmpresa, List<DateTime> meses)
         {
+            tuplaIndicesFinanceiros = new List<Tuple<string, List<string>>>();
+
             Application planilha = new Application();
             planilha.Application.Workbooks.Add(Type.Missing);
 
@@ -210,11 +216,55 @@ namespace OrangePoint.BusinessRule
             contadorDireito = 8;
 
             geraTipoBalanco(geraTuplaValoresEmpresa(1, idEmpresa, meses), planilha, "ATIVO CIRCULANTE", true);
+
+            #region Indices Financeiros - ATIVO CIRCULANTE
+            AdicionaTupla(true, "Liquidez Geral", new List<string> { "=(('BALANÇO PATRIMONIAL'!C", "", "=(('BALANÇO PATRIMONIAL'!D", "", "=(('BALANÇO PATRIMONIAL'!E", "" });
+            AdicionaTupla(true, "Liquidez Corrente", new List<string> { "=('BALANÇO PATRIMONIAL'!C", "", "=('BALANÇO PATRIMONIAL'!D", "", "=('BALANÇO PATRIMONIAL'!E", "" });
+
+            #endregion
+
             geraTipoBalanco(geraTuplaValoresEmpresa(2, idEmpresa, meses), planilha, "PASSIVO CIRCULANTE", false);
+
+            #region Indices Financeiros - PASSIVO CIRCULANTE
+
+            AdicionaTupla(false, "Participacao de Capitais Terceiros", new List<string> { "=(('BALANÇO PATRIMONIAL'!G", "", "=(('BALANÇO PATRIMONIAL'!H", "", "=(('BALANÇO PATRIMONIAL'!I", "" });
+            AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "=('BALANÇO PATRIMONIAL'!G", "/('BALANÇO PATRIMONIAL'!G", "=('BALANÇO PATRIMONIAL'!H", "/('BALANÇO PATRIMONIAL'!H", "=('BALANÇO PATRIMONIAL'!I", "/('BALANÇO PATRIMONIAL'!I" });
+            AdicionaTupla(true, "Liquidez Corrente", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")", "/'BALANÇO PATRIMONIAL'!H", ")", "/'BALANÇO PATRIMONIAL'!I", ")" });
+            int linhaPassivoCirculante = contadorDireito;
+            #endregion
+
             geraTipoBalanco(geraTuplaValoresEmpresa(3, idEmpresa, meses), planilha, "ATIVO NÃO CIRCULANTE", true);
+
+            #region Indices Financeiros - ATIVO NÃO CIRCULANTE
+            AdicionaTupla(true,"Retorno sobre Ativo", new List<string> { "/'BALANÇO PATRIMONIAL'!C", ")*100", "/'BALANÇO PATRIMONIAL'!D", ")*100", "/'BALANÇO PATRIMONIAL'!E", ")*100" });
+            AdicionaTupla(true, "Giro do Ativo", new List<string> { "/'BALANÇO PATRIMONIAL'!C", "", "/'BALANÇO PATRIMONIAL'!D", "", "/'BALANÇO PATRIMONIAL'!E", "" });
+            AdicionaTupla(true, "Imobilização do Patrimonio Liquido", new List<string> { "=('BALANÇO PATRIMONIAL'!C", "", "=('BALANÇO PATRIMONIAL'!D", "", "=('BALANÇO PATRIMONIAL'!E", "" });
+            AdicionaTupla(true, "Imobilização de Recursos não Corrente", new List<string> { "=('BALANÇO PATRIMONIAL'!C", "", "=('BALANÇO PATRIMONIAL'!D", "", "=('BALANÇO PATRIMONIAL'!E", "" });
+            AdicionaTupla(true, "Liquidez Geral", new List<string> { "+'BALANÇO PATRIMONIAL'!C", "", "+'BALANÇO PATRIMONIAL'!D", "", "+'BALANÇO PATRIMONIAL'!E", "" });
+
+
+            #endregion
+
             geraTipoBalanco(geraTuplaValoresEmpresa(4, idEmpresa, meses), planilha, "PASSIVO NÃO CIRCULANTE", false);
+
+            #region Indices Financeiros - PASSIVO NÃO CIRCULANTE
+            AdicionaTupla(false, "Participacao de Capitais Terceiros", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "", "+'BALANÇO PATRIMONIAL'!H", "", "+'BALANÇO PATRIMONIAL'!I", "" });
+            AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))*100", "+'BALANÇO PATRIMONIAL'!H", "))*100", "+'BALANÇO PATRIMONIAL'!I", "))*100" });
+            AdicionaTupla(false, "Imobilização de Recursos não Corrente", new List<string> { "/('BALANÇO PATRIMONIAL'!G", "", "/('BALANÇO PATRIMONIAL'!H", "", "/('BALANÇO PATRIMONIAL'!I", "" });
+
+            #endregion
+
             geraTipoBalanco(geraTuplaValoresEmpresa(5, idEmpresa, meses), planilha, "PATRIMÔNIO LÍQUIDO", false,true);
 
+            #region Indices Financeiros - PATRIMÔNIO LÍQUIDO
+            AdicionaTupla(false, "Participacao de Capitais Terceiros", new List<string> { ")/'BALANÇO PATRIMONIAL'!G", ")*100", ")/'BALANÇO PATRIMONIAL'!H", ")*100", ")/'BALANÇO PATRIMONIAL'!I", ")*100" });
+            AdicionaTupla(false, "Retorno sobre Patrimonio Liquido", new List<string> { "/('BALANÇO PATRIMONIAL'!G", "", "/('BALANÇO PATRIMONIAL'!H", "", "/('BALANÇO PATRIMONIAL'!I", "" });
+            AdicionaTupla(false, "Imobilização do Patrimonio Liquido", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")*100", "/'BALANÇO PATRIMONIAL'!H", ")*100", "/'BALANÇO PATRIMONIAL'!I", ")*100", });
+            AdicionaTupla(false, "Imobilização de Recursos não Corrente", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))*100", "+'BALANÇO PATRIMONIAL'!H", "))*100", "+'BALANÇO PATRIMONIAL'!I", "))*100" });
+            AdicionaTupla(false, "Liquidez Geral", new List<string> { ")/('BALANÇO PATRIMONIAL'!G", "", ")/('BALANÇO PATRIMONIAL'!H", "", ")/('BALANÇO PATRIMONIAL'!I", "" },linhaPassivoCirculante);
+            AdicionaTupla(false, "Liquidez Geral", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))", "+'BALANÇO PATRIMONIAL'!H", "))", "+'BALANÇO PATRIMONIAL'!I", "))" });
+
+            #endregion
 
             contadorGeral = contadorEsquerdo > contadorDireito ? contadorEsquerdo : contadorDireito;
             planilha.Range[planilha.Cells[3, 5], planilha.Cells[contadorGeral - 1, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
@@ -395,6 +445,13 @@ namespace OrangePoint.BusinessRule
             geraTipoDRE(geraTuplaValoresEmpresa(10, idEmpresa, meses), planilha);
             SomatorioDRE(planilha, "( = ) RECEITA LÍQUIDA");
 
+            #region Indices Financeiros - DRE
+
+            AdicionaTupla(true, "Giro do Ativo", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" }, -1, true);
+            AdicionaTupla(true, "Retorno sobre as Vendas", new List<string> { "/DRE!E", ")*100", "/DRE!F", ")*100", "/DRE!G", ")*100" });
+
+            #endregion
+
             somatorioLadoEsquerdo = new List<List<string>> { new List<string>(), new List<string>(), new List<string>() };
             somatorioLadoEsquerdo[0].Add("C" + (contadorGeral-2));
             somatorioLadoEsquerdo[1].Add("D" + (contadorGeral - 2));
@@ -421,6 +478,15 @@ namespace OrangePoint.BusinessRule
             geraTipoDRE(geraTuplaValoresEmpresa(11, idEmpresa, meses), planilha);
 
             SomatorioDRE(planilha, "( = ) RESULTADO LÍQUIDO DO EXERCÍCIO",false,true);
+
+            #region Indices Financeiros - DRE
+
+            AdicionaTupla(true, "Retorno sobre Ativo", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" },-1,true);
+            AdicionaTupla(true, "Retorno sobre as Vendas", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" }, -1, true);
+            AdicionaTupla(true, "Retorno sobre Patrimonio Liquido", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" }, -1, true);
+            AdicionaTupla(true, "Retorno sobre Patrimonio Liquido", new List<string> { "-DRE!E", "))*100", "-DRE!F", "))*100", "-DRE!G", "))*100" });
+
+            #endregion
 
             planilha.Range[planilha.Cells[contadorGeral - 2, 2], planilha.Cells[contadorGeral -2, 5]].Font.Color = XlRgbColor.rgbDarkOrange;
 
@@ -571,26 +637,38 @@ namespace OrangePoint.BusinessRule
 
         private void CabecalhoIndicesFinanceiros(Application planilha, Empresa empresa, List<DateTime> meses)
         {
-            CabecalhoGeral(planilha, empresa, "Índices Financeiros",6);
-
+            CabecalhoGeral(planilha, empresa, "Índices Financeiros",7);
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 3]].Merge();
             planilha.Cells[5, 2] = "ÍNDICE";
-            planilha.Cells[5, 3] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
-            planilha.Cells[5, 4] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
-            planilha.Cells[5, 5] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
-            planilha.Cells[5, 6] = "ANÁLISE";
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 2]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            planilha.Cells[5, 4] = DateTime.DaysInMonth(meses[0].Year, meses[0].Month) + "/" + (meses[0].Month < 10 ? "0" + meses[0].Month : meses[0].Month.ToString()) + "/" + meses[0].Year;
+            planilha.Cells[5, 5] = DateTime.DaysInMonth(meses[1].Year, meses[1].Month) + "/" + (meses[1].Month < 10 ? "0" + meses[1].Month : meses[1].Month.ToString()) + "/" + meses[1].Year;
+            planilha.Cells[5, 6] = DateTime.DaysInMonth(meses[2].Year, meses[2].Month) + "/" + (meses[2].Month < 10 ? "0" + meses[2].Month : meses[2].Month.ToString()) + "/" + meses[2].Year;
+            planilha.Cells[5, 7] = "ANÁLISE";
 
-            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 6]].Font.Bold = true;
-            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 6]].Font.Color = XlRgbColor.rgbDarkOrange;
-            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 6]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 7]].Font.Bold = true;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 7]].Font.Color = XlRgbColor.rgbDarkOrange;
+            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 7]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
 
-            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 2]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
-            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 3]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
-            planilha.Range[planilha.Cells[5, 4], planilha.Cells[5, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
-            planilha.Range[planilha.Cells[5, 5], planilha.Cells[5, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 3]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 3], planilha.Cells[5, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 4], planilha.Cells[5, 5]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 5], planilha.Cells[5, 6]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
 
-            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 6]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[5, 7]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
 
             contadorGeral = 5;
+        }
+
+        private void GeraIndices(Application planilha) 
+        {
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral + 8, 2]].Merge();
+            planilha.Cells[contadorGeral, 2] = "t";
+            planilha.Cells[contadorGeral, 3] = "Retorno sobre Ativo";
+            planilha.Cells[contadorGeral+1, 3] = "RSA = (LL/AT) * 100";
+            planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral + 1, 4]].Merge();
+            planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].FormulaLocal = "=DRE!E" + contadorGeral;
+
         }
 
         private void GeraWorkSheetIndicesFinanceiros(int idEmpresa, List<DateTime> meses, Application planilha)
@@ -599,25 +677,65 @@ namespace OrangePoint.BusinessRule
             CabecalhoIndicesFinanceiros(planilha, empresa, meses);
             contadorGeral++;
 
+            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 7]].Merge();
+            contadorGeral++;
+            GeraIndices(planilha);
+
+            contadorGeral += 9;
+
 
             #region Bottom
-            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
-            planilha.Cells[contadorGeral, 2] = "Responsável Administrativo";
+            planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
+            planilha.Cells[contadorGeral, 3] = "Responsável Administrativo";
 
             contadorGeral += 4;
-            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
-            planilha.Cells[contadorGeral, 2] = "Contador"; contadorGeral++;
-            planilha.Cells[contadorGeral, 2] = "CRC";
+            planilha.Range[planilha.Cells[contadorGeral, 3], planilha.Cells[contadorGeral, 3]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous; contadorGeral++;
+            planilha.Cells[contadorGeral, 3] = "Contador"; contadorGeral++;
+            planilha.Cells[contadorGeral, 3] = "CRC";
 
-            planilha.Range[planilha.Cells[contadorGeral - 6, 2], planilha.Cells[contadorGeral, 2]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            planilha.Range[planilha.Cells[contadorGeral - 6, 2], planilha.Cells[contadorGeral, 3]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
 
-            planilha.Range[planilha.Cells[2, 2], planilha.Cells[contadorGeral, 5]].Interior.Color = XlRgbColor.rgbWhite;
+            planilha.Range[planilha.Cells[2, 2], planilha.Cells[contadorGeral, 7]].Interior.Color = XlRgbColor.rgbWhite;
 
             planilha.Range[planilha.Cells[1, 1], planilha.Cells[contadorGeral, 1]].Interior.Color = XlRgbColor.rgbBlack;
 
             planilha.Columns.AutoFit();
             planilha.Calculate();
             #endregion
+        }
+
+        private void AdicionaTupla(bool ladoEsquedo,string chave,List<string> listaValores, int contadorPersonalizado = -1, bool insercaoFrontal = false)
+        {
+            int contadorAuxiliar = ladoEsquedo ? contadorEsquerdo : contadorDireito;
+            if (contadorAuxiliar != -1)
+                contadorAuxiliar = contadorPersonalizado;
+
+            contadorAuxiliar -= 2;
+
+            if (tuplaIndicesFinanceiros.Exists(o => o.Item1 == chave))
+            {
+                if (insercaoFrontal) 
+                {
+                    listStringAuxiliar = new List<string> {
+                    listaValores[0] +  contadorAuxiliar  + listaValores[1] + tuplaIndicesFinanceiros.Find(o => o.Item1 == chave).Item2[0],
+                    listaValores[2] + contadorAuxiliar + listaValores[3] + tuplaIndicesFinanceiros.Find(o => o.Item1 == chave).Item2[1],
+                    listaValores[4] + contadorAuxiliar + listaValores[5] + tuplaIndicesFinanceiros.Find(o => o.Item1 == chave).Item2[2]};
+                }
+                else
+                {
+                    listStringAuxiliar = new List<string> { 
+                    tuplaIndicesFinanceiros.Find(o => o.Item1 == chave).Item2[0] + listaValores[0] +  contadorAuxiliar  + listaValores[1],
+                    tuplaIndicesFinanceiros.Find(o => o.Item1 == chave).Item2[1] + listaValores[2] + contadorAuxiliar + listaValores[3],
+                    tuplaIndicesFinanceiros.Find(o => o.Item1 == chave).Item2[2] + listaValores[4] + contadorAuxiliar + listaValores[5] };
+                }
+                tuplaIndicesFinanceiros.Remove(tuplaIndicesFinanceiros.Find(o => o.Item1 == chave));
+            }
+            else
+            {
+                listStringAuxiliar = new List<string> { listaValores[0] + contadorAuxiliar + listaValores[1], listaValores[2] + contadorAuxiliar + listaValores[3], listaValores[4] + contadorAuxiliar + listaValores[5] };
+
+            }
+            tuplaIndicesFinanceiros.Add(new Tuple<string, List<string>>(chave, listStringAuxiliar));
         }
 
         #endregion

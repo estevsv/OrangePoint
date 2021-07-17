@@ -228,8 +228,9 @@ namespace OrangePoint.BusinessRule
             #region Indices Financeiros - PASSIVO CIRCULANTE
 
             AdicionaTupla(false, "Participacao de Capitais Terceiros", new List<string> { "=(('BALANÇO PATRIMONIAL'!G", "", "=(('BALANÇO PATRIMONIAL'!H", "", "=(('BALANÇO PATRIMONIAL'!I", "" });
-            AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "=('BALANÇO PATRIMONIAL'!G", "/('BALANÇO PATRIMONIAL'!G", "=('BALANÇO PATRIMONIAL'!H", "/('BALANÇO PATRIMONIAL'!H", "=('BALANÇO PATRIMONIAL'!I", "/('BALANÇO PATRIMONIAL'!I" });
-            AdicionaTupla(true, "Liquidez Corrente", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")", "/'BALANÇO PATRIMONIAL'!H", ")", "/'BALANÇO PATRIMONIAL'!I", ")" });
+            AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "=('BALANÇO PATRIMONIAL'!G", "", "=('BALANÇO PATRIMONIAL'!H", "", "=('BALANÇO PATRIMONIAL'!I", "" });
+            AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "/('BALANÇO PATRIMONIAL'!G", "", "/('BALANÇO PATRIMONIAL'!H", "", "/('BALANÇO PATRIMONIAL'!I", "" });
+            AdicionaTupla(false, "Liquidez Corrente", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")", "/'BALANÇO PATRIMONIAL'!H", ")", "/'BALANÇO PATRIMONIAL'!I", ")" });
             int linhaPassivoCirculante = contadorDireito;
             #endregion
 
@@ -251,7 +252,8 @@ namespace OrangePoint.BusinessRule
             AdicionaTupla(false, "Participacao de Capitais Terceiros", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "", "+'BALANÇO PATRIMONIAL'!H", "", "+'BALANÇO PATRIMONIAL'!I", "" });
             AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))*100", "+'BALANÇO PATRIMONIAL'!H", "))*100", "+'BALANÇO PATRIMONIAL'!I", "))*100" });
             AdicionaTupla(false, "Imobilização de Recursos não Corrente", new List<string> { "/('BALANÇO PATRIMONIAL'!G", "", "/('BALANÇO PATRIMONIAL'!H", "", "/('BALANÇO PATRIMONIAL'!I", "" });
-
+            AdicionaTupla(false, "Liquidez Geral", new List<string> { ")/('BALANÇO PATRIMONIAL'!G", "", ")/('BALANÇO PATRIMONIAL'!H", "", ")/('BALANÇO PATRIMONIAL'!I", "" }, linhaPassivoCirculante);
+            AdicionaTupla(false, "Liquidez Geral", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))", "+'BALANÇO PATRIMONIAL'!H", "))", "+'BALANÇO PATRIMONIAL'!I", "))" });
             #endregion
 
             geraTipoBalanco(geraTuplaValoresEmpresa(5, idEmpresa, meses), planilha, "PATRIMÔNIO LÍQUIDO", false,true);
@@ -261,8 +263,6 @@ namespace OrangePoint.BusinessRule
             AdicionaTupla(false, "Retorno sobre Patrimonio Liquido", new List<string> { "/('BALANÇO PATRIMONIAL'!G", "", "/('BALANÇO PATRIMONIAL'!H", "", "/('BALANÇO PATRIMONIAL'!I", "" });
             AdicionaTupla(false, "Imobilização do Patrimonio Liquido", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")*100", "/'BALANÇO PATRIMONIAL'!H", ")*100", "/'BALANÇO PATRIMONIAL'!I", ")*100", });
             AdicionaTupla(false, "Imobilização de Recursos não Corrente", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))*100", "+'BALANÇO PATRIMONIAL'!H", "))*100", "+'BALANÇO PATRIMONIAL'!I", "))*100" });
-            AdicionaTupla(false, "Liquidez Geral", new List<string> { ")/('BALANÇO PATRIMONIAL'!G", "", ")/('BALANÇO PATRIMONIAL'!H", "", ")/('BALANÇO PATRIMONIAL'!I", "" },linhaPassivoCirculante);
-            AdicionaTupla(false, "Liquidez Geral", new List<string> { "+'BALANÇO PATRIMONIAL'!G", "))", "+'BALANÇO PATRIMONIAL'!H", "))", "+'BALANÇO PATRIMONIAL'!I", "))" });
 
             #endregion
 
@@ -447,8 +447,8 @@ namespace OrangePoint.BusinessRule
 
             #region Indices Financeiros - DRE
 
-            AdicionaTupla(true, "Giro do Ativo", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" }, -1, true);
-            AdicionaTupla(true, "Retorno sobre as Vendas", new List<string> { "/DRE!E", ")*100", "/DRE!F", ")*100", "/DRE!G", ")*100" });
+            AdicionaTupla(true, "Giro do Ativo", new List<string> { "=DRE!C", "", "=DRE!D", "", "=DRE!E", "" },contadorGeral, true);
+            AdicionaTupla(true, "Retorno sobre as Vendas", new List<string> { "/DRE!C", ")*100", "/DRE!D", ")*100", "/DRE!E", ")*100" }, contadorGeral);
 
             #endregion
 
@@ -481,10 +481,10 @@ namespace OrangePoint.BusinessRule
 
             #region Indices Financeiros - DRE
 
-            AdicionaTupla(true, "Retorno sobre Ativo", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" },-1,true);
-            AdicionaTupla(true, "Retorno sobre as Vendas", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" }, -1, true);
-            AdicionaTupla(true, "Retorno sobre Patrimonio Liquido", new List<string> { "=(DRE!E", "", "=(DRE!F", "", "=(DRE!G", "" }, -1, true);
-            AdicionaTupla(true, "Retorno sobre Patrimonio Liquido", new List<string> { "-DRE!E", "))*100", "-DRE!F", "))*100", "-DRE!G", "))*100" });
+            AdicionaTupla(true, "Retorno sobre Ativo", new List<string> { "=(DRE!C", "", "=(DRE!D", "", "=(DRE!E", "" }, contadorGeral, true);
+            AdicionaTupla(true, "Retorno sobre as Vendas", new List<string> { "=(DRE!C", "", "=(DRE!D", "", "=(DRE!E", "" }, contadorGeral, true);
+            AdicionaTupla(true, "Retorno sobre Patrimonio Liquido", new List<string> { "=(DRE!C", "", "=(DRE!D", "", "=(DRE!E", "" }, contadorGeral, true);
+            AdicionaTupla(true, "Retorno sobre Patrimonio Liquido", new List<string> { "-DRE!C", "))*100", "-DRE!D", "))*100", "-DRE!E", "))*100" }, contadorGeral);
 
             #endregion
 
@@ -660,14 +660,38 @@ namespace OrangePoint.BusinessRule
             contadorGeral = 5;
         }
 
-        private void GeraIndices(Application planilha) 
+        private void GeraIndices(Application planilha, string indice, string descricaoIndice, string analise1, string analise2, string topico = "") 
         {
             planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral + 8, 2]].Merge();
-            planilha.Cells[contadorGeral, 2] = "t";
-            planilha.Cells[contadorGeral, 3] = "Retorno sobre Ativo";
-            planilha.Cells[contadorGeral+1, 3] = "RSA = (LL/AT) * 100";
+            planilha.Cells[contadorGeral, 2] = topico;
+            planilha.Cells[contadorGeral, 3] = indice;
+            planilha.Cells[contadorGeral+1, 3] = descricaoIndice;
+            planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].FormulaLocal = tuplaIndicesFinanceiros.Find(o => o.Item1 == indice).Item2[0];
+            planilha.Range[planilha.Cells[contadorGeral, 5], planilha.Cells[contadorGeral, 5]].FormulaLocal = tuplaIndicesFinanceiros.Find(o => o.Item1 == indice).Item2[1];
+            planilha.Range[planilha.Cells[contadorGeral, 6], planilha.Cells[contadorGeral, 6]].FormulaLocal = tuplaIndicesFinanceiros.Find(o => o.Item1 == indice).Item2[2];
+
             planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral + 1, 4]].Merge();
-            planilha.Range[planilha.Cells[contadorGeral, 4], planilha.Cells[contadorGeral, 4]].FormulaLocal = "=DRE!E" + contadorGeral;
+            planilha.Range[planilha.Cells[contadorGeral, 5], planilha.Cells[contadorGeral + 1, 5]].Merge();
+            planilha.Range[planilha.Cells[contadorGeral, 6], planilha.Cells[contadorGeral + 1, 6]].Merge();
+
+            planilha.Cells[contadorGeral, 7] = analise1;
+            planilha.Range[planilha.Cells[contadorGeral + 1, 7], planilha.Cells[contadorGeral + 1, 7]].FormulaLocal = analise2;
+
+            AplicaMargemCelula(planilha, contadorGeral, 2, true, false, true);
+            AplicaMargemCelula(planilha, contadorGeral + 1, 2, false, true, true);
+            AplicaMargemCelula(planilha, contadorGeral, 3, true, false, true);
+            AplicaMargemCelula(planilha, contadorGeral + 1, 3, false, true, true);
+            AplicaMargemCelula(planilha, contadorGeral, 4, true, false, true);
+            AplicaMargemCelula(planilha, contadorGeral + 1, 4, false, true, true);
+            AplicaMargemCelula(planilha, contadorGeral, 5, true, false, true);
+            AplicaMargemCelula(planilha, contadorGeral + 1, 5, false, true, true);
+            AplicaMargemCelula(planilha, contadorGeral, 6, true, false, true);
+            AplicaMargemCelula(planilha, contadorGeral + 1, 6, false, true, true);
+
+            AplicaMargemCelula(planilha, contadorGeral, 7, true, false, true);
+            AplicaMargemCelula(planilha, contadorGeral+1, 7, false, true, true);
+
+            contadorGeral += 2;
 
         }
 
@@ -679,7 +703,20 @@ namespace OrangePoint.BusinessRule
 
             planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 7]].Merge();
             contadorGeral++;
-            GeraIndices(planilha);
+            GeraIndices(planilha, "Retorno sobre Ativo", "RSA = (LL/ AT) * 100", "... Para cada R$ 100 de ativo total,", "", "t");//,"= CONCATENAR('a empresa gerou um lucro liquido de '; SE(ÉERROS(ARRED(F11; 1)); ' ... '; TEXTO(F11; 'R$ 0,00')))","t");
+            GeraIndices(planilha, "Giro do Ativo", "GA = VL / AT", "... Para cada R$1,00 de ativo total,", "");
+            GeraIndices(planilha, "Retorno sobre as Vendas", "RSV = (LL / VL) * 100", "... Para cada R$ 100 de vendas liquidas,", "");
+            GeraIndices(planilha, "Retorno sobre Patrimonio Liquido", "RSPL = (LL / (PL - LL)) * 100", "... Para cada R$ 100 de patrimonio liquido,", "");
+            contadorGeral += 2;
+            GeraIndices(planilha, "Participacao de Capitais Terceiros", "PCT = ((PC + ELP) / PL) * 100", "... Para cada R$ 100 de capital próprio,", "", "t");
+            GeraIndices(planilha, "Composicao do Endividamento", "CE = (PC / (PC + ELP)) * 100", "... Para cada R$100 de divida total da empresa,", "");
+            GeraIndices(planilha, "Imobilização do Patrimonio Liquido", "IPL = (AP / PL) * 100", "... Para cada R$ 100 de capital próprio,", "");
+            GeraIndices(planilha, "Imobilização de Recursos não Corrente", "IRNC=(AP / (PL+ELP)) * 100", "... Para cada R$ 100 de aplicacao no ativo,", "");
+            contadorGeral += 2;
+            GeraIndices(planilha, "Liquidez Geral", "LG = ((AC + RLP) / (PC + ELP))", "... Para cada R$ 1 de divida (curto e longo prazo),", "", "t");
+            GeraIndices(planilha, "Liquidez Corrente", "LC = (AC / PC)", "... Para cada R$ 1 de divida a curto prazo,", "");contadorGeral += 4;
+            //GeraIndices(planilha, "Liquidez Seca", "LS = ((DISP + AF +CRL) / PC)", "... Para cada R$1 de divida de curto prazo, a empresa", "");
+            //GeraIndices(planilha, "Liquidez Imediata", "LI = (Disp / PC)", "Para cada R$ 1 de divida de curto prazo,", "");
 
             contadorGeral += 9;
 
@@ -707,7 +744,7 @@ namespace OrangePoint.BusinessRule
         private void AdicionaTupla(bool ladoEsquedo,string chave,List<string> listaValores, int contadorPersonalizado = -1, bool insercaoFrontal = false)
         {
             int contadorAuxiliar = ladoEsquedo ? contadorEsquerdo : contadorDireito;
-            if (contadorAuxiliar != -1)
+            if (contadorPersonalizado != -1)
                 contadorAuxiliar = contadorPersonalizado;
 
             contadorAuxiliar -= 2;
@@ -738,8 +775,17 @@ namespace OrangePoint.BusinessRule
             tuplaIndicesFinanceiros.Add(new Tuple<string, List<string>>(chave, listStringAuxiliar));
         }
 
+        private void AplicaMargemCelula(Application planilha, int x, int y,bool withTop = true, bool withBottom = true, bool withLeft = true) 
+        {
+            if(withBottom)
+                planilha.Range[planilha.Cells[x, y], planilha.Cells[x, y]].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+            if(withLeft)
+                planilha.Range[planilha.Cells[x, y], planilha.Cells[x, y]].Borders[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlContinuous;
+            if(withTop)
+                planilha.Range[planilha.Cells[x, y], planilha.Cells[x, y]].Borders[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
+        }
         #endregion
 
         #endregion
-        }
+    }
 }

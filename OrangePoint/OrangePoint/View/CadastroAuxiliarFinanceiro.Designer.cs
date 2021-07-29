@@ -312,7 +312,7 @@
             this.dgSubtipoAtividade.MultiSelect = false;
             this.dgSubtipoAtividade.Name = "dgSubtipoAtividade";
             this.dgSubtipoAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgSubtipoAtividade.Size = new System.Drawing.Size(332, 183);
+            this.dgSubtipoAtividade.Size = new System.Drawing.Size(335, 183);
             this.dgSubtipoAtividade.TabIndex = 70;
             this.dgSubtipoAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgSubtipoAtividade_UserDeletingRow);
             // 
@@ -411,7 +411,7 @@
             this.btnAdicionarTipoValor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionarTipoValor.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarTipoValor.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarTipoValor.Location = new System.Drawing.Point(248, 132);
+            this.btnAdicionarTipoValor.Location = new System.Drawing.Point(423, 116);
             this.btnAdicionarTipoValor.Name = "btnAdicionarTipoValor";
             this.btnAdicionarTipoValor.Size = new System.Drawing.Size(113, 30);
             this.btnAdicionarTipoValor.TabIndex = 80;
@@ -422,11 +422,11 @@
             // dgTipoValor
             // 
             this.dgTipoValor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTipoValor.Location = new System.Drawing.Point(364, 132);
+            this.dgTipoValor.Location = new System.Drawing.Point(248, 152);
             this.dgTipoValor.MultiSelect = false;
             this.dgTipoValor.Name = "dgTipoValor";
             this.dgTipoValor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgTipoValor.Size = new System.Drawing.Size(196, 157);
+            this.dgTipoValor.Size = new System.Drawing.Size(332, 157);
             this.dgTipoValor.TabIndex = 79;
             this.dgTipoValor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoValor_CellDoubleClick);
             this.dgTipoValor.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoValor_UserDeletingRow);
@@ -447,7 +447,7 @@
             // 
             this.txtTipoValor.Location = new System.Drawing.Point(345, 90);
             this.txtTipoValor.Name = "txtTipoValor";
-            this.txtTipoValor.Size = new System.Drawing.Size(215, 20);
+            this.txtTipoValor.Size = new System.Drawing.Size(235, 20);
             this.txtTipoValor.TabIndex = 77;
             // 
             // btnSair
@@ -474,7 +474,7 @@
             this.AdicionarAtividadeEmpresa.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.AdicionarAtividadeEmpresa.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdicionarAtividadeEmpresa.ForeColor = System.Drawing.Color.White;
-            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(685, 132);
+            this.AdicionarAtividadeEmpresa.Location = new System.Drawing.Point(873, 116);
             this.AdicionarAtividadeEmpresa.Name = "AdicionarAtividadeEmpresa";
             this.AdicionarAtividadeEmpresa.Size = new System.Drawing.Size(113, 30);
             this.AdicionarAtividadeEmpresa.TabIndex = 85;
@@ -485,11 +485,11 @@
             // dgAtividade
             // 
             this.dgAtividade.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAtividade.Location = new System.Drawing.Point(804, 132);
+            this.dgAtividade.Location = new System.Drawing.Point(685, 152);
             this.dgAtividade.MultiSelect = false;
             this.dgAtividade.Name = "dgAtividade";
             this.dgAtividade.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgAtividade.Size = new System.Drawing.Size(196, 157);
+            this.dgAtividade.Size = new System.Drawing.Size(335, 157);
             this.dgAtividade.TabIndex = 84;
             this.dgAtividade.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAtividade_CellDoubleClick);
             this.dgAtividade.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividade_UserDeletingRow);
@@ -510,7 +510,7 @@
             // 
             this.txtAtividade.Location = new System.Drawing.Point(757, 90);
             this.txtAtividade.Name = "txtAtividade";
-            this.txtAtividade.Size = new System.Drawing.Size(243, 20);
+            this.txtAtividade.Size = new System.Drawing.Size(260, 20);
             this.txtAtividade.TabIndex = 82;
             // 
             // btnCancelaAlteracao
@@ -521,7 +521,7 @@
             this.btnCancelaAlteracao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelaAlteracao.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelaAlteracao.ForeColor = System.Drawing.Color.White;
-            this.btnCancelaAlteracao.Location = new System.Drawing.Point(230, 170);
+            this.btnCancelaAlteracao.Location = new System.Drawing.Point(259, 116);
             this.btnCancelaAlteracao.Name = "btnCancelaAlteracao";
             this.btnCancelaAlteracao.Size = new System.Drawing.Size(131, 30);
             this.btnCancelaAlteracao.TabIndex = 86;
@@ -538,7 +538,7 @@
             this.btnCancelarAlteracao2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelarAlteracao2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarAlteracao2.ForeColor = System.Drawing.Color.White;
-            this.btnCancelarAlteracao2.Location = new System.Drawing.Point(667, 170);
+            this.btnCancelarAlteracao2.Location = new System.Drawing.Point(696, 115);
             this.btnCancelarAlteracao2.Name = "btnCancelarAlteracao2";
             this.btnCancelarAlteracao2.Size = new System.Drawing.Size(131, 30);
             this.btnCancelarAlteracao2.TabIndex = 87;

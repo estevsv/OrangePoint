@@ -88,7 +88,7 @@ namespace OrangePoint.View
                 dgTipoValor.Columns["COD_TIPO_VALOR"].Visible = false;
                 dgTipoValor.Columns["DESC_TIPO"].HeaderText = "Descrição";
                 dgTipoValor.Columns["DESC_TIPO"].ReadOnly = true;
-                dgTipoValor.Columns["DESC_TIPO"].Width = 187;
+                dgTipoValor.Columns["DESC_TIPO"].Width = 270;
 
                 CarregaCbTipoValor();
             }
@@ -182,10 +182,17 @@ namespace OrangePoint.View
 
         private void dgSubtipoValor_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            subtipoValorRule.ExcluiSubtipoValor(int.Parse(dgSubtipoValor.CurrentRow.Cells[0].Value.ToString()));
-            dgSubtipoValor.Rows.RemoveAt(dgSubtipoValor.CurrentRow.Index);
+            if (int.Parse(dgSubtipoValor.CurrentRow.Cells[0].Value.ToString()) > 4)
+            {
+                subtipoValorRule.ExcluiSubtipoValor(int.Parse(dgSubtipoValor.CurrentRow.Cells[0].Value.ToString()));
+                dgSubtipoValor.Rows.RemoveAt(dgSubtipoValor.CurrentRow.Index);
 
-            CarregaGridSubtipoValor();
+                CarregaGridSubtipoValor();
+            }
+            else
+            {
+                MessageBox.Show("Este item não pode ser excluído (Padrão)");
+            }
 
             e.Cancel = true;
         }
@@ -204,8 +211,8 @@ namespace OrangePoint.View
                 dgSubtipoAtividade.Columns["SubtipoValor"].HeaderText = "Conta Analítica";
                 dgSubtipoAtividade.Columns["Atividade"].ReadOnly = true;
                 dgSubtipoAtividade.Columns["SubtipoValor"].ReadOnly = true;
-                dgSubtipoAtividade.Columns["Atividade"].Width = 145;
-                dgSubtipoAtividade.Columns["SubtipoValor"].Width = 145;
+                dgSubtipoAtividade.Columns["Atividade"].Width = 140;
+                dgSubtipoAtividade.Columns["SubtipoValor"].Width = 140;
             }
         }
 
@@ -241,7 +248,7 @@ namespace OrangePoint.View
                 dgAtividade.Columns["COD_Atividade"].Visible = false;
                 dgAtividade.Columns["DESCRICAO"].HeaderText = "Descrição";
                 dgAtividade.Columns["DESCRICAO"].ReadOnly = true;
-                dgAtividade.Columns["DESCRICAO"].Width = 187;
+                dgAtividade.Columns["DESCRICAO"].Width = 280;
 
                 CarregaCbAtividade();
             }

@@ -9,3 +9,7 @@ INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES 
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('9', '( +/-) OPERAÇÕES FINANCEIRAS');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('10', 'RECEITAS OPERACIONAIS LÍQUIDA (DRE)');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('11', 'DRE GERAL');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('1', '1', 'Disponível');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('2', '1', 'Aplicações Financeiras');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('3', '1', 'Duplicatas a Receber');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('4', '1', 'Créditos Diversos a Receber');

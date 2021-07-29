@@ -26,6 +26,8 @@ namespace OrangePoint.BusinessRule
         private List<List<string>> somatorioLadoEsquerdo;
         private List<List<string>> somatorioLadoDireito;
         private List<Tuple<string, List<string>>> tuplaIndicesFinanceiros;
+        List<int> listaLinhasContasAnaliticasFixas = new List<int>();
+        int linhaAnaliticaDisponivel = -1;
 
         private List<string> listStringAuxiliar = new List<string>();
 
@@ -33,6 +35,9 @@ namespace OrangePoint.BusinessRule
 
         public void GeraExcelConsultoriaContabil(int idEmpresa, List<DateTime> meses)
         {
+            listaLinhasContasAnaliticasFixas = new List<int>();
+            linhaAnaliticaDisponivel = -1;
+
             tuplaIndicesFinanceiros = new List<Tuple<string, List<string>>>();
 
             Application planilha = new Application();
@@ -221,6 +226,16 @@ namespace OrangePoint.BusinessRule
             AdicionaTupla(true, "Liquidez Geral", new List<string> { "=(('BALANÇO PATRIMONIAL'!C", "", "=(('BALANÇO PATRIMONIAL'!D", "", "=(('BALANÇO PATRIMONIAL'!E", "" });
             AdicionaTupla(true, "Liquidez Corrente", new List<string> { "=('BALANÇO PATRIMONIAL'!C", "", "=('BALANÇO PATRIMONIAL'!D", "", "=('BALANÇO PATRIMONIAL'!E", "" });
 
+            if(listaLinhasContasAnaliticasFixas.Count > 0)
+                for (int i = 0; i < listaLinhasContasAnaliticasFixas.Count; i++)
+                    if(i == 0)
+                        AdicionaTupla(true, "Liquidez Seca", new List<string> { "=(('BALANÇO PATRIMONIAL'!C", "+", "=(('BALANÇO PATRIMONIAL'!D", "+", "=(('BALANÇO PATRIMONIAL'!E", "+" }, listaLinhasContasAnaliticasFixas[i]+2, false);
+                    else if(i == listaLinhasContasAnaliticasFixas.Count -1)
+                        AdicionaTupla(true, "Liquidez Seca", new List<string> { "'BALANÇO PATRIMONIAL'!C", "", "'BALANÇO PATRIMONIAL'!D", "", "'BALANÇO PATRIMONIAL'!E", "" }, listaLinhasContasAnaliticasFixas[i]+2, false);
+                    else
+                        AdicionaTupla(true, "Liquidez Seca", new List<string> { "'BALANÇO PATRIMONIAL'!C", "+", "'BALANÇO PATRIMONIAL'!D", "+", "'BALANÇO PATRIMONIAL'!E", "+" }, listaLinhasContasAnaliticasFixas[i]+2, false);
+
+            AdicionaTupla(true, "Liquidez Imediata", new List<string> { "=('BALANÇO PATRIMONIAL'!C", "", "=('BALANÇO PATRIMONIAL'!D", "", "=('BALANÇO PATRIMONIAL'!E", "" }, linhaAnaliticaDisponivel+2, false);
             #endregion
 
             geraTipoBalanco(geraTuplaValoresEmpresa(2, idEmpresa, meses), planilha, "PASSIVO CIRCULANTE", false);
@@ -231,7 +246,11 @@ namespace OrangePoint.BusinessRule
             AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "=('BALANÇO PATRIMONIAL'!G", "", "=('BALANÇO PATRIMONIAL'!H", "", "=('BALANÇO PATRIMONIAL'!I", "" });
             AdicionaTupla(false, "Composicao do Endividamento", new List<string> { "/('BALANÇO PATRIMONIAL'!G", "", "/('BALANÇO PATRIMONIAL'!H", "", "/('BALANÇO PATRIMONIAL'!I", "" });
             AdicionaTupla(false, "Liquidez Corrente", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")", "/'BALANÇO PATRIMONIAL'!H", ")", "/'BALANÇO PATRIMONIAL'!I", ")" });
+            AdicionaTupla(false, "Liquidez Seca", new List<string> { ")/'BALANÇO PATRIMONIAL'!G", ")", ")/'BALANÇO PATRIMONIAL'!H", ")", ")/'BALANÇO PATRIMONIAL'!I", ")" });
+            AdicionaTupla(false, "Liquidez Imediata", new List<string> { "/'BALANÇO PATRIMONIAL'!G", ")", "/'BALANÇO PATRIMONIAL'!H", ")", "/'BALANÇO PATRIMONIAL'!I", ")" });
+
             int linhaPassivoCirculante = contadorDireito;
+
             #endregion
 
             geraTipoBalanco(geraTuplaValoresEmpresa(3, idEmpresa, meses), planilha, "ATIVO NÃO CIRCULANTE", true);
@@ -311,6 +330,14 @@ namespace OrangePoint.BusinessRule
                     planilha.Range[planilha.Cells[contadorEsquerdo, 2], planilha.Cells[contadorEsquerdo, 2]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
                     planilha.Range[planilha.Cells[contadorEsquerdo, 3], planilha.Cells[contadorEsquerdo, 3]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
                     planilha.Range[planilha.Cells[contadorEsquerdo, 4], planilha.Cells[contadorEsquerdo, 4]].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+
+                    if (tuplaValores[i].Item1 == "Aplicações Financeiras" || tuplaValores[i].Item1 == "Duplicatas a Receber" || tuplaValores[i].Item1 == "Créditos Diversos a Receber") 
+                        listaLinhasContasAnaliticasFixas.Add(contadorEsquerdo);
+
+                    if (tuplaValores[i].Item1 == "Disponível") {
+                        listaLinhasContasAnaliticasFixas.Add(contadorEsquerdo);
+                        linhaAnaliticaDisponivel = contadorEsquerdo;
+                    }
                     contadorEsquerdo++;
                 }
 
@@ -662,7 +689,12 @@ namespace OrangePoint.BusinessRule
 
         private void GeraIndices(Application planilha, string indice, string descricaoIndice, string analise1, string analise2, string topico = "") 
         {
-            planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral + 8, 2]].Merge();
+            if (topico != "")
+            {
+                planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral + 7, 2]].Merge();
+                planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 2]].Orientation = XlOrientation.xlUpward;
+            }
+
             planilha.Cells[contadorGeral, 2] = topico;
             planilha.Cells[contadorGeral, 3] = indice;
             planilha.Cells[contadorGeral+1, 3] = descricaoIndice;
@@ -703,20 +735,22 @@ namespace OrangePoint.BusinessRule
 
             planilha.Range[planilha.Cells[contadorGeral, 2], planilha.Cells[contadorGeral, 7]].Merge();
             contadorGeral++;
-            GeraIndices(planilha, "Retorno sobre Ativo", "RSA = (LL/ AT) * 100", "... Para cada R$ 100 de ativo total,", "", "t");//,"= CONCATENAR('a empresa gerou um lucro liquido de '; SE(ÉERROS(ARRED(F11; 1)); ' ... '; TEXTO(F11; 'R$ 0,00')))","t");
-            GeraIndices(planilha, "Giro do Ativo", "GA = VL / AT", "... Para cada R$1,00 de ativo total,", "");
-            GeraIndices(planilha, "Retorno sobre as Vendas", "RSV = (LL / VL) * 100", "... Para cada R$ 100 de vendas liquidas,", "");
-            GeraIndices(planilha, "Retorno sobre Patrimonio Liquido", "RSPL = (LL / (PL - LL)) * 100", "... Para cada R$ 100 de patrimonio liquido,", "");
+            GeraIndices(planilha, "Retorno sobre Ativo", "RSA = (LL/ AT) * 100", "... Para cada R$ 100 de ativo total,", "=CONCATENAR(\"a empresa gerou um lucro liquido de \";SE(ÉERROS(ARRED(F" + contadorGeral+ ";1));\"... \";TEXTO(F" + contadorGeral + ";\"R$ 0, 00\")))", "LUCRATIVIDADE");//,"= CONCATENAR('a empresa gerou um lucro liquido de '; SE(ÉERROS(ARRED(F11; 1)); ' ... '; TEXTO(F11; 'R$ 0,00')))","t");
+            GeraIndices(planilha, "Giro do Ativo", "GA = VL / AT", "... Para cada R$1,00 de ativo total,", "= CONCATENAR(\"a empresa vendeu \"; SE(ÉERROS(ARRED(F" + contadorGeral + "; 1)); \" ... \"; TEXTO(F" + contadorGeral + "; \"R$ #.###,00\")); \" durante o ano\")");
+            GeraIndices(planilha, "Retorno sobre as Vendas", "RSV = (LL / VL) * 100", "... Para cada R$ 100 de vendas liquidas,", "=CONCATENAR(\"sobrou para a empresa \";SE(ÉERROS(ARRED(F" + contadorGeral + ";1));\"...\";TEXTO(F" + contadorGeral + ";\"R$ #.###,00\")))");
+            GeraIndices(planilha, "Retorno sobre Patrimonio Liquido", "RSPL = (LL / (PL - LL)) * 100", "... Para cada R$ 100 de patrimonio liquido,", "=CONCATENAR(\"a empresa gerou lucro liquido de \";SE(ÉERROS(ARRED(F" + contadorGeral + ";1));\"... \";TEXTO(F" + contadorGeral + ";\"R$ #.###,00\")))");
+            
+
             contadorGeral += 2;
-            GeraIndices(planilha, "Participacao de Capitais Terceiros", "PCT = ((PC + ELP) / PL) * 100", "... Para cada R$ 100 de capital próprio,", "", "t");
-            GeraIndices(planilha, "Composicao do Endividamento", "CE = (PC / (PC + ELP)) * 100", "... Para cada R$100 de divida total da empresa,", "");
-            GeraIndices(planilha, "Imobilização do Patrimonio Liquido", "IPL = (AP / PL) * 100", "... Para cada R$ 100 de capital próprio,", "");
-            GeraIndices(planilha, "Imobilização de Recursos não Corrente", "IRNC=(AP / (PL+ELP)) * 100", "... Para cada R$ 100 de aplicacao no ativo,", "");
+            GeraIndices(planilha, "Participacao de Capitais Terceiros", "PCT = ((PC + ELP) / PL) * 100", "... Para cada R$ 100 de capital próprio,", "=CONCATENAR(\"a empresa utiliza \";SE(ÉERROS(ARRED(F" + contadorGeral + ";1));\"... \";TEXTO(F" + contadorGeral + ";\"R$ #.###,00\"));\" de recursos de terceiros\")", "ESTRUTURA");
+            GeraIndices(planilha, "Composicao do Endividamento", "CE = (PC / (PC + ELP)) * 100", "... Para cada R$100 de divida total da empresa,", "=CONCATENAR(\"num periodo inferior a um ano vence \";SE(ÉERROS(ARRED(F" + contadorGeral + ";1));\"... \";TEXTO(F" + contadorGeral + ";\"R$ #.###,00\")))");
+            GeraIndices(planilha, "Imobilização do Patrimonio Liquido", "IPL = (AP / PL) * 100", "... Para cada R$ 100 de capital próprio,", "=CONCATENAR(\"a empresa tem aplicado no ativo Permanente\";SE(ÉERROS(ARRED(29;1));\"... \";TEXTO(F" + contadorGeral + ";\"R$ #.###,00\")))");
+            GeraIndices(planilha, "Imobilização de Recursos não Corrente", "IRNC=(AP / (PL+ELP)) * 100", "... Para cada R$ 100 de aplicacao no ativo,", "=CONCATENAR(\"a empresa utilizou \";SE(ÉERROS(ARRED(F" + contadorGeral + ";1));\"... \";TEXTO(F" + contadorGeral + ";\"R$ #.###,00\"));\" de Bancos ou fontes financeiras \")");
             contadorGeral += 2;
-            GeraIndices(planilha, "Liquidez Geral", "LG = ((AC + RLP) / (PC + ELP))", "... Para cada R$ 1 de divida (curto e longo prazo),", "", "t");
-            GeraIndices(planilha, "Liquidez Corrente", "LC = (AC / PC)", "... Para cada R$ 1 de divida a curto prazo,", "");contadorGeral += 4;
-            //GeraIndices(planilha, "Liquidez Seca", "LS = ((DISP + AF +CRL) / PC)", "... Para cada R$1 de divida de curto prazo, a empresa", "");
-            //GeraIndices(planilha, "Liquidez Imediata", "LI = (Disp / PC)", "Para cada R$ 1 de divida de curto prazo,", "");
+            GeraIndices(planilha, "Liquidez Geral", "LG = ((AC + RLP) / (PC + ELP))", "... Para cada R$ 1 de divida (curto e longo prazo),", "=SE(F" + contadorGeral + "=\"\";\"a empresa dispoe de... entre disponib.e direitos\";CONCATENAR(\"a empresa dispoe de \";TEXTO(F" + contadorGeral + ";\"R$ 0, 00\");\" entre disponib.e direitos\"))", "LIQUIDEZ");
+            GeraIndices(planilha, "Liquidez Corrente", "LC = (AC / PC)", "... Para cada R$ 1 de divida a curto prazo,", "=SE(F" + contadorGeral + "=\"\";\"a empresa possui... de disponib e direitos\";CONCATENAR(\"a empresa possui \";TEXTO(F" + contadorGeral + ";\"R$ 0, 00\");\" de disponib e direitos\"))");
+            GeraIndices(planilha, "Liquidez Seca", "LS = ((DISP + AF +CRL) / PC)", "... Para cada R$1 de divida de curto prazo, a empresa", "=SE(F" + contadorGeral + "=\"\";\"dispoe de... de disponib., aplic.financ.e cta.a receber\";CONCATENAR(\"dispoe de \";TEXTO(F" + contadorGeral + ";\"R$ 0, 00\");\" de disponib., aplic.financ.e cta.a receber\"))");
+            GeraIndices(planilha, "Liquidez Imediata", "LI = (Disp / PC)", "Para cada R$ 1 de divida de curto prazo,", "=SE(F" + contadorGeral + "=\"\";\"a empresa possui... de disponibilidade imediata.\";CONCATENAR(\"a empresa possui \";TEXTO(F" + contadorGeral + ";\"R$ 0, 00\"); \" de disponibilidade imediata.\"))");
 
             contadorGeral += 9;
 
@@ -736,7 +770,15 @@ namespace OrangePoint.BusinessRule
 
             planilha.Range[planilha.Cells[1, 1], planilha.Cells[contadorGeral, 1]].Interior.Color = XlRgbColor.rgbBlack;
 
+            planilha.Range[planilha.Cells[7, 2], planilha.Cells[34, 2]].Interior.Color = XlRgbColor.rgbBlack; 
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[34, 3]].Font.Color = XlRgbColor.rgbDarkOrange;
+            planilha.Range[planilha.Cells[5, 2], planilha.Cells[52, 7]].Cells.HorizontalAlignment = XlHAlign.xlHAlignCenter;
+            planilha.Range[planilha.Cells[1, 1], planilha.Cells[52, 7]].Cells.VerticalAlignment = XlVAlign.xlVAlignCenter;
+
             planilha.Columns.AutoFit();
+
+            planilha.Columns[2].ColumnWidth = 2;
+
             planilha.Calculate();
             #endregion
         }

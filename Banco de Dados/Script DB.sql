@@ -222,3 +222,19 @@ INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_
 INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_TELA`) VALUES ('1', 'Controle de Folha de Ponto');
 
 ALTER TABLE `bdOrangePoint`.`OBRIGACAO_EMPRESA` ADD COLUMN `TIPO` int;
+
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('1', 'Ativo Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('2', 'Passivo Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('3', 'Ativo Não Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('4', 'Passivo Não Circulante');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('5', 'Patrimônio Líquido');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('6', 'RECEITAS OPERACIONAIS');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('7', 'CUSTOS DO NEGÓCIO');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('8', '( +/- ) DESPESAS GERAIS');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('9', '( +/-) OPERAÇÕES FINANCEIRAS');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('10', 'RECEITAS OPERACIONAIS LÍQUIDA (DRE)');
+INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('11', 'DRE GERAL');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('1', '1', 'Disponível');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('2', '1', 'Aplicações Financeiras');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('3', '1', 'Duplicatas a Receber');
+INSERT INTO `bdorangepoint`.`subtipo_valor` (`COD_SUBTIPO_VALOR`, `COD_TIPO_VALOR`, `DESC_SUBTIPO`) VALUES ('4', '1', 'Créditos Diversos a Receber');

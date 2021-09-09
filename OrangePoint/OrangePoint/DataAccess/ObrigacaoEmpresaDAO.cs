@@ -54,10 +54,14 @@ namespace OrangePoint.DataAccess
                     obrigacaoEmpresa.TipoClassificacao = listTipoClassificacao.Find(o => o.CodTipoClassificacao == int.Parse(registro["COD_TIPO_CLASSIFICACAO"].ToString()));
                     obrigacaoEmpresa.Empresa = listEmpresaDAO.Find(o => o.CodEmpresa == int.Parse(registro["COD_EMPRESA"].ToString()));
                     obrigacaoEmpresa.TipoObrigacao = int.Parse(registro["TIPO"].ToString());
-                    if (registro["DATA"] != DBNull.Value)
-                        obrigacaoEmpresa.Data = Convert.ToDateTime(registro["DATA"]);
+                    if (registro["DATA_INICIO"] != DBNull.Value)
+                        obrigacaoEmpresa.DataInicio = Convert.ToDateTime(registro["DATA_INICIO"]);
                     else
-                        obrigacaoEmpresa.Data = new DateTime();
+                        obrigacaoEmpresa.DataInicio = new DateTime();
+                    if (registro["DATA_FIM"] != DBNull.Value)
+                        obrigacaoEmpresa.DataFim = Convert.ToDateTime(registro["DATA_FIM"]);
+                    else
+                        obrigacaoEmpresa.DataFim = new DateTime();
 
                     listObrigacaoEmpresa.Add(obrigacaoEmpresa);
                 }
@@ -85,14 +89,15 @@ namespace OrangePoint.DataAccess
             }
         }
 
-        public void IncluirObrigacaoEmpresa(int codClassificacao, int codEmpresa, int tipo, DateTime data)
+        public void IncluirObrigacaoEmpresa(int codClassificacao, int codEmpresa, int tipo, DateTime dataInicio, DateTime dataFim)
         {
-            string dataPesquisa = data.Year + "-" + data.Month + "-" + data.Day;
+            string dataInicioString = dataInicio.Year + "-" + dataInicio.Month + "-" + dataInicio.Day;
+            string dataFimString = dataFim.Year + "-" + dataFim.Month + "-" + dataFim.Day;
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`obrigacao_empresa` (`COD_EMPRESA`, `COD_TIPO_CLASSIFICACAO`,`TIPO`, `DATA`) VALUES  (" + codEmpresa + "," + codClassificacao + "," + tipo +",'" + dataPesquisa + "'); ";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`obrigacao_empresa` (`COD_EMPRESA`, `COD_TIPO_CLASSIFICACAO`,`TIPO`, `DATA_INICIO`, `DATA_FIM`) VALUES  (" + codEmpresa + "," + codClassificacao + "," + tipo +",'" + dataInicioString + "','" + dataFimString + "'); ";
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

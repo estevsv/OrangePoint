@@ -14,6 +14,11 @@ namespace OrangePoint.Resources
     {
         PermissaoTelaRule permissaoTelaRule = new PermissaoTelaRule();
 
+        public string ConjugaMesAno(DateTime data)
+        {
+            return data.Month.ToString() + data.Year.ToString();
+        }
+
         public string RetornaData(int numero)
         {
             if (numero < 10)

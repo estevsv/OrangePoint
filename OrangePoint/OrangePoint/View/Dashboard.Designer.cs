@@ -58,8 +58,6 @@
             this.cbTipoDetalhamento = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -102,19 +100,19 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(246, 128);
+            this.label1.Location = new System.Drawing.Point(761, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 23);
+            this.label1.Size = new System.Drawing.Size(130, 23);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Selecione o Período";
+            this.label1.Text = "Selecione a Data";
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd/MMMM/yyyy";
+            this.dateTimePicker1.CustomFormat = "MMMM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(404, 131);
+            this.dateTimePicker1.Location = new System.Drawing.Point(897, 108);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(136, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(134, 20);
             this.dateTimePicker1.TabIndex = 22;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -123,7 +121,7 @@
             this.cbEmpresa.FormattingEnabled = true;
             this.cbEmpresa.Location = new System.Drawing.Point(404, 104);
             this.cbEmpresa.Name = "cbEmpresa";
-            this.cbEmpresa.Size = new System.Drawing.Size(487, 21);
+            this.cbEmpresa.Size = new System.Drawing.Size(345, 21);
             this.cbEmpresa.TabIndex = 46;
             this.cbEmpresa.SelectedIndexChanged += new System.EventHandler(this.cbEmpresa_SelectedIndexChanged);
             this.cbEmpresa.TextUpdate += new System.EventHandler(this.cbEmpresa_TextUpdate);
@@ -310,7 +308,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
             this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(912, 108);
+            this.checkBox1.Location = new System.Drawing.Point(630, 126);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(119, 17);
             this.checkBox1.TabIndex = 50;
@@ -363,27 +361,6 @@
             this.label2.TabIndex = 53;
             this.label2.Text = "Detalhamento de Obrigações";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(559, 128);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 23);
-            this.label3.TabIndex = 54;
-            this.label3.Text = "a";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "dd/MMMM/yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(595, 131);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(132, 20);
-            this.dateTimePicker2.TabIndex = 55;
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,8 +369,6 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1043, 621);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbTipoDetalhamento);
             this.Controls.Add(this.dgDetalhamento);
@@ -449,7 +424,5 @@
         private System.Windows.Forms.ComboBox cbTipoDetalhamento;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }

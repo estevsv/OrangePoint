@@ -148,7 +148,7 @@ namespace OrangePoint.View
             List<ObrigacaoEmpresa> listaObrigacaoEmp = obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList();
 
             cbClassificacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
-            cbClassificacao.DisplayMember = "Obrigação";
+            cbClassificacao.DisplayMember = "NomeCompleto";
             cbClassificacao.ValueMember = "idTipoObrigação";
         }
 
@@ -257,11 +257,13 @@ namespace OrangePoint.View
             if (button10.Text == "Detalhes Adicionais da Empresa")
             {
                 pnCadastraAtividadeEmpresa.Visible = true;
+                button8.Visible = false;
                 button10.Text = "Dados Gerais da Empresa";
             }
             else
             {
                 pnCadastraAtividadeEmpresa.Visible = false;
+                button8.Visible = true;
                 button10.Text = "Detalhes Adicionais da Empresa";
             }
         }
@@ -283,7 +285,7 @@ namespace OrangePoint.View
             dgObrigacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
             dgObrigacao.Columns["id"].Visible = false;
             dgObrigacao.Columns["idTipoObrigação"].Visible = false;
-            dgObrigacao.Columns["Obrigação"].Width = 230;
+            dgObrigacao.Columns["Obrigação"].Width = 85;
             dgObrigacao.Columns["Obrigação"].ReadOnly = true;
         }
 
@@ -308,14 +310,22 @@ namespace OrangePoint.View
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (cbObrigacao.Text != "" && !obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList().Exists(o => o.TipoClassificacao.CodTipoClassificacao == int.Parse(cbObrigacao.SelectedValue.ToString())))
+            if(cbObrigacoes.Text == "")
             {
-                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa, cbObrigacoes.Text == "Mensal" ? 1 : 2, dateTimePicker1.Value);
+                MessageBox.Show("Favor selecionar o tipo");
+                return;
+            }
+                
+            if (!obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList()
+                .Exists(o => o.TipoClassificacao.CodTipoClassificacao == int.Parse(cbObrigacao.SelectedValue.ToString())
+                && utilities.ConjugaMesAno(o.DataInicio) == utilities.ConjugaMesAno(dateTimePicker1.Value) && utilities.ConjugaMesAno(o.DataFim) == utilities.ConjugaMesAno(dateTimePicker2.Value)))
+            {
+                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa, cbObrigacoes.Text == "Mensal" ? 1 : 2, dateTimePicker1.Value, dateTimePicker2.Value);
                 CarregaObrigacoes();
                 CarregaComboBoxClassificacao();
             }
             else
-                MessageBox.Show("Obrigação já alocada para esta empresa!");
+                MessageBox.Show("Obrigação já alocada para esta data (mês e ano) nesta empresa!");
         }
 
         private void dgObrigacao_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)

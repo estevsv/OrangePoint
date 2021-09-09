@@ -1,5 +1,6 @@
 ﻿using OrangePoint.DataAccess;
 using OrangePoint.Model;
+using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,6 +15,7 @@ namespace OrangePoint.BusinessRule
     {
         ObrigacaoEmpresaDAO obrigacaoEmpresaDAO = new ObrigacaoEmpresaDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
+        Utilities utilities = new Utilities();
 
         public DataTable PesquisaObrigacaoEmpresasTabela()
         {
@@ -25,15 +27,10 @@ namespace OrangePoint.BusinessRule
             return obrigacaoEmpresaDAO.PesquisaObrigacaoEmpresaLista();
         }
 
-        public void IncluirObrigacaoEmpresa(int codTipoClassificacao, int codEmpresa, int tipo, DateTime data)
+        public void IncluirObrigacaoEmpresa(int codTipoClassificacao, int codEmpresa, int tipo, DateTime dataInicio, DateTime dataFim)
         {
-            if (listaObrigacaoEmpresas().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.Empresa.CodEmpresa == codEmpresa && o.Data == data))
-                MessageBox.Show("Obrigação já alocada para esta Empresa!");
-            else
-            {
-                obrigacaoEmpresaDAO.IncluirObrigacaoEmpresa(codTipoClassificacao, codEmpresa, tipo, data);
-                MessageBox.Show("Obrigação alocada!");
-            }
+            obrigacaoEmpresaDAO.IncluirObrigacaoEmpresa(codTipoClassificacao, codEmpresa, tipo, dataInicio, dataFim);
+            MessageBox.Show("Obrigação alocada!");
         }
 
         public void ExcluiObrigacaoEmpresa(int codObrigacaoEmpresa)
@@ -79,7 +76,22 @@ namespace OrangePoint.BusinessRule
             column = new DataColumn
             {
                 DataType = Type.GetType("System.String"),
-                ColumnName = "Data",
+                ColumnName = "Data Início",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Data Fim",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
+
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "NomeCompleto",
                 ReadOnly = true,
             };
             table.Columns.Add(column);
@@ -88,17 +100,25 @@ namespace OrangePoint.BusinessRule
             PrimaryKeyColumns[0] = table.Columns["id"];
             table.PrimaryKey = PrimaryKeyColumns;
 
-            foreach (ObrigacaoEmpresa obrigacaoEmpresa in listaObrigacaoEmpresa)
+            foreach (ObrigacaoEmpresa obrigacaoEmpresa in listaObrigacaoEmpresa.OrderByDescending(o => o.DataFim))
             {
+                string dataInicio = "";
+                string dataFim = "";
+
                 row = table.NewRow();
                 row["id"] = obrigacaoEmpresa.CodObrigacaoEmpresa;
                 row["idTipoObrigação"] = obrigacaoEmpresa.TipoClassificacao.CodTipoClassificacao;
                 row["Obrigação"] = obrigacaoEmpresa.TipoClassificacao.Descricao;
                 row["Tipo"] = obrigacaoEmpresa.TipoObrigacao == 1 ? "Mensal" : "Anual";
-                if(obrigacaoEmpresa.Data == DateTime.MinValue)
-                    row["Data"] = "";
-                else
-                    row["Data"] = obrigacaoEmpresa.Data.ToShortDateString();
+
+                if(obrigacaoEmpresa.DataInicio != DateTime.MinValue)
+                    dataInicio = obrigacaoEmpresa.DataInicio.ToShortDateString();
+                if (obrigacaoEmpresa.DataInicio != DateTime.MinValue)
+                    dataFim = obrigacaoEmpresa.DataFim.ToShortDateString();
+
+                row["Data Início"] = dataInicio;
+                row["Data Fim"] = dataFim;
+                row["NomeCompleto"] = obrigacaoEmpresa.TipoClassificacao.Descricao + " - " + dataInicio + " - " + dataFim;
                 table.Rows.Add(row);
             }
 

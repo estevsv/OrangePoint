@@ -20,7 +20,10 @@ namespace OrangePoint.Model
         private int tipoObrigacao;
         public int TipoObrigacao { get => tipoObrigacao; set => tipoObrigacao = value; }
 
-        private DateTime data;
-        public DateTime Data { get => data; set => data = value; }
+        private DateTime dataInicio;
+        public DateTime DataInicio { get => dataInicio; set => dataInicio = value; }
+
+        private DateTime dataFim;
+        public DateTime DataFim { get => dataFim; set => dataFim = value; }
     }
 }

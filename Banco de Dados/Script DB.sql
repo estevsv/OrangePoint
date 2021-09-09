@@ -223,7 +223,8 @@ INSERT INTO `bdorangepoint`.`permissoes_tela` (`COD_TIPO_PERMISSAO`, `DESCRICAO_
 
 #Alterações V2 do sistema
 ALTER TABLE `bdOrangePoint`.`OBRIGACAO_EMPRESA` ADD COLUMN `TIPO` int;
-ALTER TABLE `bdOrangePoint`.`OBRIGACAO_EMPRESA` ADD COLUMN `DATA` DATE;
+ALTER TABLE `bdOrangePoint`.`OBRIGACAO_EMPRESA` ADD COLUMN `DATA_INICIO` DATE;
+ALTER TABLE `bdOrangePoint`.`OBRIGACAO_EMPRESA` ADD COLUMN `DATA_FIM` DATE;
 
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('1', 'Ativo Circulante');
 INSERT INTO `bdorangepoint`.`tipo_valor` (`COD_TIPO_VALOR`, `DESC_TIPO`) VALUES ('2', 'Passivo Circulante');

@@ -82,7 +82,11 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -342,7 +346,7 @@
             "Controle de Folha de Ponto"});
             this.cbClassificacao.Location = new System.Drawing.Point(359, 185);
             this.cbClassificacao.Name = "cbClassificacao";
-            this.cbClassificacao.Size = new System.Drawing.Size(196, 21);
+            this.cbClassificacao.Size = new System.Drawing.Size(268, 21);
             this.cbClassificacao.TabIndex = 65;
             // 
             // label9
@@ -492,6 +496,10 @@
             // 
             this.pnCadastraAtividadeEmpresa.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.pnCadastraAtividadeEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label18);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.dateTimePicker2);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label17);
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.label16);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.dateTimePicker1);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbObrigacoes);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.dgObrigacao);
@@ -504,9 +512,9 @@
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label13);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbAtividade);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label12);
-            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(249, 304);
+            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(249, 307);
             this.pnCadastraAtividadeEmpresa.Name = "pnCadastraAtividadeEmpresa";
-            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 279);
+            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 288);
             this.pnCadastraAtividadeEmpresa.TabIndex = 86;
             // 
             // cbObrigacoes
@@ -516,19 +524,19 @@
             this.cbObrigacoes.Items.AddRange(new object[] {
             "Mensal",
             "Anual"});
-            this.cbObrigacoes.Location = new System.Drawing.Point(510, 59);
+            this.cbObrigacoes.Location = new System.Drawing.Point(449, 59);
             this.cbObrigacoes.Name = "cbObrigacoes";
-            this.cbObrigacoes.Size = new System.Drawing.Size(208, 21);
+            this.cbObrigacoes.Size = new System.Drawing.Size(244, 21);
             this.cbObrigacoes.TabIndex = 93;
             // 
             // dgObrigacao
             // 
             this.dgObrigacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgObrigacao.Location = new System.Drawing.Point(421, 107);
+            this.dgObrigacao.Location = new System.Drawing.Point(331, 107);
             this.dgObrigacao.MultiSelect = false;
             this.dgObrigacao.Name = "dgObrigacao";
             this.dgObrigacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgObrigacao.Size = new System.Drawing.Size(343, 150);
+            this.dgObrigacao.Size = new System.Drawing.Size(433, 172);
             this.dgObrigacao.TabIndex = 90;
             this.dgObrigacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgObrigacao_UserDeletingRow);
             // 
@@ -539,7 +547,7 @@
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button11.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.button11.ForeColor = System.Drawing.Color.White;
-            this.button11.Location = new System.Drawing.Point(737, 47);
+            this.button11.Location = new System.Drawing.Point(716, 49);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(35, 33);
             this.button11.TabIndex = 91;
@@ -553,7 +561,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(498, 2);
+            this.label14.Location = new System.Drawing.Point(437, 2);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(180, 23);
             this.label14.TabIndex = 92;
@@ -570,9 +578,9 @@
             "Controle de Usuários",
             "Folha de Ponto",
             "Controle de Folha de Ponto"});
-            this.cbObrigacao.Location = new System.Drawing.Point(510, 37);
+            this.cbObrigacao.Location = new System.Drawing.Point(449, 37);
             this.cbObrigacao.Name = "cbObrigacao";
-            this.cbObrigacao.Size = new System.Drawing.Size(208, 21);
+            this.cbObrigacao.Size = new System.Drawing.Size(244, 21);
             this.cbObrigacao.TabIndex = 89;
             // 
             // label15
@@ -581,7 +589,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(424, 34);
+            this.label15.Location = new System.Drawing.Point(363, 34);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 22);
             this.label15.TabIndex = 88;
@@ -594,7 +602,7 @@
             this.dgAtividadeEmpresa.MultiSelect = false;
             this.dgAtividadeEmpresa.Name = "dgAtividadeEmpresa";
             this.dgAtividadeEmpresa.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgAtividadeEmpresa.Size = new System.Drawing.Size(343, 171);
+            this.dgAtividadeEmpresa.Size = new System.Drawing.Size(248, 171);
             this.dgAtividadeEmpresa.TabIndex = 87;
             this.dgAtividadeEmpresa.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgAtividadeEmpresa_UserDeletingRow);
             // 
@@ -605,7 +613,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button9.Font = new System.Drawing.Font("Arial Narrow", 14F);
             this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(349, 37);
+            this.button9.Location = new System.Drawing.Point(287, 37);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(35, 33);
             this.button9.TabIndex = 87;
@@ -638,7 +646,7 @@
             "Controle de Folha de Ponto"});
             this.cbAtividade.Location = new System.Drawing.Point(131, 40);
             this.cbAtividade.Name = "cbAtividade";
-            this.cbAtividade.Size = new System.Drawing.Size(196, 21);
+            this.cbAtividade.Size = new System.Drawing.Size(147, 21);
             this.cbAtividade.TabIndex = 67;
             // 
             // label12
@@ -764,12 +772,59 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.btnCadastrarDadosWeb_Click);
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(401, 59);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 22);
+            this.label16.TabIndex = 95;
+            this.label16.Text = "Tipo";
+            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(510, 81);
+            this.dateTimePicker1.CustomFormat = "MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(449, 81);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(208, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(61, 20);
             this.dateTimePicker1.TabIndex = 94;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(397, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 22);
+            this.label17.TabIndex = 96;
+            this.label17.Text = "Início";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "MM/yyyy";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(632, 81);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(61, 20);
+            this.dateTimePicker2.TabIndex = 97;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(591, 81);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 22);
+            this.label18.TabIndex = 98;
+            this.label18.Text = "Fim";
             // 
             // EspecificacoesEmpresa
             // 
@@ -885,6 +940,10 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

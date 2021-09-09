@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using OrangePoint.Model;
+using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -16,6 +17,7 @@ namespace OrangePoint.DataAccess
         TipoClassificacaoDAO tipoClassificacaoDAO = new TipoClassificacaoDAO();
         EmpresaDAO empresaDAO = new EmpresaDAO();
 
+        private Utilities utilities = new Utilities();
         public DataTable PesquisaObrigacaoEmpresasTabela()
         {
             DataTable tabela = new DataTable();
@@ -52,6 +54,10 @@ namespace OrangePoint.DataAccess
                     obrigacaoEmpresa.TipoClassificacao = listTipoClassificacao.Find(o => o.CodTipoClassificacao == int.Parse(registro["COD_TIPO_CLASSIFICACAO"].ToString()));
                     obrigacaoEmpresa.Empresa = listEmpresaDAO.Find(o => o.CodEmpresa == int.Parse(registro["COD_EMPRESA"].ToString()));
                     obrigacaoEmpresa.TipoObrigacao = int.Parse(registro["TIPO"].ToString());
+                    if (registro["DATA"] != DBNull.Value)
+                        obrigacaoEmpresa.Data = Convert.ToDateTime(registro["DATA"]);
+                    else
+                        obrigacaoEmpresa.Data = new DateTime();
 
                     listObrigacaoEmpresa.Add(obrigacaoEmpresa);
                 }
@@ -79,13 +85,14 @@ namespace OrangePoint.DataAccess
             }
         }
 
-        public void IncluirObrigacaoEmpresa(int codClassificacao, int codEmpresa, int tipo)
+        public void IncluirObrigacaoEmpresa(int codClassificacao, int codEmpresa, int tipo, DateTime data)
         {
+            string dataPesquisa = data.Year + "-" + data.Month + "-" + data.Day;
             try
             {
                 MySqlCommand cmd = new MySqlCommand();
                 cmd.Connection = conexao.ObjetoConexao;
-                cmd.CommandText = "INSERT INTO `bdorangepoint`.`obrigacao_empresa` (`COD_EMPRESA`, `COD_TIPO_CLASSIFICACAO`,`TIPO`) VALUES  (" + codEmpresa + "," + codClassificacao + "," + tipo +");";
+                cmd.CommandText = "INSERT INTO `bdorangepoint`.`obrigacao_empresa` (`COD_EMPRESA`, `COD_TIPO_CLASSIFICACAO`,`TIPO`, `DATA`) VALUES  (" + codEmpresa + "," + codClassificacao + "," + tipo +",'" + dataPesquisa + "'); ";
                 conexao.Desconectar();
                 conexao.Conectar();
                 cmd.ExecuteNonQuery();

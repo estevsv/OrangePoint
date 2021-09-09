@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using OrangePoint.Model;
+using OrangePoint.Resources;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,6 +14,7 @@ namespace OrangePoint.DataAccess
     public class FolhadePontoDAO
     {
         private ConexaoBD conexao = new ConexaoBD();
+        private Utilities utilities = new Utilities();
 
         public void Incluir(FolhaPonto folhaPonto)
         {
@@ -106,13 +108,14 @@ namespace OrangePoint.DataAccess
             return tabela;
         }
 
-        public DataTable PesquisaPontoPorIdUsuarioeData(Usuario usuario,DateTime dataProcura)
+        public DataTable PesquisaPontoPorIdUsuarioeData(Usuario usuario,DateTime dataInicio, DateTime dataFim)
         {
             DataTable tabela = new DataTable();
-            string dataPesquisa = dataProcura.Year + "-" + dataProcura.Month + "-" + dataProcura.Day;
+            string dataInicioString = (dataInicio.Year).ToString() + (utilities.RetornaData(dataInicio.Month)).ToString() + (utilities.RetornaData(dataInicio.Day)).ToString();
+            string dataFimString = (dataFim.Year).ToString() + (utilities.RetornaData(dataFim.Month)).ToString() + (utilities.RetornaData(dataFim.Day)).ToString();
             try
             {
-                MySqlDataAdapter da = new MySqlDataAdapter("select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = " + usuario.CodUsuario + " AND DATA_PONTO = '" + dataPesquisa + "';", conexao.StringConexao);
+                MySqlDataAdapter da = new MySqlDataAdapter("select * from bdorangepoint.folha_ponto_usuario where COD_USUARIO = " + usuario.CodUsuario + " AND DATA_PONTO >= " + dataInicioString + " AND DATA_PONTO <= "+ dataFimString +";", conexao.StringConexao);
                 da.Fill(tabela);
             }
             catch

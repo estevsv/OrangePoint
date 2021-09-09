@@ -14,6 +14,15 @@ namespace OrangePoint.Resources
     {
         PermissaoTelaRule permissaoTelaRule = new PermissaoTelaRule();
 
+        public string RetornaData(int numero)
+        {
+            if (numero < 10)
+            {
+                return "0" + numero;
+            }
+            return numero.ToString();
+        }
+
         public Image CarregaImagemUsuario(Usuario usuario, Image imagemPadrao)
         {
             try

@@ -56,7 +56,7 @@ namespace OrangePoint.View
         {
             DataTable retorno = new DataTable();
             if (filtro)
-                retorno = folhaPontoRule.PesquisaPontoPorIdUsuarioeData(usuario, dateTimePicker1.Value.Date);
+                retorno = folhaPontoRule.PesquisaPontoPorIdUsuarioeData(usuario, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
             else
                 retorno = folhaPontoRule.PesquisaPontoPorIdUsuario(usuario);
 

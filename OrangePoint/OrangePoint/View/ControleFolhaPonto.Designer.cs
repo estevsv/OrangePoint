@@ -63,6 +63,8 @@
             this.pnAlteracao = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -245,11 +247,11 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(700, 122);
+            this.label1.Location = new System.Drawing.Point(533, 121);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 20);
+            this.label1.Size = new System.Drawing.Size(71, 20);
             this.label1.TabIndex = 44;
-            this.label1.Text = "Data";
+            this.label1.Text = "Data Inicial";
             // 
             // label4
             // 
@@ -302,9 +304,9 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(761, 123);
+            this.dateTimePicker1.Location = new System.Drawing.Point(610, 121);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(226, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(170, 20);
             this.dateTimePicker1.TabIndex = 45;
             // 
             // btnFiltrar
@@ -327,7 +329,7 @@
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button7.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(810, 149);
+            this.button7.Location = new System.Drawing.Point(734, 149);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(134, 42);
             this.button7.TabIndex = 47;
@@ -470,9 +472,9 @@
             this.pnAlteracao.Controls.Add(this.label6);
             this.pnAlteracao.Controls.Add(this.label3);
             this.pnAlteracao.Controls.Add(this.label5);
-            this.pnAlteracao.Location = new System.Drawing.Point(228, 145);
+            this.pnAlteracao.Location = new System.Drawing.Point(228, 149);
             this.pnAlteracao.Name = "pnAlteracao";
-            this.pnAlteracao.Size = new System.Drawing.Size(816, 398);
+            this.pnAlteracao.Size = new System.Drawing.Size(816, 394);
             this.pnAlteracao.TabIndex = 60;
             this.pnAlteracao.Visible = false;
             // 
@@ -506,6 +508,25 @@
             this.btnExportar.UseVisualStyleBackColor = false;
             this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(874, 123);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(167, 20);
+            this.dateTimePicker2.TabIndex = 63;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Arial Narrow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(802, 122);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(66, 20);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "Data Final";
+            // 
             // ControleFolhaPonto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,6 +534,8 @@
             this.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1085, 621);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.pnAlteracao);
             this.Controls.Add(this.button7);
@@ -581,5 +604,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label8;
     }
 }

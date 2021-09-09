@@ -70,14 +70,13 @@ namespace OrangePoint.View
                     List<ClassificacaoEmpresa> classificacaoEmpresaMensal = classificacaoEmpresa.Where(o => listaObrigacoes.Exists(p => p.TipoClassificacao.CodTipoClassificacao == o.TipoClassificacao.CodTipoClassificacao && p.TipoObrigacao == 1)).ToList();
                     List<ClassificacaoEmpresa> classificacaoEmpresaAnual = classificacaoEmpresa.Where(o => listaObrigacoes.Exists(p => p.TipoClassificacao.CodTipoClassificacao == o.TipoClassificacao.CodTipoClassificacao && p.TipoObrigacao == 2)).ToList();
 
-                    obrigacoesMensaisRealizadas = classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
-                    && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+                    obrigacoesMensaisRealizadas = classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data >= dateTimePicker1.Value && o.DataEmpresa.Data <= dateTimePicker2.Value).Count();
 
-                    obrigacoesAnuaisRealizadas = classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+                    obrigacoesAnuaisRealizadas = classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year >= dateTimePicker1.Value.Year && o.DataEmpresa.Data.Year <= dateTimePicker2.Value.Year).Count();
 
                     dgDetalhamento.DataSource = ElaboraTabelaDetalhamentoObrigacoes(listaObrigacoes.Where(o => o.TipoObrigacao == tipoObrigacao).ToList(),
-                        tipoObrigacao == 1 ? classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
-                    && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).ToList() : classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).ToList());
+                        tipoObrigacao == 1 ? classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data >= dateTimePicker1.Value && o.DataEmpresa.Data <= dateTimePicker2.Value).ToList() :
+                        classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year >= dateTimePicker1.Value.Year && o.DataEmpresa.Data.Year <= dateTimePicker2.Value.Year).ToList());
                     dgDetalhamento.Columns["id"].Visible = false;
                 }
             }
@@ -281,6 +280,11 @@ namespace OrangePoint.View
         private void cbTipoDetalhamento_SelectedIndexChanged(object sender, EventArgs e)
         {
             CalculaObrigacoes();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Você é especial!!!!");
         }
     }
 }

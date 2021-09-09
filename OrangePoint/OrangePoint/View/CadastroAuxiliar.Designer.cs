@@ -297,7 +297,7 @@
             this.AdicionarGrupo.ForeColor = System.Drawing.Color.White;
             this.AdicionarGrupo.Location = new System.Drawing.Point(634, 148);
             this.AdicionarGrupo.Name = "AdicionarGrupo";
-            this.AdicionarGrupo.Size = new System.Drawing.Size(113, 30);
+            this.AdicionarGrupo.Size = new System.Drawing.Size(125, 30);
             this.AdicionarGrupo.TabIndex = 26;
             this.AdicionarGrupo.Text = "Adicionar";
             this.AdicionarGrupo.UseVisualStyleBackColor = false;
@@ -310,7 +310,7 @@
             this.dgGrupo.MultiSelect = false;
             this.dgGrupo.Name = "dgGrupo";
             this.dgGrupo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgGrupo.Size = new System.Drawing.Size(196, 157);
+            this.dgGrupo.Size = new System.Drawing.Size(208, 157);
             this.dgGrupo.TabIndex = 25;
             this.dgGrupo.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgGrupo_CellDoubleClick);
             this.dgGrupo.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgGrupo_UserDeletingRow);
@@ -321,7 +321,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(614, 94);
+            this.label2.Location = new System.Drawing.Point(637, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 22);
             this.label2.TabIndex = 24;
@@ -331,7 +331,7 @@
             // 
             this.txtNovoGrupo.Location = new System.Drawing.Point(551, 122);
             this.txtNovoGrupo.Name = "txtNovoGrupo";
-            this.txtNovoGrupo.Size = new System.Drawing.Size(196, 20);
+            this.txtNovoGrupo.Size = new System.Drawing.Size(208, 20);
             this.txtNovoGrupo.TabIndex = 23;
             // 
             // AdicionarAtividadeEmpresa
@@ -405,9 +405,9 @@
             this.btnAdicionarClassificacao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAdicionarClassificacao.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarClassificacao.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(634, 410);
+            this.btnAdicionarClassificacao.Location = new System.Drawing.Point(634, 411);
             this.btnAdicionarClassificacao.Name = "btnAdicionarClassificacao";
-            this.btnAdicionarClassificacao.Size = new System.Drawing.Size(113, 30);
+            this.btnAdicionarClassificacao.Size = new System.Drawing.Size(125, 30);
             this.btnAdicionarClassificacao.TabIndex = 46;
             this.btnAdicionarClassificacao.Text = "Adicionar";
             this.btnAdicionarClassificacao.UseVisualStyleBackColor = false;
@@ -420,7 +420,7 @@
             this.dgTipoClassificacao.MultiSelect = false;
             this.dgTipoClassificacao.Name = "dgTipoClassificacao";
             this.dgTipoClassificacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgTipoClassificacao.Size = new System.Drawing.Size(196, 157);
+            this.dgTipoClassificacao.Size = new System.Drawing.Size(208, 157);
             this.dgTipoClassificacao.TabIndex = 45;
             this.dgTipoClassificacao.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgTipoClassificacao_CellDoubleClick);
             this.dgTipoClassificacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgTipoClassificacao_UserDeletingRow);
@@ -431,7 +431,7 @@
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(604, 357);
+            this.label12.Location = new System.Drawing.Point(618, 356);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 22);
             this.label12.TabIndex = 44;
@@ -441,7 +441,7 @@
             // 
             this.txtClassificacao.Location = new System.Drawing.Point(551, 385);
             this.txtClassificacao.Name = "txtClassificacao";
-            this.txtClassificacao.Size = new System.Drawing.Size(196, 20);
+            this.txtClassificacao.Size = new System.Drawing.Size(208, 20);
             this.txtClassificacao.TabIndex = 43;
             // 
             // btnCancelarRegime

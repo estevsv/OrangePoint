@@ -82,6 +82,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -491,6 +492,7 @@
             // 
             this.pnCadastraAtividadeEmpresa.BackgroundImage = global::OrangePoint.Properties.Resources.Background_Padrão;
             this.pnCadastraAtividadeEmpresa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnCadastraAtividadeEmpresa.Controls.Add(this.dateTimePicker1);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbObrigacoes);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.dgObrigacao);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.button11);
@@ -514,19 +516,19 @@
             this.cbObrigacoes.Items.AddRange(new object[] {
             "Mensal",
             "Anual"});
-            this.cbObrigacoes.Location = new System.Drawing.Point(522, 59);
+            this.cbObrigacoes.Location = new System.Drawing.Point(510, 59);
             this.cbObrigacoes.Name = "cbObrigacoes";
-            this.cbObrigacoes.Size = new System.Drawing.Size(196, 21);
+            this.cbObrigacoes.Size = new System.Drawing.Size(208, 21);
             this.cbObrigacoes.TabIndex = 93;
             // 
             // dgObrigacao
             // 
             this.dgObrigacao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgObrigacao.Location = new System.Drawing.Point(421, 86);
+            this.dgObrigacao.Location = new System.Drawing.Point(421, 107);
             this.dgObrigacao.MultiSelect = false;
             this.dgObrigacao.Name = "dgObrigacao";
             this.dgObrigacao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dgObrigacao.Size = new System.Drawing.Size(343, 171);
+            this.dgObrigacao.Size = new System.Drawing.Size(343, 150);
             this.dgObrigacao.TabIndex = 90;
             this.dgObrigacao.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgObrigacao_UserDeletingRow);
             // 
@@ -568,9 +570,9 @@
             "Controle de Usuários",
             "Folha de Ponto",
             "Controle de Folha de Ponto"});
-            this.cbObrigacao.Location = new System.Drawing.Point(522, 37);
+            this.cbObrigacao.Location = new System.Drawing.Point(510, 37);
             this.cbObrigacao.Name = "cbObrigacao";
-            this.cbObrigacao.Size = new System.Drawing.Size(196, 21);
+            this.cbObrigacao.Size = new System.Drawing.Size(208, 21);
             this.cbObrigacao.TabIndex = 89;
             // 
             // label15
@@ -762,6 +764,13 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.btnCadastrarDadosWeb_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(510, 81);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(208, 20);
+            this.dateTimePicker1.TabIndex = 94;
+            // 
             // EspecificacoesEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -876,5 +885,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

@@ -25,13 +25,13 @@ namespace OrangePoint.BusinessRule
             return obrigacaoEmpresaDAO.PesquisaObrigacaoEmpresaLista();
         }
 
-        public void IncluirObrigacaoEmpresa(int codTipoClassificacao, int codEmpresa, int tipo)
+        public void IncluirObrigacaoEmpresa(int codTipoClassificacao, int codEmpresa, int tipo, DateTime data)
         {
-            if (listaObrigacaoEmpresas().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.Empresa.CodEmpresa == codEmpresa))
+            if (listaObrigacaoEmpresas().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.Empresa.CodEmpresa == codEmpresa && o.Data == data))
                 MessageBox.Show("Obrigação já alocada para esta Empresa!");
             else
             {
-                obrigacaoEmpresaDAO.IncluirObrigacaoEmpresa(codTipoClassificacao, codEmpresa, tipo);
+                obrigacaoEmpresaDAO.IncluirObrigacaoEmpresa(codTipoClassificacao, codEmpresa, tipo, data);
                 MessageBox.Show("Obrigação alocada!");
             }
         }
@@ -76,6 +76,13 @@ namespace OrangePoint.BusinessRule
                 ReadOnly = true,
             };
             table.Columns.Add(column);
+            column = new DataColumn
+            {
+                DataType = Type.GetType("System.String"),
+                ColumnName = "Data",
+                ReadOnly = true,
+            };
+            table.Columns.Add(column);
 
             DataColumn[] PrimaryKeyColumns = new DataColumn[1];
             PrimaryKeyColumns[0] = table.Columns["id"];
@@ -88,6 +95,10 @@ namespace OrangePoint.BusinessRule
                 row["idTipoObrigação"] = obrigacaoEmpresa.TipoClassificacao.CodTipoClassificacao;
                 row["Obrigação"] = obrigacaoEmpresa.TipoClassificacao.Descricao;
                 row["Tipo"] = obrigacaoEmpresa.TipoObrigacao == 1 ? "Mensal" : "Anual";
+                if(obrigacaoEmpresa.Data == DateTime.MinValue)
+                    row["Data"] = "";
+                else
+                    row["Data"] = obrigacaoEmpresa.Data.ToShortDateString();
                 table.Rows.Add(row);
             }
 

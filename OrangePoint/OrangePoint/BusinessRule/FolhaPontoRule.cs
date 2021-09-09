@@ -39,9 +39,9 @@ namespace OrangePoint.BusinessRule
             return folhaPontoDAO.PesquisaPontoPorIdUsuario(usuario);
         }
 
-        public DataTable PesquisaPontoPorIdUsuarioeData(Usuario usuario, DateTime dataProcura)
+        public DataTable PesquisaPontoPorIdUsuarioeData(Usuario usuario, DateTime dataInicio, DateTime dataFim)
         {
-            return folhaPontoDAO.PesquisaPontoPorIdUsuarioeData(usuario, dataProcura);
+            return folhaPontoDAO.PesquisaPontoPorIdUsuarioeData(usuario, dataInicio, dataFim);
         }
 
         public FolhaPonto PesquisaFolhaPontoIndividual(DateTime data, Usuario usuario, int codigoID = 0)

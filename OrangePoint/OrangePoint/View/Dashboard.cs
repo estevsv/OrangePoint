@@ -46,6 +46,8 @@ namespace OrangePoint.View
 
         private void CalculaObrigacoes()
         {
+            DateTime dataBusca = new DateTime(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month, DateTime.DaysInMonth(dateTimePicker1.Value.Year, dateTimePicker1.Value.Month));
+
             int tipoObrigacao = cbTipoDetalhamento.Text == "Mensal" ? 1 : 2;
 
             chart1.Series["S1"].Points.Clear();
@@ -59,8 +61,8 @@ namespace OrangePoint.View
             List<ObrigacaoEmpresa> listaObrigacoes = new List<ObrigacaoEmpresa>();
             listaObrigacoes = checkBox1.Checked ? obrigacaoEmpresaRule.listaObrigacaoEmpresas() : obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.RazaoSocial == cbEmpresa.Text).ToList(); ;
 
-            totalObrigacoesMensais = listaObrigacoes.Where(o => o.TipoObrigacao == 1).Count();
-            totalObrigacoesAnuais = listaObrigacoes.Where(o => o.TipoObrigacao == 2).Count();
+            totalObrigacoesMensais = listaObrigacoes.Where(o => o.TipoObrigacao == 1 && o.DataInicio <= dataBusca && o.DataFim >= dataBusca).Count();
+            totalObrigacoesAnuais = listaObrigacoes.Where(o => o.TipoObrigacao == 2 && o.DataInicio <= dataBusca && o.DataFim >= dataBusca).Count();
 
             if (listaEmpresas.Count() > 0)
             {
@@ -70,14 +72,13 @@ namespace OrangePoint.View
                     List<ClassificacaoEmpresa> classificacaoEmpresaMensal = classificacaoEmpresa.Where(o => listaObrigacoes.Exists(p => p.TipoClassificacao.CodTipoClassificacao == o.TipoClassificacao.CodTipoClassificacao && p.TipoObrigacao == 1)).ToList();
                     List<ClassificacaoEmpresa> classificacaoEmpresaAnual = classificacaoEmpresa.Where(o => listaObrigacoes.Exists(p => p.TipoClassificacao.CodTipoClassificacao == o.TipoClassificacao.CodTipoClassificacao && p.TipoObrigacao == 2)).ToList();
 
-                    obrigacoesMensaisRealizadas = classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month 
-                    && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+                    obrigacoesMensaisRealizadas = classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dataBusca.Month && o.DataEmpresa.Data.Year == dataBusca.Year).Count();
 
-                    obrigacoesAnuaisRealizadas = classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).Count();
+                    obrigacoesAnuaisRealizadas = classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dataBusca.Year).Count();
 
-                    dgDetalhamento.DataSource = ElaboraTabelaDetalhamentoObrigacoes(listaObrigacoes.Where(o => o.TipoObrigacao == tipoObrigacao).ToList(),
-                       tipoObrigacao == 1 ? classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dateTimePicker1.Value.Month
-                    && o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).ToList() : classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dateTimePicker1.Value.Year).ToList());
+                    dgDetalhamento.DataSource = ElaboraTabelaDetalhamentoObrigacoes(listaObrigacoes.Where(o => o.TipoObrigacao == tipoObrigacao && o.DataInicio <= dataBusca && o.DataFim >= dataBusca).ToList(),
+                       tipoObrigacao == 1 ? classificacaoEmpresaMensal.Where(o => o.DataEmpresa.Data.Month == dataBusca.Month
+                    && o.DataEmpresa.Data.Year == dataBusca.Year).ToList() : classificacaoEmpresaAnual.Where(o => o.DataEmpresa.Data.Year == dataBusca.Year).ToList());
                     dgDetalhamento.Columns["id"].Visible = false;
                 }
             }

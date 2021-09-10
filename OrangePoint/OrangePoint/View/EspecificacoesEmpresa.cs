@@ -149,7 +149,7 @@ namespace OrangePoint.View
 
             cbClassificacao.DataSource = obrigacaoEmpresaRule.ElaboraTabelaObrigacaoEmpresa(listaObrigacaoEmp);
             cbClassificacao.DisplayMember = "NomeCompleto";
-            cbClassificacao.ValueMember = "idTipoObrigação";
+            cbClassificacao.ValueMember = "id";
         }
 
         private void CarregaComboBoxAtividadeEmpresa()
@@ -188,17 +188,34 @@ namespace OrangePoint.View
             dgControleFC.Columns["Data"].ReadOnly = true;
         }
 
+
         private void btnControleFC_Click(object sender, EventArgs e)
         {
+            ObrigacaoEmpresa obrigacao = obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.CodObrigacaoEmpresa == int.Parse(cbClassificacao.SelectedValue.ToString())).First();
+
+            DateTime result = new DateTime();
+            DateTime.TryParse(txtData.Text, out result);
+            
+            
+
             if (cbClassificacao.SelectedValue != null && txtData.Text != "")
             {
-                int codTipoClassificacao = int.Parse(cbClassificacao.SelectedValue.ToString());
+                if (result != DateTime.MinValue)
+                {
+                    if (result.Date < obrigacao.DataInicio || result.Date > obrigacao.DataFim)
+                    {
+                        MessageBox.Show("Data fora do período de vigência!");
+                        return;
+                    }
+
+                }
+
                 dataEmpresaRule.IncluirDataEmpresa(empresaOperacao.CodEmpresa, txtData.Text);
                 int codData = int.Parse(dataEmpresaRule.listaDataEmpresa(empresaOperacao.CodEmpresa, txtData.Text).First().CodData.ToString()) ;
 
-                if(!classificacaoEmpresaRule.listaClassificacaoEmpresa().Exists(o => o.TipoClassificacao.CodTipoClassificacao == codTipoClassificacao && o.DataEmpresa.CodData == codData))
+                if(!classificacaoEmpresaRule.listaClassificacaoEmpresa().Exists(o => o.TipoClassificacao.CodTipoClassificacao == obrigacao.TipoClassificacao.CodTipoClassificacao && o.DataEmpresa.CodData == codData))
                 {
-                    classificacaoEmpresaRule.IncluirClassificacaoEmpresa(codTipoClassificacao, codData);
+                    classificacaoEmpresaRule.IncluirClassificacaoEmpresa(obrigacao.TipoClassificacao.CodTipoClassificacao, codData);
                     CarregaGridControleFC();
                     MessageBox.Show("Obrigação cadastrada");
                 } else
@@ -219,24 +236,24 @@ namespace OrangePoint.View
 
         private void CarregaGridDadosWeb()
         {
-            dgControleWeb.DataSource = dadoWebRule.FiltraPesquisaDadoWebTabela(empresaOperacao.CodEmpresa);
+            dataGridView1.DataSource = dadoWebRule.FiltraPesquisaDadoWebTabela(empresaOperacao.CodEmpresa);
 
-            dgControleWeb.Columns["id"].Visible = false;
+            dataGridView1.Columns["id"].Visible = false;
 
-            dgControleWeb.Columns["Usuário"].Width = 100;
-            dgControleWeb.Columns["Senha"].Width = 100;
-            dgControleWeb.Columns["Descrição"].Width = 100;
+            dataGridView1.Columns["Usuário"].Width = 100;
+            dataGridView1.Columns["Senha"].Width = 100;
+            dataGridView1.Columns["Descrição"].Width = 100;
 
-            dgControleWeb.Columns["Usuário"].ReadOnly = true;
-            dgControleWeb.Columns["Senha"].ReadOnly = true;
-            dgControleWeb.Columns["Descrição"].ReadOnly = true;
+            dataGridView1.Columns["Usuário"].ReadOnly = true;
+            dataGridView1.Columns["Senha"].ReadOnly = true;
+            dataGridView1.Columns["Descrição"].ReadOnly = true;
         }
 
         private void btnCadastrarDadosWeb_Click(object sender, EventArgs e)
         {
-            if (txtUsuarioWEB.Text != "" && txtDescricaoWEB.Text != "")
+            if (textBox1.Text != "" && textBox2.Text != "")
             {
-                dadoWebRule.IncluirDadosWebEmpresa(empresaOperacao.CodEmpresa, txtUsuarioWEB.Text, txtSenhaWEB.Text, txtDescricaoWEB.Text);
+                dadoWebRule.IncluirDadosWebEmpresa(empresaOperacao.CodEmpresa, textBox1.Text, textBox2.Text, textBox3.Text);
                 CarregaGridDadosWeb();
             }
             else
@@ -244,10 +261,10 @@ namespace OrangePoint.View
 
         }
 
-        private void dgControleWeb_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dataGridView1_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            dadoWebRule.ExcluiDadosWebEmpresa(int.Parse(dgControleWeb.CurrentRow.Cells[0].Value.ToString()));
-            dgControleWeb.Rows.RemoveAt(dgControleWeb.CurrentRow.Index);
+            dadoWebRule.ExcluiDadosWebEmpresa(int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString()));
+            dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
             CarregaGridDadosWeb();
             e.Cancel = true;
         }
@@ -315,12 +332,16 @@ namespace OrangePoint.View
                 MessageBox.Show("Favor selecionar o tipo");
                 return;
             }
-                
+
+            DateTime dataInicio = dateTimePicker1.Value; dataInicio = new DateTime(dataInicio.Year, dataInicio.Month, DateTime.DaysInMonth(dataInicio.Year,dataInicio.Month));
+            DateTime dataFim = dateTimePicker2.Value; dataFim = new DateTime(dataFim.Year, dataFim.Month, DateTime.DaysInMonth(dataFim.Year, dataFim.Month));
+
+
             if (!obrigacaoEmpresaRule.listaObrigacaoEmpresas().Where(o => o.Empresa.CodEmpresa == empresaOperacao.CodEmpresa).ToList()
                 .Exists(o => o.TipoClassificacao.CodTipoClassificacao == int.Parse(cbObrigacao.SelectedValue.ToString())
-                && utilities.ConjugaMesAno(o.DataInicio) == utilities.ConjugaMesAno(dateTimePicker1.Value) && utilities.ConjugaMesAno(o.DataFim) == utilities.ConjugaMesAno(dateTimePicker2.Value)))
+                && utilities.ConjugaMesAno(o.DataInicio) == utilities.ConjugaMesAno(dataInicio) && utilities.ConjugaMesAno(o.DataFim) == utilities.ConjugaMesAno(dataFim)))
             {
-                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa, cbObrigacoes.Text == "Mensal" ? 1 : 2, dateTimePicker1.Value, dateTimePicker2.Value);
+                obrigacaoEmpresaRule.IncluirObrigacaoEmpresa(int.Parse(cbObrigacao.SelectedValue.ToString()), empresaOperacao.CodEmpresa, cbObrigacoes.Text == "Mensal" ? 1 : 2, dataInicio, dataFim);
                 CarregaObrigacoes();
                 CarregaComboBoxClassificacao();
             }

@@ -61,6 +61,11 @@
             this.txtDescricaoWEB = new System.Windows.Forms.TextBox();
             this.btnCadastrarDadosWeb = new System.Windows.Forms.Button();
             this.pnCadastraAtividadeEmpresa = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbObrigacoes = new System.Windows.Forms.ComboBox();
             this.dgObrigacao = new System.Windows.Forms.DataGridView();
             this.button11 = new System.Windows.Forms.Button();
@@ -82,11 +87,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userImage)).BeginInit();
@@ -380,7 +380,7 @@
             this.btnControleFC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnControleFC.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnControleFC.ForeColor = System.Drawing.Color.White;
-            this.btnControleFC.Location = new System.Drawing.Point(520, 223);
+            this.btnControleFC.Location = new System.Drawing.Point(592, 223);
             this.btnControleFC.Name = "btnControleFC";
             this.btnControleFC.Size = new System.Drawing.Size(35, 30);
             this.btnControleFC.TabIndex = 68;
@@ -454,7 +454,6 @@
             this.dgControleWeb.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgControleWeb.Size = new System.Drawing.Size(343, 92);
             this.dgControleWeb.TabIndex = 81;
-            this.dgControleWeb.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgControleWeb_UserDeletingRow);
             // 
             // txtUsuarioWEB
             // 
@@ -512,10 +511,64 @@
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label13);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.cbAtividade);
             this.pnCadastraAtividadeEmpresa.Controls.Add(this.label12);
-            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(249, 307);
+            this.pnCadastraAtividadeEmpresa.Location = new System.Drawing.Point(249, 263);
             this.pnCadastraAtividadeEmpresa.Name = "pnCadastraAtividadeEmpresa";
-            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 288);
+            this.pnCadastraAtividadeEmpresa.Size = new System.Drawing.Size(802, 332);
             this.pnCadastraAtividadeEmpresa.TabIndex = 86;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(591, 81);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 22);
+            this.label18.TabIndex = 98;
+            this.label18.Text = "Fim";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "MM/yyyy";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(632, 81);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(61, 20);
+            this.dateTimePicker2.TabIndex = 97;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(397, 81);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(42, 22);
+            this.label17.TabIndex = 96;
+            this.label17.Text = "Início";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(401, 59);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 22);
+            this.label16.TabIndex = 95;
+            this.label16.Text = "Tipo";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "MM/yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(449, 81);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(61, 20);
+            this.dateTimePicker1.TabIndex = 94;
             // 
             // cbObrigacoes
             // 
@@ -734,7 +787,7 @@
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.Size = new System.Drawing.Size(343, 234);
             this.dataGridView1.TabIndex = 81;
-            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgControleWeb_UserDeletingRow);
+            this.dataGridView1.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView1_UserDeletingRow);
             // 
             // textBox1
             // 
@@ -771,60 +824,6 @@
             this.button8.Text = "+";
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.btnCadastrarDadosWeb_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(401, 59);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 22);
-            this.label16.TabIndex = 95;
-            this.label16.Text = "Tipo";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "MM/yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(449, 81);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(61, 20);
-            this.dateTimePicker1.TabIndex = 94;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(397, 81);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(42, 22);
-            this.label17.TabIndex = 96;
-            this.label17.Text = "Início";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "MM/yyyy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(632, 81);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(61, 20);
-            this.dateTimePicker2.TabIndex = 97;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.Font = new System.Drawing.Font("Arial Narrow", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(591, 81);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(35, 22);
-            this.label18.TabIndex = 98;
-            this.label18.Text = "Fim";
             // 
             // EspecificacoesEmpresa
             // 

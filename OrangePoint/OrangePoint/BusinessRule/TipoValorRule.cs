@@ -30,15 +30,15 @@ namespace OrangePoint.BusinessRule
             if (id != -1)
             {
                 tipoValorDAO.AtualizaTipoValor(descricao, id);
-                MessageBox.Show("Tipo de Valor Atualizado");
+                MessageBox.Show("Conta Sintética Atualizado");
             }
             else
                 if (listaTipoValor().Exists(o => o.DescTipo == descricao))
-                    MessageBox.Show("Tipo de Valor já existente!");
+                    MessageBox.Show("Conta Sintética já existente!");
                 else
                 {   
                     tipoValorDAO.IncluirTipoValor(descricao);
-                    MessageBox.Show("Tipo de Valor cadastrado");
+                    MessageBox.Show("Conta Sintética cadastrado");
                 }
         }
 
@@ -48,10 +48,10 @@ namespace OrangePoint.BusinessRule
             if (!listaSubtipos.Exists(o => o.TipoValor.CodTipoValor == codTipoValor))
             {
                 tipoValorDAO.ExcluiTipoValor(codTipoValor);
-                MessageBox.Show("Tipo de Valor Excluído");
+                MessageBox.Show("Conta Sintética Excluído");
             }
             else
-                MessageBox.Show("Tipo de Valor alocado em um Subtipo de Valor. Exclusão não realizada!");
+                MessageBox.Show("Conta Sintética alocado em um SubConta Sintética. Exclusão não realizada!");
         }
     }
 }

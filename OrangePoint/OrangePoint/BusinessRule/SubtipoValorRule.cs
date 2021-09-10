@@ -37,15 +37,15 @@ namespace OrangePoint.BusinessRule
             if (id != -1)
             {
                 subtipoValorDAO.AtualizaSubtipoValor(descricao, id);
-                MessageBox.Show("Subtipo Atualizado");
+                MessageBox.Show("Conta AnalíticaAtualizado");
             }
             else
                 if (ListaSubtipoValor().Exists(o => o.TipoValor.CodTipoValor == codTipoValor && o.DescSubtipo == descricao))
-                    MessageBox.Show("Subtipo já existente!");
+                    MessageBox.Show("Conta Analíticajá existente!");
                 else
                 {
                     subtipoValorDAO.IncluirSubtipoValor(codTipoValor,descricao);
-                    MessageBox.Show("Subtipo Cadastrado!");
+                    MessageBox.Show("Conta AnalíticaCadastrado!");
                 }
         }
 
@@ -58,13 +58,13 @@ namespace OrangePoint.BusinessRule
                 if (!subtipoAtividade.Exists(o => o.SubtipoValor.CodSubtipoValor == codSubtipoValor))
                 {
                     subtipoValorDAO.ExcluiSubtipoValor(codSubtipoValor);
-                    MessageBox.Show("Subtipo Removido!");
+                    MessageBox.Show("Conta AnalíticaRemovido!");
                 }
                 else
-                    MessageBox.Show("Subtipo alocado em uma atividade!");
+                    MessageBox.Show("Conta Analíticaalocado em uma atividade!");
             }
             else
-                MessageBox.Show("Subtipo já alocado em um valor de uma empresa. Exclusão não realizada!");
+                MessageBox.Show("Conta Analíticajá alocado em um valor de uma empresa. Exclusão não realizada!");
 
         }
 

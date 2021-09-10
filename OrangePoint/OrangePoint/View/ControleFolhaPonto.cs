@@ -287,7 +287,10 @@ namespace OrangePoint.View
                 } else
                     MessageBox.Show("Nenhum dado existente!");
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " - Contate o Suporte.");
+            }
         }
 
         private void ControleFolhaPonto_FormClosing(object sender, FormClosingEventArgs e)
